@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import Pages from './Pages';
-import DataContext from 'context/DataContext';
-import ThemeWrapper from 'utility/ThemeWrapper';
-import ActionBar from 'common/ActionBar';
-import NavigationDrawer from 'common/NavigationDrawer';
+import DataContext from '@legion-hq/context/DataContext';
+import ThemeWrapper from '@legion-hq/utility/ThemeWrapper';
+import ActionBar from '@legion-hq/common/ActionBar';
+import NavigationDrawer from '@legion-hq/common/NavigationDrawer';
 
 function App() {
   const { userSettings } = useContext(DataContext);

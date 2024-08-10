@@ -1,10 +1,10 @@
 import React from 'react';
 import _ from 'lodash';
-import cards from 'constants/cards';
-import ranks from 'constants/ranks';
-import legionModes from 'constants/legionModes';
-import interactions from 'constants/cardInteractions';
-import listTemplate from 'constants/listTemplate';
+import cards from '@legion-hq/constants/cards';
+import ranks from '@legion-hq/constants/ranks';
+import legionModes from '@legion-hq/constants/legionModes';
+import interactions from '@legion-hq/constants/cardInteractions';
+import listTemplate from '@legion-hq/constants/listTemplate';
 
 function generateHTMLText(
   list, showPoints = true, showCommands = false, showBattles = false

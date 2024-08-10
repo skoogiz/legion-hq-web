@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ListContext from 'context/ListContext';
-import ranks from 'constants/ranks';
-// import legionModes from 'constants/legionModes';
-// import cards from 'constants/cards';
+import ListContext from '@legion-hq/context/ListContext';
+import ranks from '@legion-hq/constants/ranks';
+// import legionModes from '@legion-hq/constants/legionModes';
+// import cards from '@legion-hq/constants/cards';
 import RankButton from './RankButton';
-// import battleForcesDict from 'constants/battleForcesDict';
+// import battleForcesDict from '@legion-hq/constants/battleForcesDict';
 
 const useStyles = makeStyles({
   container: {

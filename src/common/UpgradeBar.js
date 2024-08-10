@@ -1,7 +1,7 @@
 import React from 'react';
-import Img from 'react-image';
-import LargerTooltip from 'common/LargerTooltip';
-import upgradeTypes from 'constants/upgradeTypes';
+import {Img} from 'react-image';
+import LargerTooltip from '@legion-hq/common/LargerTooltip';
+import upgradeTypes from '@legion-hq/constants/upgradeTypes';
 
 function UpgradeBar({ upgradeBar }) {
   const containerStyles = {

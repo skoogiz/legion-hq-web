@@ -1,7 +1,8 @@
 import React from 'react';
-import Img from 'react-image';
+import {Img} from 'react-image';
+
 import { Chip } from '@material-ui/core';
-import symbols from 'constants/symbols';
+import symbols from '@legion-hq/constants/symbols';
 
 function DefenseChip({ size, color }) {
   if (!color) return (

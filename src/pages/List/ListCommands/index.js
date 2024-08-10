@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Grid, Chip } from '@material-ui/core';
 import { Add as AddIcon } from '@material-ui/icons';
-import ListContext from 'context/ListContext';
-import CardIcon from 'common/CardIcon';
-import cards from 'constants/cards';
+import ListContext from '@legion-hq/context/ListContext';
+import CardIcon from '@legion-hq/common/CardIcon';
+import cards from '@legion-hq/constants/cards';
 
 const chipSize = 'medium';
 
@@ -22,7 +22,7 @@ function ListCommands() {
   }
   const chipStyle = { marginRight: 4, marginBottom: 4 };
   return (
-    <Grid container id="list-commands" direction="row" justify="center">
+    <Grid container id="list-commands" direction="row" justifyContent="center">
       {currentList.commandCards.length < 6 && (
         <Grid item>
           <Chip

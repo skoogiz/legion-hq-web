@@ -1,5 +1,6 @@
 import React from 'react';
-import Img from 'react-image';
+import {Img} from 'react-image';
+
 import {
   Typography,
   ExpansionPanel,
@@ -7,7 +8,7 @@ import {
   ExpansionPanelDetails
 } from '@material-ui/core';
 import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
-import urls from 'constants/urls';
+import urls from '@legion-hq/constants/urls';
 
 function ImagePanel({ card, usingOriginalImage = false }) {
   if (!card) return null;

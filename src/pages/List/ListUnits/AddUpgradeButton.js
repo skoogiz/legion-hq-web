@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, Icon, Avatar } from '@material-ui/core';
-import upgradeTypes from 'constants/upgradeTypes';
+import upgradeTypes from '@legion-hq/constants/upgradeTypes';
 
 function AddUpgradeButton({ type, handleClick }) {
   const size = 32;

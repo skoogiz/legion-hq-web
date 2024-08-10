@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Chip, Menu, MenuItem } from '@material-ui/core';
-import LargerTooltip from 'common/LargerTooltip';
-import legionModes from 'constants/legionModes';
+import LargerTooltip from '@legion-hq/common/LargerTooltip';
+import legionModes from '@legion-hq/constants/legionModes';
 
 function ModeButton({ currentMode, points, maxPoints, tooltip, handleChangeMode }) {
   const [anchorEl, setAnchorEl] = useState();

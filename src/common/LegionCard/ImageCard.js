@@ -12,10 +12,10 @@ import {
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
-import CardChip from 'common/CardChip';
-import HelpChip from 'common/HelpChip';
-import KeywordChips from 'common/KeywordChips';
-import urls from 'constants/urls';
+import CardChip from '@legion-hq/common/CardChip';
+import HelpChip from '@legion-hq/common/HelpChip';
+import KeywordChips from '@legion-hq/common/KeywordChips';
+import urls from '@legion-hq/constants/urls';
 
 const useStyles = makeStyles(theme => ({
   expand: {

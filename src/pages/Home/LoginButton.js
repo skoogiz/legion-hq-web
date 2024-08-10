@@ -1,7 +1,7 @@
 import React  from 'react';
 import { Button } from '@material-ui/core';
-import LargerTooltip from 'common/LargerTooltip';
-import DataContext from 'context/DataContext';
+import LargerTooltip from '@legion-hq/common/LargerTooltip';
+import DataContext from '@legion-hq/context/DataContext';
 
 function LoginButton({ auth }) {
   const {

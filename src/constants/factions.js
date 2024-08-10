@@ -1,13 +1,13 @@
-import rebelsWhite from 'assets/factions/rebelsWhite.svg';
-import rebelsBlack from 'assets/factions/rebelsBlack.svg';
-import empireWhite from 'assets/factions/empireWhite.svg';
-import empireBlack from 'assets/factions/empireBlack.svg';
-import republicWhite from 'assets/factions/republicWhite.svg';
-import republicBlack from 'assets/factions/republicBlack.svg';
-import separatistsWhite from 'assets/factions/separatistsWhite.svg';
-import separatistsBlack from 'assets/factions/separatistsBlack.svg';
-import fringeWhite from 'assets/factions/fringeWhite.svg';
-import fringeBlack from 'assets/factions/fringeBlack.svg';
+import rebelsWhite from '@legion-hq/assets/factions/rebelsWhite.svg';
+import rebelsBlack from '@legion-hq/assets/factions/rebelsBlack.svg';
+import empireWhite from '@legion-hq/assets/factions/empireWhite.svg';
+import empireBlack from '@legion-hq/assets/factions/empireBlack.svg';
+import republicWhite from '@legion-hq/assets/factions/republicWhite.svg';
+import republicBlack from '@legion-hq/assets/factions/republicBlack.svg';
+import separatistsWhite from '@legion-hq/assets/factions/separatistsWhite.svg';
+import separatistsBlack from '@legion-hq/assets/factions/separatistsBlack.svg';
+import fringeWhite from '@legion-hq/assets/factions/fringeWhite.svg';
+import fringeBlack from '@legion-hq/assets/factions/fringeBlack.svg';
 
 const factions = {
   rebels: {

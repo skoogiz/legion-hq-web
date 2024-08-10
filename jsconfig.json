@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@legion-hq/*": [
+        "./src/*"
+      ]
+    }
+  }
+}

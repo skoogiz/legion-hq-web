@@ -1,10 +1,10 @@
 import React from 'react';
 import { Chip } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { Add as AddIcon } from '@material-ui/icons';
-import ListContext from 'context/ListContext';
-import cards from 'constants/cards';
+import ListContext from '@legion-hq/context/ListContext';
+import cards from '@legion-hq/constants/cards';
 
 const chipSize = 'medium';
 
@@ -16,13 +16,13 @@ function ListObjectives() {
     handleCardZoom
   } = React.useContext(ListContext);
   const chipStyle = { marginRight: 4, marginBottom: 4 };
-  const objectiveTheme = createMuiTheme({
+  const objectiveTheme = createTheme({
     palette: { primary: { main: '#274c82' } }
   });
-  const deploymentTheme = createMuiTheme({
+  const deploymentTheme = createTheme({
     palette: { primary: { main: '#38643A' } }
   });
-  const conditionTheme = createMuiTheme({
+  const conditionTheme = createTheme({
     palette: { primary: { main: '#963233' } }
   });
   const objectives = currentList.objectiveCards.map((id, i) => (

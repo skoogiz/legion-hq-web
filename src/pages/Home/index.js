@@ -18,13 +18,13 @@ import LoginButton from './LoginButton';
 import ListChip from './ListChip';
 import FactionChip from './FactionChip';
 import ListChipDropdown from './ListChipDropdown';
-import DataContext from 'context/DataContext';
-import ErrorFallback from 'common/ErrorFallback';
-import factions from 'constants/factions';
-import ftLogoLight from 'assets/ftLogoLight.png';
-import ftLogoDark from 'assets/ftLogoDark.png';
-import lhqLogoLight from 'assets/lhqLogoLight.png';
-import lhqLogoDark from 'assets/lhqLogoDark.png';
+import DataContext from '@legion-hq/context/DataContext';
+import ErrorFallback from '@legion-hq/common/ErrorFallback';
+import factions from '@legion-hq/constants/factions';
+import ftLogoLight from '@legion-hq/assets/ftLogoLight.png';
+import ftLogoDark from '@legion-hq/assets/ftLogoDark.png';
+import lhqLogoLight from '@legion-hq/assets/lhqLogoLight.png';
+import lhqLogoDark from '@legion-hq/assets/lhqLogoDark.png';
 
 const useStyles = makeStyles(theme => ({
   expand: {
@@ -86,7 +86,7 @@ function Home() {
             container
             spacing={1}
             direction="column"
-            justify="center"
+            justifyContent="center"
             alignItems="center"
             style={{ marginTop: 5 }}
           >
@@ -142,7 +142,7 @@ function Home() {
                 container
                 spacing={1}
                 direction="row"
-                justify="center"
+                justifyContent="center"
                 alignItems="center"
               >
                 <Grid item key="factionChip">

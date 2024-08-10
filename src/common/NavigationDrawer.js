@@ -8,7 +8,7 @@ import {
   ListItemText,
   ListItemIcon
 } from '@material-ui/core';
-import DataContext from 'context/DataContext';
+import DataContext from '@legion-hq/context/DataContext';
 import { Launch as LaunchIcon } from '@material-ui/icons';
 
 function NavDrawerLink({ selected, icon, text, handleClick }) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Badge, IconButton, Avatar } from '@material-ui/core';
-import LargerTooltip from 'common/LargerTooltip';
-import ranks from 'constants/ranks';
+import LargerTooltip from '@legion-hq/common/LargerTooltip';
+import ranks from '@legion-hq/constants/ranks';
 
 function RankButton({ rank, color, count, handleClick }) {
   return (

@@ -7,7 +7,7 @@ import {
   ExpansionPanelDetails
 } from '@material-ui/core';
 import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
-import keywords from 'constants/keywords';
+import keywords from '@legion-hq/constants/keywords';
 
 function KeywordsPanel({ cardKeywords }) {
   if (!(cardKeywords instanceof Array)) return null;

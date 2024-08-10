@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import auth0Client from 'utility/Auth';
-import LoadingWidget from 'common/LoadingWidget';
+import auth0Client from '@legion-hq/utility/Auth';
+import LoadingWidget from '@legion-hq/common/LoadingWidget';
 
 class Callback extends React.Component {
   state = { doneAuthenticating: false };

@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { Chip, Menu, MenuItem } from '@material-ui/core';
 import { PlaylistAdd as AddTemplateIcon } from '@material-ui/icons';
-import DataContext from 'context/DataContext';
-import ListContext from 'context/ListContext';
+import DataContext from '@legion-hq/context/DataContext';
+import ListContext from '@legion-hq/context/ListContext';
 
 function TemplateButton() {
   const { userLists } = useContext(DataContext);

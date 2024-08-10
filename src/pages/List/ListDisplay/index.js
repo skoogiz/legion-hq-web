@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Fade, Typography, Divider } from '@material-ui/core';
-import ListContext from 'context/ListContext';
-import factions from 'constants/factions';
-import cards from 'constants/cards';
+import ListContext from '@legion-hq/context/ListContext';
+import factions from '@legion-hq/constants/factions';
+import cards from '@legion-hq/constants/cards';
 import CardImage from './CardImage';
 
 function RowDisplay({ unit, faction, handleCardZoom }) {

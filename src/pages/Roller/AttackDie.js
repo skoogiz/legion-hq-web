@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core';
-import { geometry, attackDice } from 'constants/dice.js';
+import { geometry, attackDice } from '@legion-hq/constants/dice.js';
 import './spin.css';
 
 const sqrt3 = 1.732;

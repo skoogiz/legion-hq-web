@@ -17,11 +17,11 @@ import {
   Add as AddIcon,
   ExpandMore as ExpandMoreIcon
 } from '@material-ui/icons';
-import CardChip from 'common/CardChip';
-import KeywordChips from 'common/KeywordChips';
-import CardIcon from 'common/CardIcon';
-import IconBadge from 'common/IconBadge';
-import UpgradeBar from 'common/UpgradeBar';
+import CardChip from '@legion-hq/common/CardChip';
+import KeywordChips from '@legion-hq/common/KeywordChips';
+import CardIcon from '@legion-hq/common/CardIcon';
+import IconBadge from '@legion-hq/common/IconBadge';
+import UpgradeBar from '@legion-hq/common/UpgradeBar';
 
 function capitalizeFirstLetters(words) {
   const strings = words.split(' ').map(string => {

@@ -16,7 +16,7 @@ import {
   generateMinimalText,
   generateTournamentText,
   generateHTMLText
-} from 'constants/listOperations';
+} from '@legion-hq/constants/listOperations';
 import DialogModal from './DialogModal';
 import ClipboardButton from './ClipboardButton';
 

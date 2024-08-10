@@ -1,9 +1,9 @@
 import React from 'react';
-import ListContext from 'context/ListContext';
+import ListContext from '@legion-hq/context/ListContext';
 import DragDropContainer from './DragDropContainer';
 import ListUnit from './ListUnit';
 import CounterpartUnit from './CounterpartUnit';
-import cards from 'constants/cards';
+import cards from '@legion-hq/constants/cards';
 
 function ListUnits() {
   const {

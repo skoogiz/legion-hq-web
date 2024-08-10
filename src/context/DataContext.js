@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import {
   Home as HomeIcon,
@@ -11,12 +11,12 @@ import {
 } from '@material-ui/icons';
 import { Snackbar } from '@material-ui/core';
 import { AlertTitle, Alert } from '@material-ui/lab';
-// import ErrorFallback from 'common/ErrorFallback';
-import FactionIcon from 'common/FactionIcon';
-import urls from 'constants/urls';
-import settings from 'constants/settings';
+// import ErrorFallback from '@legion-hq/common/ErrorFallback';
+import FactionIcon from '@legion-hq/common/FactionIcon';
+import urls from '@legion-hq/constants/urls';
+import settings from '@legion-hq/constants/settings';
 import { useAuth0 } from '@auth0/auth0-react';
-import auth from 'constants/auth';
+import auth from '@legion-hq/constants/auth';
 const { returnTo } = auth.prod;
 
 const DataContext = createContext();
@@ -458,7 +458,7 @@ function initializeLocalSettings() {
 }
 
 export function DataProvider({ children }) {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [isAlertAllowed, setIsAlertAllowed] = useState(true);
@@ -519,7 +519,7 @@ export function DataProvider({ children }) {
       setUserSettings(newSettings)
     }
   }
-  const goToPage = (newRoute) => history.push(newRoute);
+  const goToPage = (newRoute) => navigate(newRoute);
   const fetchUserLists = (userId) => {
     if (userId) {
       httpClient.get(`${urls.api}/lists?userId=${userId}`)

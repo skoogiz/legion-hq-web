@@ -11,9 +11,9 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Info as InfoIcon, Warning as WarningIcon } from '@material-ui/icons';
-import ListContext from 'context/ListContext';
-import legionModes from 'constants/legionModes';
-import battleForcesDict from 'constants/battleForcesDict';
+import ListContext from '@legion-hq/context/ListContext';
+import legionModes from '@legion-hq/constants/legionModes';
+import battleForcesDict from '@legion-hq/constants/battleForcesDict';
 import ModeButton from './ModeButton';
 import TitleField from './TitleField';
 import KillPointsField from './KillPointsField';

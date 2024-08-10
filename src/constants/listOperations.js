@@ -1,10 +1,10 @@
 import _ from 'lodash';
-import cards, {cardsIdsByType as cardIdsByType} from 'constants/cards';
-import ranks from 'constants/ranks';
-import legionModes from 'constants/legionModes';
-import interactions from 'constants/cardInteractions';
-import listTemplate from 'constants/listTemplate';
-import battleForcesDict from 'constants/battleForcesDict';
+import cards, {cardsIdsByType as cardIdsByType} from '@legion-hq/constants/cards';
+import ranks from '@legion-hq/constants/ranks';
+import legionModes from '@legion-hq/constants/legionModes';
+import interactions from '@legion-hq/constants/cardInteractions';
+import listTemplate from '@legion-hq/constants/listTemplate';
+import battleForcesDict from '@legion-hq/constants/battleForcesDict';
 
 function countPoints(list) {
   list.pointTotal = 0;

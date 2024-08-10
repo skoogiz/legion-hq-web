@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { DataProvider } from 'context/DataContext';
+import { DataProvider } from '@legion-hq/context/DataContext';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 import { Auth0Provider } from '@auth0/auth0-react';
-import auth from 'constants/auth';
+import auth from '@legion-hq/constants/auth';
 const { domain, clientID } = auth.v1;
 const { returnTo } = auth.prod;
 
@@ -28,4 +28,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// serviceWorker.unregister();
