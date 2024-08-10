@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   useMediaQuery,
   Chip,
-  AppBar,
-  Tabs,
-  Tab,
-  Box,
-  Typography,
   TextField
 } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
@@ -34,6 +29,7 @@ function DialogContent({
 function TTSTextExportButton({ currentList }) {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [textType, setTextType] = useState(0);
   const ttsJSON = generateTTSJSONText(currentList);
 

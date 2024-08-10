@@ -10,8 +10,7 @@ import {
   DialogContentText
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Clear as ClearIcon, Info as InfoIcon, Warning as WarningIcon } from '@material-ui/icons';
-
+import { Info as InfoIcon, Warning as WarningIcon } from '@material-ui/icons';
 import ListContext from 'context/ListContext';
 import legionModes from 'constants/legionModes';
 import battleForcesDict from 'constants/battleForcesDict';
@@ -19,9 +18,6 @@ import ModeButton from './ModeButton';
 import TitleField from './TitleField';
 import KillPointsField from './KillPointsField';
 import FactionButton from './FactionButton';
-
-import cards from 'constants/cards';
-
 
 const useStyles = makeStyles({
   container: {
@@ -72,7 +68,7 @@ function ListHeader() {
     return num;
   }, 0);
 
-  const validBattleForces = Object.values(battleForcesDict).filter(bf => bf.faction == currentList.faction);
+  const validBattleForces = Object.values(battleForcesDict).filter(bf => bf.faction === currentList.faction);
 
   var minValidationError = validationIssues.reduce((highest, e)=>{
     return e.level > highest ? e.level : highest;
@@ -145,7 +141,7 @@ function ListHeader() {
 
             <IconButton onClick={()=>setValidationDialogOpen(true)}>
               <WarningIcon style={{color: minValidationError < 2 ? 'yellow':'red'}}/>
-            </IconButton> 
+            </IconButton>
 
             <Dialog open={isValidationDialogOpen} onClose={() => setValidationDialogOpen(false)}>
               <DialogTitle>List Errors</DialogTitle>
@@ -156,7 +152,7 @@ function ListHeader() {
                 </div>
                 {validationIssues.map((el, i) =>
                 <div key={i} className={classes.valError}>
-                  <WarningIcon className={classes.item} style={{color: el.level == 1 ?'yellow':'red'}}/>
+                  <WarningIcon className={classes.item} style={{color: el.level === 1 ?'yellow':'red'}}/>
                   <DialogContentText>{el.text}</DialogContentText>
                 </div>
                 )}
@@ -203,7 +199,7 @@ function ListHeader() {
           </Dialog>
         </div>
       )}
-      
+
     </div>
   );
 };

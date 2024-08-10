@@ -10,7 +10,7 @@ const battleForcesDict = {
       heavy: ['ap'],
       allowedUniqueUpgrades: ['fk'],
 
-      rules: { 
+      rules: {
         noFieldComm: true
       },
       ruleUrl: 'https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetEBD.pdf',
@@ -226,9 +226,6 @@ const battleForcesDict = {
       },
       ruleUrl: 'https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSI.pdf',
       allowedUniqueUpgrades: ['il'],
-      rules:{
-        noFieldComm: true
-      },
       'standard mode': {
         commander: [1, 1],
         operative: [0, 1],
@@ -289,9 +286,6 @@ const battleForcesDict = {
       },
       ruleUrl: 'https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSC.pdf',
       allowedUniqueUpgrades: ['rq', 'so', 'se', 'sp', 'sg', 'sh', 'si'],
-      rules:{
-        countMercs: true
-      },
       'standard mode': {
         commander: [1, 4],
         operative: [0, 3],

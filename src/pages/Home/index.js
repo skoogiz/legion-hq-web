@@ -8,7 +8,6 @@ import {
   Fade,
   Button,
   Collapse,
-  Divider
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -77,6 +76,7 @@ function Home() {
   }
   useEffect(() => {
     if (userId) fetchUserLists(userId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -176,16 +176,6 @@ function Home() {
             </Grid>
             <Grid item>
               <div style={{ height: 10 }} />
-            </Grid>
-            <Grid item>
-              <iframe
-                title="Legion Discord"
-                frameBorder="0"
-                allowtransparency="true"
-                style={{ width: '100%', height: 400 }}
-                src="https://discordapp.com/widget?id=349001242489520128&theme=dark&username="
-              >
-              </iframe>
             </Grid>
             <Grid item>
               <div style={{ height: 10 }} />
