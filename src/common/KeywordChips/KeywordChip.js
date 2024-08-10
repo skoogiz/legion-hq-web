@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chip, Tooltip, Typography } from '@material-ui/core';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import keywords from 'constants/keywords';
+import keywords from '@legion-hq/constants/keywords';
 
 function KeywordChip({ keyword, size }) {
   const [isOpen, setIsOpen] = React.useState(false);

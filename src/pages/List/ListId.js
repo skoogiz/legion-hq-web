@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Typography from '@material-ui/core/Typography';
-import DataContext from 'context/DataContext';
-import ListContext from 'context/ListContext';
+import DataContext from '@legion-hq/context/DataContext';
+import ListContext from '@legion-hq/context/ListContext';
 
 function ListId() {
   const { userId } = useContext(DataContext)

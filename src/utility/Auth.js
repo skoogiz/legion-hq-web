@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js';
-import auth from 'constants/auth';
+import auth from '@legion-hq/constants/auth';
 
 const { returnTo, redirectUri } = auth.prod;
 const { domain, audience, clientID } = auth.v1;

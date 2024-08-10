@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 import Axios from 'axios';
-import DataContext from 'context/DataContext';
-import ErrorFallback from 'common/ErrorFallback';
-import LoadingWidget from 'common/LoadingWidget';
-import factions from 'constants/factions';
-import cards from 'constants/cards';
-import urls from 'constants/urls';
+import DataContext from '@legion-hq/context/DataContext';
+import ErrorFallback from '@legion-hq/common/ErrorFallback';
+import LoadingWidget from '@legion-hq/common/LoadingWidget';
+import factions from '@legion-hq/constants/factions';
+import cards from '@legion-hq/constants/cards';
+import urls from '@legion-hq/constants/urls';
 import {
   rehashList,
   mergeLists,
@@ -34,8 +34,8 @@ import {
   toggleUsingOldPoints,
   validateList,
   getRankLimits
-} from 'constants/listOperations';
-import listTemplate from 'constants/listTemplate';
+} from '@legion-hq/constants/listOperations';
+import listTemplate from '@legion-hq/constants/listTemplate';
 
 const ListContext = createContext();
 const httpClient = Axios.create();

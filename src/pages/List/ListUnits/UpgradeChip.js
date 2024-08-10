@@ -1,9 +1,9 @@
 import React from 'react';
 import { Divider, Chip, Button, IconButton, Icon, Typography } from '@material-ui/core';
 import { Clear as ClearIcon } from '@material-ui/icons';
-import CardIcon from 'common/CardIcon';
-import cards from 'constants/cards';
-import loadoutIcon from 'assets/loadout.png';
+import CardIcon from '@legion-hq/common/CardIcon';
+import cards from '@legion-hq/constants/cards';
+import loadoutIcon from '@legion-hq/assets/loadout.png';
 
 function UpgradeLabel({ card, handleSwapUpgrade, handleChangeLoadout }) {
   if (handleChangeLoadout) {

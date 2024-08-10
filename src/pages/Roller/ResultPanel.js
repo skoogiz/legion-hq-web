@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import { attackDice } from 'constants/dice';
+import { attackDice } from '@legion-hq/constants/dice';
 
 function ResultPanel({
   isRolling,

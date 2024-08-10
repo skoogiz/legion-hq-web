@@ -2,8 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import ranks from 'constants/ranks';
-import upgradeTypes from 'constants/upgradeTypes';
+import ranks from '@legion-hq/constants/ranks';
+import upgradeTypes from '@legion-hq/constants/upgradeTypes';
 
 const useStyles = makeStyles(theme => ({
   outerRowContainer: {

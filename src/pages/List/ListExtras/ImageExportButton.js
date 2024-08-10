@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import domtoimage from 'dom-to-image-more';
 import { Chip } from '@material-ui/core';
 import { Image as ImageIcon } from '@material-ui/icons';
-import loadingIcon from 'assets/LoadingIcon.png';
+import loadingIcon from '@legion-hq/assets/LoadingIcon.png';
 import DialogModal from './DialogModal';
 
 function ImageExport({ currentList }) {

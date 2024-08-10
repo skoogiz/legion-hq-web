@@ -5,7 +5,7 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 function ErrorFallback({ error, componentStack, message }) {
   return (
     <Container>
-      <Grid container justify="center">
+      <Grid container justifyContent="center">
         <Grid item>
           <Alert severity="error">
             <AlertTitle>

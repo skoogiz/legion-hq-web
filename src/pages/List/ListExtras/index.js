@@ -6,8 +6,8 @@ import {
   CallSplit as ForkIcon,
   Functions as CalculateIcon
 } from '@material-ui/icons';
-import DataContext from 'context/DataContext';
-import ListContext from 'context/ListContext';
+import DataContext from '@legion-hq/context/DataContext';
+import ListContext from '@legion-hq/context/ListContext';
 import TemplateButton from './TemplateButton';
 import LinkButton from './LinkButton';
 import QRButton from './QRButton';

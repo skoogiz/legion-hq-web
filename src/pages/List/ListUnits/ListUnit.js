@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import UnitAvatar from 'common/UnitAvatar';
-import CardName from 'common/CardName';
-import UnitPoints from 'common/UnitPoints';
+import UnitAvatar from '@legion-hq/common/UnitAvatar';
+import CardName from '@legion-hq/common/CardName';
+import UnitPoints from '@legion-hq/common/UnitPoints';
 import UnitActions from './UnitActions';
 import UnitUpgrades from './UnitUpgrades';
 import UnitFlaw from './UnitFlaw';

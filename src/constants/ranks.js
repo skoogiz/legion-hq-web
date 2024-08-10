@@ -1,9 +1,9 @@
-import commander from 'assets/rankTypes/commander.png';
-import operative from 'assets/rankTypes/operative.png';
-import corps from 'assets/rankTypes/corps.png';
-import special from 'assets/rankTypes/special.png';
-import support from 'assets/rankTypes/support.png';
-import heavy from 'assets/rankTypes/heavy.png';
+import commander from '@legion-hq/assets/rankTypes/commander.png';
+import operative from '@legion-hq/assets/rankTypes/operative.png';
+import corps from '@legion-hq/assets/rankTypes/corps.png';
+import special from '@legion-hq/assets/rankTypes/special.png';
+import support from '@legion-hq/assets/rankTypes/support.png';
+import heavy from '@legion-hq/assets/rankTypes/heavy.png';
 
 const ranks = {
   commander: {

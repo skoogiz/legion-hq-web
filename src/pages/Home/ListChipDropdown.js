@@ -2,7 +2,7 @@ import React from 'react';
 import { Popover, Chip, Typography } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import factions from 'constants/factions';
+import factions from '@legion-hq/constants/factions';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

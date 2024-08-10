@@ -9,7 +9,7 @@ import {
   Button
 } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import cards from 'constants/cards';
+import cards from '@legion-hq/constants/cards';
 import ImagePanel from './ImagePanel';
 import KeywordsPanel from './KeywordsPanel';
 import HistoryPanel from './HistoryPanel';

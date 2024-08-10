@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton, Icon, Avatar } from '@material-ui/core';
-import cards from 'constants/cards';
-import urls from 'constants/urls';
+import cards from '@legion-hq/constants/cards';
+import urls from '@legion-hq/constants/urls';
 
 function AddCounterpartButton({ counterpartId, handleClick }) {
   const { cardName, imageName } = cards[counterpartId];

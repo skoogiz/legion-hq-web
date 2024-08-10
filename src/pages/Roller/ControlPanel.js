@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Button, Slider } from '@material-ui/core';
-import symbols from 'constants/symbols';
+import symbols from '@legion-hq/constants/symbols';
 
 function valuetext(value) {
   return `${value} dice`;

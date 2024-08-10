@@ -1,18 +1,18 @@
-import heavyWeapon from 'assets/upgradeTypes/heavy weapon.png';
-import personnel from 'assets/upgradeTypes/personnel.png';
-import force from 'assets/upgradeTypes/force.png';
-import command from 'assets/upgradeTypes/command.png';
-import hardpoint from 'assets/upgradeTypes/hardpoint.png';
-import gear from 'assets/upgradeTypes/gear.png';
-import grenades from 'assets/upgradeTypes/grenades.png';
-import comms from 'assets/upgradeTypes/comms.png';
-import pilot from 'assets/upgradeTypes/pilot.png';
-import training from 'assets/upgradeTypes/training.png';
-import generator from 'assets/upgradeTypes/generator.png';
-import armament from 'assets/upgradeTypes/armament.png';
-import crew from 'assets/upgradeTypes/crew.png';
-import ordnance from 'assets/upgradeTypes/ordnance.png';
-import programming from 'assets/upgradeTypes/programming.png';
+import heavyWeapon from '@legion-hq/assets/upgradeTypes/heavy weapon.png';
+import personnel from '@legion-hq/assets/upgradeTypes/personnel.png';
+import force from '@legion-hq/assets/upgradeTypes/force.png';
+import command from '@legion-hq/assets/upgradeTypes/command.png';
+import hardpoint from '@legion-hq/assets/upgradeTypes/hardpoint.png';
+import gear from '@legion-hq/assets/upgradeTypes/gear.png';
+import grenades from '@legion-hq/assets/upgradeTypes/grenades.png';
+import comms from '@legion-hq/assets/upgradeTypes/comms.png';
+import pilot from '@legion-hq/assets/upgradeTypes/pilot.png';
+import training from '@legion-hq/assets/upgradeTypes/training.png';
+import generator from '@legion-hq/assets/upgradeTypes/generator.png';
+import armament from '@legion-hq/assets/upgradeTypes/armament.png';
+import crew from '@legion-hq/assets/upgradeTypes/crew.png';
+import ordnance from '@legion-hq/assets/upgradeTypes/ordnance.png';
+import programming from '@legion-hq/assets/upgradeTypes/programming.png';
 
 const upgradeTypes = {
   'heavy weapon': {

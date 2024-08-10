@@ -1,11 +1,17 @@
 import React from 'react';
 import { withWidth } from '@material-ui/core';
-import { ListProvider } from 'context/ListContext';
+import { ListProvider } from '@legion-hq/context/ListContext';
 import { ErrorBoundary } from 'react-error-boundary'
-import ErrorFallback from 'common/ErrorFallback';
+import ErrorFallback from '@legion-hq/common/ErrorFallback';
 import ListLayout from './ListLayout';
+import { useParams } from 'react-router-dom';
 
-function List({ width, slug, listHash, storedLists, updateStoredList }) {
+function List({ width, storedLists, updateStoredList }) {
+  const { slug, listHash } = useParams();
+
+  console.log({slug, listHash});
+
+
   return (
     <ListProvider
       width={width}

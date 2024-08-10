@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Chip } from '@material-ui/core';
-import ListContext from 'context/ListContext';
-import CardIcon from 'common/CardIcon';
-import cards from 'constants/cards';
+import ListContext from '@legion-hq/context/ListContext';
+import CardIcon from '@legion-hq/common/CardIcon';
+import cards from '@legion-hq/constants/cards';
 
 function UnitFlaw({ flawId }) {
   const { handleCardZoom } = useContext(ListContext);

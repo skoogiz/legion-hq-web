@@ -1,9 +1,10 @@
 import React from 'react';
-import Img from 'react-image';
+import {Img} from 'react-image';
+
 import { Skeleton } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/styles';
-import cards from 'constants/cards';
-import urls from 'constants/urls';
+import cards from '@legion-hq/constants/cards';
+import urls from '@legion-hq/constants/urls';
 
 const useStyles = makeStyles(theme => ({
   container: {

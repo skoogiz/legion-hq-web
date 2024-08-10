@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
-import CardModal from 'common/CardModal';
-import cards from 'constants/cards';
+import CardModal from '@legion-hq/common/CardModal';
+import cards from '@legion-hq/constants/cards';
 import BasicCardChips from './BasicCardChips';
 
 const useStyles = makeStyles(theme => ({

@@ -9,8 +9,8 @@ import {
   MenuItem,
   Fade
 } from '@material-ui/core';
-import DataContext from 'context/DataContext';
-import settings from 'constants/settings';
+import DataContext from '@legion-hq/context/DataContext';
+import settings from '@legion-hq/constants/settings';
 
 function SettingDropdown({ id, name, value, options, handleClick }) {
   return (

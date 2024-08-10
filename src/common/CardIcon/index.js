@@ -1,9 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
-import Img from 'react-image';
+import {Img} from 'react-image';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { Skeleton } from '@material-ui/lab';
-import urls from 'constants/urls';
+import urls from '@legion-hq/constants/urls';
 
 const useStyles = makeStyles(theme => ({
   card: { width: 315, marginRight: 4, marginBottom: 4 },

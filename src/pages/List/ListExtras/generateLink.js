@@ -1,4 +1,4 @@
-import urls from 'constants/urls';
+import urls from '@legion-hq/constants/urls';
 
 function generateLink(list) {
   const urlStrings = [];

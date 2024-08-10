@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Divider } from '@material-ui/core';
-import DataContext from 'context/DataContext';
+import DataContext from '@legion-hq/context/DataContext';
 
 function Post({ title, date, body }) {
   return (
