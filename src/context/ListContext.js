@@ -31,7 +31,7 @@ import {
   getEquippableUpgrades,
   getEquippableLoadoutUpgrades,
   getEligibleBattlesToAdd,
-  toggleUsingOldPoints, 
+  toggleUsingOldPoints,
   validateList,
   getRankLimits
 } from 'constants/listOperations';
@@ -104,10 +104,12 @@ export function ListProvider({
           setStatus('idle');
         });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
   useEffect(() => {
     // Save list before unmount
     return () => { if (currentList) updateStoredList(currentList); }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentList]);
   useEffect(() => {
     if (width === 'xs' || width === 'sm') {

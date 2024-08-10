@@ -91,7 +91,7 @@ class PrintListImages extends React.Component {
     const units = []; let printingUnits = true;
     const commands = []; let printingCommands = false;
     const battles = []; let printingBattles = false;
-    
+
     currentList.units.forEach((unit, i) => {
       const card = cards[unit.unitId];
       const unitImage = `${urls.cdn}/${card.cardType}Cards/${card.imageName}`
