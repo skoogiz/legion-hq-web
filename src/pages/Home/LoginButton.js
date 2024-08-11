@@ -1,15 +1,11 @@
-import React  from 'react';
-import { Button } from '@material-ui/core';
-import LargerTooltip from '@legion-hq/common/LargerTooltip';
-import DataContext from '@legion-hq/context/DataContext';
+import React from "react";
+import {Button} from "@material-ui/core";
+import LargerTooltip from "@legion-hq/common/LargerTooltip";
+import DataContext from "@legion-hq/context/DataContext";
 
-function LoginButton({ auth }) {
-  const {
-    isLoginDisabled,
-    loginTooltipText,
-    loginButtonText,
-    loginHandler
-  } = React.useContext(DataContext);
+function LoginButton({auth}) {
+  const {isLoginDisabled, loginTooltipText, loginButtonText, loginHandler} =
+    React.useContext(DataContext);
   return (
     <LargerTooltip arrow title={loginTooltipText}>
       <Button
@@ -22,6 +18,6 @@ function LoginButton({ auth }) {
       </Button>
     </LargerTooltip>
   );
-};
+}
 
 export default LoginButton;

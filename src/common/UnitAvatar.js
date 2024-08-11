@@ -1,11 +1,11 @@
-import React from 'react';
-import IconBadge from '@legion-hq/common/IconBadge';
-import CardIcon from '@legion-hq/common/CardIcon';
-import cards from '@legion-hq/constants/cards';
+import React from "react";
+import IconBadge from "@legion-hq/common/IconBadge";
+import CardIcon from "@legion-hq/common/CardIcon";
+import cards from "@legion-hq/constants/cards";
 
-function UnitCardAvatar({ id, count = 1, handleClick }) {
+function UnitCardAvatar({id, count = 1, handleClick}) {
   const card = cards[id];
-  if (card.cardType === 'counterpart') {
+  if (card.cardType === "counterpart") {
     return (
       <CardIcon
         size="medium"
@@ -30,6 +30,6 @@ function UnitCardAvatar({ id, count = 1, handleClick }) {
       }
     />
   );
-};
+}
 
 export default UnitCardAvatar;

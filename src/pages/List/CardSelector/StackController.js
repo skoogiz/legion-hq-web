@@ -1,21 +1,21 @@
-import React from 'react';
-import { Typography, IconButton } from '@material-ui/core';
-import { Add as AddIcon, Remove as MinusIcon } from '@material-ui/icons';
+import React from "react";
+import {Typography, IconButton} from "@material-ui/core";
+import {Add as AddIcon, Remove as MinusIcon} from "@material-ui/icons";
 
 function StackController({
-  stackSize, handleIncrementStackSize, handleDecrementStackSize
+  stackSize,
+  handleIncrementStackSize,
+  handleDecrementStackSize,
 }) {
   const rowContainerStyle = {
-    display: 'flex',
-    flexWrap: 'nowrap',
-    alignItems: 'center'
+    display: "flex",
+    flexWrap: "nowrap",
+    alignItems: "center",
   };
-  const rowItemStyle = { marginRight: 4 };
+  const rowItemStyle = {marginRight: 4};
   return (
     <div style={rowContainerStyle}>
-      <Typography style={rowItemStyle}>
-        Quantity:
-      </Typography>
+      <Typography style={rowItemStyle}>Quantity:</Typography>
       <IconButton
         disabled={stackSize === 1}
         style={rowItemStyle}
@@ -35,6 +35,6 @@ function StackController({
       </IconButton>
     </div>
   );
-};
+}
 
 export default StackController;

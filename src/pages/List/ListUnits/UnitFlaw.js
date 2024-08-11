@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import { Chip } from '@material-ui/core';
-import ListContext from '@legion-hq/context/ListContext';
-import CardIcon from '@legion-hq/common/CardIcon';
-import cards from '@legion-hq/constants/cards';
+import React, {useContext} from "react";
+import {Chip} from "@material-ui/core";
+import ListContext from "@legion-hq/context/ListContext";
+import CardIcon from "@legion-hq/common/CardIcon";
+import cards from "@legion-hq/constants/cards";
 
-function UnitFlaw({ flawId }) {
-  const { handleCardZoom } = useContext(ListContext);
+function UnitFlaw({flawId}) {
+  const {handleCardZoom} = useContext(ListContext);
   const flawCard = cards[flawId];
-  const chipStyle = { marginRight: 4, marginBottom: 4, backgroundColor: '#512818' };
+  const chipStyle = {marginRight: 4, marginBottom: 4, backgroundColor: "#512818"};
   return (
     <div>
       <Chip
@@ -25,6 +25,6 @@ function UnitFlaw({ flawId }) {
       />
     </div>
   );
-};
+}
 
 export default UnitFlaw;

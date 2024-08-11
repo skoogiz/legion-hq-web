@@ -1,30 +1,28 @@
-import React from 'react';
-import { Divider, Chip, Button, IconButton, Icon, Typography } from '@material-ui/core';
-import { Clear as ClearIcon } from '@material-ui/icons';
-import CardIcon from '@legion-hq/common/CardIcon';
-import cards from '@legion-hq/constants/cards';
-import loadoutIcon from '@legion-hq/assets/loadout.png';
+import React from "react";
+import {Divider, Chip, Button, IconButton, Icon, Typography} from "@material-ui/core";
+import {Clear as ClearIcon} from "@material-ui/icons";
+import CardIcon from "@legion-hq/common/CardIcon";
+import cards from "@legion-hq/constants/cards";
+import loadoutIcon from "@legion-hq/assets/loadout.png";
 
-function UpgradeLabel({ card, handleSwapUpgrade, handleChangeLoadout }) {
+function UpgradeLabel({card, handleSwapUpgrade, handleChangeLoadout}) {
   if (handleChangeLoadout) {
     return (
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{display: "flex", alignItems: "center"}}>
         <Typography variant="body2">
-          {`${card.displayName ?
-            card.displayName :
-            card.cardName} (${card.cost})`}
+          {`${card.displayName ? card.displayName : card.cardName} (${card.cost})`}
         </Typography>
         {Boolean(handleChangeLoadout) && (
           <IconButton
             size="small"
             onClick={handleChangeLoadout}
-            style={{ zIndex: 1, marginLeft: 4, width: 26, height: 26 }}
+            style={{zIndex: 1, marginLeft: 4, width: 26, height: 26}}
           >
             <Icon>
               <img
                 alt="loadout"
                 src={loadoutIcon}
-                style={{ width: 14, height: 19, marginBottom: 1 }}
+                style={{width: 14, height: 19, marginBottom: 1}}
               />
             </Icon>
           </IconButton>
@@ -33,30 +31,28 @@ function UpgradeLabel({ card, handleSwapUpgrade, handleChangeLoadout }) {
     );
   }
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{display: "flex", alignItems: "center"}}>
       <Button
         disableRipple
         size="small"
         onClick={handleSwapUpgrade}
-        style={{ textTransform: 'none' }}
+        style={{textTransform: "none"}}
       >
         <Typography variant="body2">
-          {`${card.displayName ?
-            card.displayName :
-            card.cardName} (${card.cost})`}
+          {`${card.displayName ? card.displayName : card.cardName} (${card.cost})`}
         </Typography>
       </Button>
       {Boolean(handleChangeLoadout) && (
         <IconButton
           size="small"
           onClick={handleChangeLoadout}
-          style={{ zIndex: 1, marginLeft: 4, width: 26, height: 26 }}
+          style={{zIndex: 1, marginLeft: 4, width: 26, height: 26}}
         >
           <Icon>
             <img
               alt="loadout"
               src={loadoutIcon}
-              style={{ width: 14, height: 19, marginBottom: 1 }}
+              style={{width: 14, height: 19, marginBottom: 1}}
             />
           </Icon>
         </IconButton>
@@ -66,34 +62,30 @@ function UpgradeLabel({ card, handleSwapUpgrade, handleChangeLoadout }) {
 }
 
 function LoadoutLabel({
-  upgradeCard, loadoutCard, handleChangeLoadout, handleDeleteLoadout
+  upgradeCard,
+  loadoutCard,
+  handleChangeLoadout,
+  handleDeleteLoadout,
 }) {
   return (
-    <div style={{ alignItems: 'flex-start', flexFlow: 'column nowrap' }}>
-      <UpgradeLabel
-        card={upgradeCard}
-        handleChangeLoadout={handleChangeLoadout}
-      />
+    <div style={{alignItems: "flex-start", flexFlow: "column nowrap"}}>
+      <UpgradeLabel card={upgradeCard} handleChangeLoadout={handleChangeLoadout} />
       <Divider />
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Typography variant="body2">
-            {`${loadoutCard.displayName ?
-              loadoutCard.displayName :
-              loadoutCard.cardName} (${loadoutCard.cost})`}
-          </Typography>
-          <IconButton
-            size="small"
-            onClick={handleDeleteLoadout}
-            style={{ marginLeft: 4 }}
-          >
-            <ClearIcon fontSize="small" />
-          </IconButton>
-        </div>
+      <div style={{display: "flex", alignItems: "center"}}>
+        <Typography variant="body2">
+          {`${
+            loadoutCard.displayName ? loadoutCard.displayName : loadoutCard.cardName
+          } (${loadoutCard.cost})`}
+        </Typography>
+        <IconButton size="small" onClick={handleDeleteLoadout} style={{marginLeft: 4}}>
+          <ClearIcon fontSize="small" />
+        </IconButton>
+      </div>
     </div>
   );
 }
 
-function UpgradeAvatar({ card, handleClick }) {
+function UpgradeAvatar({card, handleClick}) {
   return (
     <CardIcon
       size="small"
@@ -106,7 +98,7 @@ function UpgradeAvatar({ card, handleClick }) {
 }
 
 function UpgradeChip({
-  chipSize = 'medium',
+  chipSize = "medium",
   upgradeInteractions,
   upgradeId,
   loadoutId,
@@ -114,7 +106,7 @@ function UpgradeChip({
   handleSwap,
   handleDelete,
   handleChangeLoadout,
-  handleDeleteLoadout
+  handleDeleteLoadout,
 }) {
   const upgradeCard = cards[upgradeId];
   const loadoutCard = cards[loadoutId];
@@ -125,25 +117,27 @@ function UpgradeChip({
   return (
     <Chip
       size={chipSize}
-      label={loadoutCard ? (
-        <LoadoutLabel
-          upgradeCard={{ ...upgradeCard, cost: upgradeCard.cost + pointDelta }}
-          loadoutCard={loadoutCard}
-          handleChangeLoadout={handleChangeLoadout}
-          handleDeleteLoadout={handleDeleteLoadout}
-        />
-      ) : (
-        <UpgradeLabel
-          card={{ ...upgradeCard, cost: upgradeCard.cost + pointDelta }}
-          handleSwapUpgrade={handleSwap}
-          handleChangeLoadout={handleChangeLoadout}
-        />
-      )}
+      label={
+        loadoutCard ? (
+          <LoadoutLabel
+            upgradeCard={{...upgradeCard, cost: upgradeCard.cost + pointDelta}}
+            loadoutCard={loadoutCard}
+            handleChangeLoadout={handleChangeLoadout}
+            handleDeleteLoadout={handleDeleteLoadout}
+          />
+        ) : (
+          <UpgradeLabel
+            card={{...upgradeCard, cost: upgradeCard.cost + pointDelta}}
+            handleSwapUpgrade={handleSwap}
+            handleChangeLoadout={handleChangeLoadout}
+          />
+        )
+      }
       avatar={<UpgradeAvatar card={upgradeCard} handleClick={handleClick} />}
-      style={{ marginRight: 4, marginTop: 4, marginBottom: 6, height: 'auto' }}
+      style={{marginRight: 4, marginTop: 4, marginBottom: 6, height: "auto"}}
       onDelete={handleDelete}
     />
   );
-};
+}
 
 export default UpgradeChip;

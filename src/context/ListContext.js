@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
-import Axios from 'axios';
-import DataContext from '@legion-hq/context/DataContext';
-import ErrorFallback from '@legion-hq/common/ErrorFallback';
-import LoadingWidget from '@legion-hq/common/LoadingWidget';
-import factions from '@legion-hq/constants/factions';
-import cards from '@legion-hq/constants/cards';
-import urls from '@legion-hq/constants/urls';
+import React, {useState, useEffect, useContext, createContext} from "react";
+import Axios from "axios";
+import DataContext from "@legion-hq/context/DataContext";
+import ErrorFallback from "@legion-hq/common/ErrorFallback";
+import LoadingWidget from "@legion-hq/common/LoadingWidget";
+import factions from "@legion-hq/constants/factions";
+import cards from "@legion-hq/constants/cards";
+import urls from "@legion-hq/constants/urls";
 import {
   rehashList,
   mergeLists,
@@ -33,9 +33,9 @@ import {
   getEligibleBattlesToAdd,
   toggleUsingOldPoints,
   validateList,
-  getRankLimits
-} from '@legion-hq/constants/listOperations';
-import listTemplate from '@legion-hq/constants/listTemplate';
+  getRankLimits,
+} from "@legion-hq/constants/listOperations";
+import listTemplate from "@legion-hq/constants/listTemplate";
 
 const ListContext = createContext();
 const httpClient = Axios.create();
@@ -46,13 +46,18 @@ function isValidListId(listId) {
 }
 
 export function ListProvider({
-  width, children, slug, listHash, storedLists, updateStoredList
+  width,
+  children,
+  slug,
+  listHash,
+  storedLists,
+  updateStoredList,
 }) {
-  const { userId, userSettings, goToPage } = useContext(DataContext);
+  const {userId, userSettings, goToPage} = useContext(DataContext);
   const [stackSize, setStackSize] = useState(1);
   const [isApplyToAll, setIsApplyToAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState("idle");
   const [error, setError] = useState();
   const [message, setMessage] = useState();
   const [listSaveMessage, setListSaveMessage] = useState();
@@ -60,59 +65,61 @@ export function ListProvider({
   const [leftPaneWidth, setLeftPaneWidth] = useState(0);
   const [rightPaneWidth, setRightPaneWidth] = useState(0);
   const [modalContent, setModalContent] = useState();
-  const [cardPaneFilter, setCardPaneFilter] = useState({ action: 'DISPLAY' });
+  const [cardPaneFilter, setCardPaneFilter] = useState({action: "DISPLAY"});
   const [isKillPointMode, setIsKillPointMode] = useState(false);
   const [currentKillPoints, setCurrentKillPoints] = useState(0);
   const [validationIssues, setValidationIssues] = useState([]);
   const [rankLimits, setRankLimits] = useState();
-
 
   useEffect(() => {
     // route '/list/rebels' fetches the rebel list from storage
     if (slug in factions) {
       if (listHash) {
         const convertedList = convertHashToList(slug, listHash);
-        if (convertedList) updateThenValidateList({ ...convertedList });
+        if (convertedList) updateThenValidateList({...convertedList});
         else updateThenValidateList(JSON.parse(JSON.stringify(storedLists[slug])));
       } else updateThenValidateList(JSON.parse(JSON.stringify(storedLists[slug])));
     }
     // route '/list/1234' fetches list 1234 from database
-    else if (slug !== '' && isValidListId(slug)) {
-      setStatus('loading');
-      httpClient.get(`${urls.api}/lists/${slug}`)
-        .then(response => {
+    else if (slug !== "" && isValidListId(slug)) {
+      setStatus("loading");
+      httpClient
+        .get(`${urls.api}/lists/${slug}`)
+        .then((response) => {
           if (response.data.length > 0) {
             let loadedList = response.data[0];
-            let oldCounterparts = ['lw', 'ji', 'jj'];
+            let oldCounterparts = ["lw", "ji", "jj"];
             const oldUnitCount = loadedList.units.length;
-            loadedList.units = loadedList.units.filter(unit => {
-              return !oldCounterparts.includes(unit.unitId)
+            loadedList.units = loadedList.units.filter((unit) => {
+              return !oldCounterparts.includes(unit.unitId);
             });
             const newUnitCount = loadedList.units.length;
             if (oldUnitCount !== newUnitCount) {
-              loadedList.uniques = loadedList.uniques.filter(id => {
+              loadedList.uniques = loadedList.uniques.filter((id) => {
                 return !oldCounterparts.includes(id);
               });
             }
             updateThenValidateList(rehashList(loadedList));
           } else setError(`List ${slug} not found.`);
-          setStatus('idle');
+          setStatus("idle");
         })
-        .catch(err => {
+        .catch((err) => {
           setMessage(`Failed to fetch list (id=${slug})`);
           setError(err);
-          setStatus('idle');
+          setStatus("idle");
         });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
   useEffect(() => {
     // Save list before unmount
-    return () => { if (currentList) updateStoredList(currentList); }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      if (currentList) updateStoredList(currentList);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentList]);
   useEffect(() => {
-    if (width === 'xs' || width === 'sm') {
+    if (width === "xs" || width === "sm") {
       setLeftPaneWidth(12);
       setRightPaneWidth(0);
     } else {
@@ -121,8 +128,8 @@ export function ListProvider({
     }
   }, [width]);
   useEffect(() => {
-    if (width === 'xs' || width === 'sm') {
-      if (cardPaneFilter.action === 'DISPLAY') {
+    if (width === "xs" || width === "sm") {
+      if (cardPaneFilter.action === "DISPLAY") {
         setLeftPaneWidth(12);
         setRightPaneWidth(0);
       } else {
@@ -138,7 +145,7 @@ export function ListProvider({
     setCurrentList(list);
     doUnitValidation(list, rankLimits);
     setRankLimits(rankLimits);
-  }
+  };
 
   const reorderUnits = (startIndex, endIndex) => {
     function reorder(arr) {
@@ -147,38 +154,51 @@ export function ListProvider({
       result.splice(endIndex, 0, removed);
       return result;
     }
-    currentList.units = reorder(
-      currentList.units, startIndex, endIndex
-    );
+    currentList.units = reorder(currentList.units, startIndex, endIndex);
     currentList.unitObjectStrings = reorder(
-      currentList.unitObjectStrings, startIndex, endIndex
+      currentList.unitObjectStrings,
+      startIndex,
+      endIndex,
     );
-    setCurrentList({ ...currentList });
-  }
+    setCurrentList({...currentList});
+  };
   const handleToggleUsingOldPoints = () => {
     const newList = toggleUsingOldPoints(currentList);
-    setCurrentList({ ...newList });
-  }
+    setCurrentList({...newList});
+  };
   const handleIncrementStackSize = () => {
-    if (stackSize < 12) { setStackSize(stackSize + 1); }
-  }
+    if (stackSize < 12) {
+      setStackSize(stackSize + 1);
+    }
+  };
   const handleDecrementStackSize = () => {
-    if (stackSize > 1) { setStackSize(stackSize - 1); }
-  }
+    if (stackSize > 1) {
+      setStackSize(stackSize - 1);
+    }
+  };
   const handleToggleIsApplyToAll = () => setIsApplyToAll(!isApplyToAll);
   const handleClearList = () => {
-    setCardPaneFilter({ action: 'DISPLAY' });
+    setCardPaneFilter({action: "DISPLAY"});
     const newList = JSON.parse(JSON.stringify(listTemplate));
-    if (currentList.faction === 'fringe') newList.battleForce = 'Shadow Collective';
-    updateThenValidateList({ ...newList, faction: currentList.faction });
-  }
-  const handleChangeTitle = title => setCurrentList({ ...changeListTitle(currentList, title) });
-  const handleChangeMode = mode => {
-    updateThenValidateList({ ...setListMode(currentList, mode) });
-  }
-  const handleEquipUpgrade = (action, unitIndex, upgradeIndex, upgradeId, isApplyToAll) => {
+    if (currentList.faction === "fringe") newList.battleForce = "Shadow Collective";
+    updateThenValidateList({...newList, faction: currentList.faction});
+  };
+  const handleChangeTitle = (title) =>
+    setCurrentList({...changeListTitle(currentList, title)});
+  const handleChangeMode = (mode) => {
+    updateThenValidateList({...setListMode(currentList, mode)});
+  };
+  const handleEquipUpgrade = (
+    action,
+    unitIndex,
+    upgradeIndex,
+    upgradeId,
+    isApplyToAll,
+  ) => {
     const unit = currentList.units[unitIndex];
-    let applyFilter; let nextAvailIndex; let nextAvailType;
+    let applyFilter;
+    let nextAvailIndex;
+    let nextAvailType;
     if (isApplyToAll || unit.count === 1) {
       let i = (upgradeIndex + 1) % unit.upgradesEquipped.length;
       let numUpgradesEquipped = 0;
@@ -193,174 +213,184 @@ export function ListProvider({
         if (id) {
           numUpgradesEquipped++;
           continue;
-        };
+        }
         nextAvailIndex = i;
-        nextAvailType = unitCard.upgradeBar[i] ?
-                        unitCard.upgradeBar[i] :
-                        unit.additionalUpgradeSlots[i - (unitCard.upgradeBar.length + 1)];
+        nextAvailType = unitCard.upgradeBar[i]
+          ? unitCard.upgradeBar[i]
+          : unit.additionalUpgradeSlots[i - (unitCard.upgradeBar.length + 1)];
         i = (i + 1) % unit.upgradesEquipped.length;
       }
       let letUpgradesCascade = true;
       if (userSettings && userSettings.cascadeUpgradeSelection) {
-        letUpgradesCascade = userSettings.cascadeUpgradeSelection === 'yes' ? true : false;
+        letUpgradesCascade =
+          userSettings.cascadeUpgradeSelection === "yes" ? true : false;
       }
 
       if (letUpgradesCascade && nextAvailIndex !== undefined && nextAvailType) {
-        applyFilter = (newUpgradesEquipped, newAdditionalUpgradeSlots) => setCardPaneFilter({
-          action: 'UNIT_UPGRADE',
-          unitIndex,
-          upgradeIndex: nextAvailIndex,
-          upgradeType: nextAvailType,
-          hasUniques: unit.hasUniques,
-          unitId: unit.unitId,
-          upgradesEquipped: newUpgradesEquipped,
-          additionalUpgradeSlots: newAdditionalUpgradeSlots
-        });
+        applyFilter = (newUpgradesEquipped, newAdditionalUpgradeSlots) =>
+          setCardPaneFilter({
+            action: "UNIT_UPGRADE",
+            unitIndex,
+            upgradeIndex: nextAvailIndex,
+            upgradeType: nextAvailType,
+            hasUniques: unit.hasUniques,
+            unitId: unit.unitId,
+            upgradesEquipped: newUpgradesEquipped,
+            additionalUpgradeSlots: newAdditionalUpgradeSlots,
+          });
       }
     } // else applyFilter = () => setCardPaneFilter({ action: 'DISPLAY' })
 
     const newList = equipUpgrade(
-      currentList, action, unitIndex, upgradeIndex, upgradeId, isApplyToAll
+      currentList,
+      action,
+      unitIndex,
+      upgradeIndex,
+      upgradeId,
+      isApplyToAll,
     );
     if (applyFilter && newList.units[unitIndex]) {
       const newUnit = newList.units[unitIndex];
       applyFilter(newUnit.upgradesEquipped, newUnit.additionalUpgradeSlots);
-    } else setCardPaneFilter({ action: 'DISPLAY' });
-    updateThenValidateList({ ...newList });
+    } else setCardPaneFilter({action: "DISPLAY"});
+    updateThenValidateList({...newList});
   };
 
   const handleUnequipUpgrade = (action, unitIndex, upgradeIndex) => {
-
-    setCardPaneFilter({ action: 'DISPLAY' });
-    const newList = unequipUpgrade(
-      currentList, action, unitIndex, upgradeIndex
-    );
-    updateThenValidateList({ ...newList });
-  }
+    setCardPaneFilter({action: "DISPLAY"});
+    const newList = unequipUpgrade(currentList, action, unitIndex, upgradeIndex);
+    updateThenValidateList({...newList});
+  };
   const handleAddUnit = (unitId) => {
-    if (width === 'xs' || width === 'sm') {
-      setCardPaneFilter({ action: 'DISPLAY' });
+    if (width === "xs" || width === "sm") {
+      setCardPaneFilter({action: "DISPLAY"});
     }
     setStackSize(1);
     const newList = addUnit(currentList, unitId, stackSize);
-    updateThenValidateList({ ...newList });
-  }
+    updateThenValidateList({...newList});
+  };
   const handleAddCommand = (commandId) => {
     const newList = addCommand(currentList, commandId);
-    setCurrentList({ ...newList });
-  }
+    setCurrentList({...newList});
+  };
   const handleAddContingency = (commandId) => {
     const newList = addContingency(currentList, commandId);
-    setCurrentList({ ...newList });
-  }
+    setCurrentList({...newList});
+  };
   const handleRemoveCommand = (commandIndex) => {
     const newList = removeCommand(currentList, commandIndex);
-    setCurrentList({ ...newList });
-  }
+    setCurrentList({...newList});
+  };
   const handleRemoveContingency = (contingencyIndex) => {
     const newList = removeContingency(currentList, contingencyIndex);
-    setCurrentList({ ...newList });
-  }
+    setCurrentList({...newList});
+  };
   const handleAddBattle = (type, battleId) => {
     const newList = addBattle(currentList, type, battleId);
-    setCurrentList({ ...newList });
-  }
+    setCurrentList({...newList});
+  };
   const handleRemoveBattle = (type, battleId) => {
     const newList = removeBattle(currentList, type, battleId);
-    setCurrentList({ ...newList });
-  }
+    setCurrentList({...newList});
+  };
   const handleAddCounterpart = (unitIndex, counterpartId) => {
-    setCardPaneFilter({ action: 'DISPLAY' });
+    setCardPaneFilter({action: "DISPLAY"});
     const newList = addCounterpart(currentList, unitIndex, counterpartId);
-    updateThenValidateList({ ...newList });
-  }
+    updateThenValidateList({...newList});
+  };
   const handleRemoveCounterpart = (unitIndex) => {
-    setCardPaneFilter({ action: 'DISPLAY' });
+    setCardPaneFilter({action: "DISPLAY"});
     const newList = removeCounterpart(currentList, unitIndex);
-    updateThenValidateList({ ...newList });
-  }
+    updateThenValidateList({...newList});
+  };
   const handleIncrementUnit = (index) => {
     const newList = incrementUnit(currentList, index);
-    updateThenValidateList({ ...newList });
-  }
+    updateThenValidateList({...newList});
+  };
   const handleDecrementUnit = (index) => {
-    if (cardPaneFilter.action.includes('UPGRADE')) {
-      setCardPaneFilter({ action: 'DISPLAY' });
+    if (cardPaneFilter.action.includes("UPGRADE")) {
+      setCardPaneFilter({action: "DISPLAY"});
     }
     const newList = decrementUnit(currentList, index);
-    updateThenValidateList({ ...newList });
-  }
+    updateThenValidateList({...newList});
+  };
 
   const handleMergeList = (listToMerge) => {
     const newList = mergeLists(currentList, listToMerge);
-    updateThenValidateList({ ...newList });
-  }
+    updateThenValidateList({...newList});
+  };
   const handleOpenModal = () => {
     setIsModalOpen(true);
-  }
+  };
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setModalContent();
-  }
+  };
   const handleCardZoom = (cardId) => {
     setModalContent(cardId);
     setIsModalOpen(true);
-  }
+  };
   const handleListSave = (list) => {
     if (!userId) return;
-    const { _id, listId, ...rest } = list;
+    const {_id, listId, ...rest} = list;
     if (listId) {
-      Axios.put(`${urls.api}/lists/${listId}`, currentList).then(response => {
-        const newList = response.data;
-        setCurrentList(newList);
-        setListSaveMessage('List Updated!');
-      }).catch(e => {
-        setError(e);
-        setMessage(`Failed to update list ${listId}`);
-      });
+      Axios.put(`${urls.api}/lists/${listId}`, currentList)
+        .then((response) => {
+          const newList = response.data;
+          setCurrentList(newList);
+          setListSaveMessage("List Updated!");
+        })
+        .catch((e) => {
+          setError(e);
+          setMessage(`Failed to update list ${listId}`);
+        });
     } else {
-      Axios.post(`${urls.api}/lists`, { ...rest, userId }).then(response => {
-        const { listId } = response.data;
-        setCurrentList({ ...currentList, listId });
-        setListSaveMessage('List Created!')
-      }).catch(e => {
-        setError(e);
-        setMessage(`Failed to create list for user ${userId}`);
-      });
+      Axios.post(`${urls.api}/lists`, {...rest, userId})
+        .then((response) => {
+          const {listId} = response.data;
+          setCurrentList({...currentList, listId});
+          setListSaveMessage("List Created!");
+        })
+        .catch((e) => {
+          setError(e);
+          setMessage(`Failed to create list for user ${userId}`);
+        });
     }
-  }
+  };
   const handleListFork = (list) => {
     if (!userId) return;
-    const { _id, listId, ...rest } = list;
+    const {_id, listId, ...rest} = list;
     if (!listId) return;
-    const forkedList = { ...rest, title: list.title + ' fork' };
-    Axios.post(`${urls.api}/lists`, { ...forkedList, userId }).then(response => {
-      const newList = response.data;
-      goToPage(`/list/${newList.listId}`);
-    }).catch(e => {
-      setError(e);
-      setMessage(`Failed to fork list ${listId} for user ${userId}`);
-    });
-  }
+    const forkedList = {...rest, title: list.title + " fork"};
+    Axios.post(`${urls.api}/lists`, {...forkedList, userId})
+      .then((response) => {
+        const newList = response.data;
+        goToPage(`/list/${newList.listId}`);
+      })
+      .catch((e) => {
+        setError(e);
+        setMessage(`Failed to fork list ${listId} for user ${userId}`);
+      });
+  };
 
   const handleToggleIsKillPointMode = () => {
     if (isKillPointMode) setCurrentKillPoints(0);
     setIsKillPointMode(!isKillPointMode);
-  }
+  };
 
   const handleAddKillPoints = (points) => {
     setCurrentKillPoints(currentKillPoints + points);
-  }
+  };
 
   const handleSetBattleForce = (battleForce) => {
-    updateThenValidateList({ ...currentList, battleForce });
-  }
+    updateThenValidateList({...currentList, battleForce});
+  };
 
   // Maybe there should be a 'units only' flag, but lists will be something like 50-100 entities max anyhow...
-  const doUnitValidation = (list, rankLimits) =>{
+  const doUnitValidation = (list, rankLimits) => {
     // console.log('performing list validation!');
     setValidationIssues(validateList(list, rankLimits));
-  }
+  };
 
   const unitProps = {
     getEligibleUnitsToAdd,
@@ -373,20 +403,20 @@ export function ListProvider({
     handleUnequipUpgrade,
     handleIncrementUnit,
     handleDecrementUnit,
-    handleSetBattleForce
+    handleSetBattleForce,
   };
   const battleProps = {
     getEligibleBattlesToAdd,
     handleAddBattle,
-    handleRemoveBattle
-  }
+    handleRemoveBattle,
+  };
   const commandProps = {
     getEligibleCommandsToAdd,
     handleAddCommand,
     handleRemoveCommand,
     getEligibleContingenciesToAdd,
     handleAddContingency,
-    handleRemoveContingency
+    handleRemoveContingency,
   };
   const listProps = {
     currentList,
@@ -413,7 +443,7 @@ export function ListProvider({
     handleCloseModal,
     modalContent,
     isModalOpen,
-    handleCardZoom
+    handleCardZoom,
   };
   const viewProps = {
     width,
@@ -422,14 +452,14 @@ export function ListProvider({
     leftPaneWidth,
     rightPaneWidth,
     setLeftPaneWidth,
-    setRightPaneWidth
+    setRightPaneWidth,
   };
   const messageProps = {
-    listSaveMessage
+    listSaveMessage,
   };
   if (error) return <ErrorFallback error={error} message={message} />;
-  if (status === 'loading') return <LoadingWidget />;
-  if (status === 'idle') {
+  if (status === "loading") return <LoadingWidget />;
+  if (status === "idle") {
     return (
       <ListContext.Provider
         value={{
@@ -442,7 +472,7 @@ export function ListProvider({
           ...viewProps,
           ...messageProps,
           validationIssues,
-          rankLimits
+          rankLimits,
         }}
       >
         {children}

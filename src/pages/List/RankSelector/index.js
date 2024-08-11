@@ -1,40 +1,37 @@
-import React, { useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import ListContext from '@legion-hq/context/ListContext';
-import ranks from '@legion-hq/constants/ranks';
+import React, {useContext} from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import ListContext from "@legion-hq/context/ListContext";
+import ranks from "@legion-hq/constants/ranks";
 // import legionModes from '@legion-hq/constants/legionModes';
 // import cards from '@legion-hq/constants/cards';
-import RankButton from './RankButton';
+import RankButton from "./RankButton";
 // import battleForcesDict from '@legion-hq/constants/battleForcesDict';
 
 const useStyles = makeStyles({
   container: {
-    display: 'flex',
-    justifyContent: 'center'
+    display: "flex",
+    justifyContent: "center",
   },
-  item: { marginRight: 10 }
+  item: {marginRight: 10},
 });
 
 function RankSelector() {
   const classes = useStyles();
-  const { currentList, setCardPaneFilter, rankLimits } = useContext(ListContext);
+  const {currentList, setCardPaneFilter, rankLimits} = useContext(ListContext);
   let rankInteractions = 0;
   if (currentList.rankInteractions) {
-    Object.keys(currentList.rankInteractions).forEach(key => {
+    Object.keys(currentList.rankInteractions).forEach((key) => {
       rankInteractions += currentList.rankInteractions[key];
     });
   }
 
-  const currentUnitCounts = { ...currentList.unitCounts };
-
-
+  const currentUnitCounts = {...currentList.unitCounts};
 
   // Object.keys(ranks).forEach(key => {
   //   let count = currentUnitCounts[key];
   //   const mode = legionModes[currentList.mode];
   //   let leftBoundary = mode.unitCounts[key][0];
   //   let rightBoundary = mode.unitCounts[key][1];
-
 
   //   if (currentList.battleForce) {
   //     if (!battleForcesDict[currentList.battleForce][currentList.mode]) {
@@ -121,14 +118,16 @@ function RankSelector() {
 
   return (
     <div className={classes.container}>
-      {Object.keys(rankLimits).map(key => {
+      {Object.keys(rankLimits).map((key) => {
+        // commOp is a non-array, non-displayed rank limit
+        if (!ranks[key]) return null;
 
-         // commOp is a non-array, non-displayed rank limit
-        if(!ranks[key]) return null;
-
-        let color = 'primary';
-        if(currentUnitCounts[key] > rankLimits[key][1] || currentUnitCounts[key] < rankLimits[key][0]){
-          color = 'error'
+        let color = "primary";
+        if (
+          currentUnitCounts[key] > rankLimits[key][1] ||
+          currentUnitCounts[key] < rankLimits[key][0]
+        ) {
+          color = "error";
         }
 
         return (
@@ -137,15 +136,18 @@ function RankSelector() {
               rank={key}
               color={color}
               count={currentUnitCounts[key]}
-              handleClick={() => setCardPaneFilter({
-                action: 'UNIT', rank: key
-              })}
+              handleClick={() =>
+                setCardPaneFilter({
+                  action: "UNIT",
+                  rank: key,
+                })
+              }
             />
           </div>
         );
       })}
     </div>
   );
-};
+}
 
 export default RankSelector;

@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { Button, IconButton, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from "react";
+import {Button, IconButton, Typography} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
 import {
   PlusOne as PlusOneIcon,
   Add as PlusIcon,
   Remove as NegativeIcon,
   ExposureNeg1 as MinusOneIcon,
-  Delete as DeleteIcon
-} from '@material-ui/icons';
-import { Icon as IconifyIcon } from '@iconify/react';
+  Delete as DeleteIcon,
+} from "@material-ui/icons";
+import {Icon as IconifyIcon} from "@iconify/react";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   buttons: {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    justifyContent: 'center',
-    minWidth: '72px'
-  }
+    display: "flex",
+    flexFlow: "row nowrap",
+    justifyContent: "center",
+    minWidth: "72px",
+  },
 }));
 
 function UnitActions({
@@ -24,7 +24,7 @@ function UnitActions({
   decrementUnit,
   isKillPointMode,
   handleAddKillPoints,
-  handleRemoveKillPoints
+  handleRemoveKillPoints,
 }) {
   const [numKilled, setNumKilled] = useState(0);
   const classes = useStyles();
@@ -38,28 +38,24 @@ function UnitActions({
             setNumKilled(numKilled - 1);
             handleRemoveKillPoints();
           }}
-          style={{ marginLeft: 2, marginRight: 1 }}
+          style={{marginLeft: 2, marginRight: 1}}
         >
-          <NegativeIcon style={{ fontSize: 13 }} />
-          <IconifyIcon style={{ fontSize: 21 }} icon="fa-solid:skull-crossbones" />
+          <NegativeIcon style={{fontSize: 13}} />
+          <IconifyIcon style={{fontSize: 21}} icon="fa-solid:skull-crossbones" />
         </Button>
         <Button
-
           variant="contained"
           size="small"
           onClick={() => {
             setNumKilled(numKilled + 1);
             handleAddKillPoints();
           }}
-          style={{ marginLeft: 1, marginRight: 2 }}
+          style={{marginLeft: 1, marginRight: 2}}
         >
-          <PlusIcon style={{ fontSize: 13 }} />
-          <IconifyIcon style={{ fontSize: 21 }} icon="fa-solid:skull-crossbones" />
-          <Typography
-            variant="caption"
-            style={{ marginLeft: 2 }}
-          >
-            {numKilled > 0 ? `(${numKilled})` : ''}
+          <PlusIcon style={{fontSize: 13}} />
+          <IconifyIcon style={{fontSize: 21}} icon="fa-solid:skull-crossbones" />
+          <Typography variant="caption" style={{marginLeft: 2}}>
+            {numKilled > 0 ? `(${numKilled})` : ""}
           </Typography>
         </Button>
       </div>
@@ -72,29 +68,26 @@ function UnitActions({
             <IconButton
               size="small"
               onClick={decrementUnit}
-              style={{ marginLeft: 2, marginRight: 1 }}
+              style={{marginLeft: 2, marginRight: 1}}
             >
-              <MinusOneIcon style={{ fontSize }} />
+              <MinusOneIcon style={{fontSize}} />
             </IconButton>
             <IconButton
               size="small"
               onClick={incrementUnit}
-              style={{ marginLeft: 1, marginRight: 2 }}
+              style={{marginLeft: 1, marginRight: 2}}
             >
-              <PlusOneIcon style={{ fontSize }} />
+              <PlusOneIcon style={{fontSize}} />
             </IconButton>
           </React.Fragment>
         ) : (
-          <IconButton
-            size="small"
-            onClick={decrementUnit}
-          >
-            <DeleteIcon style={{ fontSize }} />
+          <IconButton size="small" onClick={decrementUnit}>
+            <DeleteIcon style={{fontSize}} />
           </IconButton>
         )}
       </div>
     );
   }
-};
+}
 
 export default UnitActions;

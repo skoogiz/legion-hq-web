@@ -1,10 +1,10 @@
-import _ from 'lodash';
-import cards, {cardsIdsByType as cardIdsByType} from '@legion-hq/constants/cards';
-import ranks from '@legion-hq/constants/ranks';
-import legionModes from '@legion-hq/constants/legionModes';
-import interactions from '@legion-hq/constants/cardInteractions';
-import listTemplate from '@legion-hq/constants/listTemplate';
-import battleForcesDict from '@legion-hq/constants/battleForcesDict';
+import _ from "lodash";
+import cards, {cardsIdsByType as cardIdsByType} from "@legion-hq/constants/cards";
+import ranks from "@legion-hq/constants/ranks";
+import legionModes from "@legion-hq/constants/legionModes";
+import interactions from "@legion-hq/constants/cardInteractions";
+import listTemplate from "@legion-hq/constants/listTemplate";
+import battleForcesDict from "@legion-hq/constants/battleForcesDict";
 
 function countPoints(list) {
   list.pointTotal = 0;
@@ -25,7 +25,9 @@ function countPoints(list) {
       if (upgradeId) {
         const upgradeCard = cards[upgradeId];
         if (list.isUsingOldPoints) {
-          unit.totalUnitCost += upgradeCard.prevCost ? upgradeCard.prevCost : upgradeCard.cost;
+          unit.totalUnitCost += upgradeCard.prevCost
+            ? upgradeCard.prevCost
+            : upgradeCard.cost;
         } else unit.totalUnitCost += upgradeCard.cost;
         if (upgradeId in interactions.upgradePoints) {
           const interaction = interactions.upgradePoints[upgradeId];
@@ -41,14 +43,18 @@ function countPoints(list) {
     if (unit.counterpart) {
       const counterpartCard = cards[unit.counterpart.counterpartId];
       if (list.isUsingOldPoints) {
-        unit.counterpart.totalUnitCost = counterpartCard.prevCost ? counterpartCard.prevCost : counterpartCard.cost;
+        unit.counterpart.totalUnitCost = counterpartCard.prevCost
+          ? counterpartCard.prevCost
+          : counterpartCard.cost;
       } else unit.counterpart.totalUnitCost = counterpartCard.cost;
 
-      unit.counterpart.upgradesEquipped.forEach(upgradeId => {
+      unit.counterpart.upgradesEquipped.forEach((upgradeId) => {
         if (upgradeId) {
           const upgradeCard = cards[upgradeId];
           if (list.isUsingOldPoints) {
-            unit.counterpart.totalUnitCost += upgradeCard.prevCost ? upgradeCard.prevCost : upgradeCard.cost;
+            unit.counterpart.totalUnitCost += upgradeCard.prevCost
+              ? upgradeCard.prevCost
+              : upgradeCard.cost;
           } else unit.counterpart.totalUnitCost += upgradeCard.cost;
         }
       });
@@ -95,7 +101,7 @@ function consolidate(list) {
   list.hasFieldCommander = false;
   list.commanders = [];
   list.uniques = [];
-  list.unitCounts = { ...listTemplate.unitCounts };
+  list.unitCounts = {...listTemplate.unitCounts};
   for (let i = 0; i < list.units.length; i++) {
     const unit = list.units[i];
     if (!unit.loadoutUpgrades) unit.loadoutUpgrades = [];
@@ -105,8 +111,12 @@ function consolidate(list) {
       list.uniques.push(unitCard.id);
       unit.hasUniques = true;
     }
-    if (unitCard.keywords.includes('Contingencies')) hasContingencyKeyword = true;
-    if (unitCard.rank === 'commander' || unitCard.rank === 'operative' || unitCard.isUnique) {
+    if (unitCard.keywords.includes("Contingencies")) hasContingencyKeyword = true;
+    if (
+      unitCard.rank === "commander" ||
+      unitCard.rank === "operative" ||
+      unitCard.isUnique
+    ) {
       list.commanders.push(unitCard.cardName);
     }
     for (let j = 0; j < unit.upgradesEquipped.length; j++) {
@@ -117,7 +127,7 @@ function consolidate(list) {
           list.uniques.push(upgradeCard.id);
           unit.hasUniques = true;
         }
-        if (upgradeCard.keywords.includes('Field Commander')) {
+        if (upgradeCard.keywords.includes("Field Commander")) {
           list.hasFieldCommander = true;
         }
       }
@@ -134,26 +144,27 @@ function consolidate(list) {
     }
     list.unitCounts[unitCard.rank] += unit.count;
 
-    if (unit.unitId === 'rc' && unit.upgradesEquipped.includes('rq')) { // Maul + Darksaber interaction
-      list.unitCounts['commander']++;
-      list.unitCounts['operative']--;
+    if (unit.unitId === "rc" && unit.upgradesEquipped.includes("rq")) {
+      // Maul + Darksaber interaction
+      list.unitCounts["commander"]++;
+      list.unitCounts["operative"]--;
     }
   }
-  for (let i = list.commandCards.length - 1; i > -1 ; i--) {
-    const { commander } = cards[list.commandCards[i]];
+  for (let i = list.commandCards.length - 1; i > -1; i--) {
+    const {commander} = cards[list.commandCards[i]];
     if (commander && !list.commanders.includes(commander)) {
       list = removeCommand(list, i);
     }
   }
   if (list.contingencies) {
     for (let i = list.contingencies.length - 1; i > -1; i--) {
-      const { commander } = cards[list.contingencies[i]];
+      const {commander} = cards[list.contingencies[i]];
       if (commander && !list.commanders.includes(commander)) {
         list = removeContingency(list, i);
       }
     }
   }
-  if (!list.battleForce) list.battleForce = '';
+  if (!list.battleForce) list.battleForce = "";
   if (!hasContingencyKeyword) list.contingencies = [];
   list.commandCards = sortCommandIds(list.commandCards);
   return countPoints(list);
@@ -167,17 +178,22 @@ function getNumActivations(list) {
 }
 
 function generateTournamentText(
-  list, showPoints = true, showCommands = false, showBattles = false
+  list,
+  showPoints = true,
+  showCommands = false,
+  showBattles = false,
 ) {
-  let header = `${list.title ? list.title : 'Untitled'}\n`;
+  let header = `${list.title ? list.title : "Untitled"}\n`;
   header += `${list.pointTotal}/${legionModes[list.mode].maxPoints}\n`;
-  let units = '';
-  list.units.forEach(unit => {
+  let units = "";
+  list.units.forEach((unit) => {
     const unitCard = cards[unit.unitId];
     if (unit.count === 1) {
-      if (unit.unitId === 'pz') { // Kraken
+      if (unit.unitId === "pz") {
+        // Kraken
         units += `${unitCard.cardName} - Kraken (${unit.totalUnitCost})\n`;
-      } else if (unit.unitId === 'qa') { // Kalani
+      } else if (unit.unitId === "qa") {
+        // Kalani
         units += `${unitCard.cardName} - Kalani (${unit.totalUnitCost})\n`;
       } else {
         units += `${unitCard.cardName} (${unit.totalUnitCost})\n`;
@@ -195,7 +211,7 @@ function generateTournamentText(
         }
       }
       if (unit.counterpart) {
-        const { counterpart } = unit;
+        const {counterpart} = unit;
         const counterpartCard = cards[counterpart.counterpartId];
         units += `${counterpartCard.cardName} (${unit.counterpart.totalUnitCost})\n`;
         for (let j = 0; j < counterpart.upgradesEquipped.length; j++) {
@@ -223,72 +239,86 @@ function generateTournamentText(
       }
     }
   });
-  let commands = '';
-  list.commandCards.forEach(commandId => {
-    let pips = '••••';
+  let commands = "";
+  list.commandCards.forEach((commandId) => {
+    let pips = "••••";
     const commandCard = cards[commandId];
-    if (commandCard.cardSubtype === '1') pips = '•';
-    else if (commandCard.cardSubtype === '2') pips = '••';
-    else if (commandCard.cardSubtype === '3') pips = '•••';
+    if (commandCard.cardSubtype === "1") pips = "•";
+    else if (commandCard.cardSubtype === "2") pips = "••";
+    else if (commandCard.cardSubtype === "3") pips = "•••";
     commands += `${pips}${commandCard.cardName}\n`;
   });
-  if (commands !== '') {
+  if (commands !== "") {
     commands = `\nCommands:\n${commands}`;
-    commands += '••••Standing Orders\n';
+    commands += "••••Standing Orders\n";
   }
-  let contingencies = '';
+  let contingencies = "";
   if (list.contingencies && list.contingencies.length > 0) {
-    contingencies = '\nContingencies:\n';
-    list.contingencies.forEach(commandId => {
-      let pips = '••••';
+    contingencies = "\nContingencies:\n";
+    list.contingencies.forEach((commandId) => {
+      let pips = "••••";
       const commandCard = cards[commandId];
-      if (commandCard.cardSubtype === '1') pips = '•';
-      else if (commandCard.cardSubtype === '2') pips = '••';
-      else if (commandCard.cardSubtype === '3') pips = '•••';
+      if (commandCard.cardSubtype === "1") pips = "•";
+      else if (commandCard.cardSubtype === "2") pips = "••";
+      else if (commandCard.cardSubtype === "3") pips = "•••";
       contingencies += `${pips}${commandCard.cardName}\n`;
     });
   }
-  let objectives = '';
-  let deployments = '';
-  let conditions = '';
+  let objectives = "";
+  let deployments = "";
+  let conditions = "";
   if (list.objectiveCards.length > 0) {
-    objectives += 'Objectives:\n';
+    objectives += "Objectives:\n";
     list.objectiveCards.forEach((id, i) => {
       const card = cards[id];
       objectives += ` - ${card.cardName}\n`;
     });
   }
   if (list.deploymentCards.length > 0) {
-    deployments += 'Deployments:\n';
+    deployments += "Deployments:\n";
     list.deploymentCards.forEach((id, i) => {
       const card = cards[id];
       deployments += ` - ${card.cardName}\n`;
     });
   }
   if (list.conditionCards.length > 0) {
-    conditions += 'Conditions:\n';
+    conditions += "Conditions:\n";
     list.conditionCards.forEach((id, i) => {
       const card = cards[id];
       conditions += ` - ${card.cardName}\n`;
     });
   }
-  let battle = '';
-  if (objectives + deployments + conditions !== '') battle = `\nBattle Deck\n`;
-  return header + units + commands + contingencies + battle + objectives + deployments + conditions;
+  let battle = "";
+  if (objectives + deployments + conditions !== "") battle = `\nBattle Deck\n`;
+  return (
+    header +
+    units +
+    commands +
+    contingencies +
+    battle +
+    objectives +
+    deployments +
+    conditions
+  );
 }
 
 function generateHTMLText(
-  list, showPoints = true, showCommands = false, showBattles = false
+  list,
+  showPoints = true,
+  showCommands = false,
+  showBattles = false,
 ) {
-  let header = `${list.title ? list.title : 'Untitled'}<br>`;
+  let header = `${list.title ? list.title : "Untitled"}<br>`;
   header += `${list.pointTotal}/${legionModes[list.mode].maxPoints}<br>`;
-  let units = '';
-  list.units.forEach(unit => {
+  let units = "";
+  list.units.forEach((unit) => {
     const unitCard = cards[unit.unitId];
     if (unit.count === 1) {
-      if (unit.unitId === 'pz') { // Kraken
+      if (unit.unitId === "pz") {
+        // Kraken
         units += `${unitCard.cardName} - Kraken (${unit.totalUnitCost})<br>`;
-      } else if (unit.unitId === 'pz') { // Kalani
+      } else if (unit.unitId === "pz") {
+        // Kalani
         units += `${unitCard.cardName} - Kalani (${unit.totalUnitCost})<br>`;
       } else {
         units += `${unitCard.cardName} (${unit.totalUnitCost})<br>`;
@@ -306,7 +336,7 @@ function generateHTMLText(
         }
       }
       if (unit.counterpart) {
-        const { counterpart } = unit;
+        const {counterpart} = unit;
         const counterpartCard = cards[counterpart.counterpartId];
         units += `${counterpartCard.cardName} (${unit.counterpart.totalUnitCost})\n`;
         for (let j = 0; j < counterpart.upgradesEquipped.length; j++) {
@@ -334,79 +364,89 @@ function generateHTMLText(
       }
     }
   });
-  let commands = '';
-  list.commandCards.forEach(commandId => {
-    let pips = '••••';
+  let commands = "";
+  list.commandCards.forEach((commandId) => {
+    let pips = "••••";
     const commandCard = cards[commandId];
-    if (commandCard.cardSubtype === '1') pips = '•';
-    else if (commandCard.cardSubtype === '2') pips = '••';
-    else if (commandCard.cardSubtype === '3') pips = '•••';
+    if (commandCard.cardSubtype === "1") pips = "•";
+    else if (commandCard.cardSubtype === "2") pips = "••";
+    else if (commandCard.cardSubtype === "3") pips = "•••";
     commands += `${pips}${commandCard.cardName}<br>`;
   });
-  if (commands !== '') {
+  if (commands !== "") {
     commands = `<br>Commands:<br>${commands}`;
-    commands += '••••Standing Orders<br>';
+    commands += "••••Standing Orders<br>";
   }
-  let contingencies = '';
+  let contingencies = "";
   if (list.contingencies && list.contingencies.length > 0) {
-    contingencies = '<br>Contingencies:<br>';
-    list.contingencies.forEach(commandId => {
-      let pips = '••••';
+    contingencies = "<br>Contingencies:<br>";
+    list.contingencies.forEach((commandId) => {
+      let pips = "••••";
       const commandCard = cards[commandId];
-      if (commandCard.cardSubtype === '1') pips = '•';
-      else if (commandCard.cardSubtype === '2') pips = '••';
-      else if (commandCard.cardSubtype === '3') pips = '•••';
+      if (commandCard.cardSubtype === "1") pips = "•";
+      else if (commandCard.cardSubtype === "2") pips = "••";
+      else if (commandCard.cardSubtype === "3") pips = "•••";
       contingencies += `${pips}${commandCard.cardName}<br>`;
     });
   }
-  let objectives = '';
-  let deployments = '';
-  let conditions = '';
+  let objectives = "";
+  let deployments = "";
+  let conditions = "";
   if (list.objectiveCards.length > 0) {
-    objectives += 'Objectives:<br>';
+    objectives += "Objectives:<br>";
     list.objectiveCards.forEach((id, i) => {
       const card = cards[id];
       objectives += ` - ${card.cardName}<br>`;
     });
   }
   if (list.deploymentCards.length > 0) {
-    deployments += 'Deployments:<br>';
+    deployments += "Deployments:<br>";
     list.deploymentCards.forEach((id, i) => {
       const card = cards[id];
       deployments += ` - ${card.cardName}<br>`;
     });
   }
   if (list.conditionCards.length > 0) {
-    conditions += 'Conditions:<br>';
+    conditions += "Conditions:<br>";
     list.conditionCards.forEach((id, i) => {
       const card = cards[id];
       conditions += ` - ${card.cardName}<br>`;
     });
   }
-  let battle = '';
-  if (objectives + deployments + conditions !== '') battle = `<br>Battle Deck<br>`;
-  return '<html><p>' + header + units + commands + contingencies + battle + objectives + deployments + conditions + '</p></html>';
+  let battle = "";
+  if (objectives + deployments + conditions !== "") battle = `<br>Battle Deck<br>`;
+  return (
+    "<html><p>" +
+    header +
+    units +
+    commands +
+    contingencies +
+    battle +
+    objectives +
+    deployments +
+    conditions +
+    "</p></html>"
+  );
 }
-
 
 // • × •
 
 function generateStandardText(list) {
-  let header = list.title ? list.title : 'Untitled';
+  let header = list.title ? list.title : "Untitled";
   let points = `\n${list.pointTotal}/${legionModes[list.mode].maxPoints}`;
-  const numActivations = getNumActivations(list)
-  points += ` (${numActivations} activation${numActivations === 1 ? '' : 's'})\n`;
-  let commander = '';
-  let counterpart = '';
-  let operative = '';
-  let corps = '';
-  let special = '';
-  let support = '';
-  let heavy = '';
+  const numActivations = getNumActivations(list);
+  points += ` (${numActivations} activation${numActivations === 1 ? "" : "s"})\n`;
+  let commander = "";
+  let counterpart = "";
+  let operative = "";
+  let corps = "";
+  let special = "";
+  let support = "";
+  let heavy = "";
   const unitLine = (unit) => {
     const id = unit.unitId ? unit.unitId : unit.counterpartId;
     const unitCard = cards[id];
-    let line = ' - ';
+    let line = " - ";
     if (unit.count > 1) line += `${unit.count}× `;
     line += unitCard.displayName ? unitCard.displayName : unitCard.cardName;
     if (unitCard.cost !== unit.totalUnitCost) {
@@ -416,59 +456,65 @@ function generateStandardText(list) {
         const upgradeCard = cards[upgradeId];
         if (unit.loadoutUpgrades && unit.loadoutUpgrades[i]) {
           const loadoutCard = cards[unit.loadoutUpgrades[i]];
-          line += upgradeCard.displayName ? upgradeCard.displayName : upgradeCard.cardName;
+          line += upgradeCard.displayName
+            ? upgradeCard.displayName
+            : upgradeCard.cardName;
           line += ` (${upgradeCard.cost})/`;
-          line += loadoutCard.displayName ? loadoutCard.displayName : loadoutCard.cardName;
+          line += loadoutCard.displayName
+            ? loadoutCard.displayName
+            : loadoutCard.cardName;
           line += ` (${loadoutCard.cost}), `;
         } else {
-          line += upgradeCard.displayName ? upgradeCard.displayName : upgradeCard.cardName;
+          line += upgradeCard.displayName
+            ? upgradeCard.displayName
+            : upgradeCard.cardName;
           line += ` (${upgradeCard.cost}), `;
         }
       });
-      line = line.substring(0, line.length - 2)
+      line = line.substring(0, line.length - 2);
       line += ` = ${unit.totalUnitCost}`;
     } else line += ` = ${unitCard.cost}`;
-    return line + '\n';
-  }
+    return line + "\n";
+  };
   list.units.forEach((unit, i) => {
     const unitCard = cards[unit.unitId];
     if (unit.counterpart) counterpart += unitLine(unit.counterpart);
-    if (unitCard.rank === 'commander') commander += unitLine(unit);
-    if (unitCard.rank === 'operative') operative += unitLine(unit);
-    if (unitCard.rank === 'corps') corps += unitLine(unit);
-    if (unitCard.rank === 'special') special += unitLine(unit);
-    if (unitCard.rank === 'support') support += unitLine(unit);
-    if (unitCard.rank === 'heavy') heavy += unitLine(unit);
+    if (unitCard.rank === "commander") commander += unitLine(unit);
+    if (unitCard.rank === "operative") operative += unitLine(unit);
+    if (unitCard.rank === "corps") corps += unitLine(unit);
+    if (unitCard.rank === "special") special += unitLine(unit);
+    if (unitCard.rank === "support") support += unitLine(unit);
+    if (unitCard.rank === "heavy") heavy += unitLine(unit);
   });
-  let units = '';
+  let units = "";
   if (commander) units += `Commanders:\n${commander}`;
-  if (counterpart && list.faction === 'empire') units += `Counterparts:\n${counterpart}`;
+  if (counterpart && list.faction === "empire") units += `Counterparts:\n${counterpart}`;
   if (operative) units += `Operative:\n${operative}`;
-  if (counterpart && list.faction !== 'empire') units += `Counterparts:\n${counterpart}`;
+  if (counterpart && list.faction !== "empire") units += `Counterparts:\n${counterpart}`;
   if (corps) units += `Corps:\n${corps}`;
   if (special) units += `Special Forces:\n${special}`;
   if (support) units += `Support:\n${support}`;
   if (heavy) units += `Heavy:\n${heavy}`;
 
-  let commands = '\nCommands: ';
-  list.commandCards.forEach(id => {
+  let commands = "\nCommands: ";
+  list.commandCards.forEach((id) => {
     const commandCard = cards[id];
-    if (commandCard.cardSubtype === '1') commands += '• ';
-    else if (commandCard.cardSubtype === '2') commands += '•• ';
-    else if (commandCard.cardSubtype === '3') commands += '••• ';
-    else commands += '•••• ';
+    if (commandCard.cardSubtype === "1") commands += "• ";
+    else if (commandCard.cardSubtype === "2") commands += "•• ";
+    else if (commandCard.cardSubtype === "3") commands += "••• ";
+    else commands += "•••• ";
     commands += `${commandCard.cardName}, `;
   });
-  if (commands !== '') commands += '•••• Standing Orders';
-  let contingencies = '';
+  if (commands !== "") commands += "•••• Standing Orders";
+  let contingencies = "";
   if (list.contingencies && list.contingencies.length > 0) {
-    contingencies += '\nContingencies: ';
-    list.contingencies.forEach(id => {
+    contingencies += "\nContingencies: ";
+    list.contingencies.forEach((id) => {
       const commandCard = cards[id];
-      if (commandCard.cardSubtype === '1') contingencies += '• ';
-      else if (commandCard.cardSubtype === '2') contingencies += '•• ';
-      else if (commandCard.cardSubtype === '3') contingencies += '••• ';
-      else contingencies += '•••• ';
+      if (commandCard.cardSubtype === "1") contingencies += "• ";
+      else if (commandCard.cardSubtype === "2") contingencies += "•• ";
+      else if (commandCard.cardSubtype === "3") contingencies += "••• ";
+      else contingencies += "•••• ";
       contingencies += `${commandCard.cardName}, `;
     });
   }
@@ -476,54 +522,54 @@ function generateStandardText(list) {
 }
 
 function generateTTSJSONText(list) {
-  const ttsJSON = { author: 'Legion HQ' };
+  const ttsJSON = {author: "Legion HQ"};
 
   const idToName = {
-    "nc": "Offensive Stance",
-    "dz": "A-180 Config",
-    "ea": "A-300 Config",
-    "kh": "A-280-CFE Config",
-    "gn": "E-11D Config",
-    "np": "J-19 Bo-rifle",
-    "Ci": "Clear Conditions",
-    "Cl": "War Weary",
-    "Dj": "Battle Lines",
-    "ff": "Ax-108 \"Ground Buzzer\"",
-    "fg": "Mo/Dk Power Harpoon",
-    "bh": "TX-225 GAVw Occupier Combat Assault Tank",
-    "on": "LAAT/le Patrol Transport",
-    "oo": "LAAT/le Patrol Transport",
-    "ig": "CM-0/93 Trooper",
-    "kd": "Z-6 Phase II Trooper",
-    "kt": "\"Bunker Buster\" Shells",
-    "le": "EMP \"Droid Poppers\"",
-    "lw": "Iden's ID10 Seeker Droid",
-    "sr": "Stormtroopers Heavy Response Unit",
-    "uj": "The Darksaber (Gideon)",
-    "rq": "The Darksaber (Maul)",
-    "xw": "Echo (The Bad Batch)"
+    nc: "Offensive Stance",
+    dz: "A-180 Config",
+    ea: "A-300 Config",
+    kh: "A-280-CFE Config",
+    gn: "E-11D Config",
+    np: "J-19 Bo-rifle",
+    Ci: "Clear Conditions",
+    Cl: "War Weary",
+    Dj: "Battle Lines",
+    ff: 'Ax-108 "Ground Buzzer"',
+    fg: "Mo/Dk Power Harpoon",
+    bh: "TX-225 GAVw Occupier Combat Assault Tank",
+    on: "LAAT/le Patrol Transport",
+    oo: "LAAT/le Patrol Transport",
+    ig: "CM-0/93 Trooper",
+    kd: "Z-6 Phase II Trooper",
+    kt: '"Bunker Buster" Shells',
+    le: 'EMP "Droid Poppers"',
+    lw: "Iden's ID10 Seeker Droid",
+    sr: "Stormtroopers Heavy Response Unit",
+    uj: "The Darksaber (Gideon)",
+    rq: "The Darksaber (Maul)",
+    xw: "Echo (The Bad Batch)",
   };
 
   ttsJSON.listname = list.title;
 
   ttsJSON.points = list.pointTotal;
 
-  if (list.faction === 'rebels') ttsJSON.armyFaction = 'rebel';
-  else if (list.faction === 'empire') ttsJSON.armyFaction = 'imperial';
-  else if (list.faction === 'republic') ttsJSON.armyFaction = 'republic';
-  else if (list.faction === 'fringe') ttsJSON.armyFaction = '';
-  else ttsJSON.armyFaction = 'separatist';
+  if (list.faction === "rebels") ttsJSON.armyFaction = "rebel";
+  else if (list.faction === "empire") ttsJSON.armyFaction = "imperial";
+  else if (list.faction === "republic") ttsJSON.armyFaction = "republic";
+  else if (list.faction === "fringe") ttsJSON.armyFaction = "";
+  else ttsJSON.armyFaction = "separatist";
 
   ttsJSON.commandCards = [];
   for (let i = 0; i < list.commandCards.length; i++) {
     const commandCard = cards[list.commandCards[i]];
     ttsJSON.commandCards.push(commandCard.cardName);
   }
-  ttsJSON.commandCards.push('Standing Orders');
+  ttsJSON.commandCards.push("Standing Orders");
 
   ttsJSON.contingencies = [];
   if (list.contingencies) {
-    for (let i = 0; i < list.contingencies.length; i++){
+    for (let i = 0; i < list.contingencies.length; i++) {
       const commandCard = cards[list.contingencies[i]];
       ttsJSON.contingencies.push(commandCard.cardName);
     }
@@ -531,7 +577,7 @@ function generateTTSJSONText(list) {
 
   ttsJSON.units = [];
   for (let i = 0; i < list.units.length; i++) {
-    const unitJSON = { name: '', upgrades: [], loadout: [] };
+    const unitJSON = {name: "", upgrades: [], loadout: []};
     const unit = list.units[i];
     const unitCard = cards[unit.unitId];
 
@@ -564,7 +610,9 @@ function generateTTSJSONText(list) {
     if (unit.counterpart) {
       const counterpart = unit.counterpart;
       const counterpartCard = cards[counterpart.counterpartId];
-      unitJSON.upgrades.push(`${counterpartCard.cardName}${counterpartCard.title ? ` ${counterpartCard.title}}` : ''}`);
+      unitJSON.upgrades.push(
+        `${counterpartCard.cardName}${counterpartCard.title ? ` ${counterpartCard.title}}` : ""}`,
+      );
       for (let j = 0; j < counterpart.upgradesEquipped.length; j++) {
         if (counterpart.upgradesEquipped[j]) {
           if (idToName[counterpart.upgradesEquipped[j]]) {
@@ -587,7 +635,7 @@ function generateTTSJSONText(list) {
           }
         }
       }
-    };
+    }
     if (unitCard.flaw) unitJSON.upgrades.push(cards[unitCard.flaw].cardName);
     if (unit.count > 1) {
       for (let j = 0; j < unit.count; j++) ttsJSON.units.push(unitJSON);
@@ -596,13 +644,13 @@ function generateTTSJSONText(list) {
     }
   }
 
-  ttsJSON.battlefieldDeck = { conditions: [], deployment: [], objective: [] };
+  ttsJSON.battlefieldDeck = {conditions: [], deployment: [], objective: []};
   if (list.mode === "500-point mode") {
-    ttsJSON.battlefieldDeck.scenario =  "skirmish";
+    ttsJSON.battlefieldDeck.scenario = "skirmish";
   } else if (list.mode.includes("storm tide")) {
-    ttsJSON.battlefieldDeck.scenario = "community"
+    ttsJSON.battlefieldDeck.scenario = "community";
   } else {
-    ttsJSON.battlefieldDeck.scenario =  "standard";
+    ttsJSON.battlefieldDeck.scenario = "standard";
   }
   for (let i = 0; i < list.objectiveCards.length; i++) {
     if (idToName[list.objectiveCards[i]]) {
@@ -634,48 +682,48 @@ function generateTTSJSONText(list) {
 
 function generateMinimalText(list) {
   let header = `${list.pointTotal}/${legionModes[list.mode].maxPoints}`;
-  const numActivations = getNumActivations(list)
-  header += ` (${numActivations} activation${numActivations === 1 ? '' : 's'})\n`;
-  let units = '';
-  list.units.forEach(unit => {
+  const numActivations = getNumActivations(list);
+  header += ` (${numActivations} activation${numActivations === 1 ? "" : "s"})\n`;
+  let units = "";
+  list.units.forEach((unit) => {
     const unitCard = cards[unit.unitId];
-    let line = '';
+    let line = "";
     if (unit.count > 1) line += `${unit.count}× `;
     line += `${unitCard.cardName} `;
 
     // TODO this should be a flag to append the unit subtitle to the card display
-    if (unit.unitId === 'pz') {
-      line += '- Kraken ';
-    } else if (unit.unitId === 'qa') {
-      line += '- Kalani';
+    if (unit.unitId === "pz") {
+      line += "- Kraken ";
+    } else if (unit.unitId === "qa") {
+      line += "- Kalani";
     }
 
-    let upgrades = '';
-    let loadout = '';
+    let upgrades = "";
+    let loadout = "";
     unit.upgradesEquipped.forEach((id, i) => {
       if (id) {
         const upgradeCard = cards[id];
         upgrades += `${upgradeCard.cardName}, `;
         if (unit.loadoutUpgrades && unit.loadoutUpgrades.length > 0) {
-           if (unit.loadoutUpgrades[i]) {
-             const loadoutCard = cards[unit.loadoutUpgrades[i]];
-             loadout += `${loadoutCard.cardName}, `;
-           } else loadout += 'none, ';
+          if (unit.loadoutUpgrades[i]) {
+            const loadoutCard = cards[unit.loadoutUpgrades[i]];
+            loadout += `${loadoutCard.cardName}, `;
+          } else loadout += "none, ";
         }
       }
     });
-    if (upgrades !== '') {
-      upgrades = upgrades.substring(0, upgrades.length - 2)
+    if (upgrades !== "") {
+      upgrades = upgrades.substring(0, upgrades.length - 2);
       line += `(${upgrades})`;
     }
-    if (loadout !== '') {
+    if (loadout !== "") {
       loadout = loadout.substring(0, loadout.length - 2);
       line += `\n - Loadout: (${loadout})`;
     }
-    let counterpart = '';
+    let counterpart = "";
     if (unit.counterpart) {
-      let cUpgrades = '';
-      let cLoadout = '';
+      let cUpgrades = "";
+      let cLoadout = "";
       const counterpartCard = cards[unit.counterpart.counterpartId];
       counterpart += `\n${counterpartCard.cardName}`;
       unit.counterpart.upgradesEquipped.forEach((id, i) => {
@@ -686,41 +734,41 @@ function generateMinimalText(list) {
             if (unit.counterpart.loadoutUpgrades[i]) {
               const loadoutCard = cards[unit.counterpart.loadoutUpgrades[i]];
               cLoadout += `${loadoutCard.cardName}, `;
-            } else cLoadout += 'none, ';
+            } else cLoadout += "none, ";
           }
         }
       });
-      if (cUpgrades !== '') {
+      if (cUpgrades !== "") {
         cUpgrades = cUpgrades.substring(0, cUpgrades.length - 2);
         counterpart += ` (${cUpgrades})`;
       }
-      if (cLoadout !== '') {
+      if (cLoadout !== "") {
         cLoadout = cLoadout.substring(0, cLoadout.length - 2);
         counterpart += `\n - Loadout: (${cLoadout})`;
       }
     }
     line += counterpart;
-    units += line + '\n';
+    units += line + "\n";
   });
-  let commands = list.commandCards.length > 0 ? 'Commands: ' : '';
+  let commands = list.commandCards.length > 0 ? "Commands: " : "";
   list.commandCards.forEach((id, i) => {
     const commandCard = cards[id];
-    if (commandCard.cardSubtype === '1') commands += '• ';
-    else if (commandCard.cardSubtype === '2') commands += '•• ';
-    else if (commandCard.cardSubtype === '3') commands += '••• ';
-    else commands += '•••• ';
+    if (commandCard.cardSubtype === "1") commands += "• ";
+    else if (commandCard.cardSubtype === "2") commands += "•• ";
+    else if (commandCard.cardSubtype === "3") commands += "••• ";
+    else commands += "•••• ";
     commands += `${commandCard.cardName}, `;
   });
-  if (commands !== '') commands += '•••• Standing Orders';
-  let contingencies = '';
+  if (commands !== "") commands += "•••• Standing Orders";
+  let contingencies = "";
   if (list.contingencies && list.contingencies.length > 0) {
-    contingencies += '\nContingencies: ';
+    contingencies += "\nContingencies: ";
     list.contingencies.forEach((id, i) => {
       const commandCard = cards[id];
-      if (commandCard.cardSubtype === '1') contingencies += '• ';
-      else if (commandCard.cardSubtype === '2') contingencies += '•• ';
-      else if (commandCard.cardSubtype === '3') contingencies += '••• ';
-      else contingencies += '•••• ';
+      if (commandCard.cardSubtype === "1") contingencies += "• ";
+      else if (commandCard.cardSubtype === "2") contingencies += "•• ";
+      else if (commandCard.cardSubtype === "3") contingencies += "••• ";
+      else contingencies += "•••• ";
       contingencies += `${commandCard.cardName}, `;
     });
   }
@@ -756,11 +804,11 @@ function generateMinimalText(list) {
 }
 
 function deleteItem(items, i) {
-  return items.slice(0, i).concat(items.slice(i + 1, items.length))
+  return items.slice(0, i).concat(items.slice(i + 1, items.length));
 }
 
 function changeListTitle(list, title) {
-  return { ...list, title: title.substring(0, 30) };
+  return {...list, title: title.substring(0, 30)};
 }
 
 // function toggleListMode(list) {
@@ -784,7 +832,7 @@ function findUnitHash(list, unitHash) {
 }
 
 function getUnitHash(unit) {
-  return `${unit.unitId}${unit.upgradesEquipped.join('')}`;
+  return `${unit.unitId}${unit.upgradesEquipped.join("")}`;
 }
 
 function equipCounterpartLoadoutUpgrade(list, unitIndex, upgradeIndex, upgradeId) {
@@ -825,7 +873,7 @@ function equipUpgradeToAll(list, unitIndex, upgradeIndex, upgradeId) {
   newUnit.upgradesEquipped[upgradeIndex] = upgradeId;
   const newUnitHash = getUnitHash(newUnit);
   newUnit.unitObjectString = newUnitHash;
-  if ('additionalUpgradeSlots' in upgradeCard) {
+  if ("additionalUpgradeSlots" in upgradeCard) {
     newUnit.additionalUpgradeSlots = [...upgradeCard.additionalUpgradeSlots];
     newUnit.upgradesEquipped.push(null);
   }
@@ -846,7 +894,7 @@ function equipUpgradeToOne(list, unitIndex, upgradeIndex, upgradeId) {
   newUnit.count = 1;
   newUnit.upgradesEquipped[upgradeIndex] = upgradeId;
   newUnit.unitObjectString = getUnitHash(newUnit);
-  if ('additionalUpgradeSlots' in upgradeCard) {
+  if ("additionalUpgradeSlots" in upgradeCard) {
     newUnit.additionalUpgradeSlots = [...upgradeCard.additionalUpgradeSlots];
     newUnit.upgradesEquipped.push(null);
   }
@@ -893,11 +941,11 @@ function addCounterpart(list, unitIndex, counterpartId) {
     totalUnitCost: counterpartCard.cost,
     upgradesEquipped: [],
     loadoutUpgrades: [],
-    additionalUpgradeSlots: []
+    additionalUpgradeSlots: [],
   };
   for (let i = 0; i < counterpartCard.upgradeBar.length; i++) {
     unit.counterpart.upgradesEquipped.push(null);
-    if (unitCard.keywords.includes('Loadout')) {
+    if (unitCard.keywords.includes("Loadout")) {
       unit.counterpart.loadoutUpgrades.push(null);
     }
   }
@@ -906,7 +954,10 @@ function addCounterpart(list, unitIndex, counterpartId) {
 
 function removeCounterpart(list, unitIndex) {
   const counterpart = list.units[unitIndex].counterpart;
-  list.uniques = deleteItem(list.uniques, list.uniques.indexOf(counterpart.counterpartId));
+  list.uniques = deleteItem(
+    list.uniques,
+    list.uniques.indexOf(counterpart.counterpartId),
+  );
   delete list.units[unitIndex].counterpart;
   return consolidate(list);
 }
@@ -917,7 +968,7 @@ function addUnit(list, unitId, stackSize = 1) {
 
   // TODO TODO - this  will break stuff again if a list can have 2 units with Contingencies
   // Should set list.contingencies=[] by default and let consolidate handle the show/no-show/emptying of it
-  if (unitCard.keywords.includes('Contingencies')) {
+  if (unitCard.keywords.includes("Contingencies")) {
     if (!list.contingencies) list.contingencies = [];
   }
   if (unitIndex > -1) {
@@ -932,11 +983,11 @@ function addUnit(list, unitId, stackSize = 1) {
       unitObjectString: unitId,
       upgradesEquipped: [],
       loadoutUpgrades: [],
-      additionalUpgradeSlots: []
+      additionalUpgradeSlots: [],
     };
     for (let i = 0; i < unitCard.upgradeBar.length; i++) {
       newUnitObject.upgradesEquipped.push(null);
-      if (unitCard.keywords.includes('Loadout')) {
+      if (unitCard.keywords.includes("Loadout")) {
         newUnitObject.loadoutUpgrades.push(null);
       }
     }
@@ -969,13 +1020,13 @@ function restoreUnit(list, index) {
   let unit = list.units[index];
   let perUnitCost = unit.totalUnitCost / unit.count;
 
-  const killedFiltered = list.killedUnits.filter(function(item){
+  const killedFiltered = list.killedUnits.filter(function (item) {
     return item === unit.unitId + unit.count;
-  })
+  });
 
-  if(killedFiltered.length !== 0 && killedFiltered.length <= unit.totalUnitCost){
+  if (killedFiltered.length !== 0 && killedFiltered.length <= unit.totalUnitCost) {
     killedFiltered.pop();
-    const remainingUnits = list.killedUnits.filter(function(item){
+    const remainingUnits = list.killedUnits.filter(function (item) {
       return item !== unit.unitId + perUnitCost;
     });
 
@@ -990,11 +1041,11 @@ function killUnit(list, index) {
   let unit = list.units[index];
   let perUnitCost = unit.totalUnitCost / unit.count;
 
-  const killedFiltered = list.killedUnits.filter(function(item){
+  const killedFiltered = list.killedUnits.filter(function (item) {
     return item === unit.unitId + perUnitCost;
-  })
+  });
 
-  if(killedFiltered.length < unit.count) {
+  if (killedFiltered.length < unit.count) {
     list.killedUnits.push(unit.unitId + unit.count);
     list.killPoints += perUnitCost;
   }
@@ -1012,23 +1063,26 @@ function getEligibleUnitsToAdd(list, rank) {
     // if (card.cardType !== 'unit') continue;
     if (card.rank !== rank) continue;
 
-    if (list.mode.includes('storm tide') && id === 'AA') {
+    if (list.mode.includes("storm tide") && id === "AA") {
       continue;
-    } else if (!list.mode.includes('storm tide') && id === 'AK') {
+    } else if (!list.mode.includes("storm tide") && id === "AK") {
       continue;
     }
 
-
-    if(!list.battleForce)
-    {
+    if (!list.battleForce) {
       if (!list.faction.includes(card.faction) && !card.affiliations) continue;
-      if (!list.faction.includes(card.faction) && card.affiliations && !card.affiliations.includes(list.faction)) continue;
+      if (
+        !list.faction.includes(card.faction) &&
+        card.affiliations &&
+        !card.affiliations.includes(list.faction)
+      )
+        continue;
     } else {
       if (!battleForcesDict[list.battleForce][rank].includes(id)) continue;
     }
     if (list.uniques.includes(id)) continue;
     if (list.commanders.includes(card.cardName)) continue;
-    if (card.specialIssue && card.specialIssue !== list.battleForce)continue;
+    if (card.specialIssue && card.specialIssue !== list.battleForce) continue;
 
     if (card.detachment) {
       for (let i = 0; i < list.units.length; i++) {
@@ -1051,7 +1105,7 @@ function isRequirementsMet(requirements, unitCard) {
     if (operator instanceof Object) {
       // requirements: [{cardName: 'Whatever'}]
       return _.isMatch(unitCard, operator);
-    } else if (operator === 'NOT') {
+    } else if (operator === "NOT") {
       let operand = requirements[1];
       if (operand instanceof Array) {
         // requirements: ['NOT', [...]]
@@ -1060,7 +1114,7 @@ function isRequirementsMet(requirements, unitCard) {
         // requirements: ['NOT', {cardName: 'Whatever'}]
         return !_.isMatch(unitCard, operand);
       }
-    } else if (operator === 'AND' || operator === 'OR') {
+    } else if (operator === "AND" || operator === "OR") {
       let leftOperand = requirements[1];
       let rightOperand = requirements[2];
       if (leftOperand instanceof Array) {
@@ -1073,10 +1127,11 @@ function isRequirementsMet(requirements, unitCard) {
       } else if (rightOperand instanceof Object) {
         rightOperand = _.isMatch(unitCard, rightOperand);
       }
-      if (operator === 'OR') {
+      if (operator === "OR") {
         // requirements: ['OR', {cardName: 'Whatever'}, {cardType: 'Whatever'}]
-        return leftOperand || rightOperand
-      } else { // operator === 'AND'
+        return leftOperand || rightOperand;
+      } else {
+        // operator === 'AND'
         // requirements: ['AND', {cardName: 'Whatever'}, {cardType: 'Whatever'}]
         return leftOperand && rightOperand;
       }
@@ -1091,10 +1146,19 @@ function isRequirementsMet(requirements, unitCard) {
 }
 
 function getEquippableLoadoutUpgrades(
-  list, upgradeType, id, upgradeIndex, upgradesEquipped, additionalUpgradeSlots
+  list,
+  upgradeType,
+  id,
+  upgradeIndex,
+  upgradesEquipped,
+  additionalUpgradeSlots,
 ) {
   const upgrades = getEquippableUpgrades(
-    list, upgradeType, id, upgradesEquipped, additionalUpgradeSlots
+    list,
+    upgradeType,
+    id,
+    upgradesEquipped,
+    additionalUpgradeSlots,
   );
   const validIds = upgrades.validIds;
   const invalidIds = upgrades.invalidIds;
@@ -1102,7 +1166,7 @@ function getEquippableLoadoutUpgrades(
   const invalidLoadoutUpgradeIds = [...invalidIds];
   const parentUpgradeCard = cards[upgradesEquipped[upgradeIndex]];
   for (let i = 0; i < validIds.length; i++) {
-    const upgradeId = validIds[i]
+    const upgradeId = validIds[i];
     const upgradeCard = cards[upgradeId];
     if (
       upgradeCard.cost <= parentUpgradeCard.cost &&
@@ -1115,7 +1179,7 @@ function getEquippableLoadoutUpgrades(
   }
   return {
     validIds: validLoadoutUpgradeIds,
-    invalidIds: invalidLoadoutUpgradeIds
+    invalidIds: invalidLoadoutUpgradeIds,
   };
 }
 
@@ -1130,22 +1194,22 @@ function addCommand(list, commandId) {
 }
 
 function addBattle(list, type, id) {
-  if (type === 'objective') {
+  if (type === "objective") {
     list.objectiveCards.push(id);
-  } else if (type === 'deployment') {
+  } else if (type === "deployment") {
     list.deploymentCards.push(id);
-  } else if (type === 'condition') {
+  } else if (type === "condition") {
     list.conditionCards.push(id);
   }
   return list;
 }
 
 function removeBattle(list, type, index) {
-  if (type === 'objective') {
+  if (type === "objective") {
     list.objectiveCards = deleteItem(list.objectiveCards, index);
-  } else if (type === 'deployment') {
+  } else if (type === "deployment") {
     list.deploymentCards = deleteItem(list.deploymentCards, index);
-  } else if (type === 'condition') {
+  } else if (type === "condition") {
     list.conditionCards = deleteItem(list.conditionCards, index);
   } else return;
   return list;
@@ -1174,87 +1238,87 @@ function sortCommandIds(cardIds) {
 function getEligibleBattlesToAdd(list, type) {
   const validIds = [];
   const invalidIds = [];
-  const scenarioMissionIds = ['Df', 'Oe'];
+  const scenarioMissionIds = ["Df", "Oe"];
   const cardsById = cardIdsByType.battle; //Object.keys(cards);
 
   let currentCards;
-  if (type === 'objective') currentCards = list.objectiveCards;
-  else if (type === 'deployment') currentCards = list.deploymentCards;
-  else if (type === 'condition') currentCards = list.conditionCards;
+  if (type === "objective") currentCards = list.objectiveCards;
+  else if (type === "deployment") currentCards = list.deploymentCards;
+  else if (type === "condition") currentCards = list.conditionCards;
   else return;
-  cardIdsByType['battle'].forEach(id => {
+  cardIdsByType["battle"].forEach((id) => {
     const card = cards[id];
     // if (card.cardType !== 'battle') return;
     if (card.cardSubtype !== type) return;
     if (currentCards.includes(id)) return;
     if (scenarioMissionIds.includes(id)) return;
     if (currentCards.length > 3) invalidIds.push(id);
-    if (list.mode === '500-point mode') {
-      if (card.keywords.includes('Skirmish')) validIds.push(id);
+    if (list.mode === "500-point mode") {
+      if (card.keywords.includes("Skirmish")) validIds.push(id);
       else invalidIds.push(id);
     } else {
-      if (card.keywords.includes('Skirmish')) invalidIds.push(id);
+      if (card.keywords.includes("Skirmish")) invalidIds.push(id);
       else validIds.push(id);
     }
   });
-  return { validIds, invalidIds };
+  return {validIds, invalidIds};
 }
 
 function getEligibleContingenciesToAdd(list) {
-if (!list.contingencies) list.contingencies = [];
-const validCommandIds = [];
-const invalidCommandIds = [];
-const cardsById = cardIdsByType.command; // Object.keys(cards);
+  if (!list.contingencies) list.contingencies = [];
+  const validCommandIds = [];
+  const invalidCommandIds = [];
+  const cardsById = cardIdsByType.command; // Object.keys(cards);
 
-let numContingencies = 0;
-list.units.forEach((unit) => {
-  const unitCard = cards[unit.unitId];
-  if (unitCard.contingencies && unitCard.contingencies > 0)
-    numContingencies += unitCard.contingencies
-});
-cardIdsByType['command'].forEach(id => {
-  const card = cards[id];
-  // if (card.cardType !== 'command') return;
-  if (list.commandCards.includes(id)) return;
-  if (list.contingencies.includes(id)) return;
-  if (!list.faction.includes(card.faction)) return;
-  if (id === 'aa') return;
-  if (id === 'jl' || id === 'ka' || id ==='kb') return;
-  if (
-    list.contingencies.length >= numContingencies ||
-    (card.commander && !list.commanders.includes(card.commander))
-  ) {
-    invalidCommandIds.push(id);
-    return;
-  }
-  validCommandIds.push(id);
-});
-return {
-  validIds: sortCommandIds(validCommandIds),
-  invalidIds: sortCommandIds(invalidCommandIds)
-};
+  let numContingencies = 0;
+  list.units.forEach((unit) => {
+    const unitCard = cards[unit.unitId];
+    if (unitCard.contingencies && unitCard.contingencies > 0)
+      numContingencies += unitCard.contingencies;
+  });
+  cardIdsByType["command"].forEach((id) => {
+    const card = cards[id];
+    // if (card.cardType !== 'command') return;
+    if (list.commandCards.includes(id)) return;
+    if (list.contingencies.includes(id)) return;
+    if (!list.faction.includes(card.faction)) return;
+    if (id === "aa") return;
+    if (id === "jl" || id === "ka" || id === "kb") return;
+    if (
+      list.contingencies.length >= numContingencies ||
+      (card.commander && !list.commanders.includes(card.commander))
+    ) {
+      invalidCommandIds.push(id);
+      return;
+    }
+    validCommandIds.push(id);
+  });
+  return {
+    validIds: sortCommandIds(validCommandIds),
+    invalidIds: sortCommandIds(invalidCommandIds),
+  };
 }
 
 function getEligibleCommandsToAdd(list) {
   const stormTideCommands = {
-    '500-point mode': ['AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AH', 'AI', 'AJ'],
-    'standard mode': ['AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AH', 'AI', 'AJ'],
-    'grand army mode': ['AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AH', 'AI', 'AJ'],
-    'storm tide: infantry': ['AC', 'AE', 'AG'],
-    'storm tide: armored': ['AB', 'AF', 'AJ'],
-    'storm tide: special forces': ['AD', 'AH', 'AI']
+    "500-point mode": ["AB", "AC", "AD", "AE", "AF", "AG", "AH", "AH", "AI", "AJ"],
+    "standard mode": ["AB", "AC", "AD", "AE", "AF", "AG", "AH", "AH", "AI", "AJ"],
+    "grand army mode": ["AB", "AC", "AD", "AE", "AF", "AG", "AH", "AH", "AI", "AJ"],
+    "storm tide: infantry": ["AC", "AE", "AG"],
+    "storm tide: armored": ["AB", "AF", "AJ"],
+    "storm tide: special forces": ["AD", "AH", "AI"],
   };
 
   const validCommandIds = [];
   const invalidCommandIds = [];
   const cardsById = cardIdsByType.command; // Object.keys(cards);
 
-  const pipCounts = { '1': 0, '2': 0, '3': 0 };
-  list.commandCards.forEach(id => {
+  const pipCounts = {"1": 0, "2": 0, "3": 0};
+  list.commandCards.forEach((id) => {
     const commandCard = cards[id];
     pipCounts[commandCard.cardSubtype] += 1;
   });
-  cardIdsByType['command'].forEach(id => {
+  cardIdsByType["command"].forEach((id) => {
     const card = cards[id];
     // if (card.cardType !== 'command') return;
     if (list.commandCards.includes(id)) return;
@@ -1270,16 +1334,16 @@ function getEligibleCommandsToAdd(list) {
     } else if (
       stormTideCommands[list.mode] &&
       stormTideCommands[list.mode].length === 3 &&
-      stormTideCommands['standard mode'].includes(id)
+      stormTideCommands["standard mode"].includes(id)
     ) {
       invalidCommandIds.push(id);
       return;
     }
 
     if (!list.faction.includes(card.faction)) return;
-    if (id === 'aa') return; // Standing Orders
-    if (id === 'jl' || id === 'ka' || id === 'kb') return; // Duplicates
-    if ((id === 'tv' || id === 'ud') && !list.uniques.includes('tn')) return; // grogu's command card
+    if (id === "aa") return; // Standing Orders
+    if (id === "jl" || id === "ka" || id === "kb") return; // Duplicates
+    if ((id === "tv" || id === "ud") && !list.uniques.includes("tn")) return; // grogu's command card
 
     if (card.battleForce && card.battleForce !== list.battleForce) {
       return;
@@ -1295,45 +1359,53 @@ function getEligibleCommandsToAdd(list) {
   });
   return {
     validIds: sortCommandIds(validCommandIds),
-    invalidIds: sortCommandIds(invalidCommandIds)
+    invalidIds: sortCommandIds(invalidCommandIds),
   };
 }
 
 function getEquippableUpgrades(
-  list, upgradeType, id, upgradesEquipped, additionalUpgradeSlots
+  list,
+  upgradeType,
+  id,
+  upgradesEquipped,
+  additionalUpgradeSlots,
 ) {
-  const impRemnantUpgrades = ['ej', 'ek', 'fv', 'iy', 'fu', 'gm', 'gl', 'em', 'en', 'ja'];
+  const impRemnantUpgrades = ["ej", "ek", "fv", "iy", "fu", "gm", "gl", "em", "en", "ja"];
   const validUpgradeIds = [];
   const invalidUpgradeIds = [];
   const cardsById = cardIdsByType.upgrade; // Object.keys(cards);
 
-  if (!id) return { validUpgradeIds: [], invalidUpgradeIds: [] };
+  if (!id) return {validUpgradeIds: [], invalidUpgradeIds: []};
   const unitCard = cards[id];
-  for (let i = 0; i < cardIdsByType['upgrade'].length; i++) {
-    const id = cardIdsByType['upgrade'][i];
+  for (let i = 0; i < cardIdsByType["upgrade"].length; i++) {
+    const id = cardIdsByType["upgrade"][i];
     const card = cards[id];
-    if (id === 'nc') continue; // duplicate card
+    if (id === "nc") continue; // duplicate card
 
     // if (card.cardType !== 'upgrade') continue;
     if (card.cardSubtype !== upgradeType) continue;
-    if (card.faction && card.faction !== '' && list.faction !== card.faction) continue;
+    if (card.faction && card.faction !== "" && list.faction !== card.faction) continue;
     if (list.uniques.includes(id)) continue;
     if (upgradesEquipped.includes(id)) continue;
-    if (card.isUnique && list.battleForce && !battleForcesDict[list.battleForce].allowedUniqueUpgrades.includes(id)) continue;
-    if (id === 'nc') continue; // duplicate card
+    if (
+      card.isUnique &&
+      list.battleForce &&
+      !battleForcesDict[list.battleForce].allowedUniqueUpgrades.includes(id)
+    )
+      continue;
+    if (id === "nc") continue; // duplicate card
 
     // dynamically add the force affinity
-    const { faction } = unitCard;
+    const {faction} = unitCard;
 
-    if (faction === 'rebels' || faction === 'republic') unitCard['light side'] = true;
-    else if (faction === 'separatists' || faction === 'empire' || faction === 'fringe') unitCard['dark side'] = true;
+    if (faction === "rebels" || faction === "republic") unitCard["light side"] = true;
+    else if (faction === "separatists" || faction === "empire" || faction === "fringe")
+      unitCard["dark side"] = true;
 
-    if (unitCard.keywords.includes('Tempted')) {
-      unitCard['light side'] = true;
-      unitCard['dark side'] = true;
+    if (unitCard.keywords.includes("Tempted")) {
+      unitCard["light side"] = true;
+      unitCard["dark side"] = true;
     }
-
-
 
     // dynamically add the upgrade types
     for (let j = 0; j < unitCard.upgradeBar.length; j++) {
@@ -1352,11 +1424,16 @@ function getEquippableUpgrades(
       if (interaction.resultFunction(card)) {
         validUpgradeIds.push(id);
       }
-    } else if (list.battleForce === 'Imperial Remnant' && card.cardSubtype === 'heavy weapon') {
-
-      if (unitCard.cardSubtype !== 'droid trooper' && unitCard.cardSubtype.includes('trooper')) {
+    } else if (
+      list.battleForce === "Imperial Remnant" &&
+      card.cardSubtype === "heavy weapon"
+    ) {
+      if (
+        unitCard.cardSubtype !== "droid trooper" &&
+        unitCard.cardSubtype.includes("trooper")
+      ) {
         if (impRemnantUpgrades.includes(id)) validUpgradeIds.push(id);
-        else if (isRequirementsMet(card.requirements, unitCard)) validUpgradeIds.push(id)
+        else if (isRequirementsMet(card.requirements, unitCard)) validUpgradeIds.push(id);
         else invalidUpgradeIds.push(id);
       } else if (isRequirementsMet(card.requirements, unitCard)) validUpgradeIds.push(id);
       else invalidUpgradeIds.push(id);
@@ -1368,7 +1445,7 @@ function getEquippableUpgrades(
   }
   return {
     validIds: sortIds(validUpgradeIds),
-    invalidIds: sortIds(invalidUpgradeIds)
+    invalidIds: sortIds(invalidUpgradeIds),
   };
 }
 
@@ -1394,8 +1471,8 @@ function sortIds(ids) {
  * @param {*} upgradeIndex
  * @param {*} upgradeId
  */
-function validateUpgrades(list, unitIndex){
-  console.log('unit index = ' + unitIndex);
+function validateUpgrades(list, unitIndex) {
+  console.log("unit index = " + unitIndex);
 
   const unit = list.units[unitIndex];
   const card = cards[unit.unitId];
@@ -1404,75 +1481,94 @@ function validateUpgrades(list, unitIndex){
 
   // Validation for each of the 'must equip' keywords (that I know of)
 
-  if(card.flexResponse){
+  if (card.flexResponse) {
     let heavyCount = 0;
-    unit.upgradesEquipped.forEach((id)=>{
-      if(id == null)
-        return;
+    unit.upgradesEquipped.forEach((id) => {
+      if (id == null) return;
       const equipCard = cards[id];
-      if(equipCard.cardSubtype === 'heavy weapon'){
+      if (equipCard.cardSubtype === "heavy weapon") {
         heavyCount++;
       }
     });
-    if(heavyCount < card.flexResponse){
-      unit.validationIssues.push( { level:2, text: card.displayName + " needs " + card.flexResponse + " Heavy Weapon upgrades (Flexible Response)" });
+    if (heavyCount < card.flexResponse) {
+      unit.validationIssues.push({
+        level: 2,
+        text:
+          card.displayName +
+          " needs " +
+          card.flexResponse +
+          " Heavy Weapon upgrades (Flexible Response)",
+      });
     }
   }
 
   // Equip
-  if(card.equip){
-    card.equip.forEach((equipReq)=>{
+  if (card.equip) {
+    card.equip.forEach((equipReq) => {
       const equipCard = cards[equipReq];
-      if(!unit.upgradesEquipped.includes(equipReq)){
-        unit.validationIssues.push( { level:2, text: card.displayName + " is missing " + equipCard.cardName + " (Equip)"});
+      if (!unit.upgradesEquipped.includes(equipReq)) {
+        unit.validationIssues.push({
+          level: 2,
+          text: card.displayName + " is missing " + equipCard.cardName + " (Equip)",
+        });
       }
     });
   }
 
-  if(card.keywords.includes("Heavy Weapon Team")){
+  if (card.keywords.includes("Heavy Weapon Team")) {
     let hasHeavy = false;
-    unit.upgradesEquipped.forEach((id)=>{
-      if(id == null)
-        return;
+    unit.upgradesEquipped.forEach((id) => {
+      if (id == null) return;
       const equipCard = cards[id];
-      if(equipCard.cardSubtype === 'heavy weapon'){
+      if (equipCard.cardSubtype === "heavy weapon") {
         hasHeavy = true;
       }
     });
-    if(!hasHeavy){
-      unit.validationIssues.push( { level:2, text: card.displayName + " is missing a Heavy Weapon upgrade (Heavy Weapon Team)" });
+    if (!hasHeavy) {
+      unit.validationIssues.push({
+        level: 2,
+        text: card.displayName + " is missing a Heavy Weapon upgrade (Heavy Weapon Team)",
+      });
     }
   }
 
-  if(card.keywords.includes("Programmed")){
+  if (card.keywords.includes("Programmed")) {
     let hasProto = false;
-    unit.upgradesEquipped.forEach((id)=>{
-      if(id == null)
-        return;
+    unit.upgradesEquipped.forEach((id) => {
+      if (id == null) return;
       const equipCard = cards[id];
-      if(equipCard.cardSubtype === 'programming'){
+      if (equipCard.cardSubtype === "programming") {
         hasProto = true;
       }
     });
-    if(!hasProto){
-      unit.validationIssues.push( { level:2, text: card.cardName + " is missing a Programming upgrade (Programmed)" });
+    if (!hasProto) {
+      unit.validationIssues.push({
+        level: 2,
+        text: card.cardName + " is missing a Programming upgrade (Programmed)",
+      });
     }
   }
-
 }
 
-function equipUpgrade(list, action, unitIndex, upgradeIndex, upgradeId, isApplyToAll = false) {
-  if (action === 'UNIT_UPGRADE') {
+function equipUpgrade(
+  list,
+  action,
+  unitIndex,
+  upgradeIndex,
+  upgradeId,
+  isApplyToAll = false,
+) {
+  if (action === "UNIT_UPGRADE") {
     if (isApplyToAll) {
       list = equipUpgradeToAll(list, unitIndex, upgradeIndex, upgradeId);
     } else {
       list = equipUpgradeToOne(list, unitIndex, upgradeIndex, upgradeId);
     }
-  } else if (action === 'COUNTERPART_UPGRADE') {
+  } else if (action === "COUNTERPART_UPGRADE") {
     list = equipCounterpartUpgrade(list, unitIndex, upgradeIndex, upgradeId);
-  } else if (action === 'LOADOUT_UPGRADE') {
+  } else if (action === "LOADOUT_UPGRADE") {
     list = equipLoadoutUpgrade(list, unitIndex, upgradeIndex, upgradeId);
-  } else if (action === 'COUNTERPART_LOADOUT_UPGRADE') {
+  } else if (action === "COUNTERPART_LOADOUT_UPGRADE") {
     list = equipCounterpartLoadoutUpgrade(list, unitIndex, upgradeIndex, upgradeId);
   }
 
@@ -1482,10 +1578,9 @@ function equipUpgrade(list, action, unitIndex, upgradeIndex, upgradeId, isApplyT
 }
 
 function unequipUpgrade(list, action, unitIndex, upgradeIndex) {
-
   const upgradeId = list.units[unitIndex].upgradesEquipped[upgradeIndex];
 
-  if (action === 'UNIT_UPGRADE') {
+  if (action === "UNIT_UPGRADE") {
     function unequip(list, unitIndex, upgradeIndex) {
       const unit = list.units[unitIndex];
       const upgradeId = unit.upgradesEquipped[upgradeIndex];
@@ -1497,7 +1592,7 @@ function unequipUpgrade(list, action, unitIndex, upgradeIndex) {
         newUnit.loadoutUpgrades[upgradeIndex] = null;
       }
       newUnit.unitObjectString = getUnitHash(newUnit);
-      if ('additionalUpgradeSlots' in upgradeCard) {
+      if ("additionalUpgradeSlots" in upgradeCard) {
         newUnit.additionalUpgradeSlots = [];
         newUnit.upgradesEquipped.pop();
       }
@@ -1512,26 +1607,26 @@ function unequipUpgrade(list, action, unitIndex, upgradeIndex) {
       return consolidate(list);
     }
     list = unequip(list, unitIndex, upgradeIndex);
-  } else if (action === 'COUNTERPART_UPGRADE') {
+  } else if (action === "COUNTERPART_UPGRADE") {
     list = unequipCounterpartUpgrade(list, unitIndex, upgradeIndex);
-  } else if (action === 'LOADOUT_UPGRADE') {
+  } else if (action === "LOADOUT_UPGRADE") {
     list = unequipLoadoutUpgrade(list, unitIndex, upgradeIndex);
-  } else if (action === 'COUNTERPART_LOADOUT_UPGRADE') {
+  } else if (action === "COUNTERPART_LOADOUT_UPGRADE") {
     list = unequipCounterpartLoadoutUpgrade(list, unitIndex, upgradeIndex);
   }
 
   validateUpgrades(list, unitIndex);
-
 
   return list;
 }
 
 function processUnitSegment(segment) {
   const unitSegment = segment.slice(0, 3);
-  let loadoutSegment; let upgradeSegment = segment.slice(3);
-  if (upgradeSegment.includes('_')) {
-    loadoutSegment = upgradeSegment.split('_')[1];
-    upgradeSegment = upgradeSegment.split('_')[0]
+  let loadoutSegment;
+  let upgradeSegment = segment.slice(3);
+  if (upgradeSegment.includes("_")) {
+    loadoutSegment = upgradeSegment.split("_")[1];
+    upgradeSegment = upgradeSegment.split("_")[0];
   }
   const unitCount = Number.parseInt(unitSegment.charAt(0));
   const unitId = unitSegment.charAt(1) + unitSegment.charAt(2);
@@ -1544,11 +1639,11 @@ function processUnitSegment(segment) {
     unitObjectString: unitId,
     upgradesEquipped: [],
     loadoutUpgrades: [],
-    additionalUpgradeSlots: []
+    additionalUpgradeSlots: [],
   };
   let upgradeIndex = 0;
   for (let i = 0; i < upgradeSegment.length; i++) {
-    if (upgradeSegment.charAt(i) === '0') {
+    if (upgradeSegment.charAt(i) === "0") {
       newUnit.upgradesEquipped[upgradeIndex] = null;
       upgradeIndex++;
     } else {
@@ -1556,7 +1651,7 @@ function processUnitSegment(segment) {
       const upgradeCard = cards[upgradeId];
       newUnit.upgradesEquipped[upgradeIndex] = upgradeId;
       newUnit.unitObjectString += upgradeId;
-      if ('additionalUpgradeSlots' in upgradeCard) {
+      if ("additionalUpgradeSlots" in upgradeCard) {
         newUnit.additionalUpgradeSlots = [upgradeCard.additionalUpgradeSlots[0]];
         newUnit.upgradesEquipped.push(null);
       }
@@ -1566,7 +1661,7 @@ function processUnitSegment(segment) {
   }
   let loadoutIndex = 0;
   for (let i = 0; loadoutSegment && i < loadoutSegment.length; i++) {
-    if (loadoutSegment.charAt(i) === '0') {
+    if (loadoutSegment.charAt(i) === "0") {
       newUnit.loadoutUpgrades[loadoutIndex] = null;
       loadoutIndex++;
     } else {
@@ -1585,10 +1680,11 @@ function processUnitSegment(segment) {
 }
 
 function segmentToUnitObject(unitIndex, segment) {
-  let unit; let counterpart;
-  if (segment.includes('+')) {
-    unit = processUnitSegment(segment.split('+')[0]);
-    counterpart = processUnitSegment(segment.split('+')[1]);
+  let unit;
+  let counterpart;
+  if (segment.includes("+")) {
+    unit = processUnitSegment(segment.split("+")[0]);
+    counterpart = processUnitSegment(segment.split("+")[1]);
     const {
       unitId,
       hasUniques,
@@ -1596,7 +1692,7 @@ function segmentToUnitObject(unitIndex, segment) {
       unitObjectString,
       upgradesEquipped,
       loadoutUpgrades,
-      additionalUpgradeSlots
+      additionalUpgradeSlots,
     } = counterpart;
     unit.counterpart = {
       count: 1,
@@ -1606,7 +1702,7 @@ function segmentToUnitObject(unitIndex, segment) {
       unitObjectString,
       upgradesEquipped,
       loadoutUpgrades,
-      additionalUpgradeSlots
+      additionalUpgradeSlots,
     };
   } else unit = processUnitSegment(segment);
   return unit;
@@ -1617,29 +1713,33 @@ function convertHashToList(faction, url) {
   list.faction = faction;
   list.contingencies = [];
   let segments;
-  if (url.includes(':')) {
-    const battleForceSegments = url.split(':');
-    if (battleForceSegments[0].includes('ebd')) list.battleForce = 'Echo Base Defenders';
-    else if (battleForceSegments[0].includes('bf')) list.battleForce = 'Blizzard Force';
-    else if (battleForceSegments[0].includes('5l')) list.battleForce = '501st Legion';
-    else if (battleForceSegments[0].includes('si')) list.battleForce = 'Separatist Invasion';
-    else if (battleForceSegments[0].includes('sif')) list.battleForce = 'Separatist Invasion';
-    else if (battleForceSegments[0].includes('sc')) list.battleForce = 'Shadow Collective';
-    else if (battleForceSegments[0].includes('btv')) list.battleForce = 'Bright Tree Village';
-    else if (battleForceSegments[0].includes('tf')) list.battleForce = 'Tempest Force';
-    else if (battleForceSegments[0].includes('ir')) list.battleForce = 'Imperial Remnant';
-    segments = battleForceSegments[1].split(',');
+  if (url.includes(":")) {
+    const battleForceSegments = url.split(":");
+    if (battleForceSegments[0].includes("ebd")) list.battleForce = "Echo Base Defenders";
+    else if (battleForceSegments[0].includes("bf")) list.battleForce = "Blizzard Force";
+    else if (battleForceSegments[0].includes("5l")) list.battleForce = "501st Legion";
+    else if (battleForceSegments[0].includes("si"))
+      list.battleForce = "Separatist Invasion";
+    else if (battleForceSegments[0].includes("sif"))
+      list.battleForce = "Separatist Invasion";
+    else if (battleForceSegments[0].includes("sc"))
+      list.battleForce = "Shadow Collective";
+    else if (battleForceSegments[0].includes("btv"))
+      list.battleForce = "Bright Tree Village";
+    else if (battleForceSegments[0].includes("tf")) list.battleForce = "Tempest Force";
+    else if (battleForceSegments[0].includes("ir")) list.battleForce = "Imperial Remnant";
+    segments = battleForceSegments[1].split(",");
   } else {
-    list.battleForce = '';
-    segments = url.split(',');
+    list.battleForce = "";
+    segments = url.split(",");
   }
   const unitSegments = [];
   const otherSegments = [];
   try {
-    let oldCounterparts = ['lw', 'ji', 'jj'];
-    segments.forEach(segment => {
+    let oldCounterparts = ["lw", "ji", "jj"];
+    segments.forEach((segment) => {
       let hasOldCounterpart = false;
-      oldCounterparts.forEach(id => {
+      oldCounterparts.forEach((id) => {
         if (segment === `1${id}`) hasOldCounterpart = true;
       });
       if (hasOldCounterpart) return;
@@ -1651,7 +1751,7 @@ function convertHashToList(faction, url) {
   }
   try {
     list.units = unitSegments.map((segment, i) => segmentToUnitObject(i, segment));
-    list.units.forEach(unit => {
+    list.units.forEach((unit) => {
       list.unitObjectStrings.push(unit.unitObjectString);
     });
   } catch (e) {
@@ -1659,22 +1759,22 @@ function convertHashToList(faction, url) {
   }
   try {
     let commandCardSlots = 7;
-    otherSegments.forEach(cardId => {
-      commandCardSlots -=1;
-      if (cardId === '') return;
+    otherSegments.forEach((cardId) => {
+      commandCardSlots -= 1;
+      if (cardId === "") return;
       // if (cardId.includes('*')) {}
       const card = cards[cardId];
-      if (card.cardType === 'command') {
+      if (card.cardType === "command") {
         if (commandCardSlots > 0) {
           list.commandCards.push(cardId);
         } else {
           list.contingencies.push(cardId);
         }
-      } else if (card.cardSubtype === 'objective') {
+      } else if (card.cardSubtype === "objective") {
         list.objectiveCards.push(cardId);
-      } else if (card.cardSubtype === 'deployment') {
+      } else if (card.cardSubtype === "deployment") {
         list.deploymentCards.push(cardId);
-      } else if (card.cardSubtype === 'condition') {
+      } else if (card.cardSubtype === "condition") {
         list.conditionCards.push(cardId);
       }
     });
@@ -1682,9 +1782,9 @@ function convertHashToList(faction, url) {
     // console.log(e);
     return false;
   }
-  if (list.faction === 'fringe') list.battleForce = 'Shadow Collective';
-  if (list.faction === 'separatists' && list.battleForce === 'Echo Base Defenders') {
-    list.battleForce = 'Separatist Invasion';
+  if (list.faction === "fringe") list.battleForce = "Shadow Collective";
+  if (list.faction === "separatists" && list.battleForce === "Echo Base Defenders") {
+    list.battleForce = "Separatist Invasion";
   }
   return consolidate(list);
 }
@@ -1696,7 +1796,7 @@ function mergeLists(primaryList, secondaryList) {
     if (unit.hasUniques) {
       if (primaryList.uniques.includes(unit.unitId)) continue;
       let isValid = true;
-      unit.upgradesEquipped.forEach(upgradeId => {
+      unit.upgradesEquipped.forEach((upgradeId) => {
         if (upgradeId && primaryList.uniques.includes(upgradeId)) isValid = false;
       });
       if (!isValid) continue;
@@ -1707,70 +1807,93 @@ function mergeLists(primaryList, secondaryList) {
       unitsToAdd.push(unit);
     }
   }
-  unitsToAdd.forEach(unitToAdd => primaryList.units.push(unitToAdd));
+  unitsToAdd.forEach((unitToAdd) => primaryList.units.push(unitToAdd));
   return consolidate(primaryList);
 }
 
 // All (most...) battleForce-specific stuff (should) goes here
-function battleForceValidation(currentList){
-
+function battleForceValidation(currentList) {
   const validationIssues = [];
   // TODO is a switch against the code standard? ;)
   // Should destroy this in favor of adding a 'rule' to apply for BzF in the object, e.g.
   // rules:[... {type:'unitLimit', min:0, max:1, types:['ay', 'sr']}]
 
-  switch(currentList.battleForce){
-    case "Blizzard Force":
-      {
-        const stormsCount = currentList.units.filter((unit)=>unit.unitId === "ay" || unit.unitId === "sr").reduce((count,u)=>count+=u.count, 0);
+  switch (currentList.battleForce) {
+    case "Blizzard Force": {
+      const stormsCount = currentList.units
+        .filter((unit) => unit.unitId === "ay" || unit.unitId === "sr")
+        .reduce((count, u) => (count += u.count), 0);
 
-        if(stormsCount > 2){
-          validationIssues.push({level:2, text:"Maximum 2 Stormtroopers (Regular or HRU in any combo)"});
-        }
-        break;
+      if (stormsCount > 2) {
+        validationIssues.push({
+          level: 2,
+          text: "Maximum 2 Stormtroopers (Regular or HRU in any combo)",
+        });
       }
+      break;
+    }
   }
   return validationIssues;
 }
 
-function mercValidation(currentList, rank, mercs){
+function mercValidation(currentList, rank, mercs) {
   const validationIssues = [];
 
   let hasAoc = false;
   let aocRanks = [];
 
-  let mercLimits = { commander:1, operative:1, corps:2, special:1, heavy:1, support:1 }
+  let mercLimits = {
+    commander: 1,
+    operative: 1,
+    corps: 2,
+    special: 1,
+    heavy: 1,
+    support: 1,
+  };
 
-  currentList.units.forEach((unit)=>{
-    const card = cards[unit.unitId]
+  currentList.units.forEach((unit) => {
+    const card = cards[unit.unitId];
 
     // Check for Allies of Convenience
-    if(!hasAoc)
-    {
+    if (!hasAoc) {
       // check for AoC keyword or Underworlds Connection card
-      hasAoc = card.keywords.find(k => k === "Allies of Convenience") || unit.upgradesEquipped.find(c => c !== null && c === 'rf');
+      hasAoc =
+        card.keywords.find((k) => k === "Allies of Convenience") ||
+        unit.upgradesEquipped.find((c) => c !== null && c === "rf");
     }
   });
 
-  if(!battleForcesDict[currentList.battleForce]?.rules?.countMercs){
-    Object.keys(ranks).forEach(t =>{
-
-      if(mercs[t] > mercLimits[t]){
-        if(!hasAoc || mercs[t] > mercLimits[t] + 1){
-          validationIssues.push({level:2, text:"Too many MERCENARY " + t.toUpperCase() + " units! (maximum " + (hasAoc ? mercLimits[t]+1:mercLimits[t]) + ")"});
+  if (!battleForcesDict[currentList.battleForce]?.rules?.countMercs) {
+    Object.keys(ranks).forEach((t) => {
+      if (mercs[t] > mercLimits[t]) {
+        if (!hasAoc || mercs[t] > mercLimits[t] + 1) {
+          validationIssues.push({
+            level: 2,
+            text:
+              "Too many MERCENARY " +
+              t.toUpperCase() +
+              " units! (maximum " +
+              (hasAoc ? mercLimits[t] + 1 : mercLimits[t]) +
+              ")",
+          });
         }
         aocRanks.push(t);
       }
-      if(aocRanks.length > 1){
-        validationIssues.push({level:2, text:"Allies of Convenience only allows ONE additional merc of any rank (" + aocRanks.join(", ")+ ")"});
+      if (aocRanks.length > 1) {
+        validationIssues.push({
+          level: 2,
+          text:
+            "Allies of Convenience only allows ONE additional merc of any rank (" +
+            aocRanks.join(", ") +
+            ")",
+        });
       }
-
     });
   }
   return validationIssues;
 }
 
-function rankValidation(currentList, ranks, mercs, rankReqs){
+function rankValidation(currentList, ranks, mercs, rankReqs) {
   const validationIssues = [];
 
   // TODO this is ugly - probably should be a BF flag
@@ -1780,42 +1903,59 @@ function rankValidation(currentList, ranks, mercs, rankReqs){
   // const countMercs = currentList.battleForce.countsMercsForMin;
 
   // Flag for a bf's combined comm/op limits, only when comm/op already overrun individually
-  if(rankReqs.commOp && (ranks.commander + ranks.commander) > rankReqs.commOp
-    && !(ranks.commander > rankReqs.commander || ranks.operative > rankReqs.operative)){
-    validationIssues.push({level:2, text:"Limit of " + rankReqs.commOp + " total COMMMANDERS and OPERATIVES"});
+  if (
+    rankReqs.commOp &&
+    ranks.commander + ranks.commander > rankReqs.commOp &&
+    !(ranks.commander > rankReqs.commander || ranks.operative > rankReqs.operative)
+  ) {
+    validationIssues.push({
+      level: 2,
+      text: "Limit of " + rankReqs.commOp + " total COMMMANDERS and OPERATIVES",
+    });
   }
 
-  Object.keys(ranks).forEach(t =>{
-    let min =rankReqs[t][0];
+  Object.keys(ranks).forEach((t) => {
+    let min = rankReqs[t][0];
     let max = rankReqs[t][1];
 
     // mercs don't count for minimum, unless they do
-    const countMin = !countMercs ? (ranks[t] - mercs[t]) : ranks[t];
-    if(countMin < min){
-      validationIssues.push({level:2, text:"Not enough " + t.toUpperCase() + " units! (minimum " + min + ")"});
+    const countMin = !countMercs ? ranks[t] - mercs[t] : ranks[t];
+    if (countMin < min) {
+      validationIssues.push({
+        level: 2,
+        text: "Not enough " + t.toUpperCase() + " units! (minimum " + min + ")",
+      });
     }
 
-    if(ranks[t] > max){
-      validationIssues.push({level:2, text:"Too many " + t.toUpperCase() + " units! (maximum " + max + ")"});
+    if (ranks[t] > max) {
+      validationIssues.push({
+        level: 2,
+        text: "Too many " + t.toUpperCase() + " units! (maximum " + max + ")",
+      });
     }
   });
 
   // Warn user if it looks like they're trying to use a Field Comm on incompatible army
   // level 1 since the Comm miss itself is a level 2 already
 
-  if(ranks['commander'] < rankReqs['commander'][0] && currentList.hasFieldCommander && battleForce?.rules?.noFieldComm)
-  {
-    validationIssues.push({level:1, text:"This battleforce can't use the Field Commander keyword"});
+  if (
+    ranks["commander"] < rankReqs["commander"][0] &&
+    currentList.hasFieldCommander &&
+    battleForce?.rules?.noFieldComm
+  ) {
+    validationIssues.push({
+      level: 1,
+      text: "This battleforce can't use the Field Commander keyword",
+    });
   }
 
   return validationIssues;
 }
 
 // TODO very lazy/gross implementation for now...
-function applyEntourage(currentList, rankReqs)
-{
+function applyEntourage(currentList, rankReqs) {
   // for now, only empire uses the 'entourage' keyword, and this implementation for it is kind of nasty...
-  if(currentList.faction !== "empire"){
+  if (currentList.faction !== "empire") {
     return;
   }
 
@@ -1823,27 +1963,26 @@ function applyEntourage(currentList, rankReqs)
   let specials = [];
   let heavies = [];
 
-  currentList.units.forEach((unit)=>{
+  currentList.units.forEach((unit) => {
     const card = cards[unit.unitId];
 
-    if(card.rank === 'special' && !specials.includes(card.cardName)){
+    if (card.rank === "special" && !specials.includes(card.cardName)) {
       specials.push(card.cardName);
     }
-    if(card.rank === 'heavy' && !heavies.includes(card.cardName)){
+    if (card.rank === "heavy" && !heavies.includes(card.cardName)) {
       heavies.push(card.cardName);
     }
 
-    if(card.entourage){
+    if (card.entourage) {
       entourage.push(card.entourage);
     }
   });
 
   // this kind of check makes a really really strong argument for stratifying the list by rank, lol
-  entourage.forEach((e) =>{
-    if( e.type === 'special' && specials.includes(e.name)){
+  entourage.forEach((e) => {
+    if (e.type === "special" && specials.includes(e.name)) {
       rankReqs.special[1]++; // increase the max
-    }
-    else if( e.type === 'heavy' && heavies.includes(e.name)){
+    } else if (e.type === "heavy" && heavies.includes(e.name)) {
       rankReqs.heavy[1]++; // incerease the max
     }
   });
@@ -1851,32 +1990,32 @@ function applyEntourage(currentList, rankReqs)
   return;
 }
 
-function applyFieldCommander(list, rankReqs){
+function applyFieldCommander(list, rankReqs) {
   const bf = battleForcesDict[list.battleForce];
-  if(list.hasFieldCommander && !bf?.rules?.noFieldComm)
-  {
-      rankReqs.commander[0] = 0;
+  if (list.hasFieldCommander && !bf?.rules?.noFieldComm) {
+    rankReqs.commander[0] = 0;
   }
 }
 
-function getRankLimits(currentList){
-
+function getRankLimits(currentList) {
   const battleForce = currentList.battleForce;
   let dictRankReqs;
 
-  if(battleForce){
-    if(battleForcesDict[battleForce][currentList.mode])
+  if (battleForce) {
+    if (battleForcesDict[battleForce][currentList.mode])
       dictRankReqs = battleForcesDict[battleForce][currentList.mode];
-    else{
-      dictRankReqs = battleForcesDict[battleForce]['standard mode'];
+    else {
+      dictRankReqs = battleForcesDict[battleForce]["standard mode"];
     }
-  } else{
+  } else {
     dictRankReqs = legionModes[currentList.mode].unitCounts;
   }
 
   // copy over so we can play with limits
   let rankReqs = {};
-  (Object.keys(dictRankReqs)).forEach(r => rankReqs[r] = [dictRankReqs[r][0], dictRankReqs[r][1]]);
+  Object.keys(dictRankReqs).forEach(
+    (r) => (rankReqs[r] = [dictRankReqs[r][0], dictRankReqs[r][1]]),
+  );
 
   applyEntourage(currentList, rankReqs);
   applyFieldCommander(currentList, rankReqs);
@@ -1887,31 +2026,34 @@ function getRankLimits(currentList){
 // TODO most of this was written before understanding the whole 'running total' state we have going
 // Would be better to move most of this into the proper unit/upgrade modify steps instead of
 // iterating everything every time something's added
-function validateList(currentList, rankLimits){
+function validateList(currentList, rankLimits) {
   let validationIssues = [];
 
   const battleForce = currentList.battleForce;
 
-  let ranks = {...currentList.unitCounts} //{ commander:0, operative:0, corps:0, special:0, heavy:0, support:0 }
-  let mercs = { commander:0, operative:0, corps:0, special:0, heavy:0, support:0 }
+  let ranks = {...currentList.unitCounts}; //{ commander:0, operative:0, corps:0, special:0, heavy:0, support:0 }
+  let mercs = {commander: 0, operative: 0, corps: 0, special: 0, heavy: 0, support: 0};
 
   // Determine what our rank requirements are, warn if unknown
   // TODO need more definitive handling for the other modes...
-  if(battleForce && !battleForcesDict[battleForce][currentList.mode]){
-      validationIssues.push({level:1, text:"Playing a battleforce in a mode with no defined battleforce construction rules (Defaulting to 800pt)"});
+  if (battleForce && !battleForcesDict[battleForce][currentList.mode]) {
+    validationIssues.push({
+      level: 1,
+      text: "Playing a battleforce in a mode with no defined battleforce construction rules (Defaulting to 800pt)",
+    });
   }
 
   let rankReqs = rankLimits; //updateRankLimits(currentList);
 
   // count up them mercs, pull in any unit-specific issues
-  currentList.units.forEach((unit)=>{
+  currentList.units.forEach((unit) => {
     const card = cards[unit.unitId];
 
-    if(unit.validationIssues?.length > 0){
+    if (unit.validationIssues?.length > 0) {
       validationIssues = validationIssues.concat(unit.validationIssues);
     }
 
-    if(card.faction === 'fringe'){
+    if (card.faction === "fringe") {
       mercs[card.rank] += unit.count;
     }
   });
@@ -1964,5 +2106,5 @@ export {
   generateMinimalText,
   generateHTMLText,
   validateList,
-  getRankLimits
+  getRankLimits,
 };

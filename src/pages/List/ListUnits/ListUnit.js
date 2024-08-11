@@ -1,35 +1,35 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import UnitAvatar from '@legion-hq/common/UnitAvatar';
-import CardName from '@legion-hq/common/CardName';
-import UnitPoints from '@legion-hq/common/UnitPoints';
-import UnitActions from './UnitActions';
-import UnitUpgrades from './UnitUpgrades';
-import UnitFlaw from './UnitFlaw';
+import React from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import UnitAvatar from "@legion-hq/common/UnitAvatar";
+import CardName from "@legion-hq/common/CardName";
+import UnitPoints from "@legion-hq/common/UnitPoints";
+import UnitActions from "./UnitActions";
+import UnitUpgrades from "./UnitUpgrades";
+import UnitFlaw from "./UnitFlaw";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   unitRow: {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    borderTop: '1px solid rgba(255,255,255,0.12)'
+    display: "flex",
+    flexFlow: "row nowrap",
+    borderTop: "1px solid rgba(255,255,255,0.12)",
   },
-  unitColumn: { display: 'flex', flexFlow: 'column nowrap' },
-  leftCell: { marginRight: 4 },
-  counterpart: { marginLeft: 20 },
+  unitColumn: {display: "flex", flexFlow: "column nowrap"},
+  leftCell: {marginRight: 4},
+  counterpart: {marginLeft: 20},
   middleCell: {
     flex: 1,
     marginRight: 2,
-    display: 'flex',
-    flexFlow: 'column nowrap',
-    overflowX: 'auto',
-    overflowY: 'hidden'
+    display: "flex",
+    flexFlow: "column nowrap",
+    overflowX: "auto",
+    overflowY: "hidden",
   },
   rightCell: {
-    display: 'flex',
-    flexFlow: 'column nowrap',
-    alignItems: 'center',
-    borderLeft: '1px solid rgba(255,255,255,0.12)'
-  }
+    display: "flex",
+    flexFlow: "column nowrap",
+    alignItems: "center",
+    borderLeft: "1px solid rgba(255,255,255,0.12)",
+  },
 }));
 
 function ListUnit({
@@ -52,7 +52,7 @@ function ListUnit({
   addUpgradeHandlers,
   deleteUpgradeHandlers,
   changeLoadoutHandlers,
-  deleteLoadoutHandlers
+  deleteLoadoutHandlers,
 }) {
   const classes = useStyles();
   const avatar = (
@@ -94,7 +94,9 @@ function ListUnit({
       deleteLoadoutHandlers={deleteLoadoutHandlers}
     />
   );
-  const flaws = unitCard.flaw ? <UnitFlaw key="flaws" flawId={unitCard.flaw} /> : undefined;
+  const flaws = unitCard.flaw ? (
+    <UnitFlaw key="flaws" flawId={unitCard.flaw} />
+  ) : undefined;
   const leftCell = [avatar];
   const middleCell = [name, upgrades, flaws];
   const rightCell = [points, actions];
@@ -102,19 +104,15 @@ function ListUnit({
     <div className={classes.unitColumn}>
       <div className={classes.unitRow}>
         <div className={classes.leftCell}>
-          <div style={{ marginTop: 2 }} />
+          <div style={{marginTop: 2}} />
           {leftCell}
         </div>
-        <div className={classes.middleCell}>
-          {middleCell}
-        </div>
-        <div className={classes.rightCell}>
-          {rightCell}
-        </div>
+        <div className={classes.middleCell}>{middleCell}</div>
+        <div className={classes.rightCell}>{rightCell}</div>
       </div>
       {counterpartUnit}
     </div>
   );
-};
+}
 
 export default ListUnit;

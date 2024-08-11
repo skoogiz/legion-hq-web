@@ -1,15 +1,15 @@
-import React from 'react';
-import QRCode from 'qrcode.react';
-import { Chip } from '@material-ui/core';
-import { CropFree as QRCodeIcon } from '@material-ui/icons';
-import generateLink from './generateLink';
-import DialogModal from './DialogModal';
+import React from "react";
+import QRCode from "qrcode.react";
+import {Chip} from "@material-ui/core";
+import {CropFree as QRCodeIcon} from "@material-ui/icons";
+import generateLink from "./generateLink";
+import DialogModal from "./DialogModal";
 
-function QRButton({ currentList }) {
+function QRButton({currentList}) {
   const [isOpen, setIsOpen] = React.useState(false);
   const listLink = generateLink(currentList);
   return (
-    <div style={{ marginRight: 4, marginBottom: 4 }}>
+    <div style={{marginRight: 4, marginBottom: 4}}>
       <Chip
         clickable
         variant="outlined"
@@ -25,6 +25,6 @@ function QRButton({ currentList }) {
       />
     </div>
   );
-};
+}
 
 export default QRButton;

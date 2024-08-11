@@ -1,54 +1,40 @@
-import React, { useContext, useState, useEffect } from 'react';
-import clsx from 'clsx';
-import { ErrorBoundary } from 'react-error-boundary';
-import {
-  Grid,
-  Typography,
-  Container,
-  Fade,
-  Button,
-  Collapse,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  Announcement as NewsIcon,
-  ExpandMore as ExpandMoreIcon
-} from '@material-ui/icons';
-import LoginButton from './LoginButton';
-import ListChip from './ListChip';
-import FactionChip from './FactionChip';
-import ListChipDropdown from './ListChipDropdown';
-import DataContext from '@legion-hq/context/DataContext';
-import ErrorFallback from '@legion-hq/common/ErrorFallback';
-import factions from '@legion-hq/constants/factions';
-import ftLogoLight from '@legion-hq/assets/ftLogoLight.png';
-import ftLogoDark from '@legion-hq/assets/ftLogoDark.png';
-import lhqLogoLight from '@legion-hq/assets/lhqLogoLight.png';
-import lhqLogoDark from '@legion-hq/assets/lhqLogoDark.png';
+import React, {useContext, useState, useEffect} from "react";
+import clsx from "clsx";
+import {ErrorBoundary} from "react-error-boundary";
+import {Grid, Typography, Container, Fade, Button, Collapse} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+import {Announcement as NewsIcon, ExpandMore as ExpandMoreIcon} from "@material-ui/icons";
+import LoginButton from "./LoginButton";
+import ListChip from "./ListChip";
+import FactionChip from "./FactionChip";
+import ListChipDropdown from "./ListChipDropdown";
+import DataContext from "@legion-hq/context/DataContext";
+import ErrorFallback from "@legion-hq/common/ErrorFallback";
+import factions from "@legion-hq/constants/factions";
+import ftLogoLight from "@legion-hq/assets/ftLogoLight.png";
+import ftLogoDark from "@legion-hq/assets/ftLogoDark.png";
+import lhqLogoLight from "@legion-hq/assets/lhqLogoLight.png";
+import lhqLogoDark from "@legion-hq/assets/lhqLogoDark.png";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
-    })
+    }),
   },
-  expandOpen: { transform: 'rotate(180deg)' },
+  expandOpen: {transform: "rotate(180deg)"},
 }));
 
-function Post({ title, date, body }) {
+function Post({title, date, body}) {
   return (
-    <div style={{ maxWidth: 400 }}>
-      <Typography variant="body1">
-        {title}
-      </Typography>
+    <div style={{maxWidth: 400}}>
+      <Typography variant="body1">{title}</Typography>
       <Typography variant="caption" color="textSecondary">
         {date}
       </Typography>
-      <Typography variant="body2">
-        {body}
-      </Typography>
+      <Typography variant="body2">{body}</Typography>
     </div>
   );
 }
@@ -61,14 +47,14 @@ function Home() {
     userLists,
     userSettings,
     fetchUserLists,
-    deleteUserList
+    deleteUserList,
   } = useContext(DataContext);
   const classes = useStyles();
   const listChips = {};
   const [isNewsOpen, setIsNewsOpen] = useState(true);
-  Object.keys(factions).forEach(faction => listChips[faction] = []);
+  Object.keys(factions).forEach((faction) => (listChips[faction] = []));
   if (userLists) {
-    userLists.forEach(userList => {
+    userLists.forEach((userList) => {
       if (userList.faction in listChips) {
         listChips[userList.faction].push(userList);
       }
@@ -76,7 +62,7 @@ function Home() {
   }
   useEffect(() => {
     if (userId) fetchUserLists(userId);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -88,30 +74,31 @@ function Home() {
             direction="column"
             justifyContent="center"
             alignItems="center"
-            style={{ marginTop: 5 }}
+            style={{marginTop: 5}}
           >
             <Grid item>
               <img
                 alt="Fifth Trooper Logo"
-                src={userSettings.themeColor === 'light' ? ftLogoLight : ftLogoDark}
-                style={{ width: 150, height: 'auto' }}
+                src={userSettings.themeColor === "light" ? ftLogoLight : ftLogoDark}
+                style={{width: 150, height: "auto"}}
               />
             </Grid>
             <Grid item>
               <img
                 alt="Legion HQ Logo"
-                src={userSettings.themeColor === 'light' ? lhqLogoLight : lhqLogoDark}
-                style={{ width: 400, height: 'auto' }}
+                src={userSettings.themeColor === "light" ? lhqLogoLight : lhqLogoDark}
+                style={{width: 400, height: "auto"}}
               />
             </Grid>
-            <Grid item style={{ maxWidth: '75vw', textAlign: 'center' }}>
+            <Grid item style={{maxWidth: "75vw", textAlign: "center"}}>
               <Typography variant="subtitle1">
-                An unofficial list building tool and resource for Atomic Mass Games: Star Wars: Legion.
+                An unofficial list building tool and resource for Atomic Mass Games: Star
+                Wars: Legion.
               </Typography>
             </Grid>
             <Grid item>
               <Button size="small" onClick={() => setIsNewsOpen(!isNewsOpen)}>
-                <NewsIcon fontSize="small" style={{ marginRight: 4 }} />
+                <NewsIcon fontSize="small" style={{marginRight: 4}} />
                 Latest news
                 <ExpandMoreIcon
                   fontSize="small"
@@ -133,9 +120,9 @@ function Home() {
               )}
             </Grid>
             <Grid item>
-              <div style={{ height: 10 }} />
+              <div style={{height: 10}} />
             </Grid>
-            {Object.keys(factions).map(faction => (
+            {Object.keys(factions).map((faction) => (
               <Grid
                 key={faction}
                 item
@@ -151,16 +138,14 @@ function Home() {
                 {listChips[faction].length > 4 ? (
                   <ListChipDropdown
                     faction={faction}
-                    chips={
-                      listChips[faction].map(userList => (
-                        <Grid item key={userList.listId}>
-                          <ListChip userList={userList} deleteUserList={deleteUserList} />
-                        </Grid>
-                      ))
-                    }
+                    chips={listChips[faction].map((userList) => (
+                      <Grid item key={userList.listId}>
+                        <ListChip userList={userList} deleteUserList={deleteUserList} />
+                      </Grid>
+                    ))}
                   />
                 ) : (
-                  listChips[faction].map(userList => (
+                  listChips[faction].map((userList) => (
                     <Grid item key={userList.listId}>
                       <ListChip userList={userList} deleteUserList={deleteUserList} />
                     </Grid>
@@ -169,22 +154,22 @@ function Home() {
               </Grid>
             ))}
             <Grid item>
-              <div style={{ height: 10 }} />
+              <div style={{height: 10}} />
             </Grid>
             <Grid item>
               <LoginButton auth={auth} />
             </Grid>
             <Grid item>
-              <div style={{ height: 10 }} />
+              <div style={{height: 10}} />
             </Grid>
             <Grid item>
-              <div style={{ height: 10 }} />
+              <div style={{height: 10}} />
             </Grid>
           </Grid>
         </Container>
       </Fade>
     </ErrorBoundary>
   );
-};
+}
 
 export default Home;

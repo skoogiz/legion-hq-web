@@ -1,26 +1,22 @@
-import React, { useContext } from 'react';
-import { Grid, Chip } from '@material-ui/core';
-import { Add as AddIcon } from '@material-ui/icons';
-import ListContext from '@legion-hq/context/ListContext';
-import CardIcon from '@legion-hq/common/CardIcon';
-import cards from '@legion-hq/constants/cards';
+import React, {useContext} from "react";
+import {Grid, Chip} from "@material-ui/core";
+import {Add as AddIcon} from "@material-ui/icons";
+import ListContext from "@legion-hq/context/ListContext";
+import CardIcon from "@legion-hq/common/CardIcon";
+import cards from "@legion-hq/constants/cards";
 
-const chipSize = 'medium';
+const chipSize = "medium";
 
 function ListCommands() {
-  const {
-    currentList,
-    setCardPaneFilter,
-    handleCardZoom,
-    handleRemoveCommand
-  } = useContext(ListContext);
+  const {currentList, setCardPaneFilter, handleCardZoom, handleRemoveCommand} =
+    useContext(ListContext);
   const getNumPips = (cardId) => {
     const card = cards[cardId];
-    if (card.cardSubtype === '1') return '•';
-    else if (card.cardSubtype === '2') return '••';
-    else if (card.cardSubtype === '3') return '•••';
-  }
-  const chipStyle = { marginRight: 4, marginBottom: 4 };
+    if (card.cardSubtype === "1") return "•";
+    else if (card.cardSubtype === "2") return "••";
+    else if (card.cardSubtype === "3") return "•••";
+  };
+  const chipStyle = {marginRight: 4, marginBottom: 4};
   return (
     <Grid container id="list-commands" direction="row" justifyContent="center">
       {currentList.commandCards.length < 6 && (
@@ -30,7 +26,7 @@ function ListCommands() {
             label="Command"
             icon={<AddIcon />}
             style={chipStyle}
-            onClick={() => setCardPaneFilter({ action: 'COMMAND' })}
+            onClick={() => setCardPaneFilter({action: "COMMAND"})}
           />
         </Grid>
       )}
@@ -60,8 +56,8 @@ function ListCommands() {
               size="small"
               cardType="command"
               imageName="Standing Orders.jpeg"
-              card={cards['aa']}
-              handleClick={() => handleCardZoom('aa')}
+              card={cards["aa"]}
+              handleClick={() => handleCardZoom("aa")}
             />
           }
           style={chipStyle}
@@ -69,6 +65,6 @@ function ListCommands() {
       </Grid>
     </Grid>
   );
-};
+}
 
 export default ListCommands;

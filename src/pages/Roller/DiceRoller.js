@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import redAttackDie from 'static/blender/redAttackDie.glb';
-import blackAttackDie from 'static/blender/blackAttackDie.glb';
-import whiteAttackDie from 'static/blender/whiteAttackDie.glb';
+import React, {useEffect} from "react";
+import * as THREE from "three";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+import redAttackDie from "static/blender/redAttackDie.glb";
+import blackAttackDie from "static/blender/blackAttackDie.glb";
+import whiteAttackDie from "static/blender/whiteAttackDie.glb";
 
 // class DiceRoller {
 //   init() {
@@ -71,27 +71,31 @@ let redLoops = 0;
 let blackLoops = 0;
 let whiteLoops = 0;
 
-function getRandomInt(max) { return Math.floor(Math.random() * Math.floor(max)); }
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
-function getRandomSmallInt() { return Math.random(); }
+function getRandomSmallInt() {
+  return Math.random();
+}
 
 class Stats extends React.Component {
   componentDidMount() {
     this.redAttackDice = [];
     this.blackAttackDice = [];
     this.whiteAttackDice = [];
-    const { numRedAttack, numBlackAttack, numWhiteAttack } = this.props;
+    const {numRedAttack, numBlackAttack, numWhiteAttack} = this.props;
     this.sceneSetup();
     this.setupLights();
     for (let i = 0; i < numRedAttack; i++) this.addRed();
     for (let i = 0; i < numBlackAttack; i++) this.addBlack();
     for (let i = 0; i < numWhiteAttack; i++) this.addWhite();
     this.startAnimationLoop();
-    window.addEventListener('resize', this.handleWindowResize);
+    window.addEventListener("resize", this.handleWindowResize);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowResize);
+    window.removeEventListener("resize", this.handleWindowResize);
     window.cancelAnimationFrame(this.requestID);
     this.controls.dispose();
   }
@@ -106,7 +110,7 @@ class Stats extends React.Component {
       75, // fov = field of view
       width / height, // aspect ratio
       0.1, // near plane
-      1000 // far plane
+      1000, // far plane
     );
 
     // set some distance from a cube that is located at z = 0
@@ -133,35 +137,35 @@ class Stats extends React.Component {
     this.scene.add(lights[0]);
     this.scene.add(lights[1]);
     this.scene.add(lights[2]);
-  }
+  };
 
   addRed = () => {
-    const handleLoad = gltf => {
+    const handleLoad = (gltf) => {
       const mesh = gltf.scene;
       this.scene.add(mesh);
       this.redAttackDice.push(mesh);
-    }
+    };
     const loader = new GLTFLoader();
     loader.load(redAttackDie, handleLoad);
-  }
+  };
   addBlack = () => {
-    const handleLoad = gltf => {
+    const handleLoad = (gltf) => {
       const mesh = gltf.scene;
       this.scene.add(mesh);
       this.blackAttackDice.push(mesh);
-    }
+    };
     const loader = new GLTFLoader();
     loader.load(blackAttackDie, handleLoad);
-  }
+  };
   addWhite = () => {
-    const handleLoad = gltf => {
+    const handleLoad = (gltf) => {
       const mesh = gltf.scene;
       this.scene.add(mesh);
       this.whiteAttackDice.push(mesh);
-    }
+    };
     const loader = new GLTFLoader();
     loader.load(whiteAttackDie, handleLoad);
-  }
+  };
 
   // addObject = object => {
   //   const handleLoad = gltf => {
@@ -179,7 +183,7 @@ class Stats extends React.Component {
       color: 0x156289,
       emissive: 0x072534,
       side: THREE.DoubleSide,
-      flatShading: true
+      flatShading: true,
     });
     let cube = new THREE.Mesh(geometry, material);
     this.scene.add(cube);
@@ -187,13 +191,25 @@ class Stats extends React.Component {
     cube = new THREE.Mesh(geometry, material);
     this.scene.add(cube);
     this.objects.push(cube);
-  }
+  };
 
   startAnimationLoop = () => {
     const angles = [0, 45, 90, 135, 180, 225, 270, 315];
-    const redResults = [[7, 1], [7, 3], [3, 3]];
-    const blackResults = [[3, 3], [7, 3], [7, 1]];
-    const whiteResults = [[1, 1], [5, 5], [7, 7]];
+    const redResults = [
+      [7, 1],
+      [7, 3],
+      [3, 3],
+    ];
+    const blackResults = [
+      [3, 3],
+      [7, 3],
+      [7, 1],
+    ];
+    const whiteResults = [
+      [1, 1],
+      [5, 5],
+      [7, 7],
+    ];
     for (let i = 0; i < this.redAttackDice.length && redLoops < maxRedLoops + 10; i++) {
       const object = this.redAttackDice[i];
       object.position.x = -2 + i * 2;
@@ -281,11 +297,11 @@ class Stats extends React.Component {
   render() {
     return (
       <div
-        ref={ref => (this.el = ref)}
+        ref={(ref) => (this.el = ref)}
         style={{
           width: 600,
           height: 600,
-          marginTop: 8
+          marginTop: 8,
         }}
       />
     );

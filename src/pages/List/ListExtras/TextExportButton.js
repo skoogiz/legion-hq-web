@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from "react";
 import {
   useMediaQuery,
   Chip,
@@ -7,28 +7,28 @@ import {
   Tab,
   Box,
   Typography,
-  TextField
-} from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { Description as TextIcon } from '@material-ui/icons';
+  TextField,
+} from "@material-ui/core";
+import {useTheme} from "@material-ui/core/styles";
+import {Description as TextIcon} from "@material-ui/icons";
 import {
   generateStandardText,
   generateMinimalText,
   generateTournamentText,
-  generateHTMLText
-} from '@legion-hq/constants/listOperations';
-import DialogModal from './DialogModal';
-import ClipboardButton from './ClipboardButton';
+  generateHTMLText,
+} from "@legion-hq/constants/listOperations";
+import DialogModal from "./DialogModal";
+import ClipboardButton from "./ClipboardButton";
 
 function generateListText(type, currentList) {
   if (type === 0) return generateStandardText(currentList);
   else if (type === 1) return generateMinimalText(currentList);
   else if (type === 2) return generateTournamentText(currentList);
   else if (type === 3) return generateHTMLText(currentList);
-  else return '';
+  else return "";
 }
 
-function TabPanel({ value, index, children }) {
+function TabPanel({value, index, children}) {
   return (
     <div hidden={value !== index}>
       {value === index && (
@@ -41,10 +41,14 @@ function TabPanel({ value, index, children }) {
 }
 
 function DialogContent({
-  currentList, tabValue, content, handleChangeTextType, handleChangeListText
+  currentList,
+  tabValue,
+  content,
+  handleChangeTextType,
+  handleChangeListText,
 }) {
   return (
-    <div style={{ display: 'flex', flexFlow: 'column nowrap', alignItems: 'center' }}>
+    <div style={{display: "flex", flexFlow: "column nowrap", alignItems: "center"}}>
       <AppBar position="static" color="secondary">
         <Tabs
           variant="scrollable"
@@ -70,14 +74,14 @@ function DialogContent({
       <TabPanel value="tournament" index={3}>
         Tabletop.to
       </TabPanel>
-      <div style={{ marginTop: 16 }} />
+      <div style={{marginTop: 16}} />
       <TextField
         multiline
         size="small"
         variant="outlined"
-        value={tabValue === 3 ? 'Coming soon!' : content}
+        value={tabValue === 3 ? "Coming soon!" : content}
         onChange={handleChangeListText}
-        style={{ padding: 8, width: '100%' }}
+        style={{padding: 8, width: "100%"}}
       />
     </div>
   );
@@ -97,19 +101,19 @@ function DialogContent({
   */
 }
 
-function TextExportButton({ currentList }) {
+function TextExportButton({currentList}) {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [textType, setTextType] = useState(0);
-  const [listText, setListText] = useState('');
+  const [listText, setListText] = useState("");
   const handleChangeTextType = (e, value) => setTextType(value);
-  const handleChangeListText = e => setListText(e.target.value);
+  const handleChangeListText = (e) => setListText(e.target.value);
   useEffect(() => {
     setListText(generateListText(textType, currentList));
   }, [currentList, isOpen, textType]);
-  const isFullscreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <div style={{ marginRight: 4, marginBottom: 4 }}>
+    <div style={{marginRight: 4, marginBottom: 4}}>
       <Chip
         clickable
         variant="outlined"
@@ -135,6 +139,6 @@ function TextExportButton({ currentList }) {
       />
     </div>
   );
-};
+}
 
 export default TextExportButton;

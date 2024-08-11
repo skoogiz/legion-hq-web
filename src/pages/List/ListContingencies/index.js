@@ -1,33 +1,29 @@
-import React, { useContext } from 'react';
-import { Grid, Chip } from '@material-ui/core';
-import { Add as AddIcon } from '@material-ui/icons';
-import ListContext from '@legion-hq/context/ListContext';
-import CardIcon from '@legion-hq/common/CardIcon';
-import cards from '@legion-hq/constants/cards';
+import React, {useContext} from "react";
+import {Grid, Chip} from "@material-ui/core";
+import {Add as AddIcon} from "@material-ui/icons";
+import ListContext from "@legion-hq/context/ListContext";
+import CardIcon from "@legion-hq/common/CardIcon";
+import cards from "@legion-hq/constants/cards";
 
-const chipSize = 'medium';
+const chipSize = "medium";
 
 function ListContingencies() {
-  const {
-    currentList,
-    setCardPaneFilter,
-    handleCardZoom,
-    handleRemoveContingency
-  } = useContext(ListContext);
+  const {currentList, setCardPaneFilter, handleCardZoom, handleRemoveContingency} =
+    useContext(ListContext);
   const getNumPips = (cardId) => {
     const card = cards[cardId];
-    if (card.cardSubtype === '1') return '•';
-    else if (card.cardSubtype === '2') return '••';
-    else if (card.cardSubtype === '3') return '•••';
-  }
+    if (card.cardSubtype === "1") return "•";
+    else if (card.cardSubtype === "2") return "••";
+    else if (card.cardSubtype === "3") return "•••";
+  };
   let numContingencies = 0;
   currentList.units.forEach((unit) => {
     const unitCard = cards[unit.unitId];
     if (unitCard.contingencies && unitCard.contingencies > 0)
-      numContingencies += unitCard.contingencies
+      numContingencies += unitCard.contingencies;
   });
   if (numContingencies === 0) return null;
-  const chipStyle = { marginRight: 4, marginBottom: 4 };
+  const chipStyle = {marginRight: 4, marginBottom: 4};
   return (
     <Grid container id="list-contingencies" direction="row" justifyContent="center">
       <Grid item>
@@ -37,7 +33,7 @@ function ListContingencies() {
             label="Contingency"
             icon={<AddIcon />}
             style={chipStyle}
-            onClick={() => setCardPaneFilter({ action: 'CONTINGENCY' })}
+            onClick={() => setCardPaneFilter({action: "CONTINGENCY"})}
           />
         )}
       </Grid>
@@ -61,6 +57,6 @@ function ListContingencies() {
       ))}
     </Grid>
   );
-};
+}
 
 export default ListContingencies;

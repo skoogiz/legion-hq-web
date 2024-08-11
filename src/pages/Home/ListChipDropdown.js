@@ -1,28 +1,28 @@
-import React from 'react';
-import { Popover, Chip, Typography } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import factions from '@legion-hq/constants/factions';
+import React from "react";
+import {Popover, Chip, Typography} from "@material-ui/core";
+import {ThemeProvider} from "@material-ui/styles";
+import {createMuiTheme, makeStyles} from "@material-ui/core/styles";
+import factions from "@legion-hq/constants/factions";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(1),
-    background: '#1F2125'
-  }
+    background: "#1F2125",
+  },
 }));
 
-function ListChipDropdown({ chips, faction }) {
+function ListChipDropdown({chips, faction}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClose = () => setAnchorEl(null);
-  const handleClick = event => setAnchorEl(event.currentTarget);
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
 
   const factionTheme = createMuiTheme({
     palette: {
-      primary: { main: factions[faction].primaryColor },
-      secondary: { main: factions[faction].secondaryColor }
-    }
+      primary: {main: factions[faction].primaryColor},
+      secondary: {main: factions[faction].secondaryColor},
+    },
   });
 
   return (
@@ -30,12 +30,8 @@ function ListChipDropdown({ chips, faction }) {
       <Chip
         clickable
         color="primary"
-        style={{ margin: '0 5 5 0' }}
-        label={
-          <Typography variant="subtitle1">
-            {`${chips.length} lists`}
-          </Typography>
-        }
+        style={{margin: "0 5 5 0"}}
+        label={<Typography variant="subtitle1">{`${chips.length} lists`}</Typography>}
         onClick={handleClick}
       />
       <Popover
@@ -46,13 +42,13 @@ function ListChipDropdown({ chips, faction }) {
         onClose={handleClose}
       >
         {chips.map((chip, i) => (
-          <div key={`${faction}_list_${i}`} style={{ margin: 6 }}>
+          <div key={`${faction}_list_${i}`} style={{margin: 6}}>
             {chip}
           </div>
         ))}
       </Popover>
     </ThemeProvider>
   );
-};
+}
 
 export default ListChipDropdown;

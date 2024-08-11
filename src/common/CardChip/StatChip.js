@@ -1,28 +1,24 @@
-import React from 'react';
-import {Img} from 'react-image';
+import React from "react";
+import {Img} from "react-image";
 
-import { Chip, Typography } from '@material-ui/core';
-import symbols from '@legion-hq/constants/symbols';
+import {Chip, Typography} from "@material-ui/core";
+import symbols from "@legion-hq/constants/symbols";
 
-function StatChip({ size, type, value }) {
-  let label = 'Error';
+function StatChip({size, type, value}) {
+  let label = "Error";
   if (value > 0) label = value;
-  else if (value < 1) label = '-';
+  else if (value < 1) label = "-";
   const icon = (
-    <Img
-      alt={type}
-      src={symbols[type]}
-      style={size === 'small' ? null : { width: 22 }}
-    />
+    <Img alt={type} src={symbols[type]} style={size === "small" ? null : {width: 22}} />
   );
   return (
     <Chip
       size={size}
       icon={icon}
       label={<Typography>{label}</Typography>}
-      style={{ marginRight: 4, marginBottom: 4 }}
+      style={{marginRight: 4, marginBottom: 4}}
     />
   );
-};
+}
 
 export default StatChip;

@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-function BufferController({ buffer, handleClick }) {
-  return (
-    <div>
-      Buffer
-    </div>
-  );
-};
+function BufferController({buffer, handleClick}) {
+  return <div>Buffer</div>;
+}
 
 export default BufferController;

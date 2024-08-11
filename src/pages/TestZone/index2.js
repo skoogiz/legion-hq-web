@@ -1,10 +1,10 @@
-import React from 'react';
-import './spinner.scss';
-import redhit from './redhit.png';
+import React from "react";
+import "./spinner.scss";
+import redhit from "./redhit.png";
 function Info() {
   return (
-    <div style={{ marginTop: 40 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{marginTop: 40}}>
+      <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
         <div className="solid">
           <div className="side red"></div>
           <div className="side red"></div>

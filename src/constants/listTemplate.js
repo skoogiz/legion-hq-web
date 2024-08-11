@@ -1,14 +1,14 @@
 const listTemplate = {
   version: 1,
-  title: 'Untitled',
-  game: 'legion',
-  mode: 'standard mode',
-  faction: '',
-  notes: '',
+  title: "Untitled",
+  game: "legion",
+  mode: "standard mode",
+  faction: "",
+  notes: "",
   pointTotal: 0,
   killPoints: 0,
   competitive: false,
-  battleForce: '',
+  battleForce: "",
   killedUnits: [],
   units: [],
   commandCards: [],
@@ -24,8 +24,8 @@ const listTemplate = {
     corps: 0,
     special: 0,
     support: 0,
-    heavy: 0
-  }
+    heavy: 0,
+  },
 };
 
 export default listTemplate;

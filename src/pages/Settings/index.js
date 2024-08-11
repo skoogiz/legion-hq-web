@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext} from "react";
 import {
   Container,
   Grid,
@@ -7,24 +7,17 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Fade
-} from '@material-ui/core';
-import DataContext from '@legion-hq/context/DataContext';
-import settings from '@legion-hq/constants/settings';
+  Fade,
+} from "@material-ui/core";
+import DataContext from "@legion-hq/context/DataContext";
+import settings from "@legion-hq/constants/settings";
 
-function SettingDropdown({ id, name, value, options, handleClick }) {
+function SettingDropdown({id, name, value, options, handleClick}) {
   return (
     <FormControl>
-      <InputLabel htmlFor={`${id}-selector`}>
-        {name}
-      </InputLabel>
-      <Select
-        id={id}
-        value={value}
-        onChange={handleClick}
-        style={{ minWidth: 200 }}
-      >
-        {options.map(option => (
+      <InputLabel htmlFor={`${id}-selector`}>{name}</InputLabel>
+      <Select id={id} value={value} onChange={handleClick} style={{minWidth: 200}}>
+        {options.map((option) => (
           <MenuItem key={option.key} value={option.key}>
             {option.name}
           </MenuItem>
@@ -35,17 +28,15 @@ function SettingDropdown({ id, name, value, options, handleClick }) {
 }
 
 function Settings() {
-  const { userSettings, setUserSettingsValue } = useContext(DataContext);
+  const {userSettings, setUserSettingsValue} = useContext(DataContext);
   return (
     <Fade in={true}>
       <Container>
         <Grid container spacing={4} direction="column" alignItems="center">
           <Grid item>
-            <Typography variant="h5">
-              Settings
-            </Typography>
+            <Typography variant="h5">Settings</Typography>
           </Grid>
-          {settings.list.map(setting => (
+          {settings.list.map((setting) => (
             <Grid item key={setting.key}>
               <SettingDropdown
                 id={setting.key}
@@ -62,6 +53,6 @@ function Settings() {
       </Container>
     </Fade>
   );
-};
+}
 
 export default Settings;

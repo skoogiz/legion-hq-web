@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React, {useState, useEffect} from "react";
+import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd";
 
 function reorder(list, startIndex, endIndex) {
   const result = Array.from(list);
@@ -8,7 +8,7 @@ function reorder(list, startIndex, endIndex) {
   return result;
 }
 
-const ItemList = React.memo(function ItemList({ draggableItems }) {
+const ItemList = React.memo(function ItemList({draggableItems}) {
   return draggableItems.map((item, index) => (
     <Draggable key={item.id} draggableId={item.id} index={index}>
       {(provided) => (
@@ -24,7 +24,7 @@ const ItemList = React.memo(function ItemList({ draggableItems }) {
   ));
 });
 
-function DragDropContainer({ items, reorderUnits }) {
+function DragDropContainer({items, reorderUnits}) {
   const [draggableItems, setDraggableItems] = useState(items);
   useEffect(() => {
     setDraggableItems(items);
@@ -35,7 +35,7 @@ function DragDropContainer({ items, reorderUnits }) {
     const newItems = reorder(
       draggableItems,
       result.source.index,
-      result.destination.index
+      result.destination.index,
     );
     reorderUnits(result.source.index, result.destination.index);
     setDraggableItems(newItems);
@@ -43,7 +43,7 @@ function DragDropContainer({ items, reorderUnits }) {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="list">
-        {provided => (
+        {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
             <ItemList draggableItems={draggableItems} />
             {provided.placeholder}
@@ -52,6 +52,6 @@ function DragDropContainer({ items, reorderUnits }) {
       </Droppable>
     </DragDropContext>
   );
-};
+}
 
 export default DragDropContainer;

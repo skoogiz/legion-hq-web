@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import redAttackDie from './blender/redAttackDie.glb';
-import blackAttackDie from './blender/blackAttackDie.glb';
-import whiteAttackDie from './blender/whiteAttackDie.glb';
+import React, {useEffect} from "react";
+import * as THREE from "three";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+import redAttackDie from "./blender/redAttackDie.glb";
+import blackAttackDie from "./blender/blackAttackDie.glb";
+import whiteAttackDie from "./blender/whiteAttackDie.glb";
 
 function createScene() {
   const scene = new THREE.Scene();
@@ -13,7 +13,10 @@ function createScene() {
 
 function createCamera(scene) {
   const camera = new THREE.PerspectiveCamera(
-    75, window.innerWidth / window.innerHeight, 0.1, 1000
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000,
   );
   camera.position.set(5, 5, 5);
   scene.add(camera);
@@ -21,7 +24,7 @@ function createCamera(scene) {
 }
 
 function createRenderer() {
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.gammaOutput = true;
   return renderer;
@@ -36,9 +39,9 @@ function createControls(camera, renderer) {
 }
 
 function addObject(scene, object) {
-  const handleLoad = gltf => {
+  const handleLoad = (gltf) => {
     const mesh = gltf.scene;
-    scene.add(mesh)
+    scene.add(mesh);
   };
   const loader = new GLTFLoader();
   loader.load(object, handleLoad);
@@ -60,10 +63,10 @@ function init() {
   addObject(scene, whiteAttackDie);
   const animate = () => {
     requestAnimationFrame(animate);
-  	controls.update();
-  	renderer.render(scene, camera);
+    controls.update();
+    renderer.render(scene, camera);
   };
-  document.getElementById('three').appendChild(renderer.domElement);
+  document.getElementById("three").appendChild(renderer.domElement);
   animate();
 }
 
@@ -73,10 +76,17 @@ function Info() {
   }, []);
 
   return (
-    <div style={{ padding: 8, display: 'flex', flexFlow: 'column nowrap', alignItems: 'center' }}>
+    <div
+      style={{
+        padding: 8,
+        display: "flex",
+        flexFlow: "column nowrap",
+        alignItems: "center",
+      }}
+    >
       <div id="three" />
     </div>
   );
-};
+}
 
 export default Info;

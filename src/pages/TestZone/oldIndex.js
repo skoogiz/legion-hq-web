@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import * as THREE from 'three';
-import face from 'static/hit.jpg';
+import React, {useEffect} from "react";
+import * as THREE from "three";
+import face from "static/hit.jpg";
 // import flower from 'static/flower.jpg';
 
 function createMesh() {
@@ -14,10 +14,16 @@ function createMesh() {
   const image6 = loader.load(face);
   const image7 = loader.load(face);
   const image8 = loader.load(face);
-  const material = new THREE.MeshBasicMaterial({ map: image1 });
+  const material = new THREE.MeshBasicMaterial({map: image1});
   let materials = [
-    material,material,material,material,
-    material,material,material,material
+    material,
+    material,
+    material,
+    material,
+    material,
+    material,
+    material,
+    material,
   ];
   const geometry = new THREE.OctahedronBufferGeometry(1, 0);
   geometry.clearGroups();
@@ -29,25 +35,32 @@ function createMesh() {
   geometry.addGroup(15, 3, 5);
   geometry.addGroup(18, 3, 6);
   geometry.addGroup(21, 3, 7);
-  geometry.faceVertexUvs = [[
-    [ new THREE.Vector2(0,0), new THREE.Vector2(0,1), new THREE.Vector2(1,1) ],
-    [ new THREE.Vector2(0,0), new THREE.Vector2(1,1), new THREE.Vector2(1,0) ],
-    [ new THREE.Vector2(0,0), new THREE.Vector2(1,0), new THREE.Vector2(0.5,1) ],
-    [ new THREE.Vector2(1,0), new THREE.Vector2(0,0), new THREE.Vector2(0.5,1) ],
-    [ new THREE.Vector2(0,0), new THREE.Vector2(1,0), new THREE.Vector2(0.5,1) ],
-    [ new THREE.Vector2(1,0), new THREE.Vector2(0,0), new THREE.Vector2(0.5,1) ],
-  ]]
+  geometry.faceVertexUvs = [
+    [
+      [new THREE.Vector2(0, 0), new THREE.Vector2(0, 1), new THREE.Vector2(1, 1)],
+      [new THREE.Vector2(0, 0), new THREE.Vector2(1, 1), new THREE.Vector2(1, 0)],
+      [new THREE.Vector2(0, 0), new THREE.Vector2(1, 0), new THREE.Vector2(0.5, 1)],
+      [new THREE.Vector2(1, 0), new THREE.Vector2(0, 0), new THREE.Vector2(0.5, 1)],
+      [new THREE.Vector2(0, 0), new THREE.Vector2(1, 0), new THREE.Vector2(0.5, 1)],
+      [new THREE.Vector2(1, 0), new THREE.Vector2(0, 0), new THREE.Vector2(0.5, 1)],
+    ],
+  ];
   const mesh = new THREE.Mesh(geometry, materials);
   return mesh;
 }
 
 function init() {
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000,
+  );
   camera.position.z = 5;
   const scene = new THREE.Scene();
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.getElementById('three').appendChild(renderer.domElement);
+  document.getElementById("three").appendChild(renderer.domElement);
   const mesh = createMesh();
   scene.add(mesh);
   const animate = function () {
@@ -64,7 +77,14 @@ function Info() {
     init();
   }, []);
   return (
-    <div style={{ padding: 8, display: 'flex', flexFlow: 'column nowrap', alignItems: 'center' }}>
+    <div
+      style={{
+        padding: 8,
+        display: "flex",
+        flexFlow: "column nowrap",
+        alignItems: "center",
+      }}
+    >
       <div id="three" />
     </div>
   );

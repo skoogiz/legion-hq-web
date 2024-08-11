@@ -1,7 +1,7 @@
-import React from 'react';
-import AddCounterpartButton from './AddCounterpartButton';
-import AddUpgradeButton from './AddUpgradeButton';
-import UpgradeChip from './UpgradeChip';
+import React from "react";
+import AddCounterpartButton from "./AddCounterpartButton";
+import AddUpgradeButton from "./AddUpgradeButton";
+import UpgradeChip from "./UpgradeChip";
 
 function UnitUpgrades({
   counterpartId,
@@ -16,7 +16,7 @@ function UnitUpgrades({
   addUpgradeHandlers,
   deleteUpgradeHandlers,
   changeLoadoutHandlers,
-  deleteLoadoutHandlers
+  deleteLoadoutHandlers,
 }) {
   const addCounterpartButtons = [];
   const addUpgradesButtons = [];
@@ -28,7 +28,7 @@ function UnitUpgrades({
         key={counterpartId}
         counterpartId={counterpartId}
         handleClick={addCounterpartHandler}
-      />
+      />,
     );
   }
   upgradesEquipped.forEach((upgradeId, upgradeIndex) => {
@@ -44,7 +44,7 @@ function UnitUpgrades({
           handleDelete={deleteUpgradeHandlers[upgradeIndex]}
           handleChangeLoadout={changeLoadoutHandlers[upgradeIndex]}
           handleDeleteLoadout={deleteLoadoutHandlers[upgradeIndex]}
-        />
+        />,
       );
     } else {
       addUpgradesButtons.push(
@@ -52,17 +52,17 @@ function UnitUpgrades({
           key={`${totalUpgradeBar[upgradeIndex]}_${upgradeIndex}`}
           type={totalUpgradeBar[upgradeIndex]}
           handleClick={addUpgradeHandlers[upgradeIndex]}
-        />
+        />,
       );
     }
   });
   return (
-    <div style={{ flex: 'display', flexFlow: 'row wrap', alignItems: 'center' }}>
+    <div style={{flex: "display", flexFlow: "row wrap", alignItems: "center"}}>
       {addCounterpartButtons}
       {addUpgradesButtons}
       {upgradeChips}
     </div>
   );
-};
+}
 
 export default UnitUpgrades;

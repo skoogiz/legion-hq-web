@@ -1,15 +1,15 @@
-import React from 'react';
-import { Chip, TextField } from '@material-ui/core';
-import { Link as LinkIcon } from '@material-ui/icons';
-import ClipboardButton from './ClipboardButton';
-import DialogModal from './DialogModal';
-import generateLink from './generateLink';
+import React from "react";
+import {Chip, TextField} from "@material-ui/core";
+import {Link as LinkIcon} from "@material-ui/icons";
+import ClipboardButton from "./ClipboardButton";
+import DialogModal from "./DialogModal";
+import generateLink from "./generateLink";
 
-function LinkButton({ currentList }) {
+function LinkButton({currentList}) {
   const [isOpen, setIsOpen] = React.useState(false);
   const listLink = generateLink(currentList);
   return (
-    <div style={{ marginRight: 4, marginBottom: 4 }}>
+    <div style={{marginRight: 4, marginBottom: 4}}>
       <Chip
         clickable
         variant="outlined"
@@ -26,6 +26,6 @@ function LinkButton({ currentList }) {
       />
     </div>
   );
-};
+}
 
 export default LinkButton;

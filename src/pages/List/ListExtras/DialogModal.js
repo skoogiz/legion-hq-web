@@ -1,16 +1,22 @@
-import React from 'react';
+import React from "react";
 import {
   Button,
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
-} from '@material-ui/core';
+  DialogActions,
+} from "@material-ui/core";
 
 function DialogModal({
-  isOpen, isMobile, isFullWidth = false, title, content, actions, handleClose
+  isOpen,
+  isMobile,
+  isFullWidth = false,
+  title,
+  content,
+  actions,
+  handleClose,
 }) {
-  const dialogStyle = title ? {} : { padding: 0 };
+  const dialogStyle = title ? {} : {padding: 0};
   return (
     <Dialog
       fullWidth={isFullWidth}
@@ -19,24 +25,21 @@ function DialogModal({
       onClose={handleClose}
     >
       {title && <DialogTitle>{title}</DialogTitle>}
-      <DialogContent style={dialogStyle}>
-        {content}
-      </DialogContent>
+      <DialogContent style={dialogStyle}>{content}</DialogContent>
       <DialogActions>
         {isMobile ? (
           <DialogActions>
             {actions}
-            <Button
-              size="large"
-              onClick={handleClose}
-            >
+            <Button size="large" onClick={handleClose}>
               Go Back
             </Button>
           </DialogActions>
-        ) : actions}
+        ) : (
+          actions
+        )}
       </DialogActions>
     </Dialog>
   );
-};
+}
 
 export default DialogModal;

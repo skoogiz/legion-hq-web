@@ -1,7 +1,7 @@
-import React from 'react';
-import { Checkbox, FormGroup, FormControlLabel } from '@material-ui/core';
+import React from "react";
+import {Checkbox, FormGroup, FormControlLabel} from "@material-ui/core";
 
-function ToggleButton({ label, value, handleChange }) {
+function ToggleButton({label, value, handleChange}) {
   return (
     <FormGroup>
       <FormControlLabel
@@ -12,12 +12,12 @@ function ToggleButton({ label, value, handleChange }) {
             color="primary"
             checked={value}
             onChange={handleChange}
-            style={{ marginLeft: 8 }}
+            style={{marginLeft: 8}}
           />
         }
-    />
+      />
     </FormGroup>
   );
-};
+}
 
 export default ToggleButton;

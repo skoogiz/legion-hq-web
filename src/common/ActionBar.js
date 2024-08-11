@@ -1,70 +1,65 @@
-import React, { useContext } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  InputBase
-} from '@material-ui/core';
-import { alpha, makeStyles } from '@material-ui/core/styles';
-import { Menu as MenuIcon, Search as SearchIcon } from '@material-ui/icons';
-import DataContext from '@legion-hq/context/DataContext';
-import ftLogoLight from '@legion-hq/assets/ftLogoLight.png';
-import ftLogoDark from '@legion-hq/assets/ftLogoDark.png';
-import lhqLogoLight from '@legion-hq/assets/lhqLogoLight.png';
-import lhqLogoDark from '@legion-hq/assets/lhqLogoDark.png';
+import React, {useContext} from "react";
+import {AppBar, Toolbar, IconButton, InputBase} from "@material-ui/core";
+import {alpha, makeStyles} from "@material-ui/core/styles";
+import {Menu as MenuIcon, Search as SearchIcon} from "@material-ui/icons";
+import DataContext from "@legion-hq/context/DataContext";
+import ftLogoLight from "@legion-hq/assets/ftLogoLight.png";
+import ftLogoDark from "@legion-hq/assets/ftLogoDark.png";
+import lhqLogoLight from "@legion-hq/assets/lhqLogoLight.png";
+import lhqLogoDark from "@legion-hq/assets/lhqLogoDark.png";
 
-const useStyles = makeStyles(theme => ({
-  grow: { flexGrow: 1 },
+const useStyles = makeStyles((theme) => ({
+  grow: {flexGrow: 1},
   menuButton: {
     marginRight: theme.spacing(2),
   },
   search: {
-    position: 'relative',
+    position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
+    "&:hover": {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '100%',
+    width: "100%",
     flexGrow: 1,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
+      width: "auto",
     },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   inputRoot: {
-    color: 'inherit',
-    width: '100%'
+    color: "inherit",
+    width: "100%",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%'
+    transition: theme.transitions.create("width"),
+    width: "100%",
   },
   desktopOnly: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'flex',
-    }
-  }
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "flex",
+    },
+  },
 }));
 
 function DefaultBar() {
   const classes = useStyles();
-  const { userSettings, setIsDrawerOpen } = useContext(DataContext);
+  const {userSettings, setIsDrawerOpen} = useContext(DataContext);
   return (
     <Toolbar variant="dense">
       <IconButton
@@ -77,20 +72,20 @@ function DefaultBar() {
       </IconButton>
       <img
         alt="Legion HQ Logo"
-        src={userSettings.themeColor === 'light' ? lhqLogoLight : lhqLogoDark}
-        style={{ height: 35 }}
+        src={userSettings.themeColor === "light" ? lhqLogoLight : lhqLogoDark}
+        style={{height: 35}}
       />
       <div className={classes.grow} />
       <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://thefifthtrooper.com/"
-        style={{ marginTop: 4 }}
+        style={{marginTop: 4}}
       >
         <img
           alt="Fifth Trooper Logo"
-          src={userSettings.themeColor === 'light' ? ftLogoLight : ftLogoDark}
-          style={{ height: 35 }}
+          src={userSettings.themeColor === "light" ? ftLogoLight : ftLogoDark}
+          style={{height: 35}}
         />
       </a>
       {false && (
@@ -118,9 +113,9 @@ function ActionBar(props) {
       <AppBar position="fixed" color="secondary">
         <DefaultBar />
       </AppBar>
-      <div style={{ height: 55 }} />
+      <div style={{height: 55}} />
     </div>
   );
-};
+}
 
 export default ActionBar;

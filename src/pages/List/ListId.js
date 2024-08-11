@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
-import Typography from '@material-ui/core/Typography';
-import DataContext from '@legion-hq/context/DataContext';
-import ListContext from '@legion-hq/context/ListContext';
+import React, {useContext} from "react";
+import Typography from "@material-ui/core/Typography";
+import DataContext from "@legion-hq/context/DataContext";
+import ListContext from "@legion-hq/context/ListContext";
 
 function ListId() {
-  const { userId } = useContext(DataContext)
-  const { currentList } = useContext(ListContext);
+  const {userId} = useContext(DataContext);
+  const {currentList} = useContext(ListContext);
   if (!currentList) return null;
   return (
-    <div style={{ display: 'flex', flexFlow: 'column nowrap', alignItems:' center' }}>
+    <div style={{display: "flex", flexFlow: "column nowrap", alignItems: " center"}}>
       {userId && (
         <Typography variant="caption" color="textSecondary">
           User ID: {userId}
@@ -21,6 +21,6 @@ function ListId() {
       )}
     </div>
   );
-};
+}
 
 export default ListId;

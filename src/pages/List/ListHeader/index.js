@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext} from "react";
 import {
   Menu,
   MenuItem,
@@ -7,41 +7,41 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Info as InfoIcon, Warning as WarningIcon } from '@material-ui/icons';
-import ListContext from '@legion-hq/context/ListContext';
-import legionModes from '@legion-hq/constants/legionModes';
-import battleForcesDict from '@legion-hq/constants/battleForcesDict';
-import ModeButton from './ModeButton';
-import TitleField from './TitleField';
-import KillPointsField from './KillPointsField';
-import FactionButton from './FactionButton';
+  DialogContentText,
+} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+import {Info as InfoIcon, Warning as WarningIcon} from "@material-ui/icons";
+import ListContext from "@legion-hq/context/ListContext";
+import legionModes from "@legion-hq/constants/legionModes";
+import battleForcesDict from "@legion-hq/constants/battleForcesDict";
+import ModeButton from "./ModeButton";
+import TitleField from "./TitleField";
+import KillPointsField from "./KillPointsField";
+import FactionButton from "./FactionButton";
 
 const useStyles = makeStyles({
   container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   battleForceContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 4
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 4,
   },
   columnContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  item: { marginRight: 6 },
+  item: {marginRight: 6},
   valError: {
-    display: 'flex',
-    alignItems: 'start',
-    justifyContent: 'start'
+    display: "flex",
+    alignItems: "start",
+    justifyContent: "start",
   },
 });
 
@@ -53,13 +53,13 @@ function ListHeader() {
     isKillPointMode,
     handleChangeTitle,
     handleChangeMode,
-    validationIssues
+    validationIssues,
   } = useContext(ListContext);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isBattleForceDialogOpen, setIsBattleForceDialogOpen] = React.useState(false);
-  const [isValidationDialogOpen, setValidationDialogOpen ] = React.useState(false);
-  const handleFactionMenuOpen = event => setAnchorEl(event.currentTarget);
+  const [isValidationDialogOpen, setValidationDialogOpen] = React.useState(false);
+  const handleFactionMenuOpen = (event) => setAnchorEl(event.currentTarget);
   const handleFactionMenuClose = () => setAnchorEl(null);
   const handleOpenBFDialog = () => setIsBattleForceDialogOpen(true);
   const handleCloseBFDialog = () => setIsBattleForceDialogOpen(false);
@@ -68,12 +68,13 @@ function ListHeader() {
     return num;
   }, 0);
 
-  const validBattleForces = Object.values(battleForcesDict).filter(bf => bf.faction === currentList.faction);
+  const validBattleForces = Object.values(battleForcesDict).filter(
+    (bf) => bf.faction === currentList.faction,
+  );
 
-  var minValidationError = validationIssues.reduce((highest, e)=>{
+  var minValidationError = validationIssues.reduce((highest, e) => {
     return e.level > highest ? e.level : highest;
-  }, 0)
-
+  }, 0);
 
   return (
     <div id="list-header" className={classes.columnContainer}>
@@ -84,19 +85,19 @@ function ListHeader() {
           open={Boolean(anchorEl)}
           onClose={handleFactionMenuClose}
         >
-          {currentList.faction !== 'fringe' && (
+          {currentList.faction !== "fringe" && (
             <MenuItem
               key="none"
-              selected={!currentList.battleForce || currentList.battleForce === ''}
+              selected={!currentList.battleForce || currentList.battleForce === ""}
               onClick={() => {
-                handleSetBattleForce('');
+                handleSetBattleForce("");
                 handleFactionMenuClose();
               }}
             >
               No Battle Force
             </MenuItem>
           )}
-          {validBattleForces.map(battleForce => {
+          {validBattleForces.map((battleForce) => {
             return (
               <MenuItem
                 key={battleForce.name}
@@ -122,7 +123,7 @@ function ListHeader() {
           <TitleField
             activations={numActivations}
             title={currentList.title}
-            handleChange={e => {
+            handleChange={(e) => {
               e.persist();
               handleChangeTitle(e.target.value);
             }}
@@ -136,43 +137,55 @@ function ListHeader() {
             handleChangeMode={handleChangeMode}
           />
         </div>
-        { validationIssues.length > 0 &&
+        {validationIssues.length > 0 && (
           <div className={classes.battleForceContainer}>
-
-            <IconButton onClick={()=>setValidationDialogOpen(true)}>
-              <WarningIcon style={{color: minValidationError < 2 ? 'yellow':'red'}}/>
+            <IconButton onClick={() => setValidationDialogOpen(true)}>
+              <WarningIcon style={{color: minValidationError < 2 ? "yellow" : "red"}} />
             </IconButton>
 
-            <Dialog open={isValidationDialogOpen} onClose={() => setValidationDialogOpen(false)}>
+            <Dialog
+              open={isValidationDialogOpen}
+              onClose={() => setValidationDialogOpen(false)}
+            >
               <DialogTitle>List Errors</DialogTitle>
               <DialogContent>
                 <div className={classes.valError}>
-                  <WarningIcon className={classes.item} style={{color: 'yellow'}}/>
-                  <DialogContentText>Work in progress... double-check your army rules and unit cards!</DialogContentText>
+                  <WarningIcon className={classes.item} style={{color: "yellow"}} />
+                  <DialogContentText>
+                    Work in progress... double-check your army rules and unit cards!
+                  </DialogContentText>
                 </div>
-                {validationIssues.map((el, i) =>
-                <div key={i} className={classes.valError}>
-                  <WarningIcon className={classes.item} style={{color: el.level === 1 ?'yellow':'red'}}/>
-                  <DialogContentText>{el.text}</DialogContentText>
-                </div>
-                )}
-                <br/>
+                {validationIssues.map((el, i) => (
+                  <div key={i} className={classes.valError}>
+                    <WarningIcon
+                      className={classes.item}
+                      style={{color: el.level === 1 ? "yellow" : "red"}}
+                    />
+                    <DialogContentText>{el.text}</DialogContentText>
+                  </div>
+                ))}
+                <br />
                 <DialogContentText>
-                  All Star Wars: Legion documents are located on the Atomic Mass Games{' '}
-                  <a style={{ textDecoration: 'none' }} href="https://atomicmassgames.com/star-wars-legion-documents" target="_blank" rel="noreferrer noopener">website</a>.
+                  All Star Wars: Legion documents are located on the Atomic Mass Games{" "}
+                  <a
+                    style={{textDecoration: "none"}}
+                    href="https://atomicmassgames.com/star-wars-legion-documents"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    website
+                  </a>
+                  .
                 </DialogContentText>
               </DialogContent>
             </Dialog>
           </div>
-        }
+        )}
         {isKillPointMode && (
           <div className={classes.item}>
-            <KillPointsField
-              killPoints={currentKillPoints}
-            />
+            <KillPointsField killPoints={currentKillPoints} />
           </div>
         )}
-
       </div>
       {currentList.battleForce && (
         <div className={classes.battleForceContainer}>
@@ -188,20 +201,36 @@ function ListHeader() {
             <DialogTitle>{currentList.battleForce} List Requirements</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                The list building rules for the {currentList.battleForce} battleforce is <a style={{ textDecoration: 'none' }} href={battleForcesDict[currentList.battleForce].ruleUrl} target="_blank" rel="noreferrer noopener">here</a>.
+                The list building rules for the {currentList.battleForce} battleforce is{" "}
+                <a
+                  style={{textDecoration: "none"}}
+                  href={battleForcesDict[currentList.battleForce].ruleUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  here
+                </a>
+                .
               </DialogContentText>
-              <br/>
+              <br />
               <DialogContentText>
-                All Star Wars: Legion documents are located on the Atomic Mass Games{' '}
-                <a style={{ textDecoration: 'none' }} href="https://atomicmassgames.com/star-wars-legion-documents" target="_blank" rel="noreferrer noopener">website</a>.
+                All Star Wars: Legion documents are located on the Atomic Mass Games{" "}
+                <a
+                  style={{textDecoration: "none"}}
+                  href="https://atomicmassgames.com/star-wars-legion-documents"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  website
+                </a>
+                .
               </DialogContentText>
             </DialogContent>
           </Dialog>
         </div>
       )}
-
     </div>
   );
-};
+}
 
 export default ListHeader;
