@@ -1,7 +1,7 @@
 import React from "react";
 import {Img} from "react-image";
 
-import {Chip, Typography} from "@material-ui/core";
+import {Chip, Typography} from "@mui/material";
 import symbols from "@legion-hq/constants/symbols";
 
 function StatChip({size, type, value}) {

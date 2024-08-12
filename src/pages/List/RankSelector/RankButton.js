@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Badge, IconButton, Avatar} from "@material-ui/core";
+import {Badge, IconButton, Avatar} from "@mui/material";
 import LargerTooltip from "@legion-hq/common/LargerTooltip";
 import ranks from "@legion-hq/constants/ranks";
 

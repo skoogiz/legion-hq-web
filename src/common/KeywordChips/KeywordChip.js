@@ -1,6 +1,5 @@
 import React from "react";
-import {Chip, Tooltip, Typography} from "@material-ui/core";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import {Chip, ClickAwayListener, Tooltip, Typography} from "@mui/material";
 import keywords from "@legion-hq/constants/keywords";
 
 function KeywordChip({keyword, size}) {

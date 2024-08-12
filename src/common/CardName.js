@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@mui/material";
 import cards from "@legion-hq/constants/cards";
 
 function CardName({id, variant = "body1"}) {

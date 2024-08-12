@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-import {Grid, Divider} from "@material-ui/core";
+import {Grid, Divider} from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import ListContext from "@legion-hq/context/ListContext";
-import CardModal from "@legion-hq/common/CardModal";
+import {CardModal} from "@legion-hq/common/CardModal";
 import themes from "@legion-hq/constants/themes";
 import ListHeader from "./ListHeader";
 import RankSelector from "./RankSelector";

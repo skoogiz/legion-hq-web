@@ -8,10 +8,10 @@ import {
   CardMedia,
   CardActions,
   CardActionArea,
-} from "@material-ui/core";
+} from "@mui/material";
 import clsx from "clsx";
-import {makeStyles} from "@material-ui/core/styles";
-import {ExpandMore as ExpandMoreIcon} from "@material-ui/icons";
+import {makeStyles} from "@mui/styles";
+import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import CardChip from "@legion-hq/common/CardChip";
 import HelpChip from "@legion-hq/common/HelpChip";
 import KeywordChips from "@legion-hq/common/KeywordChips";

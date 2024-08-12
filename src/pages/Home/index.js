@@ -1,10 +1,13 @@
 import React, {useContext, useState, useEffect} from "react";
 import clsx from "clsx";
 import {ErrorBoundary} from "react-error-boundary";
-import {Grid, Typography, Container, Fade, Button, Collapse} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import {Announcement as NewsIcon, ExpandMore as ExpandMoreIcon} from "@material-ui/icons";
-import LoginButton from "./LoginButton";
+import {Grid, Typography, Container, Fade, Button, Collapse} from "@mui/material";
+import {makeStyles} from "@mui/styles";
+import {
+  Announcement as NewsIcon,
+  ExpandMore as ExpandMoreIcon,
+} from "@mui/icons-material";
+import {LoginButton} from "./LoginButton";
 import ListChip from "./ListChip";
 import FactionChip from "./FactionChip";
 import ListChipDropdown from "./ListChipDropdown";

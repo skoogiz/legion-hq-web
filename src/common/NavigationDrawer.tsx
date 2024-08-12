@@ -7,9 +7,9 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-} from "@material-ui/core";
+} from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
-import {Launch as LaunchIcon} from "@material-ui/icons";
+import {Launch as LaunchIcon} from "@mui/icons-material";
 
 function NavDrawerLink({selected, icon, text, handleClick}) {
   return (
@@ -20,7 +20,7 @@ function NavDrawerLink({selected, icon, text, handleClick}) {
   );
 }
 
-function NavigationDrawer() {
+export function NavigationDrawer() {
   const location = useLocation();
   const {pathname} = location;
   const {isDrawerOpen, routes, faction, goToPage, setIsDrawerOpen} =
@@ -166,5 +166,3 @@ function NavigationDrawer() {
     </SwipeableDrawer>
   );
 }
-
-export default NavigationDrawer;

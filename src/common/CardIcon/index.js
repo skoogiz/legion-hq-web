@@ -1,9 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import {Img} from "react-image";
-
-import {makeStyles} from "@material-ui/core/styles";
-import {Skeleton} from "@material-ui/lab";
+import {Skeleton} from "@mui/material";
+import {makeStyles} from "@mui/styles";
 import urls from "@legion-hq/constants/urls";
 
 const useStyles = makeStyles((theme) => ({

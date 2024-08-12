@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import clsx from "clsx";
-import {makeStyles, Typography} from "@material-ui/core";
+import {Typography} from "@mui/material";
+import {makeStyles} from "@mui/styles";
 import ControlPanel from "./ControlPanel";
 import AttackDie from "./AttackDie";
 

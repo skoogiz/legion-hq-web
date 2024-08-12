@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@mui/styles";
 import {
   Typography,
   IconButton,
@@ -12,8 +12,8 @@ import {
   CardActions,
   Grow,
   Divider,
-} from "@material-ui/core";
-import {Add as AddIcon, ExpandMore as ExpandMoreIcon} from "@material-ui/icons";
+} from "@mui/material";
+import {Add as AddIcon, ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import CardChip from "@legion-hq/common/CardChip";
 import KeywordChips from "@legion-hq/common/KeywordChips";
 import CardIcon from "@legion-hq/common/CardIcon";

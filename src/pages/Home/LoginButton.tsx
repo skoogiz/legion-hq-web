@@ -1,15 +1,19 @@
 import React from "react";
-import {Button} from "@material-ui/core";
+import {Button} from "@mui/material";
 import LargerTooltip from "@legion-hq/common/LargerTooltip";
 import DataContext from "@legion-hq/context/DataContext";
 
-function LoginButton({auth}) {
+type Props = {
+  auth: unknown;
+};
+
+export function LoginButton({auth}: Props) {
   const {isLoginDisabled, loginTooltipText, loginButtonText, loginHandler} =
     React.useContext(DataContext);
   return (
     <LargerTooltip arrow title={loginTooltipText}>
       <Button
-        color="default"
+        color="primary"
         variant="contained"
         disabled={isLoginDisabled}
         onClick={loginHandler}
@@ -19,5 +23,3 @@ function LoginButton({auth}) {
     </LargerTooltip>
   );
 }
-
-export default LoginButton;

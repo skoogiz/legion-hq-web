@@ -2,11 +2,11 @@ import React from "react";
 import {
   Divider,
   Typography,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-} from "@material-ui/core";
-import {ExpandMore as ExpandMoreIcon} from "@material-ui/icons";
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
+import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import keywords from "@legion-hq/constants/keywords";
 
 function KeywordsPanel({cardKeywords}) {
@@ -19,11 +19,11 @@ function KeywordsPanel({cardKeywords}) {
   };
   return (
     <React.Fragment>
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography>Keywords</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails style={columnContainerStyles}>
+        </AccordionSummary>
+        <AccordionDetails style={columnContainerStyles}>
           {cardKeywords.map((keyword) => (
             <div key={keyword}>
               <Typography variant="caption" color="textSecondary">
@@ -36,8 +36,8 @@ function KeywordsPanel({cardKeywords}) {
               <Divider />
             </div>
           ))}
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+        </AccordionDetails>
+      </Accordion>
     </React.Fragment>
   );
 }

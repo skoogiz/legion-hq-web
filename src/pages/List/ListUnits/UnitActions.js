@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import {Button, IconButton, Typography} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
+import {Button, IconButton, Typography} from "@mui/material";
+import {makeStyles} from "@mui/styles";
 import {
   PlusOne as PlusOneIcon,
   Add as PlusIcon,
   Remove as NegativeIcon,
   ExposureNeg1 as MinusOneIcon,
   Delete as DeleteIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import {Icon as IconifyIcon} from "@iconify/react";
 
 const useStyles = makeStyles((theme) => ({

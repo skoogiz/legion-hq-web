@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogContentText,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export default function HelpChip({size}) {
   const [isOpen, setIsOpen] = useState(false);

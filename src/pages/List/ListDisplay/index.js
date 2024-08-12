@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {Fade, Typography, Divider} from "@material-ui/core";
+import {Fade, Typography, Divider} from "@mui/material";
 import ListContext from "@legion-hq/context/ListContext";
 import factions from "@legion-hq/constants/factions";
 import cards from "@legion-hq/constants/cards";

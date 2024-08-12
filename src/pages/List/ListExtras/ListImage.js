@@ -3,7 +3,7 @@ import {Img} from "react-image";
 
 import mergeImages from "merge-images";
 import domtoimage from "dom-to-image-more";
-import {Grid, Typography} from "@material-ui/core";
+import {Grid, Typography} from "@mui/material";
 
 function ListImage() {
   const [isLoadingImage, setIsLoadingImage] = useState(true);

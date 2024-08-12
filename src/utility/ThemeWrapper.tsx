@@ -1,10 +1,14 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import {ThemeProvider as MuiThemeProvider} from "@material-ui/styles";
-import {createTheme, responsiveFontSizes} from "@material-ui/core/styles";
+import {CssBaseline} from "@mui/material";
+import {createTheme, ThemeProvider, responsiveFontSizes} from "@mui/material/styles";
 import themes from "@legion-hq/constants/themes";
 
-function ThemeWrapper({children, themeColor}) {
+type Props = {
+  children: React.ReactNode;
+  themeColor: unknown;
+};
+
+function ThemeWrapper({children, themeColor}: Props) {
   const theme = responsiveFontSizes(
     createTheme({
       typography: {useNextVariants: true},
@@ -12,10 +16,10 @@ function ThemeWrapper({children, themeColor}) {
     }),
   );
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       {children}
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 }
 

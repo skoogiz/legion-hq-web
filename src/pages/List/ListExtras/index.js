@@ -5,7 +5,7 @@ import {
   Save as SaveIcon,
   CallSplit as ForkIcon,
   Functions as CalculateIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import DataContext from "@legion-hq/context/DataContext";
 import ListContext from "@legion-hq/context/ListContext";
 import TemplateButton from "./TemplateButton";

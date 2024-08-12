@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {Img} from "react-image";
 
-import {Chip} from "@material-ui/core";
+import {Chip} from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import symbols from "@legion-hq/constants/symbols";
 

@@ -1,6 +1,6 @@
 import React from "react";
-import {Divider, Chip, Button, IconButton, Icon, Typography} from "@material-ui/core";
-import {Clear as ClearIcon} from "@material-ui/icons";
+import {Divider, Chip, Button, IconButton, Icon, Typography} from "@mui/material";
+import {Clear as ClearIcon} from "@mui/icons-material";
 import CardIcon from "@legion-hq/common/CardIcon";
 import cards from "@legion-hq/constants/cards";
 import loadoutIcon from "@legion-hq/assets/loadout.png";

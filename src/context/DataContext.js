@@ -8,11 +8,10 @@ import {
   ViewModule as CardsIcon,
   Announcement as NewsIcon,
   Casino as DiceIcon,
-} from "@material-ui/icons";
-import {Snackbar} from "@material-ui/core";
-import {AlertTitle, Alert} from "@material-ui/lab";
+} from "@mui/icons-material";
+import {AlertTitle, Alert, Snackbar} from "@mui/material";
 // import ErrorFallback from '@legion-hq/common/ErrorFallback';
-import FactionIcon from "@legion-hq/common/FactionIcon";
+import {FactionIcon} from "@legion-hq/common/FactionIcon";
 import urls from "@legion-hq/constants/urls";
 import settings from "@legion-hq/constants/settings";
 import {useAuth0} from "@auth0/auth0-react";

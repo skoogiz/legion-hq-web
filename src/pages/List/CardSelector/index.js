@@ -1,6 +1,5 @@
 import React from "react";
-import Fade from "@material-ui/core/Fade";
-import Typography from "@material-ui/core/Typography";
+import {Fade, Typography} from "@mui/material";
 import ListContext from "@legion-hq/context/ListContext";
 import LegionCard from "@legion-hq/common/LegionCard";
 import SelectorHeader from "./SelectorHeader";

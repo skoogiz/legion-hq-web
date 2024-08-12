@@ -1,7 +1,7 @@
 import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
-import Alert from "@material-ui/lab/Alert";
-import CardModal from "@legion-hq/common/CardModal";
+import {makeStyles} from "@mui/styles";
+import {Alert} from "@mui/material";
+import {CardModal} from "@legion-hq/common/CardModal";
 import cards from "@legion-hq/constants/cards";
 import BasicCardChips from "./BasicCardChips";
 

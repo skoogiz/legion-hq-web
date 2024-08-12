@@ -1,4 +1,4 @@
-import {enUS, frFR, deDE, itIT, ptBR, ptPT, esES} from "@material-ui/core/locale";
+import {enUS, frFR, deDE, itIT, ptBR, ptPT, esES} from "@mui/material/locale";
 
 const locales = {
   English: enUS,

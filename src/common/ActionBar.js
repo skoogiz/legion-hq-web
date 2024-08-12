@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
-import {AppBar, Toolbar, IconButton, InputBase} from "@material-ui/core";
-import {alpha, makeStyles} from "@material-ui/core/styles";
-import {Menu as MenuIcon, Search as SearchIcon} from "@material-ui/icons";
+import {AppBar, Toolbar, IconButton, InputBase, alpha} from "@mui/material";
+import {makeStyles} from "@mui/styles";
+import {Menu as MenuIcon, Search as SearchIcon} from "@mui/icons-material";
 import DataContext from "@legion-hq/context/DataContext";
 import ftLogoLight from "@legion-hq/assets/ftLogoLight.png";
 import ftLogoDark from "@legion-hq/assets/ftLogoDark.png";

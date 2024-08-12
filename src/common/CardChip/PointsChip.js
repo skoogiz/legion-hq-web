@@ -1,5 +1,5 @@
 import React from "react";
-import {Chip, Typography} from "@material-ui/core";
+import {Chip, Typography} from "@mui/material";
 
 function PointsChip({size, points}) {
   const label = `${points} ${points === 1 ? "point" : "points"}`;

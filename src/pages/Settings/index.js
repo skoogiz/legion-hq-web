@@ -8,7 +8,7 @@ import {
   Select,
   MenuItem,
   Fade,
-} from "@material-ui/core";
+} from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import settings from "@legion-hq/constants/settings";
 

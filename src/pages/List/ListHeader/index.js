@@ -8,9 +8,9 @@ import {
   DialogTitle,
   DialogContent,
   DialogContentText,
-} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import {Info as InfoIcon, Warning as WarningIcon} from "@material-ui/icons";
+} from "@mui/material";
+import {Info as InfoIcon, Warning as WarningIcon} from "@mui/icons-material";
+import {makeStyles} from "@mui/styles";
 import ListContext from "@legion-hq/context/ListContext";
 import legionModes from "@legion-hq/constants/legionModes";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";

@@ -1,20 +1,26 @@
 import React from "react";
 import {
   useMediaQuery,
+  useTheme,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogContentText,
   DialogActions,
   Button,
-} from "@material-ui/core";
-import {useTheme} from "@material-ui/core/styles";
+} from "@mui/material";
 import cards from "@legion-hq/constants/cards";
-import ImagePanel from "./ImagePanel";
+import {ImagePanel} from "./ImagePanel";
 import KeywordsPanel from "./KeywordsPanel";
 import HistoryPanel from "./HistoryPanel";
 
-function CardModal({id, isOpen, handleClose}) {
+type Props = {
+  id: string;
+  isOpen: boolean;
+  handleClose: () => void;
+};
+
+export function CardModal({id, isOpen, handleClose}: Props) {
   const theme = useTheme();
   const isFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
   if (!id) return null;
@@ -45,5 +51,3 @@ function CardModal({id, isOpen, handleClose}) {
     </Dialog>
   );
 }
-
-export default CardModal;

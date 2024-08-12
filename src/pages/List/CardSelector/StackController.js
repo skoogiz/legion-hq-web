@@ -1,6 +1,6 @@
 import React from "react";
-import {Typography, IconButton} from "@material-ui/core";
-import {Add as AddIcon, Remove as MinusIcon} from "@material-ui/icons";
+import {Typography, IconButton} from "@mui/material";
+import {Add as AddIcon, Remove as MinusIcon} from "@mui/icons-material";
 
 function StackController({
   stackSize,

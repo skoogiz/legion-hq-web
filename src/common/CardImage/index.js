@@ -1,8 +1,7 @@
 import React from "react";
 import {Img} from "react-image";
-
-import {Skeleton} from "@material-ui/lab";
-import {makeStyles} from "@material-ui/styles";
+import {Skeleton} from "@mui/material";
+import {makeStyles} from "@mui/styles";
 import cards from "@legion-hq/constants/cards";
 import urls from "@legion-hq/constants/urls";
 

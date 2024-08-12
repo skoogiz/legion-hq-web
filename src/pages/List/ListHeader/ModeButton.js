@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-import {Chip, Menu, MenuItem} from "@material-ui/core";
+import {Chip, Menu, MenuItem} from "@mui/material";
 import LargerTooltip from "@legion-hq/common/LargerTooltip";
 import legionModes from "@legion-hq/constants/legionModes";
 

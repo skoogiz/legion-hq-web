@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import {useMediaQuery, Chip, TextField} from "@material-ui/core";
-import {useTheme} from "@material-ui/core/styles";
-import {Description as TextIcon} from "@material-ui/icons";
+import {useMediaQuery, Chip, TextField} from "@mui/material";
+import {useTheme} from "@mui/styles";
+import {Description as TextIcon} from "@mui/icons-material";
 import {generateTTSJSONText} from "@legion-hq/constants/listOperations";
 import DialogModal from "./DialogModal";
 import ClipboardButton from "./ClipboardButton";

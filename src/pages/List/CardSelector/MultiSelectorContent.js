@@ -1,7 +1,8 @@
 import React from "react";
 import clsx from "clsx";
-import {makeStyles, Collapse, Typography, Divider, IconButton} from "@material-ui/core";
-import {ExpandMore as ExpandMoreIcon} from "@material-ui/icons";
+import {Collapse, Typography, Divider, IconButton} from "@mui/material";
+import {makeStyles} from "@mui/styles";
+import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import LegionCard from "@legion-hq/common/LegionCard";
 
 const useStyles = makeStyles((theme) => ({
