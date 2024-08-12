@@ -1,7 +1,15 @@
 import React from "react";
 import {Chip} from "@mui/material";
+import {type LegionCard} from "@legion-hq/types";
 
-function ChipCard({card, handleClick, chipSize, handleDelete}) {
+type Props = {
+  card: LegionCard;
+  handleClick: (event: React.SyntheticEvent) => void;
+  chipSize?: "medium" | "small";
+  handleDelete?: (event: React.SyntheticEvent) => void;
+};
+
+export function ChipCard({card, handleClick, chipSize, handleDelete}: Props) {
   const {cardName, displayName} = card;
   let pips = "";
   if (card.cardSubtype === "1") pips = "•";
@@ -13,12 +21,10 @@ function ChipCard({card, handleClick, chipSize, handleDelete}) {
     <Chip
       clickable
       size={chipSize}
-      label={label}
+      label={label ?? ""}
       onClick={handleClick}
       onDelete={handleDelete}
       style={{marginBottom: 4, marginLeft: 4}}
     />
   );
 }
-
-export default ChipCard;

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
-import LegionCard from "@legion-hq/common/LegionCard";
+import {LegionCard} from "@legion-hq/common/LegionCard";
 
 const useStyles = makeStyles((theme) => ({
   expand: {

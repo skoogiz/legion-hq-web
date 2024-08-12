@@ -13,7 +13,7 @@ import ListObjectives from "./ListObjectives";
 import ListExtras from "./ListExtras";
 import ListDisplay from "./ListDisplay";
 import ListId from "./ListId";
-import CardSelector from "./CardSelector";
+import {CardSelector} from "./CardSelector";
 
 function ListLayout() {
   const {userSettings} = useContext(DataContext);

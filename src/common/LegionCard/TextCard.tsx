@@ -1,6 +1,4 @@
-import React from "react";
-import clsx from "clsx";
-import {makeStyles} from "@mui/styles";
+import * as React from "react";
 import {
   Typography,
   IconButton,
@@ -19,27 +17,25 @@ import KeywordChips from "@legion-hq/common/KeywordChips";
 import CardIcon from "@legion-hq/common/CardIcon";
 import IconBadge from "@legion-hq/common/IconBadge";
 import UpgradeBar from "@legion-hq/common/UpgradeBar";
+import {type LegionCard} from "@legion-hq/types";
 
-function capitalizeFirstLetters(words) {
+interface CardProps {
+  card: LegionCard;
+  chipSize?: "medium" | "small";
+}
+
+interface ClickableCardProps extends CardProps {
+  handleClick: (event: React.SyntheticEvent) => void;
+}
+
+function capitalizeFirstLetters(words: string) {
   const strings = words.split(" ").map((string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   });
   return strings.join(" ");
 }
 
-const useStyles = makeStyles((theme) => ({
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {transform: "rotate(180deg)"},
-  card: {width: 315, marginRight: 4, marginBottom: 4},
-}));
-
-function ReverseWrapper({children}) {
+function ReverseWrapper({children}: {children: React.ReactNode}) {
   const containerStyle = {
     display: "flex",
     flexWrap: "wrap",
@@ -48,7 +44,7 @@ function ReverseWrapper({children}) {
   return <div style={containerStyle}>{children}</div>;
 }
 
-function TextCardHeader({card, handleClick}) {
+function TextCardHeader({card, handleClick}: ClickableCardProps) {
   if (card.cardType === "unit") {
     return <UnitCardHeader card={card} handleClick={handleClick} />;
   } else if (card.cardType === "upgrade") {
@@ -64,7 +60,7 @@ function TextCardHeader({card, handleClick}) {
   }
 }
 
-function TextCardContent({card, chipSize}) {
+function TextCardContent({card, chipSize}: CardProps) {
   if (card.cardType === "unit") {
     return <UnitCardContent card={card} chipSize={chipSize} />;
   } else if (card.cardType === "upgrade") {
@@ -80,7 +76,7 @@ function TextCardContent({card, chipSize}) {
   }
 }
 
-function CounterpartCardHeader({card, handleClick}) {
+function CounterpartCardHeader({card, handleClick}: ClickableCardProps) {
   const {isUnique, displayName, cardName, imageName} = card;
   const avatar = <CardIcon cardName={cardName} cardType="unit" imageName={imageName} />;
   const action = (
@@ -99,14 +95,14 @@ function CounterpartCardHeader({card, handleClick}) {
   );
 }
 
-function BattleCardHeader({card, handleClick}) {
+function BattleCardHeader({card, handleClick}: ClickableCardProps) {
   const {cardName, cardType} = card;
   const action = (
     <IconButton size="medium" onClick={handleClick} style={{margin: 8}}>
       <AddIcon />
     </IconButton>
   );
-  const isSkirmish = card.keywords.includes("Skirmish");
+  const isSkirmish = card.keywords?.includes("Skirmish");
   return (
     <CardHeader
       title={cardName}
@@ -119,7 +115,7 @@ function BattleCardHeader({card, handleClick}) {
   );
 }
 
-function CommandCardHeader({card, handleClick}) {
+function CommandCardHeader({card, handleClick}: ClickableCardProps) {
   const {cardName, cardType, imageName} = card;
   const avatar = (
     <CardIcon cardName={cardName} cardType={cardType} imageName={imageName} />
@@ -140,7 +136,7 @@ function CommandCardHeader({card, handleClick}) {
   );
 }
 
-function UpgradeCardHeader({card, handleClick}) {
+function UpgradeCardHeader({card, handleClick}: ClickableCardProps) {
   const {isUnique, displayName, cardName, cardType, cardSubtype, imageName} = card;
   const avatar = (
     <IconBadge
@@ -164,7 +160,7 @@ function UpgradeCardHeader({card, handleClick}) {
   );
 }
 
-function UnitCardHeader({card, handleClick}) {
+function UnitCardHeader({card, handleClick}: ClickableCardProps) {
   const {rank, isUnique, displayName, cardName, cardSubtype} = card;
   const avatar = (
     <IconBadge
@@ -194,7 +190,7 @@ function UnitCardHeader({card, handleClick}) {
   );
 }
 
-function CounterpartCardContent({card, chipSize}) {
+function CounterpartCardContent({card, chipSize}: CardProps) {
   const {cost, wounds} = card;
   return (
     <CardContent style={{padding: 8, textAlign: "right"}}>
@@ -217,7 +213,7 @@ function CounterpartCardContent({card, chipSize}) {
   );
 }
 
-function CommandCardContent({card, chipSize}) {
+function CommandCardContent({card}: CardProps) {
   const {cardSubtype} = card;
   return (
     <CardContent style={{padding: 8, textAlign: "right"}}>
@@ -234,7 +230,7 @@ function CommandCardContent({card, chipSize}) {
   );
 }
 
-function BattleCardContent({card, chipSize}) {
+function BattleCardContent({card}: CardProps) {
   const {cardSubtype} = card;
   return (
     <CardContent style={{padding: 8, textAlign: "right"}}>
@@ -251,7 +247,7 @@ function BattleCardContent({card, chipSize}) {
   );
 }
 
-function UpgradeCardContent({card, chipSize}) {
+function UpgradeCardContent({card, chipSize}: CardProps) {
   const {cost} = card;
   return (
     <CardContent style={{padding: 8, textAlign: "right"}}>
@@ -266,7 +262,7 @@ function UpgradeCardContent({card, chipSize}) {
   );
 }
 
-function UnitCardContent({card, chipSize}) {
+function UnitCardContent({card, chipSize}: CardProps) {
   const {cost, wounds, resilience, courage, speed, defense, surges, upgradeBar} = card;
   return (
     <CardContent style={{padding: 8, textAlign: "right"}}>
@@ -305,16 +301,31 @@ function UnitCardContent({card, chipSize}) {
   );
 }
 
-function TextCardActions({card, chipSize, isExpanded, handleExpandClick}) {
-  const classes = useStyles();
+function TextCardActions({
+  isExpanded,
+  handleExpandClick,
+}: {
+  isExpanded: boolean;
+  handleExpandClick: (event: React.SyntheticEvent) => void;
+}) {
   return (
     <CardActions disableSpacing style={{padding: "0 8px 8px"}}>
       <IconButton
         size="medium"
-        className={clsx(classes.expand, {
-          [classes.expandOpen]: isExpanded,
-        })}
         onClick={handleExpandClick}
+        sx={[
+          {
+            transform: "rotate(0deg)",
+            marginLeft: "auto",
+            transition: (theme) =>
+              theme.transitions.create("transform", {
+                duration: theme.transitions.duration.shortest,
+              }),
+          },
+          isExpanded && {
+            transform: "rotate(180deg)",
+          },
+        ]}
       >
         <ExpandMoreIcon />
       </IconButton>
@@ -322,7 +333,15 @@ function TextCardActions({card, chipSize, isExpanded, handleExpandClick}) {
   );
 }
 
-function TextCardCollapsedContent({card, chipSize, isExpanded, handleCardZoom}) {
+function TextCardCollapsedContent({
+  card,
+  chipSize,
+  isExpanded,
+  handleCardZoom,
+}: CardProps & {
+  isExpanded: boolean;
+  handleCardZoom: (event: React.SyntheticEvent) => void;
+}) {
   const {keywords} = card;
   return (
     <Collapse unmountOnExit timeout="auto" in={isExpanded}>
@@ -340,14 +359,19 @@ function TextCardCollapsedContent({card, chipSize, isExpanded, handleCardZoom}) 
   );
 }
 
-function TextCard({card, handleClick, handleCardZoom}) {
+type TextCardProps = {
+  card: LegionCard;
+  handleClick?: (event: React.SyntheticEvent) => void;
+  handleCardZoom: (event: React.SyntheticEvent) => void;
+};
+
+export function TextCard({card, handleClick, handleCardZoom}: TextCardProps) {
   const chipSize = "small";
-  const classes = useStyles();
   const [isExpanded, setIsExpanded] = React.useState(false);
   const handleExpandClick = () => setIsExpanded(!isExpanded);
   return (
     <Grow unmountOnExit in={true}>
-      <Card className={classes.card}>
+      <Card sx={{width: 315, marginRight: 4, marginBottom: 4}}>
         <TextCardHeader card={card} handleClick={handleClick} />
         <TextCardContent card={card} chipSize={chipSize} />
         <TextCardActions
@@ -366,5 +390,3 @@ function TextCard({card, handleClick, handleCardZoom}) {
     </Grow>
   );
 }
-
-export default TextCard;

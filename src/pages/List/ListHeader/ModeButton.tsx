@@ -82,7 +82,7 @@ export function ModeButton({
           Storm Tide: Special Forces Division
         </MenuItem>
       </Menu>
-      <LargerTooltip title={legionModes[currentMode].name}>
+      <LargerTooltip title={legionModes[currentMode].name ?? tooltip}>
         <Chip
           clickable
           variant={points > maxPoints ? "filled" : "outlined"}

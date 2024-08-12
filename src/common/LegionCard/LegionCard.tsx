@@ -2,10 +2,20 @@ import React, {useContext} from "react";
 import DataContext from "@legion-hq/context/DataContext";
 import cards from "@legion-hq/constants/cards";
 import ImageCard from "./ImageCard";
-import TextCard from "./TextCard";
-import ChipCard from "./ChipCard";
+import {TextCard} from "./TextCard";
+import {ChipCard} from "./ChipCard";
 
-function LegionCard({
+type Props = {
+  id: string;
+  isBasic?: boolean;
+  isSelected?: boolean;
+  size?: "medium" | "small";
+  handleClick?: (event: React.SyntheticEvent) => void;
+  handleCardZoom: (event: React.SyntheticEvent) => void;
+  handleDelete: (event: React.SyntheticEvent) => void;
+};
+
+export function LegionCard({
   id,
   isBasic = false,
   isSelected = false,
@@ -13,7 +23,7 @@ function LegionCard({
   handleClick,
   handleCardZoom,
   handleDelete,
-}) {
+}: Props) {
   const {userSettings} = useContext(DataContext);
   const card = cards[id];
   if (isBasic) {
@@ -37,7 +47,7 @@ function LegionCard({
   } else if (userSettings.cardStyle === "text") {
     return (
       <TextCard
-        isSelected={isSelected}
+        // isSelected={isSelected}
         card={card}
         handleClick={isSelected ? undefined : handleClick}
         handleCardZoom={handleCardZoom}
@@ -47,5 +57,3 @@ function LegionCard({
     return null;
   }
 }
-
-export default LegionCard;

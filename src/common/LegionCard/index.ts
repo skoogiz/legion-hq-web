@@ -1,0 +1,1 @@
+export {LegionCard} from "./LegionCard";
