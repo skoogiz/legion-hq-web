@@ -14,10 +14,10 @@ import {makeStyles} from "@mui/styles";
 import ListContext from "@legion-hq/context/ListContext";
 import legionModes from "@legion-hq/constants/legionModes";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
-import ModeButton from "./ModeButton";
-import TitleField from "./TitleField";
-import KillPointsField from "./KillPointsField";
-import FactionButton from "./FactionButton";
+import {ModeButton} from "./ModeButton";
+import {TitleField} from "./TitleField";
+import {KillPointsField} from "./KillPointsField";
+import {FactionButton} from "./FactionButton";
 
 const useStyles = makeStyles({
   container: {
@@ -113,11 +113,7 @@ function ListHeader() {
           })}
         </Menu>
         <div className={classes.item}>
-          <FactionButton
-            faction={currentList.faction}
-            handleFactionMenuOpen={handleFactionMenuOpen}
-            handleFactionMenuClose={handleFactionMenuClose}
-          />
+          <FactionButton faction={currentList.faction} onClick={handleFactionMenuOpen} />
         </div>
         <div className={classes.item}>
           <TitleField

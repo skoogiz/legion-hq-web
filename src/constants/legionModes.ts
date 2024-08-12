@@ -1,4 +1,6 @@
-const legionModes = {
+import {LegionMode, LegionModeInfo} from "@legion-hq/types";
+
+const legionModes: Record<LegionMode, LegionModeInfo> = {
   "500-point mode": {
     name: "Skirmish Format",
     maxPoints: 500,

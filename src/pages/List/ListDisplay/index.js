@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {Fade, Typography, Divider} from "@mui/material";
 import ListContext from "@legion-hq/context/ListContext";
-import factions from "@legion-hq/constants/factions";
+import {factions} from "@legion-hq/constants";
 import cards from "@legion-hq/constants/cards";
 import CardImage from "./CardImage";
 

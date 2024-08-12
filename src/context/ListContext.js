@@ -35,7 +35,7 @@ import {
   validateList,
   getRankLimits,
 } from "@legion-hq/constants/listOperations";
-import listTemplate from "@legion-hq/constants/listTemplate";
+import {createListTemplate} from "@legion-hq/constants/listTemplate";
 
 const ListContext = createContext();
 const httpClient = Axios.create();
@@ -46,7 +46,7 @@ function isValidListId(listId) {
 }
 
 export function ListProvider({
-  width,
+  isSmallScreen,
   children,
   slug,
   listHash,
@@ -119,16 +119,16 @@ export function ListProvider({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentList]);
   useEffect(() => {
-    if (width === "xs" || width === "sm") {
+    if (isSmallScreen) {
       setLeftPaneWidth(12);
       setRightPaneWidth(0);
     } else {
       setLeftPaneWidth(6);
       setRightPaneWidth(6);
     }
-  }, [width]);
+  }, [isSmallScreen]);
   useEffect(() => {
-    if (width === "xs" || width === "sm") {
+    if (isSmallScreen) {
       if (cardPaneFilter.action === "DISPLAY") {
         setLeftPaneWidth(12);
         setRightPaneWidth(0);
@@ -138,7 +138,7 @@ export function ListProvider({
       }
     }
     setStackSize(1);
-  }, [width, cardPaneFilter]);
+  }, [isSmallScreen, cardPaneFilter]);
 
   const updateThenValidateList = (list) => {
     const rankLimits = getRankLimits(list);
@@ -179,9 +179,19 @@ export function ListProvider({
   const handleToggleIsApplyToAll = () => setIsApplyToAll(!isApplyToAll);
   const handleClearList = () => {
     setCardPaneFilter({action: "DISPLAY"});
-    const newList = JSON.parse(JSON.stringify(listTemplate));
-    if (currentList.faction === "fringe") newList.battleForce = "Shadow Collective";
-    updateThenValidateList({...newList, faction: currentList.faction});
+    const newList = JSON.parse(
+      JSON.stringify(
+        createListTemplate(
+          currentList.faction === "fringe"
+            ? {
+                faction: currentList.faction,
+                battleForce: "Shadow Collective",
+              }
+            : {faction: currentList.faction},
+        ),
+      ),
+    );
+    updateThenValidateList(newList);
   };
   const handleChangeTitle = (title) =>
     setCurrentList({...changeListTitle(currentList, title)});
@@ -262,7 +272,7 @@ export function ListProvider({
     updateThenValidateList({...newList});
   };
   const handleAddUnit = (unitId) => {
-    if (width === "xs" || width === "sm") {
+    if (isSmallScreen) {
       setCardPaneFilter({action: "DISPLAY"});
     }
     setStackSize(1);
@@ -446,7 +456,7 @@ export function ListProvider({
     handleCardZoom,
   };
   const viewProps = {
-    width,
+    isSmallScreen,
     cardPaneFilter,
     setCardPaneFilter,
     leftPaneWidth,

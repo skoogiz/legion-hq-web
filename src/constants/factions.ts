@@ -8,8 +8,9 @@ import separatistsWhite from "@legion-hq/assets/factions/separatistsWhite.svg";
 import separatistsBlack from "@legion-hq/assets/factions/separatistsBlack.svg";
 import fringeWhite from "@legion-hq/assets/factions/fringeWhite.svg";
 import fringeBlack from "@legion-hq/assets/factions/fringeBlack.svg";
+import type {FactionInfo} from "@legion-hq/types";
 
-const factions = {
+const factions: Record<string, FactionInfo> = {
   rebels: {
     name: "Rebels",
     singular: "Rebel",

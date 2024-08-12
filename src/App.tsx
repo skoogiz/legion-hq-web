@@ -1,5 +1,5 @@
 import * as React from "react";
-import Pages from "./Pages";
+import {Pages} from "./Pages";
 import DataContext from "@legion-hq/context/DataContext";
 import ActionBar from "@legion-hq/common/ActionBar";
 import {NavigationDrawer} from "@legion-hq/common/NavigationDrawer";

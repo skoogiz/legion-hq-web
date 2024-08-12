@@ -20,7 +20,7 @@ function ListLayout() {
   const {themeColor} = userSettings;
   const palette = themes.palettes[themeColor];
   const {
-    width,
+    isSmallScreen,
     leftPaneWidth,
     rightPaneWidth,
     isModalOpen,
@@ -28,7 +28,7 @@ function ListLayout() {
     handleCloseModal,
   } = useContext(ListContext);
 
-  const isMobile = width === "xs" || width === "sm";
+  const isMobile = isSmallScreen;
 
   const paneStyles = {
     padding: "0 2px 2px",

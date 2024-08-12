@@ -3,7 +3,7 @@ import cards, {cardsIdsByType as cardIdsByType} from "@legion-hq/constants/cards
 import ranks from "@legion-hq/constants/ranks";
 import legionModes from "@legion-hq/constants/legionModes";
 import interactions from "@legion-hq/constants/cardInteractions";
-import listTemplate from "@legion-hq/constants/listTemplate";
+import {createListTemplate, createUnitCount} from "@legion-hq/constants/listTemplate";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
 
 function countPoints(list) {
@@ -101,7 +101,7 @@ function consolidate(list) {
   list.hasFieldCommander = false;
   list.commanders = [];
   list.uniques = [];
-  list.unitCounts = {...listTemplate.unitCounts};
+  list.unitCounts = createUnitCount();
   for (let i = 0; i < list.units.length; i++) {
     const unit = list.units[i];
     if (!unit.loadoutUpgrades) unit.loadoutUpgrades = [];
@@ -1709,8 +1709,7 @@ function segmentToUnitObject(unitIndex, segment) {
 }
 
 function convertHashToList(faction, url) {
-  let list = JSON.parse(JSON.stringify(listTemplate));
-  list.faction = faction;
+  let list = JSON.parse(JSON.stringify(createListTemplate({faction})));
   list.contingencies = [];
   let segments;
   if (url.includes(":")) {

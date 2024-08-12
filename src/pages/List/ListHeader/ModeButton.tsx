@@ -1,13 +1,29 @@
-import React, {useState} from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {Chip, Menu, MenuItem} from "@mui/material";
 import LargerTooltip from "@legion-hq/common/LargerTooltip";
 import legionModes from "@legion-hq/constants/legionModes";
+import {LegionMode} from "@legion-hq/types";
 
-function ModeButton({currentMode, points, maxPoints, tooltip, handleChangeMode}) {
-  const [anchorEl, setAnchorEl] = useState();
-  const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
-  const handleCloseMenu = () => setAnchorEl();
+type Props = {
+  currentMode: LegionMode;
+  points: number;
+  maxPoints: number;
+  tooltip?: string;
+  handleChangeMode: (mode: string) => void;
+};
+
+export function ModeButton({
+  currentMode,
+  points,
+  maxPoints,
+  tooltip = "Toggle between Skirmish (500), Standard (800), and Grand Army (1600) formats.",
+  handleChangeMode,
+}: Props) {
+  const [anchorEl, setAnchorEl] = React.useState<Element | undefined>();
+  const handleOpenMenu = (event: React.SyntheticEvent) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseMenu = () => setAnchorEl(undefined);
   return (
     <React.Fragment>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
@@ -69,7 +85,7 @@ function ModeButton({currentMode, points, maxPoints, tooltip, handleChangeMode})
       <LargerTooltip title={legionModes[currentMode].name}>
         <Chip
           clickable
-          variant={points > maxPoints ? "default" : "outlined"}
+          variant={points > maxPoints ? "filled" : "outlined"}
           label={`${points}/${maxPoints}`}
           onClick={handleOpenMenu}
           style={points > maxPoints ? {backgroundColor: "#f44336"} : {}}
@@ -78,17 +94,3 @@ function ModeButton({currentMode, points, maxPoints, tooltip, handleChangeMode})
     </React.Fragment>
   );
 }
-
-ModeButton.defaultProps = {
-  tooltip:
-    "Toggle between Skirmish (500), Standard (800), and Grand Army (1600) formats.",
-};
-
-ModeButton.propTypes = {
-  tooltip: PropTypes.string,
-  points: PropTypes.number.isRequired,
-  maxPoints: PropTypes.number.isRequired,
-  handleChangeMode: PropTypes.func.isRequired,
-};
-
-export default ModeButton;

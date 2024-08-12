@@ -5,7 +5,7 @@ import {
   PlusOne as PlusOneIcon,
   Add as PlusIcon,
   Remove as NegativeIcon,
-  ExposureNeg1 as MinusOneIcon,
+  RemoveCircleOutline as MinusOneIcon,
   Delete as DeleteIcon,
 } from "@mui/icons-material";
 import {Icon as IconifyIcon} from "@iconify/react";
