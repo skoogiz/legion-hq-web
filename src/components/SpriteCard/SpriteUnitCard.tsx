@@ -1,54 +1,47 @@
 import * as React from "react";
-import {ValueX, ValueY} from "./SpriteCard.types";
+import {SpriteCardProps} from "./SpriteCard.types";
+import {SpriteCard} from "./SpriteCard";
+import {
+  createSpriteCardOptions,
+  PLAYER_CARDS_FILE,
+  UNIT_CARD_SIZE,
+} from "./SpriteCard.utils";
 
-type Props = {
-  src: string;
-  spriteX: ValueX;
-  spriteY: ValueY;
-};
-
-const getPositionX = (x: ValueX) => {
+const getPositionX = (x: number) => {
   switch (x) {
-    case 1:
-      return "-70px";
-
-    default:
+    case 2:
       return "-396px";
+    default:
+      return "-70px";
   }
 };
 
-const getPositionY = (y: ValueY) => {
+const getPositionY = (y: number) => {
   switch (y) {
-    case 1:
-      return "-47px";
-    case 2:
-      return "-277px";
+    case 4:
+      return "-736px";
     case 3:
       return "-506px";
+    case 2:
+      return "-277px";
     default:
-      return "-736px";
+      return "-47px";
   }
 };
 
-const getBackgroundPosition = (x: ValueX, y: ValueY): React.CSSProperties => ({
-  backgroundPositionX: getPositionX(x),
-  backgroundPositionY: getPositionY(y),
-});
-
-export function SpriteUnitCard({src, spriteX, spriteY}: Props) {
-  const baseStyle: React.CSSProperties = {
-    background: `url(${src})`,
-    display: "inline-block",
-    height: "228px",
-    width: "325px",
-  };
-
+export function SpriteUnitCard({src, spriteX, spriteY, options = {}}: SpriteCardProps) {
   return (
-    <div
-      style={{
-        ...baseStyle,
-        ...getBackgroundPosition(spriteX, spriteY),
-      }}
-    ></div>
+    <SpriteCard
+      src={src}
+      spriteX={spriteX}
+      spriteY={spriteY}
+      getPositionX={getPositionX}
+      getPositionY={getPositionY}
+      options={createSpriteCardOptions({
+        ...PLAYER_CARDS_FILE,
+        ...UNIT_CARD_SIZE,
+        ...options,
+      })}
+    />
   );
 }

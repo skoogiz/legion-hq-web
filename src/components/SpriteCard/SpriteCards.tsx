@@ -9,18 +9,11 @@ import {
 import {parseUnitSpriteId} from "./SpriteCard.utils";
 import {SpriteUnitCard} from "./SpriteUnitCard";
 import {DoubleSidedCard} from "./DoubleSidedCard";
+import {Grid} from "@mui/material";
 
 export function SpriteCards() {
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: 10,
-        flexWrap: "wrap",
-        justifyContent: "center",
-        margin: "20px 0",
-      }}
-    >
+    <Grid container spacing={2}>
       {[
         ...rebelUnitCardIds,
         ...empireUnitCardIds,
@@ -30,8 +23,8 @@ export function SpriteCards() {
       ]
         .map(parseUnitSpriteId)
         .filter((card) => !!card)
-        .map(({front, back}) => (
-          <>
+        .map(({front, back}, index) => (
+          <Grid key={`flipCard_${index}`} item xs={12} md={6} lg={4} xl={3}>
             <DoubleSidedCard
               front={
                 <SpriteUnitCard
@@ -43,30 +36,14 @@ export function SpriteCards() {
               }
               back={
                 <SpriteUnitCard
-                  src={back.file}
-                  spriteX={back.sprite.x}
-                  spriteY={back.sprite.y}
+                  src={back?.file ?? front.file}
+                  spriteX={back?.sprite.x ?? front.sprite.x}
+                  spriteY={back?.sprite.y ?? front.sprite.y}
                 />
               }
-              // front={<div>Front</div>}
-              // back={<div>Back</div>}
             />
-
-            {/* <SpriteUnitCard
-              {...front}
-              src={front.file}
-              spriteX={front.sprite.x}
-              spriteY={front.sprite.y}
-            />
-            {back && (
-              <SpriteUnitCard
-                src={back.file}
-                spriteX={back.sprite.x}
-                spriteY={back.sprite.y}
-              />
-            )} */}
-          </>
+          </Grid>
         ))}
-    </div>
+    </Grid>
   );
 }

@@ -1,29 +1,32 @@
 import * as React from "react";
+import {Button} from "@mui/material";
+import CachedIcon from "@mui/icons-material/Cached";
 
 type Props = {
   front: JSX.Element;
   back: JSX.Element;
+  flipOnClick?: boolean;
+  noButton?: boolean;
 };
 
-export function DoubleSidedCard({front, back}: Props) {
+export function DoubleSidedCard({
+  front,
+  back,
+  flipOnClick = false,
+  noButton = false,
+}: Props) {
   const [flipped, setFlipped] = React.useState<boolean>(false);
 
   const toggleFlipped = () => setFlipped(!flipped);
 
   const cardFace: React.CSSProperties = {
     boxSizing: "border-box",
-    borderRadius: "0.25rem",
     height: "100%",
-    paddingLeft: "0.5rem",
-    paddingRight: "0.5rem",
-    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
     width: "100%",
     transition: "transform 0.5s ease",
     position: "absolute",
-    //   -webkit-backface-visibility: hidden;
     WebkitBackfaceVisibility: "hidden",
     backfaceVisibility: "hidden",
-    //   backgroundColor: #ebf4ff;
   };
 
   return (
@@ -39,14 +42,11 @@ export function DoubleSidedCard({front, back}: Props) {
     >
       <div
         style={{
-          //   margin-top: 1rem;
-          //   height: 300px;
-          //   width: 250px;
           height: "228px",
           width: "325px",
           position: "relative",
-          //   border-radius: 0.25rem;
         }}
+        onClick={flipOnClick || noButton ? () => toggleFlipped() : undefined}
       >
         <div
           className="back cardBack"
@@ -71,9 +71,20 @@ export function DoubleSidedCard({front, back}: Props) {
           {front}
         </div>
       </div>
-      <button type="button" onClick={() => toggleFlipped()}>
-        {flipped ? "Front" : "Back"}
-      </button>
+      {!noButton && (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          startIcon={<CachedIcon />}
+          onClick={() => toggleFlipped()}
+          sx={{
+            borderRadius: 999,
+          }}
+        >
+          Flip
+        </Button>
+      )}
     </div>
   );
 }

@@ -1,7 +1,3 @@
-export type ValueX = 1 | 2;
-
-export type ValueY = 1 | 2 | 3 | 4;
-
 export type SpriteId = `${number}_${number}_${number}`;
 
 export interface SpriteImage {
@@ -9,11 +5,22 @@ export interface SpriteImage {
   sprite: {x: number; y: number};
 }
 
-export interface UnitCardImage extends SpriteImage {
-  sprite: {x: ValueX; y: ValueY};
-}
-
-export type UnitCard = {
-  front: UnitCardImage;
-  back?: UnitCardImage;
+export type SpriteCard = {
+  front: SpriteImage;
+  back?: SpriteImage;
 };
+
+export type SpriteCardOptions = {
+  canvasHeight: number;
+  canvasWidth: number;
+  imageHeight: number;
+  imageWidth: number;
+  scale: number;
+};
+
+export interface SpriteCardProps {
+  src: string;
+  spriteX: number;
+  spriteY: number;
+  options?: Partial<SpriteCardOptions>;
+}

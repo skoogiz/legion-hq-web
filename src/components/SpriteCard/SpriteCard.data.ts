@@ -1,7 +1,7 @@
-import {UnitCard} from "./SpriteCard.types";
+import {SpriteCard} from "./SpriteCard.types";
 import {getSrc} from "./SpriteCard.utils";
 
-export const rebelUnitCards: Array<UnitCard> = [
+export const rebelUnitCards: Array<SpriteCard> = [
   {
     front: {file: getSrc(1), sprite: {x: 1, y: 1}},
     back: {
@@ -111,7 +111,7 @@ export const rebelUnitCardIds: string[] = [
   "4_1_1:4_2_1",
 ];
 
-export const empireUnitCards: Array<UnitCard> = [
+export const empireUnitCards: Array<SpriteCard> = [
   {
     front: {file: getSrc(5), sprite: {x: 1, y: 1}},
     back: {
@@ -229,7 +229,7 @@ export const empireUnitCardIds: string[] = [
   "8_1_2:8_2_2",
 ];
 
-export const republicUnitCards: Array<UnitCard> = [
+export const republicUnitCards: Array<SpriteCard> = [
   {
     front: {file: getSrc(9), sprite: {x: 1, y: 1}},
     back: {
@@ -331,7 +331,7 @@ export const republicUnitCardIds: string[] = [
   "11_1_4:11_2_4",
 ];
 
-export const separatistUnitCards: Array<UnitCard> = [
+export const separatistUnitCards: Array<SpriteCard> = [
   {
     front: {file: getSrc(12), sprite: {x: 1, y: 1}},
     back: {
@@ -457,7 +457,7 @@ export const separatistUnitCardIds: string[] = [
   "15_1_3:15_2_3",
 ];
 
-export const mercenaryUnitCards: Array<UnitCard> = [
+export const mercenaryUnitCards: Array<SpriteCard> = [
   {
     front: {file: getSrc(16), sprite: {x: 1, y: 1}},
     back: {
