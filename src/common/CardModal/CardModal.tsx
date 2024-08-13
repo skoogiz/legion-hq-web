@@ -15,7 +15,7 @@ import KeywordsPanel from "./KeywordsPanel";
 import HistoryPanel from "./HistoryPanel";
 
 type Props = {
-  id: string;
+  id?: string;
   isOpen: boolean;
   handleClose: () => void;
 };

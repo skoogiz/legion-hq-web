@@ -1,36 +1,26 @@
 import React from "react";
-import {makeStyles} from "@mui/styles";
 import {Alert} from "@mui/material";
 import {CardModal} from "@legion-hq/common/CardModal";
 import cards from "@legion-hq/constants/cards";
 import BasicCardChips from "./BasicCardChips";
 
-const useStyles = makeStyles((theme) => ({
-  columnContainer: {
-    padding: 8,
-    display: "flex",
-    flexFlow: "column nowrap",
-  },
-}));
-
-function Cards() {
-  const classes = useStyles();
+export function Cards() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [modalContent, setModalContent] = React.useState();
-  const handleCardZoom = (cardId) => {
+  const [modalContent, setModalContent] = React.useState<string | undefined>();
+  const handleCardZoom = (cardId: string) => {
     setModalContent(cardId);
     setIsModalOpen(true);
   };
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setModalContent();
+    setModalContent(undefined);
   };
-  const unitCards = {
+  const unitCards: Record<string, string[]> = {
     trooper: [],
     counterpart: [],
     vehicle: [],
   };
-  const upgradeCards = {
+  const upgradeCards: Record<string, string[]> = {
     "heavy weapon": [],
     personnel: [],
     force: [],
@@ -46,8 +36,12 @@ function Cards() {
     crew: [],
     ordnance: [],
   };
-  const commandCards = {"1": [], "2": [], "3": [], "4": []};
-  const battleCards = {objective: [], deployment: [], condition: []};
+  const commandCards: Record<string, string[]> = {"1": [], "2": [], "3": [], "4": []};
+  const battleCards: Record<string, string[]> = {
+    objective: [],
+    deployment: [],
+    condition: [],
+  };
   Object.keys(cards)
     .sort((a, b) => {
       const cardA = cards[a];
@@ -58,7 +52,7 @@ function Cards() {
       if (nameA < nameB) return -1;
       return 0;
     })
-    .forEach((id) => {
+    .forEach((id: string) => {
       const card = cards[id];
       if (card.cardType === "unit") {
         if (card.cardSubtype.includes("trooper")) {
@@ -83,7 +77,7 @@ function Cards() {
       }
     });
   return (
-    <div className={classes.columnContainer}>
+    <div style={{padding: 8, display: "flex", flexFlow: "column nowrap"}}>
       <Alert variant="filled" severity="info" style={{marginBottom: 8}}>
         This page is still under construction!
       </Alert>
@@ -111,5 +105,3 @@ function Cards() {
     </div>
   );
 }
-
-export default Cards;
