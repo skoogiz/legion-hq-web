@@ -6,9 +6,7 @@ import {NavigationDrawer} from "@legion-hq/common/NavigationDrawer";
 import {createTheme, ThemeProvider, responsiveFontSizes} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 import themes from "@legion-hq/constants/themes";
-// import cards from "@legion-hq/constants/cards";
-// import urls from "@legion-hq/constants/urls";
-// import _ from "lodash";
+import {writeImgSrc} from "./img";
 
 export function App() {
   const {userSettings} = React.useContext(DataContext);
@@ -22,21 +20,7 @@ export function App() {
     }),
   );
 
-  // const data = Object.values(cards).filter(({cardType, imageName}) =>
-  //   Boolean(cardType && imageName),
-  // );
-
-  // var grouped = _.mapValues(_.groupBy(data, "cardType"), (clist) =>
-  //   clist.map(({cardType, imageName}) => `${urls.cdn}/${cardType}Cards/${imageName}`),
-  // );
-
-  // console.log(grouped);
-
-  // const imgUrls = Object.values(cards)
-  //   .filter(({cardType, imageName}) => Boolean(cardType && imageName))
-  //   .map(({cardType, imageName}) => `${urls.cdn}/${cardType}Cards/${imageName}`);
-
-  // console.log({imgUrls});
+  writeImgSrc();
 
   // if (userSettings.discordWidget) {
   //   const discordCrate = window.crate;
