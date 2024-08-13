@@ -3,6 +3,8 @@ import {Alert} from "@mui/material";
 import {CardModal} from "@legion-hq/common/CardModal";
 import cards from "@legion-hq/constants/cards";
 import BasicCardChips from "./BasicCardChips";
+import {republicUnitCards} from "@legion-hq/components/SpriteCard/SpriteCard.data";
+import {SpriteCards} from "@legion-hq/components/SpriteCard";
 
 export function Cards() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -102,6 +104,8 @@ export function Cards() {
         cardDict={battleCards}
         handleCardZoom={handleCardZoom}
       />
+
+      <SpriteCards />
     </div>
   );
 }

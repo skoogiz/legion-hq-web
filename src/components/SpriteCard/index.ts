@@ -1,1 +1,1 @@
-export {SpriteCard, SpriteCards} from "./SpriteCard";
+export {SpriteCards} from "./SpriteCards";

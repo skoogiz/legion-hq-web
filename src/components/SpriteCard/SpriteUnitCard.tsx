@@ -1,6 +1,5 @@
 import * as React from "react";
 import {ValueX, ValueY} from "./SpriteCard.types";
-import {empireUnitCards, rebelUnitCards} from "./SpriteCard.data";
 
 type Props = {
   src: string;
@@ -36,7 +35,7 @@ const getBackgroundPosition = (x: ValueX, y: ValueY): React.CSSProperties => ({
   backgroundPositionY: getPositionY(y),
 });
 
-export function SpriteCard({src, spriteX, spriteY}: Props) {
+export function SpriteUnitCard({src, spriteX, spriteY}: Props) {
   const baseStyle: React.CSSProperties = {
     background: `url(${src})`,
     display: "inline-block",
@@ -51,32 +50,5 @@ export function SpriteCard({src, spriteX, spriteY}: Props) {
         ...getBackgroundPosition(spriteX, spriteY),
       }}
     ></div>
-  );
-}
-
-export function SpriteCards() {
-  return (
-    <div
-      style={{
-        display: "flex",
-        gap: 10,
-        flexWrap: "wrap",
-        justifyContent: "center",
-        margin: "20px 0",
-      }}
-    >
-      {empireUnitCards.map(({front, back}) => (
-        <>
-          <SpriteCard
-            src={front.file}
-            spriteX={front.sprite.x}
-            spriteY={front.sprite.y}
-          />
-          {back && (
-            <SpriteCard src={back.file} spriteX={back.sprite.x} spriteY={back.sprite.y} />
-          )}
-        </>
-      ))}
-    </div>
   );
 }
