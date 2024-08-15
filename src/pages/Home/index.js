@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from "react";
 import clsx from "clsx";
 import {ErrorBoundary} from "react-error-boundary";
-import {Grid, Typography, Container, Fade, Button, Collapse} from "@mui/material";
+import {Grid, Typography, Container, Fade, Button, Collapse, Box} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import {
   Announcement as NewsIcon,
@@ -18,6 +18,7 @@ import ftLogoLight from "@legion-hq/assets/ftLogoLight.png";
 import ftLogoDark from "@legion-hq/assets/ftLogoDark.png";
 import lhqLogoLight from "@legion-hq/assets/lhqLogoLight.png";
 import lhqLogoDark from "@legion-hq/assets/lhqLogoDark.png";
+import {useNews} from "@legion-hq/data-access/hooks/useNews";
 
 const useStyles = makeStyles((theme) => ({
   expand: {
@@ -43,15 +44,9 @@ function Post({title, date, body}) {
 }
 
 function Home() {
-  const {
-    newsPosts,
-    auth,
-    userId,
-    userLists,
-    userSettings,
-    fetchUserLists,
-    deleteUserList,
-  } = useContext(DataContext);
+  const {auth, userId, userLists, userSettings, fetchUserLists, deleteUserList} =
+    useContext(DataContext);
+  const {newsPosts} = useNews();
   const classes = useStyles();
   const listChips = {};
   const [isNewsOpen, setIsNewsOpen] = useState(true);
@@ -70,105 +65,111 @@ function Home() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Fade in={true}>
-        <Container>
-          <Grid
-            container
-            spacing={1}
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            style={{marginTop: 5}}
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              padding: "2em 0",
+            }}
           >
-            <Grid item>
-              <img
-                alt="Fifth Trooper Logo"
-                src={userSettings.themeColor === "light" ? ftLogoLight : ftLogoDark}
-                style={{width: 150, height: "auto"}}
-              />
-            </Grid>
-            <Grid item>
-              <img
-                alt="Legion HQ Logo"
-                src={userSettings.themeColor === "light" ? lhqLogoLight : lhqLogoDark}
-                style={{width: 400, height: "auto"}}
-              />
-            </Grid>
-            <Grid item style={{maxWidth: "75vw", textAlign: "center"}}>
-              <Typography variant="subtitle1">
-                An unofficial list building tool and resource for Atomic Mass Games: Star
-                Wars: Legion.
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Button size="small" onClick={() => setIsNewsOpen(!isNewsOpen)}>
-                <NewsIcon fontSize="small" style={{marginRight: 4}} />
-                Latest news
-                <ExpandMoreIcon
-                  fontSize="small"
-                  className={clsx(classes.expand, {
-                    [classes.expandOpen]: isNewsOpen,
-                  })}
+            <Grid
+              container
+              spacing={1}
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              rowGap={1}
+            >
+              <Grid item>
+                <img
+                  alt="Fifth Trooper Logo"
+                  src={userSettings.themeColor === "light" ? ftLogoLight : ftLogoDark}
+                  style={{width: 150, height: "auto"}}
                 />
-              </Button>
-            </Grid>
-            <Grid item>
-              {newsPosts.length > 0 && (
-                <Collapse in={isNewsOpen}>
-                  <Post
-                    title={newsPosts[0].title}
-                    date={newsPosts[0].date}
-                    body={newsPosts[0].body}
+              </Grid>
+              <Grid item>
+                <img
+                  alt="Legion HQ Logo"
+                  src={userSettings.themeColor === "light" ? lhqLogoLight : lhqLogoDark}
+                  style={{width: 400, height: "auto"}}
+                />
+              </Grid>
+              <Grid item style={{maxWidth: "75vw", textAlign: "center"}}>
+                <Typography variant="subtitle1">
+                  An unofficial list building tool and resource for Atomic Mass Games:
+                  Star Wars: Legion.
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Button size="small" onClick={() => setIsNewsOpen(!isNewsOpen)}>
+                  <NewsIcon fontSize="small" style={{marginRight: 4}} />
+                  Latest news
+                  <ExpandMoreIcon
+                    fontSize="small"
+                    className={clsx(classes.expand, {
+                      [classes.expandOpen]: isNewsOpen,
+                    })}
                   />
-                </Collapse>
-              )}
-            </Grid>
-            <Grid item>
-              <div style={{height: 10}} />
-            </Grid>
-            {Object.keys(factions).map((faction) => (
-              <Grid
-                key={faction}
-                item
-                container
-                spacing={1}
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Grid item key="factionChip">
-                  <FactionChip faction={faction} />
-                </Grid>
-                {listChips[faction].length > 4 ? (
-                  <ListChipDropdown
-                    faction={faction}
-                    chips={listChips[faction].map((userList) => (
+                </Button>
+              </Grid>
+              <Grid item>
+                {newsPosts.length > 0 && (
+                  <Collapse in={isNewsOpen}>
+                    <Post
+                      title={newsPosts[0].title}
+                      date={newsPosts[0].date}
+                      body={newsPosts[0].body}
+                    />
+                  </Collapse>
+                )}
+              </Grid>
+              <Grid item>
+                <div style={{height: 10}} />
+              </Grid>
+              {Object.keys(factions).map((faction) => (
+                <Grid
+                  key={faction}
+                  item
+                  container
+                  spacing={1}
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Grid item key="factionChip">
+                    <FactionChip faction={faction} />
+                  </Grid>
+                  {listChips[faction].length > 4 ? (
+                    <ListChipDropdown
+                      faction={faction}
+                      chips={listChips[faction].map((userList) => (
+                        <Grid item key={userList.listId}>
+                          <ListChip userList={userList} deleteUserList={deleteUserList} />
+                        </Grid>
+                      ))}
+                    />
+                  ) : (
+                    listChips[faction].map((userList) => (
                       <Grid item key={userList.listId}>
                         <ListChip userList={userList} deleteUserList={deleteUserList} />
                       </Grid>
-                    ))}
-                  />
-                ) : (
-                  listChips[faction].map((userList) => (
-                    <Grid item key={userList.listId}>
-                      <ListChip userList={userList} deleteUserList={deleteUserList} />
-                    </Grid>
-                  ))
-                )}
+                    ))
+                  )}
+                </Grid>
+              ))}
+              <Grid item>
+                <div style={{height: 10}} />
               </Grid>
-            ))}
-            <Grid item>
-              <div style={{height: 10}} />
+              <Grid item>
+                <LoginButton auth={auth} />
+              </Grid>
+              <Grid item>
+                <div style={{height: 10}} />
+              </Grid>
+              <Grid item>
+                <div style={{height: 10}} />
+              </Grid>
             </Grid>
-            <Grid item>
-              <LoginButton auth={auth} />
-            </Grid>
-            <Grid item>
-              <div style={{height: 10}} />
-            </Grid>
-            <Grid item>
-              <div style={{height: 10}} />
-            </Grid>
-          </Grid>
+          </Box>
         </Container>
       </Fade>
     </ErrorBoundary>

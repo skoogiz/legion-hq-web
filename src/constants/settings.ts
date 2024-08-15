@@ -19,6 +19,7 @@ type Setting = {
 type Settings = {
   default: Record<SettingKey, Lowercase<string>>;
   list: Setting[];
+  fields: Record<string, unknown>;
 };
 
 const settings: Settings = {
@@ -28,6 +29,15 @@ const settings: Settings = {
     chipSize: "medium",
     builderOrientation: "right",
     cascadeUpgradeSelection: "yes",
+  },
+  fields: {
+    cascadeUpgradeSelection: {
+      name: "Cascade Upgrade Selecting",
+      options: {
+        yes: "Yes",
+        no: "No",
+      },
+    },
   },
   list: [
     {
