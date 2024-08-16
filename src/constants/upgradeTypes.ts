@@ -13,8 +13,9 @@ import armament from "@legion-hq/assets/upgradeTypes/armament.png";
 import crew from "@legion-hq/assets/upgradeTypes/crew.png";
 import ordnance from "@legion-hq/assets/upgradeTypes/ordnance.png";
 import programming from "@legion-hq/assets/upgradeTypes/programming.png";
+import type {UpgradeType} from "@legion-hq/types";
 
-const upgradeTypes = {
+const upgradeTypes: Record<UpgradeType, {name: string; icon: string}> = {
   "heavy weapon": {
     name: "Heavy Weapon",
     icon: heavyWeapon,

@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {Chip} from "@mui/material";
 import ListContext from "@legion-hq/context/ListContext";
-import CardIcon from "@legion-hq/common/CardIcon";
+import {CardIcon} from "@legion-hq/components";
 import cards from "@legion-hq/constants/cards";
 
 function UnitFlaw({flawId}) {

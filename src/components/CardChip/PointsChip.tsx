@@ -1,7 +1,12 @@
 import React from "react";
 import {Chip, Typography} from "@mui/material";
+import {ChipProps} from "./CardChip.types";
 
-function PointsChip({size, points}) {
+interface Props extends ChipProps {
+  points: number;
+}
+
+export function PointsChip({size, points}: Props) {
   const label = `${points} ${points === 1 ? "point" : "points"}`;
   return (
     <Chip
@@ -11,5 +16,3 @@ function PointsChip({size, points}) {
     />
   );
 }
-
-export default PointsChip;

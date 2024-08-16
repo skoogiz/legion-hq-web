@@ -12,20 +12,19 @@ import {
   Divider,
 } from "@mui/material";
 import {Add as AddIcon, ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
-import CardChip from "@legion-hq/common/CardChip";
+import {type ChipSize, CardChip} from "@legion-hq/components";
 import KeywordChips from "@legion-hq/common/KeywordChips";
-import CardIcon from "@legion-hq/common/CardIcon";
-import IconBadge from "@legion-hq/common/IconBadge";
 import UpgradeBar from "@legion-hq/common/UpgradeBar";
-import {type LegionCard} from "@legion-hq/types";
+import {UpgradeType, type LegionCard} from "@legion-hq/types";
+import {CardIcon, IconBadge} from "@legion-hq/components";
 
 interface CardProps {
   card: LegionCard;
-  chipSize?: "medium" | "small";
+  chipSize?: ChipSize;
 }
 
 interface ClickableCardProps extends CardProps {
-  handleClick: (event: React.SyntheticEvent) => void;
+  handleClick?: (event: React.SyntheticEvent) => void;
 }
 
 function capitalizeFirstLetters(words: string) {
@@ -36,12 +35,17 @@ function capitalizeFirstLetters(words: string) {
 }
 
 function ReverseWrapper({children}: {children: React.ReactNode}) {
-  const containerStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "flex-end",
-  };
-  return <div style={containerStyle}>{children}</div>;
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "flex-end",
+      }}
+    >
+      {children}
+    </div>
+  );
 }
 
 function TextCardHeader({card, handleClick}: ClickableCardProps) {
@@ -140,7 +144,7 @@ function UpgradeCardHeader({card, handleClick}: ClickableCardProps) {
   const {isUnique, displayName, cardName, cardType, cardSubtype, imageName} = card;
   const avatar = (
     <IconBadge
-      upgradeType={cardSubtype}
+      upgradeType={cardType === "upgrade" ? (cardSubtype as UpgradeType) : undefined}
       avatar={<CardIcon cardName={cardName} cardType={cardType} imageName={imageName} />}
     />
   );
@@ -207,7 +211,7 @@ function CounterpartCardContent({card, chipSize}: CardProps) {
           Stats
         </Typography>
         <div style={{flexGrow: 1}} />
-        <CardChip type="wounds" value={wounds} size={chipSize} />
+        <CardChip type="wounds" value={wounds ?? 0} size={chipSize} />
       </ReverseWrapper>
     </CardContent>
   );
@@ -279,7 +283,7 @@ function UnitCardContent({card, chipSize}: CardProps) {
           Stats
         </Typography>
         <div style={{flexGrow: 1}} />
-        <CardChip type="wounds" value={wounds} size={chipSize} />
+        <CardChip type="wounds" value={wounds ?? 0} size={chipSize} />
         {resilience ? (
           <CardChip type="resilience" value={resilience} size={chipSize} />
         ) : (
@@ -287,7 +291,7 @@ function UnitCardContent({card, chipSize}: CardProps) {
         )}
         <CardChip type="speed" value={speed} size={chipSize} />
         <CardChip type="defense" value={defense} size={chipSize} />
-        <CardChip type="surges" value={surges} size={chipSize} />
+        <CardChip type="surges" value={surges ?? []} size={chipSize} />
       </ReverseWrapper>
       <Divider style={{marginBottom: 4}} />
       <ReverseWrapper>
@@ -375,8 +379,8 @@ export function TextCard({card, handleClick, handleCardZoom}: TextCardProps) {
         <TextCardHeader card={card} handleClick={handleClick} />
         <TextCardContent card={card} chipSize={chipSize} />
         <TextCardActions
-          card={card}
-          chipSize={chipSize}
+          // card={card}
+          // chipSize={chipSize}
           isExpanded={isExpanded}
           handleExpandClick={handleExpandClick}
         />

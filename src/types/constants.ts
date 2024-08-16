@@ -36,3 +36,13 @@ export interface LegionModeInfo {
     heavy: Quantity;
   };
 }
+
+export const BLACK_DICE = "black";
+export const WHITE_DICE = "white";
+export const RED_DICE = "red";
+
+export type AttackDiceType = typeof BLACK_DICE | typeof WHITE_DICE | typeof RED_DICE;
+
+export type DefenceDiceType = typeof WHITE_DICE | typeof RED_DICE;
+
+export type SurgeType = "hit" | "crit" | "block";

@@ -33,6 +33,9 @@
 
 */
 
+import {DefenceDiceType, SurgeType} from "./constants";
+import {RankType} from "./units";
+
 export interface LegionCard {
   cardName: string;
   cardType: string;
@@ -41,13 +44,13 @@ export interface LegionCard {
   imageName: string;
   isUnique?: boolean;
   keywords: string[];
-  rank: string;
+  rank: RankType;
   cost: number;
   courage: number;
   wounds?: number;
   resilience?: number;
   speed: number;
-  defense: "white" | "black" | "red";
-  surges: string[];
+  defense: DefenceDiceType;
+  surges: SurgeType[];
   upgradeBar: string[];
 }

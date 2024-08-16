@@ -1,11 +1,10 @@
-import React from "react";
-import clsx from "clsx";
-import {makeStyles} from "@mui/styles";
+import * as React from "react";
 import {Typography} from "@mui/material";
 import ranks from "@legion-hq/constants/ranks";
 import upgradeTypes from "@legion-hq/constants/upgradeTypes";
+import type {RankType, UpgradeType} from "@legion-hq/types";
 
-const useStyles = makeStyles((theme) => ({
+const styles: Record<string, React.CSSProperties> = {
   outerRowContainer: {
     display: "flex",
     flexDirection: "row",
@@ -39,10 +38,16 @@ const useStyles = makeStyles((theme) => ({
   smallTypography: {bottom: 2, left: 1.5, color: "black", position: "relative"},
   image: {width: 20, height: 20},
   hidden: {visibility: "hidden"},
-}));
+};
 
-function IconBadge({avatar, count = 1, upgradeType, rank}) {
-  const classes = useStyles();
+type Props = {
+  avatar: JSX.Element;
+  count?: number;
+  upgradeType?: UpgradeType;
+  rank?: RankType;
+};
+
+export function IconBadge({avatar, count = 1, upgradeType, rank}: Props) {
   let alt = "";
   let src = "";
   if (upgradeType && upgradeType in upgradeTypes) {
@@ -53,30 +58,26 @@ function IconBadge({avatar, count = 1, upgradeType, rank}) {
     src = ranks[rank].icon;
   }
   return (
-    <div className={classes.outerRowContainer}>
-      <div className={classes.innerColumnContainer}>
+    <div style={styles.outerRowContainer}>
+      <div style={styles.innerColumnContainer}>
         <span
-          className={clsx(classes.numberSpan, {
-            [classes.hidden]: count < 2,
-          })}
+          style={{
+            ...styles.numberSpan,
+            ...(count < 2 ? styles.hidden : {}),
+          }}
         >
           <Typography
             variant="button"
-            className={clsx(
-              {[classes.typography]: count < 10},
-              {[classes.smallTypography]: count > 9},
-            )}
+            style={count >= 10 ? styles.smallTypography : styles.typography}
           >
             {count}
           </Typography>
         </span>
-        <span className={classes.imageSpan}>
-          <img alt={alt} src={src} className={classes.image} />
+        <span style={styles.imageSpan}>
+          <img alt={alt} src={src} style={styles.image} />
         </span>
       </div>
       {avatar}
     </div>
   );
 }
-
-export default IconBadge;

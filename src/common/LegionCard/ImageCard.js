@@ -12,7 +12,7 @@ import {
 import clsx from "clsx";
 import {makeStyles} from "@mui/styles";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
-import CardChip from "@legion-hq/common/CardChip";
+import {CardChip} from "@legion-hq/components";
 import HelpChip from "@legion-hq/common/HelpChip";
 import KeywordChips from "@legion-hq/common/KeywordChips";
 import urls from "@legion-hq/constants/urls";

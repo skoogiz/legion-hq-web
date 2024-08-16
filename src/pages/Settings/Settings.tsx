@@ -4,16 +4,12 @@ import {
   Grid,
   Typography,
   FormControl,
-  InputLabel,
   Select,
   MenuItem,
   Fade,
   Paper,
   SelectChangeEvent,
   FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
 } from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import settings, {SettingOption} from "@legion-hq/constants/settings";
@@ -66,6 +62,7 @@ function SettingDropdown({
 
 export function Settings() {
   const {userSettings, setUserSettingsValue} = React.useContext(DataContext);
+
   return (
     <Fade in={true}>
       <Container>

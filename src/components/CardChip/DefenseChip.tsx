@@ -1,10 +1,15 @@
 import React from "react";
 import {Img} from "react-image";
-
 import {Chip} from "@mui/material";
 import symbols from "@legion-hq/constants/symbols";
+import type {DefenceDiceType} from "@legion-hq/types";
+import {ChipProps} from "./CardChip.types";
 
-function DefenseChip({size, color}) {
+interface Props extends ChipProps {
+  color: DefenceDiceType;
+}
+
+export function DefenseChip({size, color}: Props) {
   if (!color)
     return <Chip size={size} label="Error" style={{marginRight: 4, marginBottom: 4}} />;
   const label = (
@@ -16,5 +21,3 @@ function DefenseChip({size, color}) {
   );
   return <Chip size={size} label={label} style={{marginRight: 4, marginBottom: 4}} />;
 }
-
-export default DefenseChip;

@@ -4,8 +4,9 @@ import corps from "@legion-hq/assets/rankTypes/corps.png";
 import special from "@legion-hq/assets/rankTypes/special.png";
 import support from "@legion-hq/assets/rankTypes/support.png";
 import heavy from "@legion-hq/assets/rankTypes/heavy.png";
+import type {Rank, RankType} from "@legion-hq/types";
 
-const ranks = {
+const ranks: Record<RankType, Rank> = {
   commander: {
     name: "Commander",
     title: "Add a Commander unit.",
