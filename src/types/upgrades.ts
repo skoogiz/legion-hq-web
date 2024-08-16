@@ -1,0 +1,16 @@
+export type UpgradeType =
+  | "heavy weapon"
+  | "personnel"
+  | "force"
+  | "command"
+  | "hardpoint"
+  | "gear"
+  | "grenades"
+  | "comms"
+  | "pilot"
+  | "training"
+  | "generator"
+  | "armament"
+  | "crew"
+  | "ordnance"
+  | "programming";

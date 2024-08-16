@@ -1,6 +1,5 @@
 import React from "react";
-import IconBadge from "@legion-hq/common/IconBadge";
-import CardIcon from "@legion-hq/common/CardIcon";
+import {CardIcon, IconBadge} from "@legion-hq/components";
 import cards from "@legion-hq/constants/cards";
 
 function UnitCardAvatar({id, count = 1, handleClick}) {

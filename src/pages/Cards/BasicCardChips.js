@@ -1,17 +1,17 @@
 import React from "react";
 import clsx from "clsx";
 import {
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Typography,
   Divider,
   Collapse,
   IconButton,
-  makeStyles,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import LegionCard from "@legion-hq/common/LegionCard";
+} from "@mui/material";
+import {makeStyles} from "@mui/styles";
+import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
+import {LegionCard} from "@legion-hq/common/LegionCard";
 
 const useStyles = makeStyles((theme) => ({
   expand: {
@@ -69,11 +69,11 @@ function CollapsedContent({label, cardIds, handleCardZoom}) {
 function BasicCardChips({title, cardDict, handleCardZoom}) {
   const keys = Object.keys(cardDict);
   return (
-    <ExpansionPanel>
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+    <Accordion>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography>{title}</Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails style={{padding: 16}}>
+      </AccordionSummary>
+      <AccordionDetails style={{padding: 16}}>
         <div style={{display: "flex", flexFlow: "column", width: "100%"}}>
           {keys.map((key) => (
             <CollapsedContent
@@ -84,8 +84,8 @@ function BasicCardChips({title, cardDict, handleCardZoom}) {
             />
           ))}
         </div>
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
+      </AccordionDetails>
+    </Accordion>
   );
 }
 

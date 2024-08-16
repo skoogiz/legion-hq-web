@@ -1,0 +1,63 @@
+import type {ListTemplate, UnitCount} from "@legion-hq/types";
+
+export const createUnitCount = ({
+  commander = 0,
+  operative = 0,
+  corps = 0,
+  special = 0,
+  support = 0,
+  heavy = 0,
+}: Partial<UnitCount> = {}): UnitCount => ({
+  commander,
+  operative,
+  corps,
+  special,
+  support,
+  heavy,
+});
+
+export const createListTemplate = ({
+  version = 1,
+  title = "Untitled",
+  game = "legion",
+  mode = "standard mode",
+  faction = "",
+  notes = "",
+  pointTotal = 0,
+  killPoints = 0,
+  competitive = false,
+  battleForce = "",
+  killedUnits = [],
+  units = [],
+  commandCards = [],
+  objectiveCards = [],
+  conditionCards = [],
+  deploymentCards = [],
+  uniques = [],
+  commanders = [],
+  unitObjectStrings = [],
+  unitCounts = createUnitCount(),
+}: Partial<ListTemplate> = {}): ListTemplate => ({
+  version,
+  title,
+  game,
+  mode,
+  faction,
+  notes,
+  pointTotal,
+  killPoints,
+  competitive,
+  battleForce,
+  killedUnits,
+  units,
+  commandCards,
+  objectiveCards,
+  conditionCards,
+  deploymentCards,
+  uniques,
+  commanders,
+  unitObjectStrings,
+  unitCounts,
+});
+
+export const DEFAULT_LIST_TEMPLATE = createListTemplate();

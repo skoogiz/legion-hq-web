@@ -1,5 +1,5 @@
 import React from "react";
-import {IconButton, Icon, Avatar} from "@material-ui/core";
+import {IconButton, Icon, Avatar} from "@mui/material";
 import cards from "@legion-hq/constants/cards";
 import urls from "@legion-hq/constants/urls";
 

@@ -1,8 +1,14 @@
 import React from "react";
 import {Img} from "react-image";
-import {Chip, Typography, Badge, Menu, MenuItem} from "@material-ui/core";
-import {ThemeProvider} from "@material-ui/styles";
-import {createTheme} from "@material-ui/core/styles";
+import {
+  Chip,
+  Typography,
+  Badge,
+  Menu,
+  MenuItem,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import urls from "@legion-hq/constants/urls";
 import factions from "@legion-hq/constants/factions";

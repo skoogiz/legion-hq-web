@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Grid, Fade} from "@material-ui/core";
+import {Container, Grid, Fade} from "@mui/material";
 
 function Privacy() {
   return (

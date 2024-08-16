@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-import {Grid, Divider} from "@material-ui/core";
+import {Grid, Divider} from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import ListContext from "@legion-hq/context/ListContext";
-import CardModal from "@legion-hq/common/CardModal";
+import {CardModal} from "@legion-hq/common/CardModal";
 import themes from "@legion-hq/constants/themes";
 import ListHeader from "./ListHeader";
 import RankSelector from "./RankSelector";
@@ -13,14 +13,14 @@ import ListObjectives from "./ListObjectives";
 import ListExtras from "./ListExtras";
 import ListDisplay from "./ListDisplay";
 import ListId from "./ListId";
-import CardSelector from "./CardSelector";
+import {CardSelector} from "./CardSelector";
 
 function ListLayout() {
   const {userSettings} = useContext(DataContext);
   const {themeColor} = userSettings;
   const palette = themes.palettes[themeColor];
   const {
-    width,
+    isSmallScreen,
     leftPaneWidth,
     rightPaneWidth,
     isModalOpen,
@@ -28,7 +28,7 @@ function ListLayout() {
     handleCloseModal,
   } = useContext(ListContext);
 
-  const isMobile = width === "xs" || width === "sm";
+  const isMobile = isSmallScreen;
 
   const paneStyles = {
     padding: "0 2px 2px",

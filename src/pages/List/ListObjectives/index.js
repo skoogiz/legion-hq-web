@@ -1,8 +1,6 @@
 import React from "react";
-import {Chip} from "@material-ui/core";
-import {ThemeProvider} from "@material-ui/styles";
-import {createTheme} from "@material-ui/core/styles";
-import {Add as AddIcon} from "@material-ui/icons";
+import {Chip, ThemeProvider, createTheme} from "@mui/material";
+import {Add as AddIcon} from "@mui/icons-material";
 import ListContext from "@legion-hq/context/ListContext";
 import cards from "@legion-hq/constants/cards";
 

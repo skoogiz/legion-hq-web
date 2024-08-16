@@ -1,8 +1,6 @@
 import React, {useContext} from "react";
-import {Chip, Typography} from "@material-ui/core";
-import {ThemeProvider} from "@material-ui/styles";
-import {createTheme} from "@material-ui/core/styles";
-import {Add as AddIcon} from "@material-ui/icons";
+import {Chip, Typography, ThemeProvider, createTheme} from "@mui/material";
+import {Add as AddIcon} from "@mui/icons-material";
 import DataContext from "@legion-hq/context/DataContext";
 import factions from "@legion-hq/constants/factions";
 

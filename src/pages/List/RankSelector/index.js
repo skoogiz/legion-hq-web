@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@mui/styles";
 import ListContext from "@legion-hq/context/ListContext";
 import ranks from "@legion-hq/constants/ranks";
 // import legionModes from '@legion-hq/constants/legionModes';

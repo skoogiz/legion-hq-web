@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography} from "@material-ui/core";
+import {Typography} from "@mui/material";
 import {attackDice} from "@legion-hq/constants/dice";
 
 function ResultPanel({

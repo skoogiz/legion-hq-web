@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-} from "@material-ui/core";
+import {Button, Dialog, DialogTitle, DialogContent, DialogActions} from "@mui/material";
 
 function DialogModal({
   isOpen,
