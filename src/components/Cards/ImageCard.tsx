@@ -9,23 +9,15 @@ import {
   CardActions,
   CardActionArea,
 } from "@mui/material";
-import clsx from "clsx";
-import {makeStyles} from "@mui/styles";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import {CardChip} from "@legion-hq/components";
 import HelpChip from "@legion-hq/common/HelpChip";
 import KeywordChips from "@legion-hq/common/KeywordChips";
 import urls from "@legion-hq/constants/urls";
+import {LegionCard} from "@legion-hq/types";
+import {CSSProperties} from "@mui/styles";
 
-const useStyles = makeStyles((theme) => ({
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {transform: "rotate(180deg)"},
+const styles: Record<string, CSSProperties> = {
   selected: {border: "1px solid lightblue"},
   card: {marginRight: 4, marginBottom: 4},
   unitCard: {maxWidth: 315},
@@ -35,12 +27,28 @@ const useStyles = makeStyles((theme) => ({
   upgradeImage: {width: 150, height: 232.5},
   commandImage: {width: 225, height: 315},
   doubleUpgrade: {width: 300},
-}));
+};
 
-function ImageCard({isSelected, card, handleClick, handleCardZoom}) {
+const getStyles = (styleMap: [CSSProperties, boolean][]): CSSProperties => {
+  let style = {};
+
+  styleMap.forEach(([css, isTruthy]) => {
+    if (isTruthy) style = {...style, ...css};
+  });
+
+  return style;
+};
+
+type Props = {
+  isSelected: boolean;
+  card: LegionCard;
+  handleClick?: (event: React.SyntheticEvent) => void;
+  handleCardZoom: (event: React.SyntheticEvent) => void;
+};
+
+export function ImageCard({isSelected, card, handleClick, handleCardZoom}: Props) {
   const chipSize = "small";
   const {cost, cardType, cardName, displayName, keywords, imageName} = card;
-  const classes = useStyles();
   const [isExpanded, setIsExpanded] = React.useState(false);
   const handleExpandClick = () => setIsExpanded(!isExpanded);
   const isDoubleSided = cardType === "upgrade" && keywords.includes("Reconfigure");
@@ -49,29 +57,31 @@ function ImageCard({isSelected, card, handleClick, handleCardZoom}) {
   return (
     <Grow unmountOnExit in={true}>
       <Card
-        className={clsx(
-          classes.card,
-          {[classes.selected]: isSelected},
-          {[classes.unitCard]: cardType === "unit"},
-          {[classes.unitCard]: cardType === "battle" && !isSkirmish},
-          {[classes.commandCard]: cardType === "battle" && isSkirmish},
-          {[classes.upgradeCard]: cardType === "upgrade" && !isDoubleSided},
-          {[classes.doubleUpgrade]: isDoubleSided},
-          {[classes.commandCard]: cardType === "command"},
-        )}
+        sx={{
+          ...styles.card,
+          ...getStyles([
+            [styles.selected, isSelected],
+            [styles.unitCard, cardType === "unit"],
+            [styles.unitCard, cardType === "battle" && !isSkirmish],
+            [styles.commandCard, cardType === "battle" && isSkirmish],
+            [styles.upgradeCard, cardType === "upgrade" && !isDoubleSided],
+            [styles.doubleUpgrade, isDoubleSided],
+            [styles.commandCard, cardType === "command"],
+          ]),
+        }}
       >
         <CardActionArea onClick={handleClick}>
           <CardMedia
             title={displayName ? displayName : cardName}
             image={`${urls.cdn}/${cardType}Cards/${imageName}`}
-            className={clsx(
-              {[classes.unitImage]: cardType === "unit" || cardType === "counterpart"},
-              {[classes.unitImage]: cardType === "battle" && !isSkirmish},
-              {[classes.commandImage]: cardType === "battle" && isSkirmish},
-              {[classes.upgradeImage]: cardType === "upgrade"},
-              {[classes.commandImage]: cardType === "command"},
-              {[classes.doubleUpgrade]: isDoubleSided},
-            )}
+            sx={getStyles([
+              [styles.unitImage, cardType === "unit" || cardType === "counterpart"],
+              [styles.unitImage, cardType === "battle" && !isSkirmish],
+              [styles.commandImage, cardType === "battle" && isSkirmish],
+              [styles.upgradeImage, cardType === "upgrade"],
+              [styles.commandImage, cardType === "command"],
+              [styles.doubleUpgrade, isDoubleSided],
+            ])}
           />
         </CardActionArea>
         <CardActions disableSpacing>
@@ -82,22 +92,26 @@ function ImageCard({isSelected, card, handleClick, handleCardZoom}) {
           <IconButton
             size="small"
             aria-expanded={isExpanded}
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: isExpanded,
-            })}
             onClick={handleExpandClick}
+            sx={(theme) => ({
+              transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+              marginLeft: "auto",
+              transition: theme.transitions.create("transform", {
+                duration: theme.transitions.duration.shortest,
+              }),
+            })}
           >
             <ExpandMoreIcon />
           </IconButton>
         </CardActions>
         <Collapse unmountOnExit timeout="auto" in={isExpanded}>
           {keywords.length > 0 && (
-            <CardActions className={classes.card}>
+            <CardActions sx={styles.card}>
               <KeywordChips size={chipSize} keywords={keywords} />
             </CardActions>
           )}
           <CardActions>
-            <Button size="small" style={{marginLeft: "auto"}} onClick={handleCardZoom}>
+            <Button size="small" sx={{marginLeft: "auto"}} onClick={handleCardZoom}>
               Show More
             </Button>
           </CardActions>
@@ -106,5 +120,3 @@ function ImageCard({isSelected, card, handleClick, handleCardZoom}) {
     </Grow>
   );
 }
-
-export default ImageCard;

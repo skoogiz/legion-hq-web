@@ -3,7 +3,7 @@ import clsx from "clsx";
 import {Collapse, Typography, Divider, IconButton} from "@mui/material";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import {makeStyles} from "@mui/styles";
-import {LegionCard} from "@legion-hq/common/LegionCard";
+import {LegionCard} from "@legion-hq/components";
 
 const useStyles = makeStyles((theme) => ({
   expand: {

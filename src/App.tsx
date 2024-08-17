@@ -2,7 +2,7 @@ import * as React from "react";
 import {Pages} from "./Pages";
 import DataContext from "@legion-hq/context/DataContext";
 import ActionBar from "@legion-hq/common/ActionBar";
-import {NavigationDrawer} from "@legion-hq/common/NavigationDrawer";
+import {NavigationDrawer} from "@legion-hq/components";
 import {createTheme, ThemeProvider, responsiveFontSizes} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 import themes from "@legion-hq/constants/themes";

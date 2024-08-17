@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import DataContext from "@legion-hq/context/DataContext";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
-import ImageCard from "./ImageCard";
+import {ImageCard} from "./ImageCard";
 import {TextCard} from "./TextCard";
 import {ChipCard} from "./ChipCard";
 

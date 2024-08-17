@@ -1,7 +1,7 @@
 import React from "react";
 import {Fade, Typography} from "@mui/material";
 import ListContext from "@legion-hq/context/ListContext";
-import {LegionCard} from "@legion-hq/common/LegionCard";
+import {LegionCard} from "@legion-hq/components";
 import SelectorHeader from "./SelectorHeader";
 import SelectorContent from "./SelectorContent";
 import StackController from "./StackController";

@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import * as React from "react";
 import {useLocation} from "react-router-dom";
 import {
   SwipeableDrawer,
@@ -11,7 +11,14 @@ import {
 import DataContext from "@legion-hq/context/DataContext";
 import {Launch as LaunchIcon} from "@mui/icons-material";
 
-function NavDrawerLink({selected, icon, text, handleClick}) {
+type NavLinkProps = {
+  selected: boolean;
+  icon: JSX.Element;
+  text: string;
+  handleClick: () => void;
+};
+
+function NavDrawerLink({selected, icon, text, handleClick}: NavLinkProps) {
   return (
     <ListItem button selected={selected} onClick={handleClick}>
       <ListItemIcon>{icon}</ListItemIcon>
@@ -24,7 +31,7 @@ export function NavigationDrawer() {
   const location = useLocation();
   const {pathname} = location;
   const {isDrawerOpen, routes, faction, goToPage, setIsDrawerOpen} =
-    useContext(DataContext);
+    React.useContext(DataContext);
   return (
     <SwipeableDrawer
       open={isDrawerOpen}
