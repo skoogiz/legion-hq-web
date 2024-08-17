@@ -1,4 +1,6 @@
-import cards from "./cards";
+import {CardService} from "@legion-hq/data-access/services";
+
+const {cards} = CardService.getInstance();
 
 function checkUpgradeName(upgrade, values) {
   if (Array.isArray(values)) {

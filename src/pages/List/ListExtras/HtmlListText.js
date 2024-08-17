@@ -1,10 +1,10 @@
 import React from "react";
 import _ from "lodash";
-import cards from "@legion-hq/constants/cards";
 import ranks from "@legion-hq/constants/ranks";
 import legionModes from "@legion-hq/constants/legionModes";
 import interactions from "@legion-hq/constants/cardInteractions";
 import listTemplate from "@legion-hq/constants/listTemplate";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 function generateHTMLText(
   list,
@@ -12,6 +12,7 @@ function generateHTMLText(
   showCommands = false,
   showBattles = false,
 ) {
+  const {cards} = useCards();
   let header = `${list.title ? list.title : "Untitled"}<br>`;
   header += `${list.pointTotal}/${legionModes[list.mode].maxPoints}<br>`;
   let units = "";

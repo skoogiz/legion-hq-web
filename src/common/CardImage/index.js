@@ -2,7 +2,7 @@ import React from "react";
 import {Img} from "react-image";
 import {Skeleton} from "@mui/material";
 import {makeStyles} from "@mui/styles";
-import cards from "@legion-hq/constants/cards";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import urls from "@legion-hq/constants/urls";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CardImage({id, size, handleClick}) {
+  const {cards} = useCards();
   const card = cards[id];
   const classes = useStyles();
   return (

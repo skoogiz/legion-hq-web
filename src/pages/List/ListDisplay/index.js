@@ -2,8 +2,8 @@ import React, {useContext} from "react";
 import {Fade, Typography, Divider} from "@mui/material";
 import ListContext from "@legion-hq/context/ListContext";
 import {factions} from "@legion-hq/constants";
-import cards from "@legion-hq/constants/cards";
 import CardImage from "./CardImage";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 function RowDisplay({unit, faction, handleCardZoom}) {
   const counterStyles = {
@@ -117,6 +117,7 @@ function CommandRow({commandIds, handleCardZoom}) {
 
 function ListDisplay() {
   const {currentList, cardPaneFilter, handleCardZoom} = useContext(ListContext);
+  const {cards} = useCards();
   return (
     <Fade unmountOnExit exit={false} in={cardPaneFilter.action === "DISPLAY"}>
       <div style={{display: "flex", flexFlow: "column nowrap", alignItems: "stretch"}}>

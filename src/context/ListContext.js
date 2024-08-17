@@ -4,7 +4,6 @@ import DataContext from "@legion-hq/context/DataContext";
 import ErrorFallback from "@legion-hq/common/ErrorFallback";
 import LoadingWidget from "@legion-hq/common/LoadingWidget";
 import factions from "@legion-hq/constants/factions";
-import cards from "@legion-hq/constants/cards";
 import urls from "@legion-hq/constants/urls";
 import {
   rehashList,
@@ -36,6 +35,7 @@ import {
   getRankLimits,
 } from "@legion-hq/constants/listOperations";
 import {createListTemplate} from "@legion-hq/constants/listTemplate";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 const ListContext = createContext();
 const httpClient = Axios.create();
@@ -53,6 +53,8 @@ export function ListProvider({
   storedLists,
   updateStoredList,
 }) {
+  const {cards} = useCards();
+
   const {userId, userSettings, goToPage} = useContext(DataContext);
   const [stackSize, setStackSize] = useState(1);
   const [isApplyToAll, setIsApplyToAll] = useState(false);

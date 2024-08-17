@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import DataContext from "@legion-hq/context/DataContext";
-import cards from "@legion-hq/constants/cards";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import ImageCard from "./ImageCard";
 import {TextCard} from "./TextCard";
 import {ChipCard} from "./ChipCard";
@@ -25,6 +25,7 @@ export function LegionCard({
   handleDelete,
 }: Props) {
   const {userSettings} = useContext(DataContext);
+  const {cards} = useCards();
   const card = cards[id];
   if (isBasic) {
     return (

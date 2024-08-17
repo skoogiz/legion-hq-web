@@ -3,7 +3,7 @@ import ListContext from "@legion-hq/context/ListContext";
 import DragDropContainer from "./DragDropContainer";
 import ListUnit from "./ListUnit";
 import CounterpartUnit from "./CounterpartUnit";
-import cards from "@legion-hq/constants/cards";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 function ListUnits() {
   const {
@@ -18,6 +18,8 @@ function ListUnits() {
     handleRemoveCounterpart,
     handleAddKillPoints,
   } = React.useContext(ListContext);
+
+  const {cards} = useCards();
 
   const items = currentList.units.map((unit, unitIndex) => {
     const unitCard = cards[unit.unitId];

@@ -1,14 +1,16 @@
 import React from "react";
 import {Alert} from "@mui/material";
 import {CardModal} from "@legion-hq/common/CardModal";
-import cards from "@legion-hq/constants/cards";
 import BasicCardChips from "./BasicCardChips";
-import {republicUnitCards} from "@legion-hq/components/SpriteCard/SpriteCard.data";
 import {SpriteCards} from "@legion-hq/components/SpriteCard";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 export function Cards() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [modalContent, setModalContent] = React.useState<string | undefined>();
+
+  const {cards} = useCards();
+
   const handleCardZoom = (cardId: string) => {
     setModalContent(cardId);
     setIsModalOpen(true);

@@ -3,13 +3,14 @@ import {Grid, Chip} from "@mui/material";
 import {Add as AddIcon} from "@mui/icons-material";
 import ListContext from "@legion-hq/context/ListContext";
 import {CardIcon} from "@legion-hq/components";
-import cards from "@legion-hq/constants/cards";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 const chipSize = "medium";
 
 function ListCommands() {
   const {currentList, setCardPaneFilter, handleCardZoom, handleRemoveCommand} =
     useContext(ListContext);
+  const {cards} = useCards();
   const getNumPips = (cardId) => {
     const card = cards[cardId];
     if (card.cardSubtype === "1") return "•";

@@ -16,7 +16,6 @@ import urls from "@legion-hq/constants/urls";
 import settings from "@legion-hq/constants/settings";
 import {useAuth0} from "@auth0/auth0-react";
 import auth from "@legion-hq/constants/auth";
-import {news} from "@legion-hq/data";
 const {returnTo} = auth.prod;
 
 const DataContext = createContext();

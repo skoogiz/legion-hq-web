@@ -5,8 +5,10 @@ import {Chip, Menu, MenuItem} from "@mui/material";
 import {Print as PrintIcon} from "@mui/icons-material";
 import {generateTournamentText} from "@legion-hq/constants/listOperations";
 import generateLink from "./generateLink";
-import cards from "@legion-hq/constants/cards";
 import urls from "@legion-hq/constants/urls";
+import {CardService} from "@legion-hq/data-access/services";
+
+const {cards} = CardService.getInstance();
 
 class PrintList extends React.Component {
   render() {

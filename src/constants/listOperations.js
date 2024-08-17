@@ -1,10 +1,12 @@
 import _ from "lodash";
-import cards, {cardsIdsByType as cardIdsByType} from "@legion-hq/constants/cards";
 import ranks from "@legion-hq/constants/ranks";
 import legionModes from "@legion-hq/constants/legionModes";
 import interactions from "@legion-hq/constants/cardInteractions";
 import {createListTemplate, createUnitCount} from "@legion-hq/constants/listTemplate";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
+import {CardService} from "@legion-hq/data-access/services";
+
+const {cards, cardIdsByType} = CardService.getInstance();
 
 function countPoints(list) {
   list.pointTotal = 0;

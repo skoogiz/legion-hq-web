@@ -2,13 +2,14 @@ import React from "react";
 import {Chip, ThemeProvider, createTheme} from "@mui/material";
 import {Add as AddIcon} from "@mui/icons-material";
 import ListContext from "@legion-hq/context/ListContext";
-import cards from "@legion-hq/constants/cards";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 const chipSize = "medium";
 
 function ListObjectives() {
   const {currentList, setCardPaneFilter, handleRemoveBattle, handleCardZoom} =
     React.useContext(ListContext);
+  const {cards} = useCards();
   const chipStyle = {marginRight: 4, marginBottom: 4};
   const objectiveTheme = createTheme({
     palette: {primary: {main: "#274c82"}},

@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import settings, {SettingOption} from "@legion-hq/constants/settings";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 function SettingDropdown({
   id,
@@ -117,6 +118,10 @@ const OptionSwitch = styled((props: SwitchProps) => (
 
 export function Settings() {
   const {userSettings, setUserSettingsValue} = React.useContext(DataContext);
+
+  const {cards, cardIdsByType, cardIds} = useCards();
+
+  console.log("CARD", {cards, cardIdsByType, cardIds});
 
   return (
     <Fade in={true}>

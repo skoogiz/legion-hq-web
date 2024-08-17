@@ -2,8 +2,8 @@ import React from "react";
 import {Divider, Chip, Button, IconButton, Icon, Typography} from "@mui/material";
 import {Clear as ClearIcon} from "@mui/icons-material";
 import {CardIcon} from "@legion-hq/components";
-import cards from "@legion-hq/constants/cards";
 import loadoutIcon from "@legion-hq/assets/loadout.png";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 function UpgradeLabel({card, handleSwapUpgrade, handleChangeLoadout}) {
   if (handleChangeLoadout) {
@@ -108,6 +108,7 @@ function UpgradeChip({
   handleChangeLoadout,
   handleDeleteLoadout,
 }) {
+  const {cards} = useCards();
   const upgradeCard = cards[upgradeId];
   const loadoutCard = cards[loadoutId];
   let pointDelta = 0;

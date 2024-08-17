@@ -1,5 +1,10 @@
-import {news} from "@legion-hq/data";
+import {NewsPost} from "@legion-hq/types/news";
+import news from "@legion-hq/data/news.json";
 
-export function useNews() {
+type HookReturnValue = {
+  newsPosts: Array<NewsPost>;
+};
+
+export function useNews(): HookReturnValue {
   return {newsPosts: news};
 }

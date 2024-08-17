@@ -25,7 +25,6 @@
   },
   "Cd": {
     "cardSubtype": "condition",
-    "cardName": "Minefield",
     "cardType": "battle",
     "imageName": "Minefield.jpeg",
     "keywords": [
@@ -7128,9 +7127,25 @@
     "imageName": "Fives.jpeg",
     "keywords": [],
     "requirements": [
-      {
-        "cardSubtype": "clone trooper"
-      }
+      "OR",
+      [
+        "OR",
+        {
+          "cardName": "ARC Troopers"
+        },
+        {
+          "cardName": "ARC Troopers Strike Team"
+        }
+      ],
+      [
+        "AND",
+        {
+          "rank": "corps"
+        },
+        {
+          "cardSubtype": "clone trooper"
+        }
+      ]
     ],
     "history": [
       {
@@ -7149,9 +7164,25 @@
     "imageName": "Echo.jpeg",
     "keywords": [],
     "requirements": [
-      {
-        "cardSubtype": "clone trooper"
-      }
+      "OR",
+      [
+        "OR",
+        {
+          "cardName": "ARC Troopers"
+        },
+        {
+          "cardName": "ARC Troopers Strike Team"
+        }
+      ],
+      [
+        "AND",
+        {
+          "rank": "corps"
+        },
+        {
+          "cardSubtype": "clone trooper"
+        }
+      ]
     ],
     "history": [
       {
@@ -7485,6 +7516,14 @@
     "rank": "support",
     "imageName": "AT-RT2.jpeg",
     "cost": 60,
+    "defense": "white",
+    "surges": [
+      "hit",
+      "block"
+    ],
+    "speed": 2,
+    "wounds": 6,
+    "resilience": 4,
     "products": [],
     "faction": "republic",
     "keywords": [
@@ -7515,6 +7554,11 @@
     "rank": "support",
     "imageName": "STAP Riders.jpeg",
     "cost": 75,
+    "defense": "white",
+    "surges": [],
+    "speed": 3,
+    "wounds": 3,
+    "resilience": 0,
     "products": [],
     "faction": "separatists",
     "keywords": [
@@ -7738,6 +7782,14 @@
     "imageName": "Mandalorian Resistance.jpeg",
     "cost": 68,
     "prevCost": 72,
+    "surges": [
+      "hit",
+      "block"
+    ],
+    "speed": 3,
+    "wounds": 1,
+    "courage": 2,
+    "defense": "red",
     "products": [],
     "faction": "rebels",
     "keywords": [
@@ -7771,6 +7823,14 @@
     "imageName": "Mandalorian Resistance Clan Wren.jpeg",
     "cost": 30,
     "prevCost": 34,
+    "surges": [
+      "hit",
+      "block"
+    ],
+    "speed": 3,
+    "wounds": 2,
+    "courage": 3,
+    "defense": "red",
     "products": [],
     "faction": "rebels",
     "keywords": [
@@ -8033,6 +8093,13 @@
     "rank": "special",
     "imageName": "Imperial Special Forces.jpeg",
     "cost": 68,
+    "surges": [
+      "hit"
+    ],
+    "speed": 2,
+    "wounds": 1,
+    "courage": 2,
+    "defense": "red",
     "products": [],
     "faction": "empire",
     "keywords": [
@@ -8059,6 +8126,13 @@
     "rank": "special",
     "imageName": "Imperial Special Forces Inferno Squad.jpeg",
     "cost": 34,
+    "surges": [
+      "hit"
+    ],
+    "speed": 2,
+    "wounds": 2,
+    "courage": 2,
+    "defense": "red",
     "products": [],
     "faction": "empire",
     "keywords": [
@@ -8117,6 +8191,11 @@
     "rank": "commander",
     "imageName": "Anakin Skywalker.jpeg",
     "cost": 155,
+    "surges": [],
+    "speed": 2,
+    "wounds": 6,
+    "courage": 3,
+    "defense": "red",
     "products": [],
     "faction": "republic",
     "flaw": "nh",

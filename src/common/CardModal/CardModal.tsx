@@ -9,7 +9,7 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
-import cards from "@legion-hq/constants/cards";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {ImagePanel} from "./ImagePanel";
 import KeywordsPanel from "./KeywordsPanel";
 import HistoryPanel from "./HistoryPanel";
@@ -21,6 +21,7 @@ type Props = {
 };
 
 export function CardModal({id, isOpen, handleClose}: Props) {
+  const {cards} = useCards();
   const theme = useTheme();
   const isFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
   if (!id) return null;

@@ -1,8 +1,9 @@
 import React from "react";
 import {CardIcon, IconBadge} from "@legion-hq/components";
-import cards from "@legion-hq/constants/cards";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 function UnitCardAvatar({id, count = 1, handleClick}) {
+  const {cards} = useCards();
   const card = cards[id];
   if (card.cardType === "counterpart") {
     return (

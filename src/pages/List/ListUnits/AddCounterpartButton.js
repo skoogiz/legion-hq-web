@@ -1,9 +1,10 @@
 import React from "react";
 import {IconButton, Icon, Avatar} from "@mui/material";
-import cards from "@legion-hq/constants/cards";
 import urls from "@legion-hq/constants/urls";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
 function AddCounterpartButton({counterpartId, handleClick}) {
+  const {cards} = useCards();
   const {cardName, imageName} = cards[counterpartId];
   const size = 32;
   return (

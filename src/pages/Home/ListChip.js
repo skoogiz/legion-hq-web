@@ -12,9 +12,9 @@ import {
 import DataContext from "@legion-hq/context/DataContext";
 import urls from "@legion-hq/constants/urls";
 import factions from "@legion-hq/constants/factions";
-import cards from "@legion-hq/constants/cards";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
-function findFirstCommanderId(list) {
+function findFirstCommanderId(list, cards) {
   for (let i = 0; i < list.units.length; i++) {
     const card = cards[list.units[i].unitId];
     if (card.rank === "commander") return card.id;
@@ -24,6 +24,7 @@ function findFirstCommanderId(list) {
 
 function ListChip({userList, deleteUserList}) {
   const {goToPage} = React.useContext(DataContext);
+  const {cards} = useCards();
   const [anchorEl, setAnchorEl] = React.useState();
   const handleOpenDeleteMenu = (event) => setAnchorEl(event.currentTarget);
   const handleCloseDeleteMenu = () => setAnchorEl(null);
@@ -34,7 +35,7 @@ function ListChip({userList, deleteUserList}) {
         secondary: {main: factions[userList.faction].secondaryColor},
       },
     });
-    const card = cards[findFirstCommanderId(userList)];
+    const card = cards[findFirstCommanderId(userList, cards)];
     return (
       <React.Fragment>
         <ThemeProvider theme={factionTheme}>
