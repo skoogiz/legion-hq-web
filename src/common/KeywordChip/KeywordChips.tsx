@@ -1,8 +1,8 @@
 import React from "react";
 import {Typography} from "@mui/material";
-import KeywordChip from "./KeywordChip";
+import {KeywordChip} from "./KeywordChip";
 
-function KeywordChips({keywords, size = "medium"}) {
+export function KeywordChips({keywords, size = "medium"}) {
   const containerStyle = {
     display: "flex",
     flexWrap: "wrap",
@@ -22,5 +22,3 @@ function KeywordChips({keywords, size = "medium"}) {
     </div>
   );
 }
-
-export default KeywordChips;

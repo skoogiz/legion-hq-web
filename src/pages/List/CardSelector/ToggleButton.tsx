@@ -1,7 +1,13 @@
 import React from "react";
 import {Checkbox, FormGroup, FormControlLabel} from "@mui/material";
 
-function ToggleButton({label, value, handleChange}) {
+type Props = {
+  label: string;
+  value: boolean;
+  handleChange?: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
+};
+
+export function ToggleButton({label, value, handleChange}: Props) {
   return (
     <FormGroup>
       <FormControlLabel
@@ -19,5 +25,3 @@ function ToggleButton({label, value, handleChange}) {
     </FormGroup>
   );
 }
-
-export default ToggleButton;

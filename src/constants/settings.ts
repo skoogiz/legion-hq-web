@@ -1,35 +1,38 @@
+export type AppSettings = {
+  themeMode: "dark" | "light" | "blue";
+  cardStyle: "images" | "text";
+  chipSize: "small" | "medium";
+  builderOrientation: "right" | "left";
+  cascadeUpgradeSelection: "yes" | "no";
+};
+
+export type AppSettingType = keyof AppSettings;
+
 export type SettingOption = {
   key: Lowercase<string>;
   name: string;
 };
 
-type SettingKey =
-  | "themeColor"
-  | "cardStyle"
-  | "chipSize"
-  | "builderOrientation"
-  | "cascadeUpgradeSelection";
-
 type Setting = {
-  key: SettingKey;
+  key: AppSettingType;
   name: string;
   values: SettingOption[];
 };
 
 type Settings = {
-  default: Record<SettingKey, Lowercase<string>>;
   list: Setting[];
   fields: Record<string, unknown>;
 };
 
+const DEFAULT_SETTINGS: AppSettings = {
+  themeMode: "dark",
+  cardStyle: "images",
+  chipSize: "medium",
+  builderOrientation: "right",
+  cascadeUpgradeSelection: "yes",
+};
+
 const settings: Settings = {
-  default: {
-    themeColor: "dark",
-    cardStyle: "images",
-    chipSize: "medium",
-    builderOrientation: "right",
-    cascadeUpgradeSelection: "yes",
-  },
   fields: {
     cascadeUpgradeSelection: {
       name: "Cascade Upgrade Selecting",
@@ -41,7 +44,7 @@ const settings: Settings = {
   },
   list: [
     {
-      key: "themeColor",
+      key: "themeMode",
       name: "Theme",
       values: [
         {key: "dark", name: "Dark Side"},
@@ -76,4 +79,4 @@ const settings: Settings = {
   ],
 };
 
-export default settings;
+export {DEFAULT_SETTINGS, settings};

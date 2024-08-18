@@ -17,8 +17,8 @@ import {CardSelector} from "./CardSelector";
 
 function ListLayout() {
   const {userSettings} = useContext(DataContext);
-  const {themeColor} = userSettings;
-  const palette = themes.palettes[themeColor];
+  const {themeMode} = userSettings;
+  const palette = themes.palettes[themeMode];
   const {
     isSmallScreen,
     leftPaneWidth,

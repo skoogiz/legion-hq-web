@@ -2,7 +2,7 @@ import React from "react";
 import {Chip, ClickAwayListener, Tooltip, Typography} from "@mui/material";
 import keywords from "@legion-hq/constants/keywords";
 
-function KeywordChip({keyword, size}) {
+export function KeywordChip({keyword, size}) {
   const [isOpen, setIsOpen] = React.useState(false);
   const handleTooltipOpen = () => setIsOpen(true);
   const handleTooltipClose = () => setIsOpen(false);
@@ -25,5 +25,3 @@ function KeywordChip({keyword, size}) {
     </ClickAwayListener>
   );
 }
-
-export default KeywordChip;

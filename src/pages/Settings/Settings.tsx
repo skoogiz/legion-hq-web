@@ -14,9 +14,9 @@ import {
   Switch,
   styled,
 } from "@mui/material";
-import DataContext from "@legion-hq/context/DataContext";
-import settings, {SettingOption} from "@legion-hq/constants/settings";
+import {SettingOption, settings} from "@legion-hq/constants/settings";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {useAppContext} from "@legion-hq/context/app/useAppContext";
 
 function SettingDropdown({
   id,
@@ -117,7 +117,10 @@ const OptionSwitch = styled((props: SwitchProps) => (
 }));
 
 export function Settings() {
-  const {userSettings, setUserSettingsValue} = React.useContext(DataContext);
+  const {
+    settings: userSettings,
+    actions: {setSettingsValue: setUserSettingsValue},
+  } = useAppContext();
 
   const {cards, cardIdsByType, cardIds} = useCards();
 

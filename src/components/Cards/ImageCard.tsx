@@ -12,7 +12,7 @@ import {
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import {CardChip} from "@legion-hq/components";
 import HelpChip from "@legion-hq/common/HelpChip";
-import KeywordChips from "@legion-hq/common/KeywordChips";
+import {KeywordChips} from "@legion-hq/common/KeywordChip";
 import urls from "@legion-hq/constants/urls";
 import {LegionCard} from "@legion-hq/types";
 import {CSSProperties} from "@mui/styles";

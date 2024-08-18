@@ -11,9 +11,9 @@ type Props = {
 
 export function FactionIcon({faction, isAvatar = false, style}: Props) {
   const {userSettings} = React.useContext(DataContext);
-  const {themeColor} = userSettings;
+  const {themeMode} = userSettings;
   if (faction in factions) {
-    const paletteType = themes.palettes[themeColor].mode;
+    const paletteType = themes.palettes[themeMode].mode;
     if (isAvatar) {
       return (
         <Avatar alt={faction} src={factions[faction].icon[paletteType]} style={style} />

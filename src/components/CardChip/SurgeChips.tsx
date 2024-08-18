@@ -8,7 +8,7 @@ import {SurgeType} from "@legion-hq/types";
 
 function SurgeLabel({type}: {type: SurgeType}) {
   const {userSettings} = useContext(DataContext);
-  const themeType = userSettings.themeColor === "light" ? "dark" : "light";
+  const themeType = userSettings.themeMode === "light" ? "dark" : "light";
   return (
     <Img
       alt={`${type} surge`}

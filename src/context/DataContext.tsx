@@ -1,108 +1,36 @@
-import React, {createContext, useEffect, useState} from "react";
+import * as React from "react";
 import {useNavigate} from "react-router-dom";
 import Axios from "axios";
-import {
-  Home as HomeIcon,
-  Settings as SettingsIcon,
-  Info as InfoIcon,
-  ViewModule as CardsIcon,
-  Announcement as NewsIcon,
-  Casino as DiceIcon,
-} from "@mui/icons-material";
 import {AlertTitle, Alert, Snackbar} from "@mui/material";
 // import ErrorFallback from '@legion-hq/common/ErrorFallback';
-import {FactionIcon} from "@legion-hq/common/FactionIcon";
-import urls from "@legion-hq/constants/urls";
-import settings from "@legion-hq/constants/settings";
+import {urls} from "@legion-hq/constants";
 import {useAuth0} from "@auth0/auth0-react";
 import auth from "@legion-hq/constants/auth";
+import {useRoutes} from "@legion-hq/routes";
+import {useAppContext} from "./app/useAppContext";
 const {returnTo} = auth.prod;
 
-const DataContext = createContext();
+const DataContext = React.createContext();
 const httpClient = Axios.create();
 httpClient.defaults.timeout = 10000;
 
-const fontSize = 26;
-
-const routes = {
-  "/": {
-    name: "Home",
-    path: "/",
-    icon: <HomeIcon style={{fontSize}} />,
-  },
-  "/news": {
-    name: "News",
-    path: "/news",
-    icon: <NewsIcon style={{fontSize}} />,
-  },
-  "/cards": {
-    name: "Cards",
-    path: "/cards",
-    icon: <CardsIcon style={{fontSize}} />,
-  },
-  "/roller": {
-    name: "Dice Roller",
-    path: "/roller",
-    icon: <DiceIcon style={{fontSize}} />,
-  },
-  "/list/rebels": {
-    name: "Rebels",
-    path: "/list/rebels",
-    icon: <FactionIcon faction="rebels" />,
-  },
-  "/list/empire": {
-    name: "Empire",
-    path: "/list/empire",
-    icon: <FactionIcon faction="empire" />,
-  },
-  "/list/republic": {
-    name: "Republic",
-    path: "/list/republic",
-    icon: <FactionIcon faction="republic" />,
-  },
-  "/list/separatists": {
-    name: "Separatists",
-    path: "/list/separatists",
-    icon: <FactionIcon faction="separatists" />,
-  },
-  "/list/fringe": {
-    name: "Shadow Collective",
-    path: "/list/fringe",
-    icon: <FactionIcon faction="fringe" />,
-  },
-  "/settings": {
-    name: "Settings",
-    path: "/settings",
-    icon: <SettingsIcon style={{fontSize}} />,
-  },
-  "/info": {
-    name: "Info",
-    path: "/info",
-    icon: <InfoIcon style={{fontSize}} />,
-  },
+type Props = {
+  children: React.ReactNode;
 };
 
-function initializeLocalSettings() {
-  if (typeof Storage !== "undefined") {
-    const localSettings = JSON.parse(window.localStorage.getItem("settings"));
-    return {
-      ...settings.default,
-      ...localSettings,
-    };
-  }
-  return settings.default;
-}
-
-export function DataProvider({children}) {
+export function DataProvider({children}: Props) {
   const navigate = useNavigate();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isAlertOpen, setIsAlertOpen] = useState(false);
-  const [isAlertAllowed, setIsAlertAllowed] = useState(true);
-  const [error, setError] = useState();
-  const [userId, setUserId] = useState();
-  const [message, setMessage] = useState();
-  const [userLists, setUserLists] = useState([]);
-  const [userSettings, setUserSettings] = useState(initializeLocalSettings());
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [isAlertOpen, setIsAlertOpen] = React.useState(false);
+  const [isAlertAllowed, setIsAlertAllowed] = React.useState(true);
+  const [error, setError] = React.useState();
+  const [userId, setUserId] = React.useState();
+  const [message, setMessage] = React.useState();
+  const [userLists, setUserLists] = React.useState([]);
+
+  const {settings, actions} = useAppContext();
+
+  const {routes} = useRoutes();
 
   const {user, loginWithRedirect, logout, isAuthenticated} = useAuth0();
   let isLoginDisabled = true;
@@ -122,17 +50,17 @@ export function DataProvider({children}) {
     loginHandler = () => logout({returnTo});
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (user && user.email && isAuthenticated && !userId) {
       fetchUserId(user.email);
     }
   }, [isAuthenticated, user, userId]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (userId) fetchUserLists(userId);
   }, [userId]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     let numFetches = 0;
     const intervalId = setInterval(() => {
       if (userId && numFetches < 5) {
@@ -146,15 +74,9 @@ export function DataProvider({children}) {
   }, [userId, user, isAuthenticated]);
 
   const setUserSettingsValue = (key, value) => {
-    if (typeof Storage !== "undefined") {
-      const newSettings = {
-        ...userSettings,
-        [key]: value,
-      };
-      window.localStorage.setItem("settings", JSON.stringify(newSettings));
-      setUserSettings(newSettings);
-    }
+    actions.setSettingsValue(key, value);
   };
+
   const goToPage = (newRoute) => navigate(newRoute);
   const fetchUserLists = (userId) => {
     if (userId) {
@@ -231,7 +153,7 @@ export function DataProvider({children}) {
       userId,
       routes,
       userLists,
-      userSettings,
+      userSettings: settings,
       goToPage,
       fetchUserLists,
       setUserLists,
@@ -247,7 +169,7 @@ export function DataProvider({children}) {
       isDrawerOpen,
       userId,
       userLists,
-      userSettings,
+      settings,
       goToPage,
       fetchUserLists,
       setUserLists,
@@ -258,6 +180,7 @@ export function DataProvider({children}) {
       loginTooltipText,
       loginButtonText,
       loginHandler,
+      routes,
     ],
   );
 

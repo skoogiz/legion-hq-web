@@ -1,11 +1,11 @@
-import React from "react";
+import * as React from "react";
 import {Fade, Typography} from "@mui/material";
 import ListContext from "@legion-hq/context/ListContext";
 import {LegionCard} from "@legion-hq/components";
 import SelectorHeader from "./SelectorHeader";
 import SelectorContent from "./SelectorContent";
 import StackController from "./StackController";
-import ToggleButton from "./ToggleButton";
+import {ToggleButton} from "./ToggleButton";
 
 function Title({title}: {title: string}) {
   return <Typography variant="body2">{title}</Typography>;

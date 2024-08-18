@@ -679,6 +679,18 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
+"@react-hookz/deep-equal@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@react-hookz/deep-equal/-/deep-equal-1.0.4.tgz#68a71f36cbc88724b3ce6f4036183778b6e7f282"
+  integrity sha512-N56fTrAPUDz/R423pag+n6TXWbvlBZDtTehaGFjK0InmN+V2OFWLE/WmORhmn6Ce7dlwH5+tQN1LJFw3ngTJVg==
+
+"@react-hookz/web@^15.1.0":
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/@react-hookz/web/-/web-15.1.0.tgz#62f7cedb98f345a1cdc7437673ea93dfb4d753d1"
+  integrity sha512-AsmqeZDg22JnpQS1hGIjLbue4LPmcsgyoPzgmKt6WDeqIUWFL20cgowiGBMFNLvL5Cc9XdusVY720S+CpLyT4Q==
+  dependencies:
+    "@react-hookz/deep-equal" "^1.0.3"
+
 "@remix-run/router@1.19.0":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.19.0.tgz#745dbffbce67f05386d57ca22c51dfd85c979593"
@@ -921,6 +933,11 @@
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-5.0.4.tgz#1a31c3d378850d2778dabb6374d036dcba4ba708"
   integrity sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==
+
+"@types/auth0-js@^9.21.6":
+  version "9.21.6"
+  resolved "https://registry.yarnpkg.com/@types/auth0-js/-/auth0-js-9.21.6.tgz#31535a9cca2b3154c4836aab7854c38c2016a26c"
+  integrity sha512-wsvfk03WzQDXCbMdX8lQZH2Thh5AQk9SKQcxrBN1EdRkIOgkw9aIixxBpzsTHu/gj0I514BGQv7t5EyZSgVRmQ==
 
 "@types/babel__core@^7.20.5":
   version "7.20.5"

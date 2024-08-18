@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   flaw: {width: "auto", height: 150},
 }));
 
-function CardImage({id, size, handleClick}) {
+export function CardImage({id, size, handleClick}) {
   const {cards} = useCards();
   const card = cards[id];
   const classes = useStyles();
@@ -37,5 +37,3 @@ function CardImage({id, size, handleClick}) {
     </div>
   );
 }
-
-export default CardImage;

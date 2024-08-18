@@ -11,6 +11,7 @@
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
     "@mui/styles": "^5.16.7",
+    "@react-hookz/web": "^15.1.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@types/auth0-js": "^9.21.6",
     "@types/lodash": "^4.17.7",
     "@types/node": "^22.2.0",
     "@types/react": "^18.3.3",

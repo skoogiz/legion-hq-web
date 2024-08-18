@@ -5,6 +5,7 @@ import {DataProvider} from "@legion-hq/context/DataContext";
 import {App} from "./App";
 import {Auth0Provider} from "@auth0/auth0-react";
 import auth from "@legion-hq/constants/auth";
+import {AppContextProvider} from "./context/app/AppContext";
 
 const {domain, clientID} = auth.v1;
 const {returnTo} = auth.prod;
@@ -13,9 +14,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Router>
       <Auth0Provider domain={domain} clientId={clientID} redirectUri={returnTo}>
-        <DataProvider>
-          <App />
-        </DataProvider>
+        <AppContextProvider>
+          <DataProvider>
+            <App />
+          </DataProvider>
+        </AppContextProvider>
       </Auth0Provider>
     </Router>
   </React.StrictMode>,

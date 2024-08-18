@@ -82,14 +82,14 @@ function Home() {
               <Grid item>
                 <img
                   alt="Fifth Trooper Logo"
-                  src={userSettings.themeColor === "light" ? ftLogoLight : ftLogoDark}
+                  src={userSettings.themeMode === "light" ? ftLogoLight : ftLogoDark}
                   style={{width: 150, height: "auto"}}
                 />
               </Grid>
               <Grid item>
                 <img
                   alt="Legion HQ Logo"
-                  src={userSettings.themeColor === "light" ? lhqLogoLight : lhqLogoDark}
+                  src={userSettings.themeMode === "light" ? lhqLogoLight : lhqLogoDark}
                   style={{width: 400, height: "auto"}}
                 />
               </Grid>

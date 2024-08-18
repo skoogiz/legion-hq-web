@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, createContext} from "react";
+import * as React from "react";
 import Axios from "axios";
 import DataContext from "@legion-hq/context/DataContext";
 import ErrorFallback from "@legion-hq/common/ErrorFallback";
@@ -37,7 +37,7 @@ import {
 import {createListTemplate} from "@legion-hq/constants/listTemplate";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
-const ListContext = createContext();
+const ListContext = React.createContext();
 const httpClient = Axios.create();
 httpClient.defaults.timeout = 10000;
 
@@ -55,25 +55,25 @@ export function ListProvider({
 }) {
   const {cards} = useCards();
 
-  const {userId, userSettings, goToPage} = useContext(DataContext);
-  const [stackSize, setStackSize] = useState(1);
-  const [isApplyToAll, setIsApplyToAll] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState();
-  const [message, setMessage] = useState();
-  const [listSaveMessage, setListSaveMessage] = useState();
-  const [currentList, setCurrentList] = useState();
-  const [leftPaneWidth, setLeftPaneWidth] = useState(0);
-  const [rightPaneWidth, setRightPaneWidth] = useState(0);
-  const [modalContent, setModalContent] = useState();
-  const [cardPaneFilter, setCardPaneFilter] = useState({action: "DISPLAY"});
-  const [isKillPointMode, setIsKillPointMode] = useState(false);
-  const [currentKillPoints, setCurrentKillPoints] = useState(0);
-  const [validationIssues, setValidationIssues] = useState([]);
-  const [rankLimits, setRankLimits] = useState();
+  const {userId, userSettings, goToPage} = React.useContext(DataContext);
+  const [stackSize, setStackSize] = React.useState(1);
+  const [isApplyToAll, setIsApplyToAll] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [status, setStatus] = React.useState("idle");
+  const [error, setError] = React.useState();
+  const [message, setMessage] = React.useState();
+  const [listSaveMessage, setListSaveMessage] = React.useState();
+  const [currentList, setCurrentList] = React.useState();
+  const [leftPaneWidth, setLeftPaneWidth] = React.useState(0);
+  const [rightPaneWidth, setRightPaneWidth] = React.useState(0);
+  const [modalContent, setModalContent] = React.useState();
+  const [cardPaneFilter, setCardPaneFilter] = React.useState({action: "DISPLAY"});
+  const [isKillPointMode, setIsKillPointMode] = React.useState(false);
+  const [currentKillPoints, setCurrentKillPoints] = React.useState(0);
+  const [validationIssues, setValidationIssues] = React.useState([]);
+  const [rankLimits, setRankLimits] = React.useState();
 
-  useEffect(() => {
+  React.useEffect(() => {
     // route '/list/rebels' fetches the rebel list from storage
     if (slug in factions) {
       if (listHash) {
@@ -113,14 +113,14 @@ export function ListProvider({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
-  useEffect(() => {
+  React.useEffect(() => {
     // Save list before unmount
     return () => {
       if (currentList) updateStoredList(currentList);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentList]);
-  useEffect(() => {
+  React.useEffect(() => {
     if (isSmallScreen) {
       setLeftPaneWidth(12);
       setRightPaneWidth(0);
@@ -129,7 +129,7 @@ export function ListProvider({
       setRightPaneWidth(6);
     }
   }, [isSmallScreen]);
-  useEffect(() => {
+  React.useEffect(() => {
     if (isSmallScreen) {
       if (cardPaneFilter.action === "DISPLAY") {
         setLeftPaneWidth(12);

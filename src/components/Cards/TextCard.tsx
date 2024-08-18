@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import {Add as AddIcon, ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import {type ChipSize, CardChip} from "@legion-hq/components";
-import KeywordChips from "@legion-hq/common/KeywordChips";
+import {KeywordChips} from "@legion-hq/common/KeywordChip";
 import UpgradeBar from "@legion-hq/common/UpgradeBar";
 import {UpgradeType, type LegionCard} from "@legion-hq/types";
 import {CardIcon, IconBadge} from "@legion-hq/components";

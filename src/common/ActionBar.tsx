@@ -72,7 +72,7 @@ function DefaultBar() {
       </IconButton>
       <img
         alt="Legion HQ Logo"
-        src={userSettings.themeColor === "light" ? lhqLogoLight : lhqLogoDark}
+        src={userSettings.themeMode === "light" ? lhqLogoLight : lhqLogoDark}
         style={{height: 35}}
       />
       <div className={classes.grow} />
@@ -84,7 +84,7 @@ function DefaultBar() {
       >
         <img
           alt="Fifth Trooper Logo"
-          src={userSettings.themeColor === "light" ? ftLogoLight : ftLogoDark}
+          src={userSettings.themeMode === "light" ? ftLogoLight : ftLogoDark}
           style={{height: 35}}
         />
       </a>

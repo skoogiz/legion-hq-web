@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import * as React from "react";
 import {Grid, Chip} from "@mui/material";
 import {Add as AddIcon} from "@mui/icons-material";
 import ListContext from "@legion-hq/context/ListContext";
@@ -9,7 +9,7 @@ const chipSize = "medium";
 
 function ListContingencies() {
   const {currentList, setCardPaneFilter, handleCardZoom, handleRemoveContingency} =
-    useContext(ListContext);
+    React.useContext(ListContext);
   const {cards} = useCards();
   const getNumPips = (cardId) => {
     const card = cards[cardId];
