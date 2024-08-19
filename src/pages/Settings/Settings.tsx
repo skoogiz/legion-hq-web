@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   Container,
   Grid,
@@ -13,10 +12,16 @@ import {
   SwitchProps,
   Switch,
   styled,
+  Box,
+  Divider,
 } from "@mui/material";
-import {SettingOption, settings} from "@legion-hq/constants/settings";
+import {
+  AppSettingType,
+  SettingOption,
+  settingsConfig,
+} from "@legion-hq/constants/settings";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
-import {useAppContext} from "@legion-hq/context/app/useAppContext";
+import {useSettings} from "@legion-hq/hooks/app/useSettings";
 
 function SettingDropdown({
   id,
@@ -28,7 +33,7 @@ function SettingDropdown({
   id: string;
   name: string;
   value: string;
-  options: SettingOption[];
+  options: Record<string, string>;
   handleClick: (event: SelectChangeEvent) => void;
 }) {
   return (
@@ -55,9 +60,9 @@ function SettingDropdown({
         style={{minWidth: 200}}
         variant="filled"
       >
-        {options.map((option) => (
-          <MenuItem key={option.key} value={option.key}>
-            {option.name}
+        {Object.keys(options).map((key) => (
+          <MenuItem key={key} value={key}>
+            {options[key]}
           </MenuItem>
         ))}
       </Select>
@@ -117,10 +122,7 @@ const OptionSwitch = styled((props: SwitchProps) => (
 }));
 
 export function Settings() {
-  const {
-    settings: userSettings,
-    actions: {setSettingsValue: setUserSettingsValue},
-  } = useAppContext();
+  const userSettings = useSettings();
 
   const {cards, cardIdsByType, cardIds} = useCards();
 
@@ -128,36 +130,71 @@ export function Settings() {
 
   return (
     <Fade in={true}>
-      <Container>
-        <Grid container spacing={4} direction="column" alignItems="center">
-          <Grid item xs={12}>
+      <Container maxWidth="sm">
+        <Grid
+          container
+          spacing={4}
+          direction="column"
+          alignItems="center"
+          sx={{width: "100%"}}
+        >
+          <Grid item xs={12} alignSelf="stretch">
+            <Typography variant="h3" sx={{mb: 2}}>
+              Settings
+            </Typography>
             <Paper square={false} sx={{p: 2}}>
-              <Typography variant="h5" sx={{mb: 2}}>
-                Settings
-              </Typography>
-              <div style={{display: "flex", flexDirection: "column", gap: "1em"}}>
-                {settings.list.map(({key, name, values}) => (
-                  <SettingDropdown
-                    key={key}
-                    id={key}
-                    name={name}
-                    value={userSettings[key]}
-                    options={values}
-                    handleClick={(event) => {
-                      setUserSettingsValue(key, event.target.value);
-                    }}
-                  />
-                ))}
-              </div>
-              <OptionSwitch
-                checked={userSettings["cascadeUpgradeSelection"] === "yes"}
-                onChange={(event) => {
-                  setUserSettingsValue(
-                    "cascadeUpgradeSelection",
-                    event.target.checked ? "yes" : "no",
-                  );
-                }}
-              />
+              <Box display="flex" flexDirection="column" gap={3}>
+                <Box>
+                  <Typography variant="h5">Theme</Typography>
+
+                  <Divider />
+                </Box>
+
+                {settingsConfig.fields.map(({name, displayName, options}) => {
+                  switch (name) {
+                    case "cascadeUpgradeSelection":
+                      return (
+                        <Box>
+                          <Typography variant="h5">Options</Typography>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                              alignItems: "center",
+                              padding: "8px 0",
+                            }}
+                          >
+                            <Typography variant="body1">{displayName}</Typography>
+                            <OptionSwitch
+                              checked={userSettings["cascadeUpgradeSelection"] === "yes"}
+                              onChange={(event) => {
+                                userSettings.setSettingsValue(
+                                  "cascadeUpgradeSelection",
+                                  event.target.checked ? "yes" : "no",
+                                );
+                              }}
+                            />
+                          </div>
+                          <Divider />
+                        </Box>
+                      );
+
+                    default:
+                      return (
+                        <SettingDropdown
+                          key={name}
+                          id={name}
+                          name={displayName}
+                          value={userSettings[name]}
+                          options={options}
+                          handleClick={(event) => {
+                            userSettings.setSettingsValue(name, event.target.value);
+                          }}
+                        />
+                      );
+                  }
+                })}
+              </Box>
             </Paper>
           </Grid>
         </Grid>

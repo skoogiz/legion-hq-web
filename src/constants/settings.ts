@@ -8,20 +8,14 @@ export type AppSettings = {
 
 export type AppSettingType = keyof AppSettings;
 
-export type SettingOption = {
-  key: Lowercase<string>;
-  name: string;
+export type SettingField = {
+  name: AppSettingType;
+  displayName: string;
+  options: Record<string, string>;
 };
 
-type Setting = {
-  key: AppSettingType;
-  name: string;
-  values: SettingOption[];
-};
-
-type Settings = {
-  list: Setting[];
-  fields: Record<string, unknown>;
+type SettingsConfig = {
+  fields: SettingField[];
 };
 
 const DEFAULT_SETTINGS: AppSettings = {
@@ -32,51 +26,50 @@ const DEFAULT_SETTINGS: AppSettings = {
   cascadeUpgradeSelection: "yes",
 };
 
-const settings: Settings = {
-  fields: {
-    cascadeUpgradeSelection: {
-      name: "Cascade Upgrade Selecting",
+const settingsConfig: SettingsConfig = {
+  fields: [
+    {
+      name: "themeMode",
+      displayName: "Theme",
+      options: {
+        dark: "Dark Side",
+        light: "Light Side",
+        blue: "Fifth Trooper",
+      },
+    },
+    {
+      name: "cardStyle",
+      displayName: "Card Style",
+      options: {
+        images: "Images",
+        text: "Text",
+      },
+    },
+    {
+      name: "chipSize",
+      displayName: "Chip Size",
+      options: {
+        small: "Small",
+        medium: "Large",
+      },
+    },
+    {
+      name: "builderOrientation",
+      displayName: "Orientation",
+      options: {
+        right: "Right",
+        left: "Left",
+      },
+    },
+    {
+      name: "cascadeUpgradeSelection",
+      displayName: "Cascade Upgrade Selecting",
       options: {
         yes: "Yes",
         no: "No",
       },
     },
-  },
-  list: [
-    {
-      key: "themeMode",
-      name: "Theme",
-      values: [
-        {key: "dark", name: "Dark Side"},
-        {key: "light", name: "Light Side"},
-        {key: "blue", name: "Fifth Trooper"},
-      ],
-    },
-    {
-      key: "cardStyle",
-      name: "Card Style",
-      values: [
-        {key: "images", name: "Images"},
-        {key: "text", name: "Text"},
-      ],
-    },
-    {
-      key: "chipSize",
-      name: "Chip Size",
-      values: [
-        {key: "small", name: "Small"},
-        {key: "medium", name: "Large"},
-      ],
-    },
-    {
-      key: "cascadeUpgradeSelection",
-      name: "Cascade Upgrade Selecting",
-      values: [
-        {key: "yes", name: "Yes"},
-        {key: "no", name: "No"},
-      ],
-    },
   ],
 };
 
-export {DEFAULT_SETTINGS, settings};
+export {DEFAULT_SETTINGS, settingsConfig};

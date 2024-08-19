@@ -1,9 +1,9 @@
-import React, {useContext} from "react";
-import DataContext from "@legion-hq/context/DataContext";
+import React from "react";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {ImageCard} from "./ImageCard";
 import {TextCard} from "./TextCard";
 import {ChipCard} from "./ChipCard";
+import {useSettings} from "@legion-hq/hooks/app/useSettings";
 
 type Props = {
   id: string;
@@ -24,7 +24,7 @@ export function LegionCard({
   handleCardZoom,
   handleDelete,
 }: Props) {
-  const {userSettings} = useContext(DataContext);
+  const {cardStyle} = useSettings();
   const {cards} = useCards();
   const card = cards[id];
   if (isBasic) {
@@ -36,7 +36,7 @@ export function LegionCard({
         handleDelete={handleDelete}
       />
     );
-  } else if (userSettings.cardStyle === "images") {
+  } else if (cardStyle === "images") {
     return (
       <ImageCard
         isSelected={isSelected}
@@ -45,7 +45,7 @@ export function LegionCard({
         handleCardZoom={handleCardZoom}
       />
     );
-  } else if (userSettings.cardStyle === "text") {
+  } else if (cardStyle === "text") {
     return (
       <TextCard
         // isSelected={isSelected}

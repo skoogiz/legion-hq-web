@@ -7,6 +7,7 @@ import ftLogoLight from "@legion-hq/assets/ftLogoLight.png";
 import ftLogoDark from "@legion-hq/assets/ftLogoDark.png";
 import lhqLogoLight from "@legion-hq/assets/lhqLogoLight.png";
 import lhqLogoDark from "@legion-hq/assets/lhqLogoDark.png";
+import {useSettings} from "@legion-hq/hooks/app/useSettings";
 
 const useStyles = makeStyles((theme) => ({
   grow: {flexGrow: 1},
@@ -59,7 +60,8 @@ const useStyles = makeStyles((theme) => ({
 
 function DefaultBar() {
   const classes = useStyles();
-  const {userSettings, setIsDrawerOpen} = useContext(DataContext);
+  const {setIsDrawerOpen} = useContext(DataContext);
+  const {themeMode} = useSettings();
   return (
     <Toolbar variant="dense">
       <IconButton
@@ -72,7 +74,7 @@ function DefaultBar() {
       </IconButton>
       <img
         alt="Legion HQ Logo"
-        src={userSettings.themeMode === "light" ? lhqLogoLight : lhqLogoDark}
+        src={themeMode === "light" ? lhqLogoLight : lhqLogoDark}
         style={{height: 35}}
       />
       <div className={classes.grow} />
@@ -84,7 +86,7 @@ function DefaultBar() {
       >
         <img
           alt="Fifth Trooper Logo"
-          src={userSettings.themeMode === "light" ? ftLogoLight : ftLogoDark}
+          src={themeMode === "light" ? ftLogoLight : ftLogoDark}
           style={{height: 35}}
         />
       </a>

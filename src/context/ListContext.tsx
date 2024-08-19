@@ -36,6 +36,7 @@ import {
 } from "@legion-hq/constants/listOperations";
 import {createListTemplate} from "@legion-hq/constants/listTemplate";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {useSettings} from "@legion-hq/hooks/app/useSettings";
 
 const ListContext = React.createContext();
 const httpClient = Axios.create();
@@ -55,7 +56,8 @@ export function ListProvider({
 }) {
   const {cards} = useCards();
 
-  const {userId, userSettings, goToPage} = React.useContext(DataContext);
+  const {userId, goToPage} = React.useContext(DataContext);
+  const {cascadeUpgradeSelection} = useSettings();
   const [stackSize, setStackSize] = React.useState(1);
   const [isApplyToAll, setIsApplyToAll] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -232,11 +234,8 @@ export function ListProvider({
           : unit.additionalUpgradeSlots[i - (unitCard.upgradeBar.length + 1)];
         i = (i + 1) % unit.upgradesEquipped.length;
       }
-      let letUpgradesCascade = true;
-      if (userSettings && userSettings.cascadeUpgradeSelection) {
-        letUpgradesCascade =
-          userSettings.cascadeUpgradeSelection === "yes" ? true : false;
-      }
+      const letUpgradesCascade =
+        (cascadeUpgradeSelection ?? "yes") === "yes" ? true : false;
 
       if (letUpgradesCascade && nextAvailIndex !== undefined && nextAvailType) {
         applyFilter = (newUpgradesEquipped, newAdditionalUpgradeSlots) =>
@@ -475,7 +474,6 @@ export function ListProvider({
     return (
       <ListContext.Provider
         value={{
-          userSettings,
           ...unitProps,
           ...commandProps,
           ...battleProps,

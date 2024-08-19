@@ -7,7 +7,6 @@ import {urls} from "@legion-hq/constants";
 import {useAuth0} from "@auth0/auth0-react";
 import auth from "@legion-hq/constants/auth";
 import {useRoutes} from "@legion-hq/routes";
-import {useAppContext} from "./app/useAppContext";
 const {returnTo} = auth.prod;
 
 const DataContext = React.createContext();
@@ -27,8 +26,6 @@ export function DataProvider({children}: Props) {
   const [userId, setUserId] = React.useState();
   const [message, setMessage] = React.useState();
   const [userLists, setUserLists] = React.useState([]);
-
-  const {settings, actions} = useAppContext();
 
   const {routes} = useRoutes();
 
@@ -72,10 +69,6 @@ export function DataProvider({children}: Props) {
     }, 15000);
     return () => clearInterval(intervalId);
   }, [userId, user, isAuthenticated]);
-
-  const setUserSettingsValue = (key, value) => {
-    actions.setSettingsValue(key, value);
-  };
 
   const goToPage = (newRoute) => navigate(newRoute);
   const fetchUserLists = (userId) => {
@@ -153,11 +146,9 @@ export function DataProvider({children}: Props) {
       userId,
       routes,
       userLists,
-      userSettings: settings,
       goToPage,
       fetchUserLists,
       setUserLists,
-      setUserSettingsValue,
       setIsDrawerOpen,
       deleteUserList,
       isLoginDisabled,
@@ -169,11 +160,9 @@ export function DataProvider({children}: Props) {
       isDrawerOpen,
       userId,
       userLists,
-      settings,
       goToPage,
       fetchUserLists,
       setUserLists,
-      setUserSettingsValue,
       setIsDrawerOpen,
       deleteUserList,
       isLoginDisabled,

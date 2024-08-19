@@ -10,7 +10,7 @@ import {
 
 type AppContextValue = {
   settings: AppSettings;
-  actions: {
+  settingActions: {
     setSettingsValue: (name: AppSettingType, value: string) => void;
   };
 };
@@ -54,7 +54,7 @@ export function AppContextProvider({children}: Props) {
   );
 
   return (
-    <AppContext.Provider value={{...value, actions: {setSettingsValue}}}>
+    <AppContext.Provider value={{...value, settingActions: {setSettingsValue}}}>
       {children}
     </AppContext.Provider>
   );

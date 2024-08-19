@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Avatar, Icon} from "@mui/material";
-import DataContext from "@legion-hq/context/DataContext";
 import {themes, factions} from "@legion-hq/constants";
+import {useSettings} from "@legion-hq/hooks/app/useSettings";
 
 type Props = {
   faction: string;
@@ -10,8 +10,7 @@ type Props = {
 };
 
 export function FactionIcon({faction, isAvatar = false, style}: Props) {
-  const {userSettings} = React.useContext(DataContext);
-  const {themeMode} = userSettings;
+  const {themeMode} = useSettings();
   if (faction in factions) {
     const paletteType = themes.palettes[themeMode].mode;
     if (isAvatar) {

@@ -1,6 +1,6 @@
-import React, {useContext} from "react";
+import * as React from "react";
 import {Grid, Divider} from "@mui/material";
-import DataContext from "@legion-hq/context/DataContext";
+import {useSettings} from "@legion-hq/hooks/app/useSettings";
 import ListContext from "@legion-hq/context/ListContext";
 import {CardModal} from "@legion-hq/common/CardModal";
 import themes from "@legion-hq/constants/themes";
@@ -16,8 +16,7 @@ import ListId from "./ListId";
 import {CardSelector} from "./CardSelector";
 
 function ListLayout() {
-  const {userSettings} = useContext(DataContext);
-  const {themeMode} = userSettings;
+  const {themeMode} = useSettings();
   const palette = themes.palettes[themeMode];
   const {
     isSmallScreen,
@@ -26,7 +25,7 @@ function ListLayout() {
     isModalOpen,
     modalContent,
     handleCloseModal,
-  } = useContext(ListContext);
+  } = React.useContext(ListContext);
 
   const isMobile = isSmallScreen;
 
