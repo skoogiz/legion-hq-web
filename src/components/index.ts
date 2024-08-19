@@ -5,3 +5,4 @@ export * from "./Cards";
 export * from "./IconBadge";
 export * from "./NavigationDrawer";
 export * from "./SpriteCard";
+export {OptionSwitch} from "./OptionSwitch";

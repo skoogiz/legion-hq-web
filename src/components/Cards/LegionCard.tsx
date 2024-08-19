@@ -24,9 +24,12 @@ export function LegionCard({
   handleCardZoom,
   handleDelete,
 }: Props) {
-  const {cardStyle} = useSettings();
+  const {cardStyle, includeCustomCards} = useSettings();
   const {cards} = useCards();
   const card = cards[id];
+
+  if (!card || (card.metaData?.isCustomCard && includeCustomCards === "no")) return null;
+
   if (isBasic) {
     return (
       <ChipCard

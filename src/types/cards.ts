@@ -53,4 +53,7 @@ export interface LegionCard {
   defense: DefenceDiceType;
   surges: SurgeType[];
   upgradeBar: string[];
+  metaData?: {
+    isCustomCard?: boolean;
+  };
 }
