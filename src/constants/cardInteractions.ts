@@ -1,8 +1,9 @@
 import {CardService} from "@legion-hq/data-access/services";
+import {UpgradeType} from "@legion-hq/types";
 
 const {cards} = CardService.getInstance();
 
-function checkUpgradeName(upgrade, values) {
+function checkUpgradeName(upgrade: {cardName: string}, values: string | string[]) {
   if (Array.isArray(values)) {
     let isConditionMet = false;
     values.forEach((value) => {
@@ -14,7 +15,7 @@ function checkUpgradeName(upgrade, values) {
   }
 }
 
-function checkUpgradeType(upgrade, value) {
+function checkUpgradeType(upgrade: {cardSubtype: UpgradeType}, value: UpgradeType) {
   return upgrade.cardSubtype === value;
 }
 

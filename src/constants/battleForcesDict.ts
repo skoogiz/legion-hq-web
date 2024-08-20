@@ -1,4 +1,6 @@
-const battleForcesDict = {
+import {BattleForces} from "@legion-hq/types";
+
+const battleForcesDict: BattleForces = {
   "Echo Base Defenders": {
     name: "Echo Base Defenders",
     faction: "rebels",
@@ -9,7 +11,6 @@ const battleForcesDict = {
     support: ["an", "he"],
     heavy: ["ap"],
     allowedUniqueUpgrades: ["fk"],
-
     rules: {
       noFieldComm: true,
     },

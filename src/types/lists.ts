@@ -1,11 +1,6 @@
-export type UnitCount = {
-  commander: number;
-  operative: number;
-  corps: number;
-  special: number;
-  support: number;
-  heavy: number;
-};
+import {RankType} from "./units";
+
+export type UnitCount = Record<RankType, number>;
 
 export interface ListTemplate {
   version: number;

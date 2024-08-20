@@ -24,17 +24,20 @@ export type LegionMode =
 
 type Quantity = [min: number, max: number];
 
+export interface UnitRestrictions {
+  commander: Quantity;
+  operative: Quantity;
+  corps: Quantity;
+  special: Quantity;
+  support: Quantity;
+  heavy: Quantity;
+  commOp?: number;
+}
+
 export interface LegionModeInfo {
   name: string;
   maxPoints: number;
-  unitCounts: {
-    commander: Quantity;
-    operative: Quantity;
-    corps: Quantity;
-    special: Quantity;
-    support: Quantity;
-    heavy: Quantity;
-  };
+  unitCounts: UnitRestrictions;
 }
 
 export const BLACK_DICE = "black";

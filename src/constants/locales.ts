@@ -1,6 +1,15 @@
-import {enUS, frFR, deDE, itIT, ptBR, ptPT, esES} from "@mui/material/locale";
+import {
+  enUS,
+  frFR,
+  deDE,
+  itIT,
+  ptBR,
+  ptPT,
+  esES,
+  type Localization,
+} from "@mui/material/locale";
 
-const locales = {
+const locales: Record<string, Localization> = {
   English: enUS,
   French: frFR,
   German: deDE,
