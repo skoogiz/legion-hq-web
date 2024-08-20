@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import {
   Accordion,
   AccordionSummary,
@@ -9,41 +8,47 @@ import {
   Collapse,
   IconButton,
 } from "@mui/material";
-import {makeStyles} from "@mui/styles";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import {LegionCard} from "@legion-hq/components";
 
-const useStyles = makeStyles((theme) => ({
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {transform: "rotate(180deg)"},
+const styles = {
   divider: {flexGrow: 1, margin: "0 8px"},
-}));
+};
 
-function capitalizeFirstLetters(words) {
+function capitalizeFirstLetters(words: string) {
   const strings = words.split(" ").map((string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   });
   return strings.join(" ");
 }
 
-function CollapsedContent({label, cardIds, handleCardZoom}) {
-  const classes = useStyles();
+type Props = {
+  title: string;
+  cardDict: Record<string, string[]>;
+  handleCardZoom: (cardId: string) => void;
+};
+
+type ContentProps = {
+  label: string;
+  cardIds: string[];
+  handleCardZoom: (cardId: string) => void;
+};
+
+function CollapsedContent({label, cardIds, handleCardZoom}: ContentProps) {
   const [isExpanded, setIsExpanded] = React.useState(false);
   const handleExpandClick = () => setIsExpanded(!isExpanded);
   return (
     <div style={{display: "flex", flexFlow: "column nowrap"}}>
       <div style={{display: "flex", flexFlow: "row wrap", alignItems: "center"}}>
         <Typography>{capitalizeFirstLetters(label)}</Typography>
-        <Divider className={classes.divider} />
+        <Divider style={styles.divider} />
         <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: isExpanded,
+          sx={(theme) => ({
+            transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+            marginLeft: "auto",
+            transition: theme.transitions.create("transform", {
+              duration: theme.transitions.duration.shortest,
+            }),
           })}
           onClick={handleExpandClick}
         >
@@ -66,7 +71,7 @@ function CollapsedContent({label, cardIds, handleCardZoom}) {
   );
 }
 
-function BasicCardChips({title, cardDict, handleCardZoom}) {
+export function BasicCardChips({title, cardDict, handleCardZoom}: Props) {
   const keys = Object.keys(cardDict);
   return (
     <Accordion>
@@ -88,5 +93,3 @@ function BasicCardChips({title, cardDict, handleCardZoom}) {
     </Accordion>
   );
 }
-
-export default BasicCardChips;

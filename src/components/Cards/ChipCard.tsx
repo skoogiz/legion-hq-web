@@ -1,6 +1,8 @@
 import React from "react";
 import {Chip} from "@mui/material";
 import {type LegionCard} from "@legion-hq/types";
+import {CardUtils} from "@legion-hq/utility/cards";
+import {ThemeUtils} from "@legion-hq/theme";
 
 type Props = {
   card: LegionCard;
@@ -10,21 +12,15 @@ type Props = {
 };
 
 export function ChipCard({card, handleClick, chipSize, handleDelete}: Props) {
-  const {cardName, displayName} = card;
-  let pips = "";
-  if (card.cardSubtype === "1") pips = "•";
-  else if (card.cardSubtype === "2") pips = "••";
-  else if (card.cardSubtype === "3") pips = "•••";
-  let label = displayName ? displayName : cardName;
-  if (pips) label = `${pips} ${label}`;
   return (
     <Chip
       clickable
       size={chipSize}
-      label={label ?? ""}
+      label={CardUtils.getDisplayName(card)}
       onClick={handleClick}
       onDelete={handleDelete}
       style={{marginBottom: 4, marginLeft: 4}}
+      color={ThemeUtils.colorName(card.faction)}
     />
   );
 }

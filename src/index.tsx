@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import ReactDOM from "react-dom/client";
 import {BrowserRouter as Router} from "react-router-dom";
 import {DataProvider} from "@legion-hq/context/DataContext";
@@ -6,6 +6,7 @@ import {App} from "./App";
 import {Auth0Provider} from "@auth0/auth0-react";
 import auth from "@legion-hq/constants/auth";
 import {AppContextProvider} from "./context/app/AppContext";
+import {ThemeProvider} from "./theme";
 
 const {domain, clientID} = auth.v1;
 const {returnTo} = auth.prod;
@@ -15,9 +16,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Router>
       <Auth0Provider domain={domain} clientId={clientID} redirectUri={returnTo}>
         <AppContextProvider>
-          <DataProvider>
-            <App />
-          </DataProvider>
+          <ThemeProvider>
+            <DataProvider>
+              <App />
+            </DataProvider>
+          </ThemeProvider>
         </AppContextProvider>
       </Auth0Provider>
     </Router>

@@ -12,7 +12,7 @@ type Props = {
   size?: "medium" | "small";
   handleClick?: (event: React.SyntheticEvent) => void;
   handleCardZoom: (event: React.SyntheticEvent) => void;
-  handleDelete: (event: React.SyntheticEvent) => void;
+  handleDelete?: (event: React.SyntheticEvent) => void;
 };
 
 export function LegionCard({

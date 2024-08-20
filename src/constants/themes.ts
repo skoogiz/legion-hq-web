@@ -15,6 +15,7 @@ const themes = {
       secondary: {main: "#fff"},
       background: {default: "#fff"},
     }),
+
     blue: createPalette({
       mode: "dark",
       primary: {main: "#b72c2c"},

@@ -37,11 +37,14 @@ import {DefenceDiceType, SurgeType} from "./constants";
 import {RankType} from "./units";
 
 export interface LegionCard {
+  id: string;
   cardName: string;
   cardType: string;
+  title?: string;
   displayName: string;
   cardSubtype: string;
   imageName: string;
+  faction?: string;
   isUnique?: boolean;
   keywords: string[];
   rank: RankType;
