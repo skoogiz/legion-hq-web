@@ -1,8 +1,7 @@
-import React from "react";
 import {Fade} from "@mui/material";
 import LoadingIcon from "@legion-hq/assets/LoadingIcon.png";
 
-function LoadingWidget() {
+export function LoadingWidget() {
   return (
     <Fade in>
       <div
@@ -18,5 +17,3 @@ function LoadingWidget() {
     </Fade>
   );
 }
-
-export default LoadingWidget;

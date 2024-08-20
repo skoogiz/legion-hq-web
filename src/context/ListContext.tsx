@@ -1,8 +1,7 @@
 import * as React from "react";
 import Axios from "axios";
 import DataContext from "@legion-hq/context/DataContext";
-import ErrorFallback from "@legion-hq/common/ErrorFallback";
-import LoadingWidget from "@legion-hq/common/LoadingWidget";
+import {ErrorFallback, LoadingWidget} from "@legion-hq/components";
 import factions from "@legion-hq/constants/factions";
 import urls from "@legion-hq/constants/urls";
 import {

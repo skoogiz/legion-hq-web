@@ -35,6 +35,7 @@
 
 import {DefenceDiceType, SurgeType} from "./constants";
 import {RankType} from "./units";
+import {UpgradeType} from "./upgrades";
 
 export type CardHistory = {
   date: string;
@@ -60,7 +61,7 @@ export interface LegionCard {
   speed: number;
   defense: DefenceDiceType;
   surges: SurgeType[];
-  upgradeBar: string[];
+  upgradeBar: UpgradeType[];
   metaData?: {
     isCustomCard?: boolean;
   };

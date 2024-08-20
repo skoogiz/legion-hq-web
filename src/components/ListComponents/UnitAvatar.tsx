@@ -1,10 +1,15 @@
-import React from "react";
 import {CardIcon, IconBadge} from "@legion-hq/components";
-import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {useCard} from "@legion-hq/data-access/hooks/useCard";
 
-function UnitCardAvatar({id, count = 1, handleClick}) {
-  const {cards} = useCards();
-  const card = cards[id];
+type Props = {
+  id: string;
+  count?: number;
+  handleClick?: () => void;
+};
+
+export function UnitAvatar({id, count = 1, handleClick}: Props) {
+  const {card} = useCard(id);
+  if (!card) return null;
   if (card.cardType === "counterpart") {
     return (
       <CardIcon
@@ -31,5 +36,3 @@ function UnitCardAvatar({id, count = 1, handleClick}) {
     />
   );
 }
-
-export default UnitCardAvatar;

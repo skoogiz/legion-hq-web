@@ -1,7 +1,13 @@
-import React from "react";
+import * as React from "react";
 import {Alert, AlertTitle, Container, Grid, Typography, Divider} from "@mui/material";
 
-function ErrorFallback({error, componentStack, message}) {
+type Props = {
+  error?: Error;
+  componentStack?: React.ReactNode;
+  message?: string;
+};
+
+export function ErrorFallback({error, componentStack, message}: Props) {
   return (
     <Container>
       <Grid container justifyContent="center">
@@ -47,5 +53,3 @@ function ErrorFallback({error, componentStack, message}) {
     </Container>
   );
 }
-
-export default ErrorFallback;

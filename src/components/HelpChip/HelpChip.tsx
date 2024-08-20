@@ -7,8 +7,13 @@ import {
   DialogContent,
   DialogContentText,
 } from "@mui/material";
+import {ChipSize} from "@legion-hq/types";
 
-export default function HelpChip({size}) {
+type Props = {
+  size: ChipSize;
+};
+
+export function HelpChip({size}: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);

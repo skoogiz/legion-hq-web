@@ -1,31 +1,64 @@
 import * as React from "react";
-import {useNavigate} from "react-router-dom";
+import {To, useNavigate} from "react-router-dom";
 import Axios from "axios";
 import {AlertTitle, Alert, Snackbar} from "@mui/material";
 // import ErrorFallback from '@legion-hq/common/ErrorFallback';
 import {urls} from "@legion-hq/constants";
-import {useAuth0} from "@auth0/auth0-react";
+import {useAuth0, User} from "@auth0/auth0-react";
 import auth from "@legion-hq/constants/auth";
-import {useRoutes} from "@legion-hq/routes";
+import {RouterLink, useRoutes} from "@legion-hq/routes";
+import {noop} from "lodash";
 const {returnTo} = auth.prod;
 
-const DataContext = React.createContext();
+type DataContextValue = {
+  isDrawerOpen: boolean;
+  userId?: string;
+  routes: Record<string, RouterLink>;
+  userLists: Array<User>;
+  goToPage: (newRoute: To) => void;
+  fetchUserLists: (userId: string) => void;
+  setUserLists: (userLists: Array<User>) => void;
+  setIsDrawerOpen: (open: boolean) => void;
+  deleteUserList: (listId: string) => void;
+  isLoginDisabled: boolean;
+  loginTooltipText: string;
+  loginButtonText: string;
+  loginHandler: () => void;
+};
+
+const DEFAULT_VALUE: DataContextValue = {
+  isDrawerOpen: false,
+  routes: {},
+  userLists: [],
+  goToPage: noop,
+  fetchUserLists: noop,
+  setUserLists: noop,
+  setIsDrawerOpen: noop,
+  deleteUserList: noop,
+  isLoginDisabled: true,
+  loginTooltipText: "",
+  loginButtonText: "Login",
+  loginHandler: noop,
+};
+
+const DataContext = React.createContext<DataContextValue>(DEFAULT_VALUE);
 const httpClient = Axios.create();
 httpClient.defaults.timeout = 10000;
 
 type Props = {
+  enableLogin?: boolean;
   children: React.ReactNode;
 };
 
-export function DataProvider({children}: Props) {
+export function DataProvider({enableLogin, children}: Props) {
   const navigate = useNavigate();
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  const [isAlertOpen, setIsAlertOpen] = React.useState(false);
-  const [isAlertAllowed, setIsAlertAllowed] = React.useState(true);
-  const [error, setError] = React.useState();
-  const [userId, setUserId] = React.useState();
-  const [message, setMessage] = React.useState();
-  const [userLists, setUserLists] = React.useState([]);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState<boolean>(false);
+  const [isAlertOpen, setIsAlertOpen] = React.useState<boolean>(false);
+  const [isAlertAllowed, setIsAlertAllowed] = React.useState<boolean>(true);
+  const [error, setError] = React.useState<string | Error | undefined>();
+  const [userId, setUserId] = React.useState<string | undefined>();
+  const [message, setMessage] = React.useState<string | undefined>();
+  const [userLists, setUserLists] = React.useState<Array<User>>([]);
 
   const {routes} = useRoutes();
 
@@ -33,19 +66,20 @@ export function DataProvider({children}: Props) {
   let isLoginDisabled = true;
   let loginTooltipText = "";
   let loginButtonText = "Loading...";
-  let loginHandler;
+  let loginHandler = noop;
 
-  if (!isAuthenticated) {
-    isLoginDisabled = false;
-    loginButtonText = "Login";
-    loginTooltipText = "Login via Google, Facebook, or use a custom account.";
-    loginHandler = () => loginWithRedirect();
-  } else {
-    isLoginDisabled = false;
-    loginButtonText = "Logout";
-    loginTooltipText = `Logged in as ${user.email}`;
-    loginHandler = () => logout({returnTo});
-  }
+  if (enableLogin)
+    if (!isAuthenticated) {
+      isLoginDisabled = false;
+      loginButtonText = "Login";
+      loginTooltipText = "Login via Google, Facebook, or use a custom account.";
+      loginHandler = () => loginWithRedirect();
+    } else {
+      isLoginDisabled = false;
+      loginButtonText = "Logout";
+      loginTooltipText = `Logged in as ${user?.email}`;
+      loginHandler = () => logout({returnTo});
+    }
 
   React.useEffect(() => {
     if (user && user.email && isAuthenticated && !userId) {
@@ -55,6 +89,7 @@ export function DataProvider({children}: Props) {
 
   React.useEffect(() => {
     if (userId) fetchUserLists(userId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   React.useEffect(() => {
@@ -68,36 +103,45 @@ export function DataProvider({children}: Props) {
       }
     }, 15000);
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, user, isAuthenticated]);
 
-  const goToPage = (newRoute) => navigate(newRoute);
-  const fetchUserLists = (userId) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const goToPage = React.useCallback((newRoute: To) => navigate(newRoute), []);
+
+  const fetchUserLists = React.useCallback((userId: string) => {
     if (userId) {
       httpClient
         .get(`${urls.api}/lists?userId=${userId}`)
         .then((response) => {
           setUserLists(response.data);
         })
-        .catch((e) => {
+        .catch((e: Error) => {
           setError(e);
           setMessage(`Failed to fetch lists for user ${userId}.`);
           setIsAlertOpen(true);
         });
     } else setUserLists([]);
-  };
-  const deleteUserList = (listId) => {
-    if (listId) {
-      httpClient
-        .delete(`${urls.api}/lists/${listId}`)
-        .then((response) => fetchUserLists(userId))
-        .catch((e) => {
-          setError(e);
-          setMessage(`Failed to delete list ${listId} for user ${userId}.`);
-          setIsAlertOpen(true);
-        });
-    }
-  };
-  const fetchUserId = (email) => {
+  }, []);
+
+  const deleteUserList = React.useCallback(
+    (listId: string) => {
+      if (userId && listId) {
+        httpClient
+          .delete(`${urls.api}/lists/${listId}`)
+          .then(() => fetchUserLists(userId))
+          .catch((e: Error) => {
+            setError(e);
+            setMessage(`Failed to delete list ${listId} for user ${userId}.`);
+            setIsAlertOpen(true);
+          });
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [userId],
+  );
+
+  const fetchUserId = (email: string) => {
     if (email) {
       httpClient
         .get(`${urls.api}/users?email=${email}`)
@@ -118,15 +162,15 @@ export function DataProvider({children}: Props) {
                   setIsAlertOpen(true);
                 }
               })
-              .catch((e) => {
+              .catch(() => {
                 setError("Login failure");
                 setMessage(`Failed to create account with email address ${email}.`);
                 setIsAlertOpen(true);
               });
           }
         })
-        .catch((e) => {
-          console.log(e);
+        .catch((e: Error) => {
+          console.error(e);
           setError(e);
           setMessage(`Can't find user with email address ${email}. Server likely down.`);
           setIsAlertOpen(true);

@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from "react";
+import * as React from "react";
 import clsx from "clsx";
 import {ErrorBoundary} from "react-error-boundary";
 import {Grid, Typography, Container, Fade, Button, Collapse, Box} from "@mui/material";
@@ -11,8 +11,8 @@ import {LoginButton} from "./LoginButton";
 import ListChip from "./ListChip";
 import FactionChip from "./FactionChip";
 import ListChipDropdown from "./ListChipDropdown";
+import {ErrorFallback} from "@legion-hq/components";
 import DataContext from "@legion-hq/context/DataContext";
-import ErrorFallback from "@legion-hq/common/ErrorFallback";
 import factions from "@legion-hq/constants/factions";
 import ftLogoLight from "@legion-hq/assets/ftLogoLight.png";
 import ftLogoDark from "@legion-hq/assets/ftLogoDark.png";
@@ -45,13 +45,13 @@ function Post({title, date, body}) {
 }
 
 function Home() {
-  const {auth, userId, userLists, fetchUserLists, deleteUserList} =
-    useContext(DataContext);
+  const {auth, userId, userLists, fetchUserLists, deleteUserList, isLoginDisabled} =
+    React.useContext(DataContext);
   const {themeMode} = useSettings();
   const {newsPosts} = useNews();
   const classes = useStyles();
   const listChips = {};
-  const [isNewsOpen, setIsNewsOpen] = useState(true);
+  const [isNewsOpen, setIsNewsOpen] = React.useState(true);
   Object.keys(factions).forEach((faction) => (listChips[faction] = []));
   if (userLists) {
     userLists.forEach((userList) => {
@@ -60,7 +60,7 @@ function Home() {
       }
     });
   }
-  useEffect(() => {
+  React.useEffect(() => {
     if (userId) fetchUserLists(userId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
@@ -161,9 +161,7 @@ function Home() {
               <Grid item>
                 <div style={{height: 10}} />
               </Grid>
-              <Grid item>
-                <LoginButton auth={auth} />
-              </Grid>
+              <Grid item>{!isLoginDisabled && <LoginButton auth={auth} />}</Grid>
               <Grid item>
                 <div style={{height: 10}} />
               </Grid>

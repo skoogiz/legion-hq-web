@@ -6,7 +6,7 @@ import {
   Announcement as NewsIcon,
   Casino as DiceIcon,
 } from "@mui/icons-material";
-import {FactionIcon} from "@legion-hq/common/FactionIcon";
+import {FactionIcon} from "@legion-hq/components";
 
 export type RouterLink = {
   name: string;

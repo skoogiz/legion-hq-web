@@ -10,8 +10,7 @@ import {
   CardActionArea,
 } from "@mui/material";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
-import {CardChip, KeywordChips} from "@legion-hq/components";
-import HelpChip from "@legion-hq/common/HelpChip";
+import {CardChip, HelpChip, KeywordChips} from "@legion-hq/components";
 import urls from "@legion-hq/constants/urls";
 import {LegionCard} from "@legion-hq/types";
 import {CSSProperties} from "@mui/styles";

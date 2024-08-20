@@ -13,9 +13,8 @@ import {
 } from "@mui/material";
 import {Add as AddIcon, ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import {type ChipSize, CardChip, KeywordChips} from "@legion-hq/components";
-import UpgradeBar from "@legion-hq/common/UpgradeBar";
 import {UpgradeType, type LegionCard} from "@legion-hq/types";
-import {CardIcon, IconBadge} from "@legion-hq/components";
+import {CardIcon, IconBadge, UpgradeBar} from "@legion-hq/components";
 
 interface CardProps {
   card: LegionCard;
@@ -298,7 +297,7 @@ function UnitCardContent({card, chipSize}: CardProps) {
           Upgrades
         </Typography>
         <div style={{flexGrow: 1}} />
-        <UpgradeBar upgradeBar={upgradeBar} />
+        <UpgradeBar upgradeBar={upgradeBar ?? []} />
       </ReverseWrapper>
     </CardContent>
   );

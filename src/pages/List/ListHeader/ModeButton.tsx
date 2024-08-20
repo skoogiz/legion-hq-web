@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Chip, Menu, MenuItem} from "@mui/material";
-import LargerTooltip from "@legion-hq/common/LargerTooltip";
 import legionModes from "@legion-hq/constants/legionModes";
 import {LegionMode} from "@legion-hq/types";
+import {LargerTooltip} from "@legion-hq/components";
 
 type Props = {
   currentMode: LegionMode;

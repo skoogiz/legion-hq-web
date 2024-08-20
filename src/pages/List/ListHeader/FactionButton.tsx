@@ -1,7 +1,7 @@
 import React from "react";
 import {IconButton} from "@mui/material";
-import {FactionIcon} from "@legion-hq/common/FactionIcon";
 import {FactionType} from "@legion-hq/types";
+import {FactionIcon} from "@legion-hq/components";
 
 type Props = {
   faction: FactionType;

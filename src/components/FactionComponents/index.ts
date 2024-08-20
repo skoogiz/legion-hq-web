@@ -1,0 +1,1 @@
+export {FactionIcon} from "./FactionIcon";
