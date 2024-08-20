@@ -1,4 +1,3 @@
-import React from "react";
 import {
   useMediaQuery,
   useTheme,
@@ -11,8 +10,8 @@ import {
 } from "@mui/material";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {ImagePanel} from "./ImagePanel";
-import KeywordsPanel from "./KeywordsPanel";
-import HistoryPanel from "./HistoryPanel";
+import {KeywordsPanel} from "./KeywordsPanel";
+import {HistoryPanel} from "./HistoryPanel";
 
 type Props = {
   id?: string;
@@ -38,7 +37,7 @@ export function CardModal({id, isOpen, handleClose}: Props) {
       )}
       <DialogContent style={{padding: 8}}>
         <ImagePanel card={card} />
-        <KeywordsPanel cardKeywords={card.keywords} />
+        <KeywordsPanel keywords={card.keywords} />
         <HistoryPanel history={card.history} />
         <ImagePanel card={card} usingOriginalImage={true} />
       </DialogContent>

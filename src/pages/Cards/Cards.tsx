@@ -1,7 +1,7 @@
 import * as React from "react";
 import {orderBy} from "lodash";
 import {Alert} from "@mui/material";
-import {CardModal} from "@legion-hq/common/CardModal";
+import {CardModal} from "@legion-hq/components";
 import {BasicCardChips} from "./BasicCardChips";
 import {SpriteCards} from "@legion-hq/components/SpriteCard";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";

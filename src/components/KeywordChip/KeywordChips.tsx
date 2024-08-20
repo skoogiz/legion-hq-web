@@ -1,15 +1,20 @@
-import React from "react";
 import {Typography} from "@mui/material";
 import {KeywordChip} from "./KeywordChip";
 
-export function KeywordChips({keywords, size = "medium"}) {
-  const containerStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "flex-end",
-  };
+type Props = {
+  keywords: string[];
+  size?: "small" | "medium";
+};
+
+export function KeywordChips({keywords, size = "medium"}: Props) {
   return (
-    <div style={containerStyle}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "flex-end",
+      }}
+    >
       <Typography variant="body2" color="textSecondary" style={{marginRight: 4}}>
         Keywords
       </Typography>

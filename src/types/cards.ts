@@ -36,6 +36,11 @@
 import {DefenceDiceType, SurgeType} from "./constants";
 import {RankType} from "./units";
 
+export type CardHistory = {
+  date: string;
+  description: string;
+};
+
 export interface LegionCard {
   id: string;
   cardName: string;
@@ -59,4 +64,5 @@ export interface LegionCard {
   metaData?: {
     isCustomCard?: boolean;
   };
+  history?: CardHistory[];
 }

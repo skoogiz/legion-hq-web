@@ -7,9 +7,14 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
+import {CardHistory} from "@legion-hq/types";
 
-function HistoryPanel({history}) {
-  if (!(history instanceof Array)) return null;
+type Props = {
+  history?: CardHistory[];
+};
+
+export function HistoryPanel({history = []}: Props) {
+  if (!Array.isArray(history)) return null;
   const columnContainerStyles = {
     display: "flex",
     flexDirection: "column",
@@ -21,7 +26,7 @@ function HistoryPanel({history}) {
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography>History</Typography>
         </AccordionSummary>
-        <AccordionDetails style={columnContainerStyles}>
+        <AccordionDetails sx={columnContainerStyles}>
           {history.map((entry) => (
             <div key={entry.description}>
               <Typography variant="caption" color="textSecondary">
@@ -37,5 +42,3 @@ function HistoryPanel({history}) {
     </React.Fragment>
   );
 }
-
-export default HistoryPanel;

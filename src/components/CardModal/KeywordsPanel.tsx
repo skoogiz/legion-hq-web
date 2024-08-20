@@ -9,9 +9,12 @@ import {
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import keywords from "@legion-hq/constants/keywords";
 
-function KeywordsPanel({cardKeywords}) {
-  if (!(cardKeywords instanceof Array)) return null;
-  else if (cardKeywords.length === 0) return null;
+type Props = {
+  keywords?: string[];
+};
+
+export function KeywordsPanel({keywords: cardKeywords = []}: Props) {
+  if (!Array.isArray(cardKeywords) || cardKeywords.length === 0) return null;
   const columnContainerStyles = {
     display: "flex",
     flexDirection: "column",
@@ -23,7 +26,7 @@ function KeywordsPanel({cardKeywords}) {
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography>Keywords</Typography>
         </AccordionSummary>
-        <AccordionDetails style={columnContainerStyles}>
+        <AccordionDetails sx={columnContainerStyles}>
           {cardKeywords.map((keyword) => (
             <div key={keyword}>
               <Typography variant="caption" color="textSecondary">
@@ -41,5 +44,3 @@ function KeywordsPanel({cardKeywords}) {
     </React.Fragment>
   );
 }
-
-export default KeywordsPanel;

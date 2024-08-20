@@ -1,4 +1,4 @@
-const keywords = {
+const keywords: Record<string, string> = {
   Agile:
     "After you perform a standard move, gain X dodge token(s). Note: climbing, embarking, disembarking, pivoting, and reversing are not standard moves. This effect does not trigger abilities that occur after dodge actions are performed.",
   AI: "Unless you have a faceup order token, your first action must be one of the following, if able: X",
