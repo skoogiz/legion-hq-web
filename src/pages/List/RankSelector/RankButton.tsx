@@ -1,10 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {Badge, IconButton, Avatar} from "@mui/material";
+import {Badge, IconButton, Avatar, BadgeProps} from "@mui/material";
 import ranks from "@legion-hq/constants/ranks";
 import {LargerTooltip} from "@legion-hq/components";
+import {RankType} from "@legion-hq/types";
 
-function RankButton({rank, color, count, handleClick}) {
+type Props = {
+  count: number;
+  rank: RankType;
+  handleClick: () => void;
+} & Pick<BadgeProps, "color">;
+
+export function RankButton({rank, color, count, handleClick}: Props) {
   return (
     <LargerTooltip title={ranks[rank].title}>
       <IconButton size="small" onClick={handleClick}>
@@ -15,12 +20,3 @@ function RankButton({rank, color, count, handleClick}) {
     </LargerTooltip>
   );
 }
-
-RankButton.propTypes = {
-  count: PropTypes.number.isRequired,
-  color: PropTypes.string.isRequired,
-  rank: PropTypes.oneOf(Object.keys(ranks)).isRequired,
-  handleClick: PropTypes.func.isRequired,
-};
-
-export default RankButton;

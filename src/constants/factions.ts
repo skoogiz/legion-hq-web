@@ -38,7 +38,7 @@ const factions: Record<string, FactionInfo> = {
   republic: {
     name: "Republic",
     singular: "Republic",
-    longName: "Grand Army of the Republic",
+    longName: "Galactic Republic",
     primaryColor: "#c49d36",
     secondaryColor: "#970897",
     tertiaryColor: "#97084f",

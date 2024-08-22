@@ -6,6 +6,17 @@ import SelectorHeader from "./SelectorHeader";
 import SelectorContent from "./SelectorContent";
 import StackController from "./StackController";
 import {ToggleButton} from "./ToggleButton";
+import {
+  BATTLE,
+  COMMAND,
+  CONTINGENCY,
+  COUNTERPART,
+  COUNTERPART_LOADOUT_UPGRADE,
+  COUNTERPART_UPGRADE,
+  LOADOUT_UPGRADE,
+  UNIT,
+  UNIT_UPGRADE,
+} from "@legion-hq/state/list";
 
 function Title({title}: {title: string}) {
   return <Typography variant="body2">{title}</Typography>;
@@ -43,9 +54,9 @@ export function CardSelector() {
   let validIds = [];
   let invalidIds = [];
   const {action} = cardPaneFilter;
-  if (action === "UNIT") {
+  if (action === UNIT) {
     validIds = getEligibleUnitsToAdd(currentList, cardPaneFilter.rank);
-    clickHandler = (unitId) => handleAddUnit(unitId);
+    clickHandler = (unitId: string) => handleAddUnit(unitId);
     header = (
       <StackController
         stackSize={stackSize}
@@ -53,12 +64,12 @@ export function CardSelector() {
         handleDecrementStackSize={handleDecrementStackSize}
       />
     );
-  } else if (action === "COUNTERPART") {
+  } else if (action === COUNTERPART) {
     validIds = [cardPaneFilter.counterpartId];
-    clickHandler = (counterpartId) =>
+    clickHandler = (counterpartId: string) =>
       handleAddCounterpart(cardPaneFilter.unitIndex, counterpartId);
     header = <Title title="Add counterpart" />;
-  } else if (action === "UNIT_UPGRADE") {
+  } else if (action === UNIT_UPGRADE) {
     const upgradeIds = getEquippableUpgrades(
       currentList,
       cardPaneFilter.upgradeType,
@@ -85,7 +96,7 @@ export function CardSelector() {
         handleChange={handleToggleIsApplyToAll}
       />
     );
-  } else if (action === "COUNTERPART_UPGRADE") {
+  } else if (action === COUNTERPART_UPGRADE) {
     const upgradeIds = getEquippableUpgrades(
       currentList,
       cardPaneFilter.upgradeType,
@@ -103,7 +114,7 @@ export function CardSelector() {
         upgradeId,
       );
     header = <Title title="Add counterpart upgrade" />;
-  } else if (action === "LOADOUT_UPGRADE") {
+  } else if (action === LOADOUT_UPGRADE) {
     const upgradeIds = getEquippableLoadoutUpgrades(
       currentList,
       cardPaneFilter.upgradeType,
@@ -122,7 +133,7 @@ export function CardSelector() {
         upgradeId,
       );
     header = <Title title="Add loadout upgrade" />;
-  } else if (action === "COUNTERPART_LOADOUT_UPGRADE") {
+  } else if (action === COUNTERPART_LOADOUT_UPGRADE) {
     const {
       upgradeType,
       counterpartId,
@@ -148,7 +159,7 @@ export function CardSelector() {
         upgradeId,
       );
     header = <Title title="Add loadout upgrade" />;
-  } else if (action === "COMMAND") {
+  } else if (action === COMMAND) {
     const commandIds = getEligibleCommandsToAdd(currentList);
     validIds = commandIds.validIds;
     invalidIds = commandIds.invalidIds;
@@ -172,7 +183,7 @@ export function CardSelector() {
         </div>
       );
     }
-  } else if (action === "CONTINGENCY") {
+  } else if (action === CONTINGENCY) {
     const commandIds = getEligibleContingenciesToAdd(currentList);
     validIds = commandIds.validIds;
     invalidIds = commandIds.invalidIds;
@@ -196,7 +207,7 @@ export function CardSelector() {
         </div>
       );
     }
-  } else if (action === "BATTLE") {
+  } else if (action === BATTLE) {
     const battleIds = getEligibleBattlesToAdd(currentList, cardPaneFilter.type);
     validIds = battleIds.validIds;
     invalidIds = battleIds.invalidIds;

@@ -2,7 +2,7 @@ import * as React from "react";
 import {Alert, AlertTitle, Container, Grid, Typography, Divider} from "@mui/material";
 
 type Props = {
-  error?: Error;
+  error?: string | Error;
   componentStack?: React.ReactNode;
   message?: string;
 };

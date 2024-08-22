@@ -1,26 +1,49 @@
+import {FactionType, LegionMode} from "./constants";
 import {RankType} from "./units";
 
 export type UnitCount = Record<RankType, number>;
 
+export type ListIssue = {
+  level: number;
+  text: string;
+};
+
+export interface ListUnit {
+  unitId: string;
+  count: number;
+  hasUniques: boolean;
+  totalUnitCost: number;
+  unitObjectString: string;
+  upgradesEquipped: Array<string | null>;
+  loadoutUpgrades: Array<string | null>;
+  additionalUpgradeSlots: Array<string | null>;
+  validationIssues?: Array<ListIssue>;
+}
+
 export interface ListTemplate {
+  listId?: string;
   version: number;
   title: string;
   game: string;
-  mode: string;
-  faction: string;
+  mode: LegionMode;
+  faction: FactionType;
   notes: string;
   pointTotal: number;
   killPoints: number;
   competitive: boolean;
   battleForce: string;
   killedUnits: Array<unknown>;
-  units: Array<unknown>;
+  units: Array<ListUnit>;
+  unitObjectStrings: Array<string>;
   commandCards: Array<unknown>;
   objectiveCards: Array<unknown>;
   conditionCards: Array<unknown>;
   deploymentCards: Array<unknown>;
-  uniques: Array<unknown>;
-  commanders: Array<unknown>;
-  unitObjectStrings: Array<unknown>;
+  /**
+   * List of cardIds of unique personas.
+   */
+  uniques: Array<string>;
+  commanders: Array<string>;
   unitCounts: UnitCount;
+  contingencies?: Array<unknown>;
 }

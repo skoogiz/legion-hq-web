@@ -10,4 +10,5 @@ export type Rank = {
   name: string;
   title: string;
   icon: string;
+  symbol: string;
 };

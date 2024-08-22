@@ -4,7 +4,9 @@ import ListContext from "@legion-hq/context/ListContext";
 import ranks from "@legion-hq/constants/ranks";
 // import legionModes from '@legion-hq/constants/legionModes';
 // import cards from '@legion-hq/constants/cards';
-import RankButton from "./RankButton";
+import {RankButton} from "./RankButton";
+import {useList} from "@legion-hq/hooks/list/useList";
+import {UNIT} from "@legion-hq/state/list";
 // import battleForcesDict from '@legion-hq/constants/battleForcesDict';
 
 const useStyles = makeStyles({
@@ -17,15 +19,19 @@ const useStyles = makeStyles({
 
 function RankSelector() {
   const classes = useStyles();
-  const {currentList, setCardPaneFilter, rankLimits} = useContext(ListContext);
-  let rankInteractions = 0;
-  if (currentList.rankInteractions) {
-    Object.keys(currentList.rankInteractions).forEach((key) => {
-      rankInteractions += currentList.rankInteractions[key];
-    });
-  }
 
-  const currentUnitCounts = {...currentList.unitCounts};
+  const {currentList, setCardPaneFilter, rankLimits} = useList();
+
+  const {unitCounts} = currentList;
+
+  // let rankInteractions = 0;
+  // if (currentList.rankInteractions) {
+  //   Object.keys(currentList.rankInteractions).forEach((key) => {
+  //     rankInteractions += currentList.rankInteractions[key];
+  //   });
+  // }
+
+  // const currentUnitCounts = {...currentList.unitCounts};
 
   // Object.keys(ranks).forEach(key => {
   //   let count = currentUnitCounts[key];
@@ -119,13 +125,14 @@ function RankSelector() {
   return (
     <div className={classes.container}>
       {Object.keys(rankLimits).map((key) => {
+        Array.isArray(ranks[key]);
         // commOp is a non-array, non-displayed rank limit
         if (!ranks[key]) return null;
 
         let color = "primary";
         if (
-          currentUnitCounts[key] > rankLimits[key][1] ||
-          currentUnitCounts[key] < rankLimits[key][0]
+          unitCounts[key] > rankLimits[key][1] ||
+          unitCounts[key] < rankLimits[key][0]
         ) {
           color = "error";
         }
@@ -135,10 +142,10 @@ function RankSelector() {
             <RankButton
               rank={key}
               color={color}
-              count={currentUnitCounts[key]}
+              count={unitCounts[key]}
               handleClick={() =>
                 setCardPaneFilter({
-                  action: "UNIT",
+                  action: UNIT,
                   rank: key,
                 })
               }

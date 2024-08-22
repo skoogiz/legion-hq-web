@@ -116,7 +116,8 @@ function CommandRow({commandIds, handleCardZoom}) {
 }
 
 function ListDisplay() {
-  const {currentList, cardPaneFilter, handleCardZoom} = useContext(ListContext);
+  const list = useContext(ListContext);
+  const {currentList, cardPaneFilter, handleCardZoom} = list;
   const {cards} = useCards();
   return (
     <Fade unmountOnExit exit={false} in={cardPaneFilter.action === "DISPLAY"}>

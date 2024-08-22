@@ -1,10 +1,11 @@
 import {useParams} from "react-router-dom";
 import {ErrorBoundary} from "react-error-boundary";
-import {useMediaQuery, useTheme} from "@mui/material";
+import {styled, useMediaQuery, useTheme} from "@mui/material";
 import {ListProvider} from "@legion-hq/context/ListContext";
-import {ListTemplate} from "@legion-hq/types";
+import {FactionType, ListTemplate} from "@legion-hq/types";
 import ListLayout from "./ListLayout";
 import {ErrorFallback} from "@legion-hq/components";
+import {ListBottomBar} from "@legion-hq/components/list";
 
 type Props = {
   storedLists: Record<string, ListTemplate>;
@@ -28,6 +29,7 @@ export function List({storedLists, updateStoredList}: Props) {
     >
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <ListLayout />
+        <ListBottomBar />
       </ErrorBoundary>
     </ListProvider>
   );

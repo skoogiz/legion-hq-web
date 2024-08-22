@@ -42,7 +42,7 @@ export const createPalette = (theme: Theme) => ({
     }),
     republic: theme.palette.augmentColor({
       color: {
-        main: "#E1D4BB",
+        main: "#9D9482", //"#E1D4BB",
       },
       name: "republic",
     }),
@@ -54,7 +54,7 @@ export const createPalette = (theme: Theme) => ({
     }),
     mercenaries: theme.palette.augmentColor({
       color: {
-        main: "#603601",
+        main: "#3F4441", // "#532E1C" "#603601"
       },
       name: "mercenaries",
     }),

@@ -1,10 +1,18 @@
-import _ from "lodash";
+import _, {cloneDeep} from "lodash";
 import ranks from "@legion-hq/constants/ranks";
 import legionModes from "@legion-hq/constants/legionModes";
 import interactions from "@legion-hq/constants/cardInteractions";
-import {createListTemplate, createUnitCount} from "@legion-hq/constants/listTemplate";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
 import {CardService} from "@legion-hq/data-access/services";
+import {ListIssue, ListTemplate, RankType, UnitRestrictions} from "@legion-hq/types";
+import {ListFactories, ListUtils} from "@legion-hq/utility/list";
+import {
+  COUNTERPART_LOADOUT_UPGRADE,
+  COUNTERPART_UPGRADE,
+  ListActionType,
+  LOADOUT_UPGRADE,
+  UNIT_UPGRADE,
+} from "@legion-hq/state/list";
 
 const {cards, cardIdsByType} = CardService.getInstance();
 
@@ -103,7 +111,7 @@ function consolidate(list) {
   list.hasFieldCommander = false;
   list.commanders = [];
   list.uniques = [];
-  list.unitCounts = createUnitCount();
+  list.unitCounts = ListFactories.createUnitCount();
   for (let i = 0; i < list.units.length; i++) {
     const unit = list.units[i];
     if (!unit.loadoutUpgrades) unit.loadoutUpgrades = [];
@@ -964,7 +972,7 @@ function removeCounterpart(list, unitIndex) {
   return consolidate(list);
 }
 
-function addUnit(list, unitId, stackSize = 1) {
+function addUnit(list: ListTemplate, unitId: string, stackSize = 1) {
   const unitCard = cards[unitId];
   let unitIndex = findUnitHash(list, unitId);
 
@@ -977,22 +985,7 @@ function addUnit(list, unitId, stackSize = 1) {
     list.units[unitIndex].count += stackSize;
     list.units[unitIndex].totalUnitCost += unitCard.cost * stackSize;
   } else {
-    const newUnitObject = {
-      unitId,
-      count: unitCard.isUnique ? 1 : stackSize,
-      hasUniques: unitCard.isUnique,
-      totalUnitCost: unitCard.cost * stackSize,
-      unitObjectString: unitId,
-      upgradesEquipped: [],
-      loadoutUpgrades: [],
-      additionalUpgradeSlots: [],
-    };
-    for (let i = 0; i < unitCard.upgradeBar.length; i++) {
-      newUnitObject.upgradesEquipped.push(null);
-      if (unitCard.keywords.includes("Loadout")) {
-        newUnitObject.loadoutUpgrades.push(null);
-      }
-    }
+    const newUnitObject = ListFactories.createListUnit({unitId, unitCard, stackSize});
     list.units.push(newUnitObject);
     list.unitObjectStrings.push(unitId);
     unitIndex = list.units.length - 1;
@@ -1055,7 +1048,7 @@ function killUnit(list, index) {
   return list;
 }
 
-function getEligibleUnitsToAdd(list, rank) {
+function getEligibleUnitsToAdd(list: ListTemplate, rank: RankType) {
   const validUnitIds = [];
   const cardsById = cardIdsByType.unit; // Object.keys(cards);
   for (let i = 0; i < cardsById.length; i++) {
@@ -1474,8 +1467,6 @@ function sortIds(ids) {
  * @param {*} upgradeId
  */
 function validateUpgrades(list, unitIndex) {
-  console.log("unit index = " + unitIndex);
-
   const unit = list.units[unitIndex];
   const card = cards[unit.unitId];
 
@@ -1579,10 +1570,15 @@ function equipUpgrade(
   return list;
 }
 
-function unequipUpgrade(list, action, unitIndex, upgradeIndex) {
+function unequipUpgrade(
+  list: ListTemplate,
+  action: ListActionType,
+  unitIndex: number,
+  upgradeIndex: number,
+) {
   const upgradeId = list.units[unitIndex].upgradesEquipped[upgradeIndex];
 
-  if (action === "UNIT_UPGRADE") {
+  if (action === UNIT_UPGRADE) {
     function unequip(list, unitIndex, upgradeIndex) {
       const unit = list.units[unitIndex];
       const upgradeId = unit.upgradesEquipped[upgradeIndex];
@@ -1609,11 +1605,11 @@ function unequipUpgrade(list, action, unitIndex, upgradeIndex) {
       return consolidate(list);
     }
     list = unequip(list, unitIndex, upgradeIndex);
-  } else if (action === "COUNTERPART_UPGRADE") {
+  } else if (action === COUNTERPART_UPGRADE) {
     list = unequipCounterpartUpgrade(list, unitIndex, upgradeIndex);
-  } else if (action === "LOADOUT_UPGRADE") {
+  } else if (action === LOADOUT_UPGRADE) {
     list = unequipLoadoutUpgrade(list, unitIndex, upgradeIndex);
-  } else if (action === "COUNTERPART_LOADOUT_UPGRADE") {
+  } else if (action === COUNTERPART_LOADOUT_UPGRADE) {
     list = unequipCounterpartLoadoutUpgrade(list, unitIndex, upgradeIndex);
   }
 
@@ -1711,7 +1707,7 @@ function segmentToUnitObject(unitIndex, segment) {
 }
 
 function convertHashToList(faction, url) {
-  let list = JSON.parse(JSON.stringify(createListTemplate({faction})));
+  let list = JSON.parse(JSON.stringify(ListFactories.createListTemplate({faction})));
   list.contingencies = [];
   let segments;
   if (url.includes(":")) {
@@ -1790,7 +1786,7 @@ function convertHashToList(faction, url) {
   return consolidate(list);
 }
 
-function mergeLists(primaryList, secondaryList) {
+function mergeLists(primaryList: ListTemplate, secondaryList: ListTemplate) {
   let unitsToAdd = [];
   for (let i = 0; i < secondaryList.units.length; i++) {
     const unit = secondaryList.units[i];
@@ -1998,25 +1994,21 @@ function applyFieldCommander(list, rankReqs) {
   }
 }
 
-function getRankLimits(currentList) {
+function getRankLimits(currentList: ListTemplate) {
   const battleForce = currentList.battleForce;
-  let dictRankReqs;
+  let dictRankReqs: UnitRestrictions;
 
   if (battleForce) {
-    if (battleForcesDict[battleForce][currentList.mode])
-      dictRankReqs = battleForcesDict[battleForce][currentList.mode];
-    else {
-      dictRankReqs = battleForcesDict[battleForce]["standard mode"];
-    }
+    dictRankReqs = ListUtils.getBattleForceUnitRestrictions(
+      battleForcesDict[battleForce],
+      currentList.mode,
+    );
   } else {
     dictRankReqs = legionModes[currentList.mode].unitCounts;
   }
 
   // copy over so we can play with limits
-  let rankReqs = {};
-  Object.keys(dictRankReqs).forEach(
-    (r) => (rankReqs[r] = [dictRankReqs[r][0], dictRankReqs[r][1]]),
-  );
+  const rankReqs = cloneDeep(dictRankReqs);
 
   applyEntourage(currentList, rankReqs);
   applyFieldCommander(currentList, rankReqs);
@@ -2027,30 +2019,30 @@ function getRankLimits(currentList) {
 // TODO most of this was written before understanding the whole 'running total' state we have going
 // Would be better to move most of this into the proper unit/upgrade modify steps instead of
 // iterating everything every time something's added
-function validateList(currentList, rankLimits) {
-  let validationIssues = [];
+function validateList(currentList: ListTemplate, rankLimits: UnitRestrictions) {
+  let validationIssues: ListIssue[] = [];
 
   const battleForce = currentList.battleForce;
 
-  let ranks = {...currentList.unitCounts}; //{ commander:0, operative:0, corps:0, special:0, heavy:0, support:0 }
-  let mercs = {commander: 0, operative: 0, corps: 0, special: 0, heavy: 0, support: 0};
+  const ranks = {...currentList.unitCounts}; //{ commander:0, operative:0, corps:0, special:0, heavy:0, support:0 }
+  const mercs = {commander: 0, operative: 0, corps: 0, special: 0, heavy: 0, support: 0};
 
   // Determine what our rank requirements are, warn if unknown
   // TODO need more definitive handling for the other modes...
-  if (battleForce && !battleForcesDict[battleForce][currentList.mode]) {
+  if (battleForce && !(currentList.mode in battleForcesDict[battleForce])) {
     validationIssues.push({
       level: 1,
       text: "Playing a battleforce in a mode with no defined battleforce construction rules (Defaulting to 800pt)",
     });
   }
 
-  let rankReqs = rankLimits; //updateRankLimits(currentList);
+  const rankReqs = rankLimits; //updateRankLimits(currentList);
 
   // count up them mercs, pull in any unit-specific issues
   currentList.units.forEach((unit) => {
     const card = cards[unit.unitId];
 
-    if (unit.validationIssues?.length > 0) {
+    if (unit.validationIssues && unit.validationIssues?.length > 0) {
       validationIssues = validationIssues.concat(unit.validationIssues);
     }
 
