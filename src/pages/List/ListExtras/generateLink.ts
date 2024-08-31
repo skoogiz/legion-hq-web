@@ -1,6 +1,7 @@
 import urls from "@legion-hq/constants/urls";
+import {ListTemplate} from "@legion-hq/types";
 
-function generateLink(list) {
+function generateLink(list: ListTemplate) {
   const urlStrings = [];
   list.units.forEach((unit) => {
     let urlString = `${unit.count}${unit.unitId}`;

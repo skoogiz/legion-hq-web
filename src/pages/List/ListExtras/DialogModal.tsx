@@ -1,7 +1,16 @@
-import React from "react";
 import {Button, Dialog, DialogTitle, DialogContent, DialogActions} from "@mui/material";
 
-function DialogModal({
+type Props = {
+  isOpen: boolean;
+  isMobile?: boolean;
+  isFullWidth?: boolean;
+  title?: string;
+  content: JSX.Element;
+  actions?: JSX.Element;
+  handleClose: () => void;
+};
+
+export function DialogModal({
   isOpen,
   isMobile,
   isFullWidth = false,
@@ -9,7 +18,7 @@ function DialogModal({
   content,
   actions,
   handleClose,
-}) {
+}: Props) {
   const dialogStyle = title ? {} : {padding: 0};
   return (
     <Dialog
@@ -35,5 +44,3 @@ function DialogModal({
     </Dialog>
   );
 }
-
-export default DialogModal;

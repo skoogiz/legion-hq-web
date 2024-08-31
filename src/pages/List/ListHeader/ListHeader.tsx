@@ -18,6 +18,7 @@ import {ModeButton} from "./ModeButton";
 import {TitleField} from "./TitleField";
 import {KillPointsField} from "./KillPointsField";
 import {FactionButton} from "./FactionButton";
+import {useList} from "@legion-hq/hooks/list/useList";
 
 const useStyles = makeStyles({
   container: {
@@ -54,7 +55,7 @@ function ListHeader() {
     handleChangeTitle,
     handleChangeMode,
     validationIssues,
-  } = useContext(ListContext);
+  } = useList();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isBattleForceDialogOpen, setIsBattleForceDialogOpen] = React.useState(false);

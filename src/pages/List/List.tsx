@@ -1,11 +1,11 @@
 import {useParams} from "react-router-dom";
 import {ErrorBoundary} from "react-error-boundary";
-import {styled, useMediaQuery, useTheme} from "@mui/material";
+import {useMediaQuery, useTheme} from "@mui/material";
 import {ListProvider} from "@legion-hq/context/ListContext";
-import {FactionType, ListTemplate} from "@legion-hq/types";
-import ListLayout from "./ListLayout";
+import {ListTemplate} from "@legion-hq/types";
 import {ErrorFallback} from "@legion-hq/components";
 import {ListBottomBar} from "@legion-hq/components/list";
+import {ListLayout} from "./ListLayout";
 
 type Props = {
   storedLists: Record<string, ListTemplate>;

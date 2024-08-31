@@ -1,15 +1,14 @@
-import React, {useContext} from "react";
 import {Grid, Chip} from "@mui/material";
 import {Add as AddIcon} from "@mui/icons-material";
-import ListContext from "@legion-hq/context/ListContext";
 import {CardIcon} from "@legion-hq/components";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {useList} from "@legion-hq/hooks/list/useList";
+import {COMMAND} from "@legion-hq/state/list";
 
 const chipSize = "medium";
 
 function ListCommands() {
-  const {currentList, setCardPaneFilter, handleCardZoom, handleRemoveCommand} =
-    useContext(ListContext);
+  const {currentList, setCardPaneFilter, handleCardZoom, handleRemoveCommand} = useList();
   const {cards} = useCards();
   const getNumPips = (cardId) => {
     const card = cards[cardId];
@@ -27,7 +26,7 @@ function ListCommands() {
             label="Command"
             icon={<AddIcon />}
             style={chipStyle}
-            onClick={() => setCardPaneFilter({action: "COMMAND"})}
+            onClick={() => setCardPaneFilter({action: COMMAND})}
           />
         </Grid>
       )}

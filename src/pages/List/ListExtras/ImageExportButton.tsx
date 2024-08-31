@@ -1,12 +1,18 @@
-import React, {useState} from "react";
+import * as React from "react";
 import domtoimage from "dom-to-image-more";
 import {Chip} from "@mui/material";
+import {ListTemplate} from "@legion-hq/types";
 import {Image as ImageIcon} from "@mui/icons-material";
 import loadingIcon from "@legion-hq/assets/LoadingIcon.png";
-import DialogModal from "./DialogModal";
+import {DialogModal} from "./DialogModal";
 
-function ImageExport({currentList}) {
-  const [listSrc, setListSrc] = useState();
+type Props = {
+  currentList: ListTemplate;
+  isMobile?: boolean;
+};
+
+function ImageExport({currentList}: Props) {
+  const [listSrc, setListSrc] = React.useState();
   const options = {
     cacheBust: true,
     quality: 0.85,
@@ -23,8 +29,8 @@ function ImageExport({currentList}) {
   return <img alt="list" src={listSrc} style={{width: "100%"}} />;
 }
 
-function ImageExportButton({isMobile = false, currentList}) {
-  const [isOpen, setIsOpen] = useState(false);
+export function ImageExportButton({isMobile = false, currentList}: Props) {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <div>
       <Chip
@@ -46,5 +52,3 @@ function ImageExportButton({isMobile = false, currentList}) {
     </div>
   );
 }
-
-export default ImageExportButton;

@@ -150,6 +150,7 @@ class PrintListImages extends React.Component {
           display: "flex",
           flexFlow: "row nowrap",
           justifyContent: "space-evenly",
+          color: "#000",
         }}
       >
         <div>{units}</div>

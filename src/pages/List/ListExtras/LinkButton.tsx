@@ -1,11 +1,16 @@
-import React from "react";
+import * as React from "react";
 import {Chip, TextField} from "@mui/material";
 import {Link as LinkIcon} from "@mui/icons-material";
-import ClipboardButton from "./ClipboardButton";
-import DialogModal from "./DialogModal";
+import {ListTemplate} from "@legion-hq/types";
+import {ClipboardButton} from "./ClipboardButton";
+import {DialogModal} from "./DialogModal";
 import generateLink from "./generateLink";
 
-function LinkButton({currentList}) {
+type Props = {
+  currentList: ListTemplate;
+};
+
+export function LinkButton({currentList}: Props) {
   const [isOpen, setIsOpen] = React.useState(false);
   const listLink = generateLink(currentList);
   return (
@@ -27,5 +32,3 @@ function LinkButton({currentList}) {
     </div>
   );
 }
-
-export default LinkButton;

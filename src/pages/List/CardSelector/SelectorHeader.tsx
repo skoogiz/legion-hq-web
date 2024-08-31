@@ -1,28 +1,37 @@
-import React from "react";
-import {Paper, IconButton} from "@mui/material";
+import {Paper, IconButton, styled} from "@mui/material";
 import {Clear as ClearIcon} from "@mui/icons-material";
+import {DISPLAY, ListAction} from "@legion-hq/state/list";
 
-function SelectorHeader({headerContent, cardPaneFilter, setCardPaneFilter}) {
-  const sticky = {
-    top: 0,
-    zIndex: 1,
-    marginBottom: 4,
-    display: "flex",
-    alignItems: "center",
-    padding: "8px 16px",
-    justifyContent: "space-between",
-    position: "-webkit-sticky",
-    position: "sticky",
-  };
+const Container = styled(Paper)`
+  top: 0;
+  z-index: 1;
+  margin-bottom: 4;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  justify-content: space-between;
+  position: -webkit-sticky;
+  position: sticky;
+`;
+
+type Props = {
+  headerContent: JSX.Element;
+  cardPaneFilter: ListAction;
+  setCardPaneFilter: (action: ListAction) => void;
+};
+
+export function SelectorHeader({
+  headerContent,
+  // cardPaneFilter,
+  setCardPaneFilter,
+}: Props) {
   return (
-    <Paper style={sticky}>
+    <Container>
       {headerContent}
       <div style={{flexGrow: 1}} />
-      <IconButton onClick={() => setCardPaneFilter({action: "DISPLAY"})}>
+      <IconButton onClick={() => setCardPaneFilter({action: DISPLAY})}>
         <ClearIcon />
       </IconButton>
-    </Paper>
+    </Container>
   );
 }
-
-export default SelectorHeader;

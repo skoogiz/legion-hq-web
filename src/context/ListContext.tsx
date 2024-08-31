@@ -36,16 +36,17 @@ import {
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {useSettings} from "@legion-hq/hooks/app/useSettings";
 import {
-  BattleForces,
   FactionType,
   LegionMode,
   ListTemplate,
   UnitRestrictions,
+  UpgradeType,
 } from "@legion-hq/types";
 import {DISPLAY, ListAction, ListActionType, UNIT_UPGRADE} from "@legion-hq/state/list";
 import {ListUtils} from "@legion-hq/utility/list";
 import {createListTemplate} from "@legion-hq/utility/list/listFactories";
 import {legionModes} from "@legion-hq/constants";
+import {noop} from "lodash";
 
 type ListContextValue = {
   currentList: ListTemplate;
@@ -63,38 +64,13 @@ type ListContextValue = {
     text: string;
   }[];
   rankLimits: UnitRestrictions;
+  modalContent?: string;
+  handleCloseModal: () => void;
+  setCardPaneFilter: (list: ListAction) => void;
 };
 
 const DEFAULT_VALUE: ListContextValue = {
-  currentList: {
-    version: 1,
-    title: "Untitled",
-    game: "legion",
-    mode: "standard mode",
-    faction: "rebels",
-    notes: "",
-    pointTotal: 0,
-    killPoints: 0,
-    competitive: false,
-    battleForce: "",
-    killedUnits: [],
-    units: [],
-    commandCards: [],
-    objectiveCards: [],
-    conditionCards: [],
-    deploymentCards: [],
-    uniques: [],
-    commanders: [],
-    unitObjectStrings: [],
-    unitCounts: {
-      commander: 0,
-      operative: 0,
-      corps: 0,
-      special: 0,
-      support: 0,
-      heavy: 0,
-    },
-  },
+  currentList: createListTemplate(),
   stackSize: 1,
   isKillPointMode: false,
   currentKillPoints: 0,
@@ -115,6 +91,8 @@ const DEFAULT_VALUE: ListContextValue = {
     support: [0, 0],
     heavy: [0, 0],
   },
+  handleCloseModal: noop,
+  setCardPaneFilter: noop,
 };
 
 const ListContext = React.createContext(DEFAULT_VALUE);
@@ -315,15 +293,24 @@ export function ListProvider({
 
   const handleEquipUpgrade = (
     action: ListActionType, // Action Type
-    unitIndex,
-    upgradeIndex,
-    upgradeId,
-    isApplyToAll,
+    unitIndex: number,
+    upgradeIndex: number,
+    upgradeId: string,
+    isApplyToAll: boolean,
   ) => {
     const unit = currentList.units[unitIndex];
     let applyFilter;
-    let nextAvailIndex;
-    let nextAvailType;
+    let nextAvailIndex: number | undefined;
+    let nextAvailType: string | null | undefined;
+    console.log("UPGRADE", {
+      unit,
+      units: currentList.units,
+      action,
+      unitIndex,
+      upgradeIndex,
+      upgradeId,
+      isApplyToAll,
+    });
     if (isApplyToAll || unit.count === 1) {
       let i = (upgradeIndex + 1) % unit.upgradesEquipped.length;
       let numUpgradesEquipped = 0;
@@ -349,12 +336,15 @@ export function ListProvider({
         (cascadeUpgradeSelection ?? "yes") === "yes" ? true : false;
 
       if (letUpgradesCascade && nextAvailIndex !== undefined && nextAvailType) {
-        applyFilter = (newUpgradesEquipped, newAdditionalUpgradeSlots) =>
+        applyFilter = (
+          newUpgradesEquipped: Array<string | null>,
+          newAdditionalUpgradeSlots: Array<string | null>,
+        ) =>
           setCardPaneFilter({
             action: UNIT_UPGRADE,
             unitIndex,
-            upgradeIndex: nextAvailIndex,
-            upgradeType: nextAvailType,
+            upgradeIndex: nextAvailIndex as number,
+            upgradeType: nextAvailType as UpgradeType,
             hasUniques: unit.hasUniques,
             unitId: unit.unitId,
             upgradesEquipped: newUpgradesEquipped,
@@ -598,8 +588,6 @@ export function ListProvider({
   const messageProps = {
     listSaveMessage,
   };
-
-  console.log({currentList});
 
   if (error) return <ErrorFallback error={error} message={message} />;
   if (status === "loading") return <LoadingWidget />;

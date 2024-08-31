@@ -1,23 +1,35 @@
-import * as React from "react";
-import {Grid, Divider} from "@mui/material";
-import {useSettings} from "@legion-hq/hooks/app/useSettings";
-import ListContext from "@legion-hq/context/ListContext";
-import themes from "@legion-hq/constants/themes";
+import {Grid, Divider, styled} from "@mui/material";
+// import {useSettings} from "@legion-hq/hooks/app/useSettings";
+// import themes from "@legion-hq/constants/themes";
 import {CardModal} from "@legion-hq/components";
 import ListHeader from "./ListHeader";
-import RankSelector from "./RankSelector";
+import {RankSelector} from "./RankSelector";
 import ListUnits from "./ListUnits";
 import ListCommands from "./ListCommands";
 import ListContingencies from "./ListContingencies";
 import ListObjectives from "./ListObjectives";
-import ListExtras from "./ListExtras";
+import {ListExtras} from "./ListExtras";
 import ListDisplay from "./ListDisplay";
-import ListId from "./ListId";
+import {ListId} from "./ListId";
 import {CardSelector} from "./CardSelector";
+import {useList} from "@legion-hq/hooks/list/useList";
 
-function ListLayout() {
-  const {themeMode} = useSettings();
-  const palette = themes.palettes[themeMode];
+const ListContent = styled("div")<{isMobile: boolean}>`
+  padding: 0 2px 2px;
+  overflow: auto;
+  height: calc(100vh - ${({isMobile}) => (isMobile ? "125px" : "75px")});
+`;
+
+const StickyPanel = styled("div")`
+  top: 0;
+  z-index: 2;
+  position: -webkit-sticky;
+  position: sticky;
+`;
+
+export function ListLayout() {
+  // const {themeMode} = useSettings();
+  // const palette = themes.palettes[themeMode];
   const {
     isSmallScreen,
     leftPaneWidth,
@@ -25,7 +37,7 @@ function ListLayout() {
     isModalOpen,
     modalContent,
     handleCloseModal,
-  } = React.useContext(ListContext);
+  } = useList();
 
   const isMobile = isSmallScreen;
 
@@ -35,22 +47,14 @@ function ListLayout() {
     height: `calc(100vh - ${isMobile ? "125px" : "75px"})`,
   };
 
-  const stickyStyles = {
-    top: 0,
-    zIndex: 2,
-    position: "-webkit-sticky",
-    position: "sticky",
-    backgroundColor: palette ? palette.background.default : "",
-  };
-
   const builderPane = leftPaneWidth > 0 && (
     <Grid item xs={leftPaneWidth} style={paneStyles}>
-      <div id="list-content">
-        <div style={stickyStyles}>
+      <ListContent isMobile={isMobile}>
+        <StickyPanel>
           <ListHeader />
           <div style={{marginTop: 8}} />
           <RankSelector />
-        </div>
+        </StickyPanel>
         <ListUnits />
         <Divider style={{marginBottom: 4}} />
         <ListCommands />
@@ -58,7 +62,7 @@ function ListLayout() {
         <ListContingencies />
         <Divider style={{marginBottom: 4}} />
         <ListObjectives />
-      </div>
+      </ListContent>
       <Divider style={{marginBottom: 4}} />
       <ListExtras />
       <ListId />
@@ -84,5 +88,3 @@ function ListLayout() {
     </Grid>
   );
 }
-
-export default ListLayout;

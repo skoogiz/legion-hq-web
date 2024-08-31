@@ -8,8 +8,8 @@ import {
   Box,
   Typography,
   TextField,
+  useTheme,
 } from "@mui/material";
-import {useTheme} from "@mui/styles";
 import {Description as TextIcon} from "@mui/icons-material";
 import {
   generateStandardText,
@@ -17,8 +17,9 @@ import {
   generateTournamentText,
   generateHTMLText,
 } from "@legion-hq/constants/listOperations";
-import DialogModal from "./DialogModal";
-import ClipboardButton from "./ClipboardButton";
+import {DialogModal} from "./DialogModal";
+import {ClipboardButton} from "./ClipboardButton";
+import {ListTemplate} from "@legion-hq/types";
 
 function generateListText(type, currentList) {
   if (type === 0) return generateStandardText(currentList);
@@ -101,7 +102,7 @@ function DialogContent({
   */
 }
 
-function TextExportButton({currentList}) {
+function TextExportButton({currentList}: {currentList: ListTemplate}) {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [textType, setTextType] = useState(0);

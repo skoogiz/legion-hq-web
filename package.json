@@ -37,7 +37,7 @@
     "react-i18next": "^11.3.3",
     "react-image": "^4.1.0",
     "react-router-dom": "^6.26.0",
-    "react-to-print": "^2.8.0",
+    "react-to-print": "^2.15.1",
     "three": "^0.137.0",
     "typeface-roboto": "0.0.75",
     "universal-cookie": "^4.0.3",

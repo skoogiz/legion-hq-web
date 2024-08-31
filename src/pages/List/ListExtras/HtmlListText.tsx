@@ -5,6 +5,7 @@ import legionModes from "@legion-hq/constants/legionModes";
 import interactions from "@legion-hq/constants/cardInteractions";
 import listTemplate from "@legion-hq/constants/listTemplate";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {ListTemplate, ListUnit} from "@legion-hq/types";
 
 function generateHTMLText(
   list,
@@ -134,7 +135,7 @@ function generateHTMLText(
   );
 }
 
-function generateUnitComponent(unit, index) {
+function generateUnitComponent(unit: ListUnit, index: number) {
   let unitText = [];
   const unitCard = cards[unit.unitId];
   if (unit.count === 1) {
@@ -171,7 +172,7 @@ function generateUnitComponent(unit, index) {
   );
 }
 
-function HtmlListText({list}) {
+export function HtmlListText({list}: {list: ListTemplate}) {
   return (
     <div>
       <b>{list.title ? list.title : "Untitled"}</b>
@@ -182,5 +183,3 @@ function HtmlListText({list}) {
     </div>
   );
 }
-
-export default HtmlListText;

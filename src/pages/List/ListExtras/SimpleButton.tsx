@@ -1,14 +1,23 @@
 import React from "react";
 import {Chip} from "@mui/material";
 
-function SimpleButton({
+type Props = {
+  timeout?: number;
+  timeoutMessage?: string;
+  isDisabled?: boolean;
+  icon?: JSX.Element;
+  label: string;
+  handleClick: () => void;
+};
+
+export function SimpleButton({
   timeout,
   timeoutMessage = "Processing...",
   isDisabled,
   icon,
   label,
   handleClick,
-}) {
+}: Props) {
   const [isTimedout, setIsTimedout] = React.useState(false);
   const onClick = timeout
     ? () => {
@@ -29,5 +38,3 @@ function SimpleButton({
     />
   );
 }
-
-export default SimpleButton;

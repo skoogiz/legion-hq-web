@@ -1,4 +1,5 @@
 import {LegionCard, ListTemplate, ListUnit, UnitCount} from "@legion-hq/types";
+import {List} from "@legion-hq/types/list.class";
 
 export const createUnitCount = ({
   commander = 0,
@@ -61,6 +62,53 @@ export const createListTemplate = ({
   unitObjectStrings,
   unitCounts,
 });
+
+export const createList = ({
+  listId,
+  version = 1,
+  title = "Untitled",
+  game = "legion",
+  mode = "standard mode",
+  faction = "rebels",
+  notes = "",
+  pointTotal = 0,
+  killPoints = 0,
+  competitive = false,
+  battleForce = "",
+  killedUnits = [],
+  units = [],
+  commandCards = [],
+  objectiveCards = [],
+  conditionCards = [],
+  deploymentCards = [],
+  uniques = [],
+  commanders = [],
+  unitObjectStrings = [],
+  unitCounts = createUnitCount(),
+}: Partial<ListTemplate> = {}): List =>
+  new List({
+    listId,
+    version,
+    title,
+    game,
+    mode,
+    faction,
+    notes,
+    pointTotal,
+    killPoints,
+    competitive,
+    battleForce,
+    killedUnits,
+    units,
+    commandCards,
+    objectiveCards,
+    conditionCards,
+    deploymentCards,
+    uniques,
+    commanders,
+    unitObjectStrings,
+    unitCounts,
+  });
 
 export const createListUnit = ({
   unitId,

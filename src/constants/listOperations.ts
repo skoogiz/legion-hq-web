@@ -4,7 +4,15 @@ import legionModes from "@legion-hq/constants/legionModes";
 import interactions from "@legion-hq/constants/cardInteractions";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
 import {CardService} from "@legion-hq/data-access/services";
-import {ListIssue, ListTemplate, RankType, UnitRestrictions} from "@legion-hq/types";
+import {
+  LegionMode,
+  ListIssue,
+  ListTemplate,
+  ListUnit,
+  RankType,
+  UnitRestrictions,
+  UpgradeType,
+} from "@legion-hq/types";
 import {ListFactories, ListUtils} from "@legion-hq/utility/list";
 import {
   COUNTERPART_LOADOUT_UPGRADE,
@@ -16,22 +24,22 @@ import {
 
 const {cards, cardIdsByType} = CardService.getInstance();
 
-function countPoints(list) {
+function countPoints(list: ListTemplate) {
   list.pointTotal = 0;
   list.rankInteractions = {};
-  list.units.forEach((unit, unitIndex) => {
+  list.units.forEach((unit) => {
     const unitCard = cards[unit.unitId];
     if (list.isUsingOldPoints) {
       unit.totalUnitCost = unitCard.prevCost ? unitCard.prevCost : unitCard.cost;
     } else unit.totalUnitCost = unitCard.cost;
     if (unitCard.id in interactions.entourages) {
       const interaction = interactions.entourages[unitCard.id];
-      if (interaction.isConditionMet(list, unit)) {
+      if (interaction.isConditionMet({list, unit})) {
         list.rankInteractions[unitCard.id] = interaction.boundaryDelta;
       }
     }
     unit.upgradeInteractions = {};
-    unit.upgradesEquipped.forEach((upgradeId, upgradeIndex) => {
+    unit.upgradesEquipped.forEach((upgradeId) => {
       if (upgradeId) {
         const upgradeCard = cards[upgradeId];
         if (list.isUsingOldPoints) {
@@ -41,7 +49,7 @@ function countPoints(list) {
         } else unit.totalUnitCost += upgradeCard.cost;
         if (upgradeId in interactions.upgradePoints) {
           const interaction = interactions.upgradePoints[upgradeId];
-          if (interaction.isConditionMet(list, unit)) {
+          if (interaction.isConditionMet({list, unit})) {
             unit.totalUnitCost += interaction.pointDelta;
             unit.upgradeInteractions[upgradeId] = interaction.pointDelta;
           }
@@ -76,13 +84,13 @@ function countPoints(list) {
   return list;
 }
 
-function toggleUsingOldPoints(list) {
+function toggleUsingOldPoints(list: ListTemplate) {
   if (!list.isUsingOldPoints) list.isUsingOldPoints = true;
   else list.isUsingOldPoints = false;
   return countPoints(list);
 }
 
-function rehashList(list) {
+function rehashList(list: ListTemplate) {
   const unitObjectStrings = [];
   for (let i = 0; i < list.units.length; i++) {
     const unit = list.units[i];
@@ -106,7 +114,7 @@ function rehashList(list) {
  * @param {} list
  * @returns
  */
-function consolidate(list) {
+function consolidate(list: ListTemplate) {
   let hasContingencyKeyword = false;
   list.hasFieldCommander = false;
   list.commanders = [];
@@ -180,7 +188,7 @@ function consolidate(list) {
   return countPoints(list);
 }
 
-function getNumActivations(list) {
+function getNumActivations(list: ListTemplate) {
   return list.units.reduce((num, unit) => {
     num += unit.count;
     return num;
@@ -188,10 +196,10 @@ function getNumActivations(list) {
 }
 
 function generateTournamentText(
-  list,
-  showPoints = true,
-  showCommands = false,
-  showBattles = false,
+  list: ListTemplate,
+  // showPoints = true,
+  // showCommands = false,
+  // showBattles = false,
 ) {
   let header = `${list.title ? list.title : "Untitled"}\n`;
   header += `${list.pointTotal}/${legionModes[list.mode].maxPoints}\n`;
@@ -313,10 +321,10 @@ function generateTournamentText(
 }
 
 function generateHTMLText(
-  list,
-  showPoints = true,
-  showCommands = false,
-  showBattles = false,
+  list: ListTemplate,
+  // showPoints = true,
+  // showCommands = false,
+  // showBattles = false,
 ) {
   let header = `${list.title ? list.title : "Untitled"}<br>`;
   header += `${list.pointTotal}/${legionModes[list.mode].maxPoints}<br>`;
@@ -441,8 +449,8 @@ function generateHTMLText(
 
 // • × •
 
-function generateStandardText(list) {
-  let header = list.title ? list.title : "Untitled";
+function generateStandardText(list: ListTemplate) {
+  const header = list.title ? list.title : "Untitled";
   let points = `\n${list.pointTotal}/${legionModes[list.mode].maxPoints}`;
   const numActivations = getNumActivations(list);
   points += ` (${numActivations} activation${numActivations === 1 ? "" : "s"})\n`;
@@ -531,10 +539,26 @@ function generateStandardText(list) {
   return header + points + units + commands + contingencies;
 }
 
-function generateTTSJSONText(list) {
-  const ttsJSON = {author: "Legion HQ"};
+type TTSJson = {
+  author: string;
+  listname: string;
+  points: number;
+  armyFaction: string;
+  commandCards: string[];
+  contingencies: string[];
+  units: string[];
+  battlefieldDeck?: {
+    scenario?: string;
+    conditions: string[];
+    deployment: string[];
+    objective: string[];
+  };
+};
 
-  const idToName = {
+function generateTTSJSONText(list: ListTemplate) {
+  const ttsJSON: Partial<TTSJson> = {author: "Legion HQ"};
+
+  const idToName: Record<string, string> = {
     nc: "Offensive Stance",
     dz: "A-180 Config",
     ea: "A-300 Config",
@@ -690,7 +714,7 @@ function generateTTSJSONText(list) {
   return JSON.stringify(ttsJSON, null, 4);
 }
 
-function generateMinimalText(list) {
+function generateMinimalText(list: ListTemplate) {
   let header = `${list.pointTotal}/${legionModes[list.mode].maxPoints}`;
   const numActivations = getNumActivations(list);
   header += ` (${numActivations} activation${numActivations === 1 ? "" : "s"})\n`;
@@ -817,7 +841,7 @@ function deleteItem(items, i) {
   return items.slice(0, i).concat(items.slice(i + 1, items.length));
 }
 
-function changeListTitle(list, title) {
+function changeListTitle(list: ListTemplate, title: string) {
   return {...list, title: title.substring(0, 30)};
 }
 
@@ -830,18 +854,18 @@ function changeListTitle(list, title) {
 //   return list;
 // }
 
-function setListMode(list, mode) {
+function setListMode(list: ListTemplate, mode: LegionMode) {
   if (legionModes[mode]) {
     list.mode = mode;
   }
   return list;
 }
 
-function findUnitHash(list, unitHash) {
+function findUnitHash(list: ListTemplate, unitHash: string) {
   return list.unitObjectStrings.indexOf(unitHash);
 }
 
-function getUnitHash(unit) {
+function getUnitHash(unit: ListUnit) {
   return `${unit.unitId}${unit.upgradesEquipped.join("")}`;
 }
 
@@ -962,7 +986,7 @@ function addCounterpart(list, unitIndex, counterpartId) {
   return consolidate(list);
 }
 
-function removeCounterpart(list, unitIndex) {
+function removeCounterpart(list: ListTemplate, unitIndex) {
   const counterpart = list.units[unitIndex].counterpart;
   list.uniques = deleteItem(
     list.uniques,
@@ -995,12 +1019,12 @@ function addUnit(list: ListTemplate, unitId: string, stackSize = 1) {
   return consolidate(list);
 }
 
-function incrementUnit(list, index) {
+function incrementUnit(list: ListTemplate, index: number) {
   list.units[index].count += 1;
   return consolidate(list);
 }
 
-function decrementUnit(list, index) {
+function decrementUnit(list: ListTemplate, index: number) {
   const unitObject = list.units[index];
   if (unitObject.count === 1) {
     list.unitObjectStrings = deleteItem(list.unitObjectStrings, index);
@@ -1011,9 +1035,9 @@ function decrementUnit(list, index) {
   return consolidate(list);
 }
 
-function restoreUnit(list, index) {
-  let unit = list.units[index];
-  let perUnitCost = unit.totalUnitCost / unit.count;
+function restoreUnit(list: ListTemplate, index: number) {
+  const unit = list.units[index];
+  const perUnitCost = unit.totalUnitCost / unit.count;
 
   const killedFiltered = list.killedUnits.filter(function (item) {
     return item === unit.unitId + unit.count;
@@ -1032,9 +1056,9 @@ function restoreUnit(list, index) {
   return list;
 }
 
-function killUnit(list, index) {
-  let unit = list.units[index];
-  let perUnitCost = unit.totalUnitCost / unit.count;
+function killUnit(list: ListTemplate, index: number) {
+  const unit = list.units[index];
+  const perUnitCost = unit.totalUnitCost / unit.count;
 
   const killedFiltered = list.killedUnits.filter(function (item) {
     return item === unit.unitId + perUnitCost;
@@ -1220,7 +1244,7 @@ function removeCommand(list, commandIndex) {
   return list;
 }
 
-function sortCommandIds(cardIds) {
+function sortCommandIds(cardIds: string[]) {
   return cardIds.sort((firstId, secondId) => {
     const firstType = Number.parseInt(cards[firstId].cardSubtype);
     const secondType = Number.parseInt(cards[secondId].cardSubtype);
@@ -1294,7 +1318,7 @@ function getEligibleContingenciesToAdd(list) {
   };
 }
 
-function getEligibleCommandsToAdd(list) {
+function getEligibleCommandsToAdd(list: ListTemplate) {
   const stormTideCommands = {
     "500-point mode": ["AB", "AC", "AD", "AE", "AF", "AG", "AH", "AH", "AI", "AJ"],
     "standard mode": ["AB", "AC", "AD", "AE", "AF", "AG", "AH", "AH", "AI", "AJ"],
@@ -1359,10 +1383,10 @@ function getEligibleCommandsToAdd(list) {
 }
 
 function getEquippableUpgrades(
-  list,
-  upgradeType,
-  id,
-  upgradesEquipped,
+  list: ListTemplate,
+  upgradeType: UpgradeType,
+  id: string,
+  upgradesEquipped: string[],
   additionalUpgradeSlots,
 ) {
   const impRemnantUpgrades = ["ej", "ek", "fv", "iy", "fu", "gm", "gl", "em", "en", "ja"];
@@ -1544,24 +1568,24 @@ function validateUpgrades(list, unitIndex) {
 }
 
 function equipUpgrade(
-  list,
-  action,
-  unitIndex,
-  upgradeIndex,
-  upgradeId,
+  list: ListTemplate,
+  action: ListActionType,
+  unitIndex: number,
+  upgradeIndex: number,
+  upgradeId: string,
   isApplyToAll = false,
 ) {
-  if (action === "UNIT_UPGRADE") {
+  if (action === UNIT_UPGRADE) {
     if (isApplyToAll) {
       list = equipUpgradeToAll(list, unitIndex, upgradeIndex, upgradeId);
     } else {
       list = equipUpgradeToOne(list, unitIndex, upgradeIndex, upgradeId);
     }
-  } else if (action === "COUNTERPART_UPGRADE") {
+  } else if (action === COUNTERPART_UPGRADE) {
     list = equipCounterpartUpgrade(list, unitIndex, upgradeIndex, upgradeId);
-  } else if (action === "LOADOUT_UPGRADE") {
+  } else if (action === LOADOUT_UPGRADE) {
     list = equipLoadoutUpgrade(list, unitIndex, upgradeIndex, upgradeId);
-  } else if (action === "COUNTERPART_LOADOUT_UPGRADE") {
+  } else if (action === COUNTERPART_LOADOUT_UPGRADE) {
     list = equipCounterpartLoadoutUpgrade(list, unitIndex, upgradeIndex, upgradeId);
   }
 
@@ -1707,7 +1731,7 @@ function segmentToUnitObject(unitIndex, segment) {
 }
 
 function convertHashToList(faction, url) {
-  let list = JSON.parse(JSON.stringify(ListFactories.createListTemplate({faction})));
+  const list = JSON.parse(JSON.stringify(ListFactories.createListTemplate({faction})));
   list.contingencies = [];
   let segments;
   if (url.includes(":")) {
@@ -1787,7 +1811,7 @@ function convertHashToList(faction, url) {
 }
 
 function mergeLists(primaryList: ListTemplate, secondaryList: ListTemplate) {
-  let unitsToAdd = [];
+  const unitsToAdd = [];
   for (let i = 0; i < secondaryList.units.length; i++) {
     const unit = secondaryList.units[i];
     if (unit.hasUniques) {
@@ -1809,7 +1833,7 @@ function mergeLists(primaryList: ListTemplate, secondaryList: ListTemplate) {
 }
 
 // All (most...) battleForce-specific stuff (should) goes here
-function battleForceValidation(currentList) {
+function battleForceValidation(currentList: ListTemplate) {
   const validationIssues = [];
   // TODO is a switch against the code standard? ;)
   // Should destroy this in favor of adding a 'rule' to apply for BzF in the object, e.g.
@@ -1833,7 +1857,7 @@ function battleForceValidation(currentList) {
   return validationIssues;
 }
 
-function mercValidation(currentList, rank, mercs) {
+function mercValidation(currentList: ListTemplate, rank, mercs) {
   const validationIssues = [];
 
   let hasAoc = false;
@@ -1890,7 +1914,7 @@ function mercValidation(currentList, rank, mercs) {
   return validationIssues;
 }
 
-function rankValidation(currentList, ranks, mercs, rankReqs) {
+function rankValidation(currentList: ListTemplate, ranks, mercs, rankReqs) {
   const validationIssues = [];
 
   // TODO this is ugly - probably should be a BF flag
@@ -1950,7 +1974,7 @@ function rankValidation(currentList, ranks, mercs, rankReqs) {
 }
 
 // TODO very lazy/gross implementation for now...
-function applyEntourage(currentList, rankReqs) {
+function applyEntourage(currentList: ListTemplate, rankReqs) {
   // for now, only empire uses the 'entourage' keyword, and this implementation for it is kind of nasty...
   if (currentList.faction !== "empire") {
     return;

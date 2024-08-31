@@ -1,1 +1,1 @@
-export {default} from "./RankSelector";
+export {RankSelector} from "./RankSelector";

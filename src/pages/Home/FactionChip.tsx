@@ -1,11 +1,16 @@
-import React, {useContext} from "react";
+import * as React from "react";
 import {Chip, Typography, ThemeProvider, createTheme} from "@mui/material";
 import {Add as AddIcon} from "@mui/icons-material";
 import DataContext from "@legion-hq/context/DataContext";
 import factions from "@legion-hq/constants/factions";
+import {FactionType} from "@legion-hq/types";
 
-function FactionChip({faction}) {
-  const {goToPage} = useContext(DataContext);
+type Props = {
+  faction: FactionType;
+};
+
+export function FactionChip({faction}: Props) {
+  const {goToPage} = React.useContext(DataContext);
   const factionTheme = createTheme({
     palette: {
       primary: {main: factions[faction].primaryColor},
@@ -26,5 +31,3 @@ function FactionChip({faction}) {
     </ThemeProvider>
   );
 }
-
-export default FactionChip;

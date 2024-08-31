@@ -35,10 +35,10 @@ export interface ListTemplate {
   killedUnits: Array<unknown>;
   units: Array<ListUnit>;
   unitObjectStrings: Array<string>;
-  commandCards: Array<unknown>;
-  objectiveCards: Array<unknown>;
-  conditionCards: Array<unknown>;
-  deploymentCards: Array<unknown>;
+  commandCards: Array<string>;
+  objectiveCards: Array<string>;
+  conditionCards: Array<string>;
+  deploymentCards: Array<string>;
   /**
    * List of cardIds of unique personas.
    */
@@ -46,4 +46,9 @@ export interface ListTemplate {
   commanders: Array<string>;
   unitCounts: UnitCount;
   contingencies?: Array<unknown>;
+
+  isUsingOldPoints?: boolean;
+  hasFieldCommander?: boolean;
+
+  rankInteractions?: unknown;
 }

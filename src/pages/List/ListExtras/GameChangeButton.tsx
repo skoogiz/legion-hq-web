@@ -1,11 +1,13 @@
-import React, {useState, useContext} from "react";
+import * as React from "react";
 import {Chip, Menu, MenuItem} from "@mui/material";
-import DataContext from "@legion-hq/context/DataContext";
-import ListContext from "@legion-hq/context/ListContext";
+import {useList} from "@legion-hq/hooks/list/useList";
 
+/**
+ * @deprecated
+ */
 export default function GameChangeButton() {
-  const {currentList, handleSetGame} = useContext(ListContext);
-  const [anchorEl, setAnchorEl] = useState();
+  const {currentList, handleSetGame} = useList();
+  const [anchorEl, setAnchorEl] = React.useState();
 
   const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
   const handleCloseMenu = () => setAnchorEl();

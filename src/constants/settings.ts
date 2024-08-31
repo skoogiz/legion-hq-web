@@ -5,6 +5,7 @@ export type AppSettings = {
   builderOrientation: "right" | "left";
   cascadeUpgradeSelection: "yes" | "no";
   includeCustomCards: "yes" | "no";
+  includeCustomGameModes: "yes" | "no";
 };
 
 export type AppSettingType = keyof AppSettings;
@@ -28,6 +29,7 @@ const DEFAULT_SETTINGS: AppSettings = {
   builderOrientation: "right",
   cascadeUpgradeSelection: "yes",
   includeCustomCards: "yes",
+  includeCustomGameModes: "yes",
 };
 
 const fields: SettingField[] = [
@@ -85,6 +87,16 @@ const fields: SettingField[] = [
       yes: "Yes",
       no: "No",
     },
+    inputType: "toggle",
+  },
+  {
+    name: "includeCustomGameModes",
+    label: "Include custom game modes",
+    options: {
+      yes: "Yes",
+      no: "No",
+    },
+    groupId: "filter",
     inputType: "toggle",
   },
 ];

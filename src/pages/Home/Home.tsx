@@ -9,7 +9,7 @@ import {
 } from "@mui/icons-material";
 import {LoginButton} from "./LoginButton";
 import ListChip from "./ListChip";
-import FactionChip from "./FactionChip";
+import {FactionChip} from "./FactionChip";
 import ListChipDropdown from "./ListChipDropdown";
 import {ErrorFallback} from "@legion-hq/components";
 import DataContext from "@legion-hq/context/DataContext";

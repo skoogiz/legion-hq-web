@@ -1,12 +1,16 @@
-import React, {useState} from "react";
-import {useMediaQuery, Chip, TextField} from "@mui/material";
-import {useTheme} from "@mui/styles";
+import * as React from "react";
+import {useMediaQuery, Chip, TextField, useTheme} from "@mui/material";
 import {Description as TextIcon} from "@mui/icons-material";
+import {ListTemplate} from "@legion-hq/types";
 import {generateTTSJSONText} from "@legion-hq/constants/listOperations";
-import DialogModal from "./DialogModal";
-import ClipboardButton from "./ClipboardButton";
+import {DialogModal} from "./DialogModal";
+import {ClipboardButton} from "./ClipboardButton";
 
-function DialogContent({currentList, tabValue, content}) {
+type Props = {
+  currentList: ListTemplate;
+};
+
+function DialogContent({content}: {content: string}) {
   return (
     <div style={{display: "flex", flexFlow: "column nowrap", alignItems: "center"}}>
       <TextField
@@ -20,13 +24,10 @@ function DialogContent({currentList, tabValue, content}) {
   );
 }
 
-function TTSTextExportButton({currentList}) {
+export function TTSTextExportButton({currentList}: Props) {
   const theme = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [textType, setTextType] = useState(0);
+  const [isOpen, setIsOpen] = React.useState(false);
   const ttsJSON = generateTTSJSONText(currentList);
-
   const isFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div style={{marginRight: 4, marginBottom: 4}}>
@@ -42,17 +43,9 @@ function TTSTextExportButton({currentList}) {
         isMobile={isFullscreen}
         isOpen={isOpen}
         actions={<ClipboardButton content={ttsJSON} />}
-        content={
-          <DialogContent
-            currentList={currentList}
-            tabValue={textType}
-            content={ttsJSON}
-          />
-        }
+        content={<DialogContent content={ttsJSON} />}
         handleClose={() => setIsOpen(false)}
       />
     </div>
   );
 }
-
-export default TTSTextExportButton;

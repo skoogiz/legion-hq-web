@@ -37,9 +37,13 @@ export type UnitRestrictions = Record<RankType, Quantity> & {
 };
 
 export interface LegionModeInfo {
+  id: LegionMode;
   name: string;
+  longName?: string;
+  description?: string;
   maxPoints: number;
   unitCounts: UnitRestrictions;
+  unofficial?: boolean;
 }
 
 export const BLACK_DICE = "black";

@@ -1,8 +1,12 @@
-import React, {useState} from "react";
-import {Button} from "@mui/material";
+import * as React from "react";
+import {Button, ButtonOwnProps} from "@mui/material";
 
-function ClipboardButton({content, variant = "text"}) {
-  const [copySuccess, setCopySuccess] = useState(false);
+type Props = Pick<ButtonOwnProps, "variant"> & {
+  content: string;
+};
+
+export function ClipboardButton({content, variant = "text"}: Props) {
+  const [copySuccess, setCopySuccess] = React.useState(false);
   return (
     <Button
       variant={variant}
@@ -17,5 +21,3 @@ function ClipboardButton({content, variant = "text"}) {
     </Button>
   );
 }
-
-export default ClipboardButton;

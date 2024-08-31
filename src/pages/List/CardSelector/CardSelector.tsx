@@ -1,8 +1,7 @@
 import * as React from "react";
 import {Fade, Typography} from "@mui/material";
-import ListContext from "@legion-hq/context/ListContext";
 import {LegionCard} from "@legion-hq/components";
-import SelectorHeader from "./SelectorHeader";
+import {SelectorHeader} from "./SelectorHeader";
 import SelectorContent from "./SelectorContent";
 import StackController from "./StackController";
 import {ToggleButton} from "./ToggleButton";
@@ -17,6 +16,7 @@ import {
   UNIT,
   UNIT_UPGRADE,
 } from "@legion-hq/state/list";
+import {useList} from "@legion-hq/hooks/list/useList";
 
 function Title({title}: {title: string}) {
   return <Typography variant="body2">{title}</Typography>;
@@ -48,7 +48,8 @@ export function CardSelector() {
     handleIncrementStackSize,
     handleDecrementStackSize,
     handleToggleIsApplyToAll,
-  } = React.useContext(ListContext);
+  } = useList();
+
   let header;
   let clickHandler;
   let validIds = [];
@@ -79,7 +80,7 @@ export function CardSelector() {
     );
     validIds = upgradeIds.validIds;
     invalidIds = upgradeIds.invalidIds;
-    clickHandler = (upgradeId) =>
+    clickHandler = (upgradeId: string) =>
       handleEquipUpgrade(
         "UNIT_UPGRADE",
         cardPaneFilter.unitIndex,

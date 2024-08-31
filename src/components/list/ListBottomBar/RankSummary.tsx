@@ -1,8 +1,9 @@
 import ranks from "@legion-hq/constants/ranks";
 import {useList} from "@legion-hq/hooks/list/useList";
 import {type RankType} from "@legion-hq/types";
-import {styled, Typography} from "@mui/material";
+import {styled} from "@mui/material";
 import {deepOrange} from "@mui/material/colors";
+import {Text} from "./ListBottomComponents";
 
 const Symbol = styled("img")<{rank: RankType}>`
   font-size: inherit;
@@ -33,9 +34,12 @@ export function RankSummary() {
       {Object.keys(ranks).map((key) => {
         const rank = key as RankType;
         return (
-          <div style={{display: "flex", alignItems: "baseline", columnGap: "0.2em"}}>
+          <div
+            key={rank}
+            style={{display: "flex", alignItems: "baseline", columnGap: "0.2em"}}
+          >
             <Symbol rank={rank} src={ranks[rank].symbol} alt={rank} />
-            <Typography
+            <Text
               sx={{
                 color:
                   unitCounts[rank] > rankLimits[rank][1] ||
@@ -45,7 +49,7 @@ export function RankSummary() {
               }}
             >
               {unitCounts[rank]}
-            </Typography>
+            </Text>
           </div>
         );
       })}

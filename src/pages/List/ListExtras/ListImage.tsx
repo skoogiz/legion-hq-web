@@ -1,17 +1,15 @@
-import React, {useState} from "react";
-import {Img} from "react-image";
-
+import * as React from "react";
 import mergeImages from "merge-images";
 import domtoimage from "dom-to-image-more";
 import {Grid, Typography} from "@mui/material";
 
 function ListImage() {
-  const [isLoadingImage, setIsLoadingImage] = useState(true);
-  const [headerSrc, setHeaderSrc] = useState();
-  const [unitsSrc, setUnitsSrc] = useState();
-  const [commandsSrc, setCommandsSrc] = useState();
-  const [objectivesSrc, setObjectivesSrc] = useState();
-  const [combinedSrc, setCombinedSrc] = useState();
+  const [isLoadingImage, setIsLoadingImage] = React.useState(true);
+  const [headerSrc, setHeaderSrc] = React.useState();
+  const [unitsSrc, setUnitsSrc] = React.useState();
+  const [commandsSrc, setCommandsSrc] = React.useState();
+  const [objectivesSrc, setObjectivesSrc] = React.useState();
+  const [combinedSrc, setCombinedSrc] = React.useState();
 
   const options = {
     cacheBust: true,

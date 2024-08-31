@@ -1,9 +1,9 @@
 import {CardService} from "@legion-hq/data-access/services";
-import {UpgradeType} from "@legion-hq/types";
+import {LegionCard, ListTemplate, ListUnit, UpgradeType} from "@legion-hq/types";
 
 const {cards} = CardService.getInstance();
 
-function checkUpgradeName(upgrade: {cardName: string}, values: string | string[]) {
+function checkUpgradeName(upgrade: LegionCard, values: string | string[]) {
   if (Array.isArray(values)) {
     let isConditionMet = false;
     values.forEach((value) => {
@@ -15,45 +15,50 @@ function checkUpgradeName(upgrade: {cardName: string}, values: string | string[]
   }
 }
 
-function checkUpgradeType(upgrade: {cardSubtype: UpgradeType}, value: UpgradeType) {
+function checkUpgradeType(upgrade: LegionCard, value: UpgradeType) {
   return upgrade.cardSubtype === value;
 }
+
+type Params = {
+  list: ListTemplate;
+  unit: ListUnit;
+};
 
 const interactions = {
   entourages: {
     bc: {
       // IRGs + Emperor Palpatine
-      isConditionMet: (list, unit) => list.uniques.includes("as"),
+      isConditionMet: ({list}: Params) => list.uniques.includes("as"),
       boundaryDelta: 1,
     },
     bd: {
       // IDTs + Director Krennic
-      isConditionMet: (list, unit) => list.uniques.includes("av"),
+      isConditionMet: ({list}: Params) => list.uniques.includes("av"),
       boundaryDelta: 1,
     },
   },
   upgradePoints: {
     lk: {
       // JT-12 Jetpack + Captain Rex
-      isConditionMet: (list, unit) => unit.unitId === "fy",
+      isConditionMet: ({unit}: Params) => unit.unitId === "fy",
       pointDelta: -5,
     },
     lu: {
       // Jyn's Blaster + Jyn Erso
-      isConditionMet: (list, unit) => list.uniques.includes("ae"),
+      isConditionMet: ({list}: Params) => list.uniques.includes("ae"),
       pointDelta: -5,
     },
     li: {
       // Situational Awareness + support unit
-      isConditionMet: (list, unit) => cards[unit.unitId].rank === "support",
+      isConditionMet: ({unit}: Params) => cards[unit.unitId].rank === "support",
       pointDelta: 4,
     },
   },
   eligibility: {
     gx: {
       // B1 Battle droids + Electrobinoculars
-      conditionFunction: (upgrade) => checkUpgradeType(upgrade, "gear"),
-      resultFunction: (upgrade) =>
+      conditionFunction: (upgrade: LegionCard) => checkUpgradeType(upgrade, "gear"),
+      resultFunction: (upgrade: LegionCard) =>
         checkUpgradeName(upgrade, ["Electrobinoculars", "Portable Scanner"]),
     },
   },

@@ -1,11 +1,16 @@
-import React from "react";
+import * as React from "react";
 import QRCode from "qrcode.react";
 import {Chip} from "@mui/material";
 import {CropFree as QRCodeIcon} from "@mui/icons-material";
 import generateLink from "./generateLink";
-import DialogModal from "./DialogModal";
+import {DialogModal} from "./DialogModal";
+import {ListTemplate} from "@legion-hq/types";
 
-function QRButton({currentList}) {
+type Props = {
+  currentList: ListTemplate;
+};
+
+export function QRButton({currentList}: Props) {
   const [isOpen, setIsOpen] = React.useState(false);
   const listLink = generateLink(currentList);
   return (
@@ -26,5 +31,3 @@ function QRButton({currentList}) {
     </div>
   );
 }
-
-export default QRButton;

@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import * as React from "react";
 import {
   History as UsePrevIcon,
   Clear as ClearIcon,
@@ -7,18 +7,18 @@ import {
   Functions as CalculateIcon,
 } from "@mui/icons-material";
 import DataContext from "@legion-hq/context/DataContext";
-import ListContext from "@legion-hq/context/ListContext";
+import {useList} from "@legion-hq/hooks/list/useList";
 import TemplateButton from "./TemplateButton";
-import LinkButton from "./LinkButton";
-import QRButton from "./QRButton";
-import TTSTextExportButton from "./TTSTextExportButton";
-import ImageExportButton from "./ImageExportButton";
+import {LinkButton} from "./LinkButton";
+import {QRButton} from "./QRButton";
+import {TTSTextExportButton} from "./TTSTextExportButton";
+import {ImageExportButton} from "./ImageExportButton";
 import TextExportButton from "./TextExportButton";
 import PrintExportButton from "./PrintExportButton";
-import SimpleButton from "./SimpleButton";
+import {SimpleButton} from "./SimpleButton";
 
-function ListExtras() {
-  const {userId} = useContext(DataContext);
+export function ListExtras() {
+  const {userId} = React.useContext(DataContext);
   const {
     currentList,
     isKillPointMode,
@@ -28,7 +28,7 @@ function ListExtras() {
     handleListFork,
     handleToggleUsingOldPoints,
     handleToggleIsKillPointMode,
-  } = useContext(ListContext);
+  } = useList();
 
   return (
     <div
@@ -48,13 +48,13 @@ function ListExtras() {
       <SimpleButton
         timeout={3000}
         timeoutMessage={listSaveMessage ? listSaveMessage : "Saving..."}
-        isDisabled={!Boolean(userId)}
+        isDisabled={!userId}
         icon={<SaveIcon />}
         label="Save List"
         handleClick={() => handleListSave(currentList)}
       />
       <SimpleButton
-        isDisabled={!Boolean(currentList.listId)}
+        isDisabled={!currentList.listId}
         icon={<ForkIcon />}
         label="Fork List"
         handleClick={() => handleListFork(currentList)}
@@ -79,5 +79,3 @@ function ListExtras() {
     </div>
   );
 }
-
-export default ListExtras;

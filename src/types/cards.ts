@@ -66,4 +66,5 @@ export interface LegionCard {
     isCustomCard?: boolean;
   };
   history?: CardHistory[];
+  commander?: string;
 }
