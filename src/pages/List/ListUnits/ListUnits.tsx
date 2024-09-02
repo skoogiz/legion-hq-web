@@ -1,13 +1,12 @@
-import React from "react";
-import ListContext from "@legion-hq/context/ListContext";
+import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 import DragDropContainer from "./DragDropContainer";
 import ListUnit from "./ListUnit";
 import CounterpartUnit from "./CounterpartUnit";
-import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
-function ListUnits() {
+export function ListUnits() {
   const {
-    currentList,
     reorderUnits,
     isKillPointMode,
     setCardPaneFilter,
@@ -17,11 +16,13 @@ function ListUnits() {
     handleDecrementUnit,
     handleRemoveCounterpart,
     handleAddKillPoints,
-  } = React.useContext(ListContext);
+  } = useListBuilder();
+
+  const {faction, units, uniques} = useCurrentList();
 
   const {cards} = useCards();
 
-  const items = currentList.units.map((unit, unitIndex) => {
+  const items = units.map((unit, unitIndex) => {
     const unitCard = cards[unit.unitId];
     const {counterpartId} = unitCard;
     const counterpartCard = cards[counterpartId];
@@ -37,13 +38,13 @@ function ListUnits() {
     const changeLoadoutHandlers = [];
     const deleteLoadoutHandlers = [];
     const totalUpgradeBar = [...unitCard.upgradeBar, ...unit.additionalUpgradeSlots];
-    if (counterpartId === "tn" && currentList.faction === "empire") {
+    if (counterpartId === "tn" && faction === "empire") {
       addCounterpartHandler = undefined;
     } else if (
       counterpartId &&
       unit.unitId === "tj" &&
-      currentList.uniques.includes("tp") &&
-      !currentList.uniques.includes(counterpartId)
+      uniques.includes("tp") &&
+      !uniques.includes(counterpartId)
     ) {
       addCounterpartHandler = () =>
         setCardPaneFilter({
@@ -51,7 +52,7 @@ function ListUnits() {
           unitIndex,
           counterpartId,
         });
-    } else if (counterpartId && !currentList.uniques.includes(counterpartId)) {
+    } else if (counterpartId && !uniques.includes(counterpartId)) {
       if (unit.unitId !== "tj") {
         addCounterpartHandler = () =>
           setCardPaneFilter({
@@ -60,11 +61,7 @@ function ListUnits() {
             counterpartId,
           });
       }
-    } else if (
-      counterpartId &&
-      currentList.uniques.includes(counterpartId) &&
-      unit.counterpart
-    ) {
+    } else if (counterpartId && uniques.includes(counterpartId) && unit.counterpart) {
       const cAddUpgradeHandlers = [];
       const cSwapUpgradeHandlers = [];
       const cZoomUpgradeHandlers = [];
@@ -241,7 +238,7 @@ function ListUnits() {
       component: (
         <ListUnit
           unit={unit}
-          uniques={currentList.uniques}
+          uniques={uniques}
           unitCard={unitCard}
           unitIndex={unitIndex}
           counterpartId={counterpartId}
@@ -272,5 +269,3 @@ function ListUnits() {
     </div>
   );
 }
-
-export default ListUnits;

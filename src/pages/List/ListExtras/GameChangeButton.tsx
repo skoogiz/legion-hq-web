@@ -1,16 +1,21 @@
 import * as React from "react";
 import {Chip, Menu, MenuItem} from "@mui/material";
-import {useList} from "@legion-hq/hooks/list/useList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 
 /**
  * @deprecated
  */
 export default function GameChangeButton() {
-  const {currentList, handleSetGame} = useList();
-  const [anchorEl, setAnchorEl] = React.useState();
+  const {handleSetGame} = useListBuilder();
 
-  const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
-  const handleCloseMenu = () => setAnchorEl();
+  const currentList = useCurrentList();
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) =>
+    setAnchorEl(event.currentTarget);
+  const handleCloseMenu = () => setAnchorEl(null);
 
   return (
     <React.Fragment>

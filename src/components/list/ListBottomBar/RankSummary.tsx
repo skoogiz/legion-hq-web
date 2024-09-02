@@ -1,6 +1,6 @@
 import ranks from "@legion-hq/constants/ranks";
-import {useList} from "@legion-hq/hooks/list/useList";
-import {type RankType} from "@legion-hq/types";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {UnitCount, type RankType} from "@legion-hq/types";
 import {styled} from "@mui/material";
 import {deepOrange} from "@mui/material/colors";
 import {Text} from "./ListBottomComponents";
@@ -23,12 +23,12 @@ const Symbol = styled("img")<{rank: RankType}>`
   opacity: 0.4;
 `;
 
-export function RankSummary() {
-  const {
-    currentList: {unitCounts},
-    rankLimits,
-  } = useList();
+type Props = {
+  unitCounts: UnitCount;
+};
 
+export function RankSummary({unitCounts}: Props) {
+  const {rankLimits} = useListBuilder();
   return (
     <div style={{display: "flex", alignItems: "center", columnGap: "0.6em"}}>
       {Object.keys(ranks).map((key) => {

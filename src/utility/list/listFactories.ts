@@ -112,7 +112,7 @@ export const createList = ({
 
 export const createListUnit = ({
   unitId,
-  unitCard: {isUnique, cost, upgradeBar, keywords},
+  unitCard: {isUnique, cost, upgradeBar, keywords, flaw},
   stackSize = 1,
 }: {
   unitId: string;
@@ -135,5 +135,6 @@ export const createListUnit = ({
         ? new Array<string | null>(equipmentSlots).fill(null)
         : [],
     additionalUpgradeSlots: [],
+    flawId: flaw,
   };
 };

@@ -5,6 +5,7 @@ import interactions from "@legion-hq/constants/cardInteractions";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
 import {CardService} from "@legion-hq/data-access/services";
 import {
+  FactionType,
   LegionMode,
   ListIssue,
   ListTemplate,
@@ -21,74 +22,9 @@ import {
   LOADOUT_UPGRADE,
   UNIT_UPGRADE,
 } from "@legion-hq/state/list";
+import {List} from "@legion-hq/types/list.class";
 
-const {cards, cardIdsByType} = CardService.getInstance();
-
-function countPoints(list: ListTemplate) {
-  list.pointTotal = 0;
-  list.rankInteractions = {};
-  list.units.forEach((unit) => {
-    const unitCard = cards[unit.unitId];
-    if (list.isUsingOldPoints) {
-      unit.totalUnitCost = unitCard.prevCost ? unitCard.prevCost : unitCard.cost;
-    } else unit.totalUnitCost = unitCard.cost;
-    if (unitCard.id in interactions.entourages) {
-      const interaction = interactions.entourages[unitCard.id];
-      if (interaction.isConditionMet({list, unit})) {
-        list.rankInteractions[unitCard.id] = interaction.boundaryDelta;
-      }
-    }
-    unit.upgradeInteractions = {};
-    unit.upgradesEquipped.forEach((upgradeId) => {
-      if (upgradeId) {
-        const upgradeCard = cards[upgradeId];
-        if (list.isUsingOldPoints) {
-          unit.totalUnitCost += upgradeCard.prevCost
-            ? upgradeCard.prevCost
-            : upgradeCard.cost;
-        } else unit.totalUnitCost += upgradeCard.cost;
-        if (upgradeId in interactions.upgradePoints) {
-          const interaction = interactions.upgradePoints[upgradeId];
-          if (interaction.isConditionMet({list, unit})) {
-            unit.totalUnitCost += interaction.pointDelta;
-            unit.upgradeInteractions[upgradeId] = interaction.pointDelta;
-          }
-        }
-      }
-    });
-    unit.totalUnitCost *= unit.count;
-    list.pointTotal += unit.totalUnitCost;
-    if (unit.counterpart) {
-      const counterpartCard = cards[unit.counterpart.counterpartId];
-      if (list.isUsingOldPoints) {
-        unit.counterpart.totalUnitCost = counterpartCard.prevCost
-          ? counterpartCard.prevCost
-          : counterpartCard.cost;
-      } else unit.counterpart.totalUnitCost = counterpartCard.cost;
-
-      unit.counterpart.upgradesEquipped.forEach((upgradeId) => {
-        if (upgradeId) {
-          const upgradeCard = cards[upgradeId];
-          if (list.isUsingOldPoints) {
-            unit.counterpart.totalUnitCost += upgradeCard.prevCost
-              ? upgradeCard.prevCost
-              : upgradeCard.cost;
-          } else unit.counterpart.totalUnitCost += upgradeCard.cost;
-        }
-      });
-      list.pointTotal += unit.counterpart.totalUnitCost;
-      list.uniques.push(unit.counterpart.counterpartId);
-    }
-  });
-
-  return list;
-}
-
-function toggleUsingOldPoints(list: ListTemplate) {
-  if (!list.isUsingOldPoints) list.isUsingOldPoints = true;
-  else list.isUsingOldPoints = false;
-  return countPoints(list);
-}
+const {cards, cardIdsByType, costSupplier} = CardService.getInstance();
 
 function rehashList(list: ListTemplate) {
   const unitObjectStrings = [];
@@ -162,6 +98,14 @@ function consolidate(list: ListTemplate) {
     }
     list.unitCounts[unitCard.rank] += unit.count;
 
+    if (unit.counterpart) {
+      const counterpartCard = cards[unit.counterpart.counterpartId];
+      if (counterpartCard.isUnique) {
+        list.uniques.push(counterpartCard.id);
+        unit.hasUniques = true;
+      }
+    }
+
     if (unit.unitId === "rc" && unit.upgradesEquipped.includes("rq")) {
       // Maul + Darksaber interaction
       list.unitCounts["commander"]++;
@@ -174,18 +118,23 @@ function consolidate(list: ListTemplate) {
       list = removeCommand(list, i);
     }
   }
-  if (list.contingencies) {
-    for (let i = list.contingencies.length - 1; i > -1; i--) {
-      const {commander} = cards[list.contingencies[i]];
-      if (commander && !list.commanders.includes(commander)) {
-        list = removeContingency(list, i);
-      }
+
+  list.contingencies?.forEach((contingency, index) => {
+    const {commander} = cards[contingency];
+    if (commander && !list.commanders.includes(commander)) {
+      list = removeContingency(list, index);
     }
-  }
+  });
+
   if (!list.battleForce) list.battleForce = "";
   if (!hasContingencyKeyword) list.contingencies = [];
+
   list.commandCards = sortCommandIds(list.commandCards);
-  return countPoints(list);
+
+  const currentList = List.of(list);
+  currentList.addModifiers(interactions);
+  currentList.calculatePoints(costSupplier);
+  return currentList.listTemplate;
 }
 
 function getNumActivations(list: ListTemplate) {
@@ -412,7 +361,7 @@ function generateHTMLText(
   let conditions = "";
   if (list.objectiveCards.length > 0) {
     objectives += "Objectives:<br>";
-    list.objectiveCards.forEach((id, i) => {
+    list.objectiveCards.forEach((id) => {
       const card = cards[id];
       objectives += ` - ${card.cardName}<br>`;
     });
@@ -426,7 +375,7 @@ function generateHTMLText(
   }
   if (list.conditionCards.length > 0) {
     conditions += "Conditions:<br>";
-    list.conditionCards.forEach((id, i) => {
+    list.conditionCards.forEach((id) => {
       const card = cards[id];
       conditions += ` - ${card.cardName}<br>`;
     });
@@ -837,7 +786,7 @@ function generateMinimalText(list: ListTemplate) {
   return header + units + commands + contingencies;
 }
 
-function deleteItem(items, i) {
+function deleteItem<T>(items: Array<T>, i: number): T[] {
   return items.slice(0, i).concat(items.slice(i + 1, items.length));
 }
 
@@ -986,7 +935,7 @@ function addCounterpart(list, unitIndex, counterpartId) {
   return consolidate(list);
 }
 
-function removeCounterpart(list: ListTemplate, unitIndex) {
+function removeCounterpart(list: ListTemplate, unitIndex: number) {
   const counterpart = list.units[unitIndex].counterpart;
   list.uniques = deleteItem(
     list.uniques,
@@ -1212,7 +1161,7 @@ function addCommand(list, commandId) {
   return list;
 }
 
-function addBattle(list, type, id) {
+function addBattle(list: ListTemplate, type: string, id: string) {
   if (type === "objective") {
     list.objectiveCards.push(id);
   } else if (type === "deployment") {
@@ -1223,7 +1172,7 @@ function addBattle(list, type, id) {
   return list;
 }
 
-function removeBattle(list, type, index) {
+function removeBattle(list: ListTemplate, type: string, index: number) {
   if (type === "objective") {
     list.objectiveCards = deleteItem(list.objectiveCards, index);
   } else if (type === "deployment") {
@@ -1234,12 +1183,12 @@ function removeBattle(list, type, index) {
   return list;
 }
 
-function removeContingency(list, contingencyIndex) {
+function removeContingency(list: ListTemplate, contingencyIndex: number) {
   list.contingencies = deleteItem(list.contingencies, contingencyIndex);
   return list;
 }
 
-function removeCommand(list, commandIndex) {
+function removeCommand(list: ListTemplate, commandIndex: number) {
   list.commandCards = deleteItem(list.commandCards, commandIndex);
   return list;
 }
@@ -1254,7 +1203,7 @@ function sortCommandIds(cardIds: string[]) {
   });
 }
 
-function getEligibleBattlesToAdd(list, type) {
+function getEligibleBattlesToAdd(list: ListTemplate, type: string) {
   const validIds = [];
   const invalidIds = [];
   const scenarioMissionIds = ["Df", "Oe"];
@@ -1730,7 +1679,7 @@ function segmentToUnitObject(unitIndex, segment) {
   return unit;
 }
 
-function convertHashToList(faction, url) {
+function convertHashToList(faction: FactionType, url: string) {
   const list = JSON.parse(JSON.stringify(ListFactories.createListTemplate({faction})));
   list.contingencies = [];
   let segments;
@@ -2011,7 +1960,7 @@ function applyEntourage(currentList: ListTemplate, rankReqs) {
   return;
 }
 
-function applyFieldCommander(list, rankReqs) {
+function applyFieldCommander(list: ListTemplate, rankReqs: UnitRestrictions) {
   const bf = battleForcesDict[list.battleForce];
   if (list.hasFieldCommander && !bf?.rules?.noFieldComm) {
     rankReqs.commander[0] = 0;
@@ -2083,7 +2032,6 @@ function validateList(currentList: ListTemplate, rankLimits: UnitRestrictions) {
 }
 
 export {
-  toggleUsingOldPoints,
   rehashList,
   convertHashToList,
   changeListTitle,

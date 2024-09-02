@@ -1,92 +1,170 @@
+import {Interactions} from "@legion-hq/constants/cardInteractions";
 import {ListTemplate} from "./lists";
+import {UnitImpl} from "./listUnit.class";
+
+interface ListData extends ListTemplate {
+  units: UnitImpl[];
+}
+
+type CostSupplier = (
+  cardIds: string[],
+  useOriginalCosts?: boolean,
+) => Record<string, number>;
 
 export class List implements ListTemplate {
-  private list: ListTemplate;
+  private data: ListData;
 
   constructor(template: ListTemplate) {
-    this.list = template;
+    this.data = {...template, units: template.units.map(UnitImpl.of)};
   }
 
   /**
    * Implementations of template fields
    */
   get listId() {
-    return this.list.listId;
+    return this.data.listId;
   }
   get version() {
-    return this.list.version;
+    return this.data.version;
   }
   get title() {
-    return this.list.title;
+    return this.data.title;
   }
   get game() {
-    return this.list.game;
+    return this.data.game;
   }
   get mode() {
-    return this.list.mode;
+    return this.data.mode;
   }
   get faction() {
-    return this.list.faction;
+    return this.data.faction;
   }
   get notes() {
-    return this.list.notes;
+    return this.data.notes;
   }
   get pointTotal() {
-    return this.list.pointTotal;
+    return this.data.pointTotal;
   }
   get killPoints() {
-    return this.list.killPoints;
+    return this.data.killPoints;
   }
   get competitive() {
-    return this.list.competitive;
+    return this.data.competitive;
   }
   get battleForce() {
-    return this.list.battleForce;
+    return this.data.battleForce;
   }
   get killedUnits() {
-    return this.list.killedUnits;
+    return this.data.killedUnits;
   }
   get units() {
-    return this.list.units;
+    return this.data.units;
   }
   get unitObjectStrings() {
-    return this.list.unitObjectStrings;
+    return this.data.unitObjectStrings;
   }
   get commandCards() {
-    return this.list.commandCards;
+    return this.data.commandCards;
   }
   get objectiveCards() {
-    return this.list.objectiveCards;
+    return this.data.objectiveCards;
   }
   get conditionCards() {
-    return this.list.conditionCards;
+    return this.data.conditionCards;
   }
   get deploymentCards() {
-    return this.list.deploymentCards;
+    return this.data.deploymentCards;
   }
   // List of cardIds of unique personas.
   get uniques() {
-    return this.list.uniques;
+    return this.data.uniques;
   }
   get commanders() {
-    return this.list.commanders;
+    return this.data.commanders;
   }
   get unitCounts() {
-    return this.list.unitCounts;
+    return this.data.unitCounts;
   }
   get contingencies() {
-    return this.list.contingencies;
+    return this.data.contingencies;
+  }
+  get isUsingOldPoints() {
+    return this.data.isUsingOldPoints ?? false;
+  }
+  get rankInteractions() {
+    return this.data.rankInteractions ?? {};
+  }
+  get listTemplate(): ListTemplate {
+    return {
+      ...this.data,
+      units: this.units.map((unit) => unit.data),
+    };
+  }
+
+  getRankDelta(upgradeId: string): number {
+    return this.rankInteractions[upgradeId] ?? 0;
+  }
+
+  private addRankInteractions(upgradeId: string, value: number) {
+    const interactions = this.rankInteractions;
+    this.data.rankInteractions = {
+      ...interactions,
+      [upgradeId]: value,
+    };
+  }
+
+  clear() {
+    this.data.rankInteractions = {};
+    this.data.units.forEach((unit) => unit.clear());
+  }
+
+  toggleUseOriginalCosts(costSupplier: CostSupplier) {
+    this.data.isUsingOldPoints = !this.isUsingOldPoints;
+    this.calculatePoints(costSupplier);
   }
 
   /**
    * Utility functions
    */
   get activations(): number {
-    const numActivations = this.list.units.reduce((num, unit) => {
+    const numActivations = this.data.units.reduce((num, unit) => {
       num += unit.count;
       return num;
     }, 0);
-    console.log("ACTIVATIONS", numActivations);
     return numActivations;
+  }
+
+  calculatePoints(costSupplier: CostSupplier) {
+    let newPointTotal = 0;
+    this.units.forEach((unit) => {
+      unit.calculateTotalUnitCost(costSupplier(unit.cardIds, this.isUsingOldPoints));
+      newPointTotal += unit.totalUnitCost;
+    });
+    this.data.pointTotal = newPointTotal;
+  }
+
+  addModifiers({entourages, upgradePoints}: Interactions) {
+    this.clear();
+    this.units.forEach((unit) => {
+      if (unit.unitId in entourages) {
+        const {isConditionMet, boundaryDelta} = entourages[unit.unitId];
+        if (isConditionMet({list: this.data, unit})) {
+          this.addRankInteractions(unit.unitId, boundaryDelta);
+        }
+      }
+
+      unit.cardIds.forEach((cardId) => {
+        if (cardId in upgradePoints) {
+          const {isConditionMet, pointDelta} = upgradePoints[cardId];
+          if (isConditionMet({list: this.data, unit})) {
+            unit.addUpgradeInteraction(cardId, pointDelta);
+          }
+        }
+      });
+    });
+  }
+
+  static of(data: ListTemplate) {
+    return new List(data);
   }
 }

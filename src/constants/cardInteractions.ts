@@ -24,7 +24,25 @@ type Params = {
   unit: ListUnit;
 };
 
-const interactions = {
+export type Interactions = {
+  entourages: Record<
+    string,
+    {isConditionMet: (params: Params) => boolean; boundaryDelta: number}
+  >;
+  upgradePoints: Record<
+    string,
+    {isConditionMet: (params: Params) => boolean; pointDelta: number}
+  >;
+  eligibility: Record<
+    string,
+    {
+      conditionFunction: (upgrade: LegionCard) => boolean;
+      resultFunction: (upgrade: LegionCard) => boolean;
+    }
+  >;
+};
+
+const interactions: Interactions = {
   entourages: {
     bc: {
       // IRGs + Emperor Palpatine

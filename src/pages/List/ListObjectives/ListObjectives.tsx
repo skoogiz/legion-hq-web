@@ -1,14 +1,17 @@
-import React from "react";
 import {Chip, ThemeProvider, createTheme} from "@mui/material";
 import {Add as AddIcon} from "@mui/icons-material";
-import ListContext from "@legion-hq/context/ListContext";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
+import {BATTLE} from "@legion-hq/state/list";
 
 const chipSize = "medium";
 
 function ListObjectives() {
-  const {currentList, setCardPaneFilter, handleRemoveBattle, handleCardZoom} =
-    React.useContext(ListContext);
+  const {setCardPaneFilter, handleRemoveBattle, handleCardZoom} = useListBuilder();
+
+  const {objectiveCards, deploymentCards, conditionCards} = useCurrentList();
+
   const {cards} = useCards();
   const chipStyle = {marginRight: 4, marginBottom: 4};
   const objectiveTheme = createTheme({
@@ -20,7 +23,7 @@ function ListObjectives() {
   const conditionTheme = createTheme({
     palette: {primary: {main: "#963233"}},
   });
-  const objectives = currentList.objectiveCards.map((id, i) => (
+  const objectives = objectiveCards.map((id, i) => (
     <Chip
       color="primary"
       key={id}
@@ -30,7 +33,7 @@ function ListObjectives() {
       onDelete={() => handleRemoveBattle("objective", i)}
     />
   ));
-  const deployments = currentList.deploymentCards.map((id, i) => (
+  const deployments = deploymentCards.map((id, i) => (
     <Chip
       color="primary"
       key={id}
@@ -40,7 +43,7 @@ function ListObjectives() {
       onDelete={() => handleRemoveBattle("deployment", i)}
     />
   ));
-  const conditions = currentList.conditionCards.map((id, i) => (
+  const conditions = conditionCards.map((id, i) => (
     <Chip
       color="primary"
       key={id}
@@ -71,7 +74,7 @@ function ListObjectives() {
               style={{marginBottom: 4, marginRight: 4}}
               onClick={() =>
                 setCardPaneFilter({
-                  action: "BATTLE",
+                  action: BATTLE,
                   type: "objective",
                 })
               }
@@ -92,7 +95,7 @@ function ListObjectives() {
               style={{marginBottom: 4, marginRight: 4}}
               onClick={() =>
                 setCardPaneFilter({
-                  action: "BATTLE",
+                  action: BATTLE,
                   type: "deployment",
                 })
               }
@@ -113,7 +116,7 @@ function ListObjectives() {
               style={{marginBottom: 4, marginRight: 4}}
               onClick={() =>
                 setCardPaneFilter({
-                  action: "BATTLE",
+                  action: BATTLE,
                   type: "condition",
                 })
               }

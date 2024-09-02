@@ -2,24 +2,31 @@ import {Grid, Chip} from "@mui/material";
 import {Add as AddIcon} from "@mui/icons-material";
 import {CardIcon} from "@legion-hq/components";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
-import {useList} from "@legion-hq/hooks/list/useList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
 import {COMMAND} from "@legion-hq/state/list";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 
 const chipSize = "medium";
 
 function ListCommands() {
-  const {currentList, setCardPaneFilter, handleCardZoom, handleRemoveCommand} = useList();
+  const {setCardPaneFilter, handleCardZoom, handleRemoveCommand} = useListBuilder();
+
+  const {commandCards} = useCurrentList();
+
   const {cards} = useCards();
-  const getNumPips = (cardId) => {
+
+  const getNumPips = (cardId: string) => {
     const card = cards[cardId];
     if (card.cardSubtype === "1") return "•";
     else if (card.cardSubtype === "2") return "••";
     else if (card.cardSubtype === "3") return "•••";
   };
+
   const chipStyle = {marginRight: 4, marginBottom: 4};
+
   return (
     <Grid container id="list-commands" direction="row" justifyContent="center">
-      {currentList.commandCards.length < 6 && (
+      {commandCards.length < 6 && (
         <Grid item>
           <Chip
             size={chipSize}
@@ -30,7 +37,7 @@ function ListCommands() {
           />
         </Grid>
       )}
-      {currentList.commandCards.map((cardId, commandIndex) => (
+      {commandCards.map((cardId, commandIndex) => (
         <Grid item key={cardId}>
           <Chip
             label={`${getNumPips(cardId)} ${cards[cardId].cardName}`}
@@ -38,7 +45,7 @@ function ListCommands() {
               <CardIcon
                 size="small"
                 cardType="command"
-                card={cards[cardId]}
+                // card={cards[cardId]}
                 imageName={cards[cardId].imageName}
                 handleClick={() => handleCardZoom(cardId)}
               />
@@ -56,7 +63,7 @@ function ListCommands() {
               size="small"
               cardType="command"
               imageName="Standing Orders.jpeg"
-              card={cards["aa"]}
+              // card={cards["aa"]}
               handleClick={() => handleCardZoom("aa")}
             />
           }

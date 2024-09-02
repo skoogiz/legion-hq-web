@@ -1,3 +1,6 @@
+import {FactionType} from "@legion-hq/types";
+import {Theme} from "@mui/material";
+
 export const colorName = (faction?: string) => {
   switch (faction) {
     case "rebels":
@@ -10,4 +13,15 @@ export const colorName = (faction?: string) => {
     default:
       return undefined;
   }
+};
+
+export const getFactionColor = ({
+  faction,
+  theme,
+}: {
+  faction: FactionType;
+  theme: Theme;
+}) => {
+  const color = colorName(faction);
+  return color ? theme.palette[color].main : undefined;
 };

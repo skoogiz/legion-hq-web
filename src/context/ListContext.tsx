@@ -29,7 +29,6 @@ import {
   getEquippableUpgrades,
   getEquippableLoadoutUpgrades,
   getEligibleBattlesToAdd,
-  toggleUsingOldPoints,
   validateList,
   getRankLimits,
 } from "@legion-hq/constants/listOperations";
@@ -47,6 +46,7 @@ import {ListUtils} from "@legion-hq/utility/list";
 import {createListTemplate} from "@legion-hq/utility/list/listFactories";
 import {legionModes} from "@legion-hq/constants";
 import {noop} from "lodash";
+import {List} from "@legion-hq/types/list.class";
 
 type ListContextValue = {
   currentList: ListTemplate;
@@ -67,6 +67,7 @@ type ListContextValue = {
   modalContent?: string;
   handleCloseModal: () => void;
   setCardPaneFilter: (list: ListAction) => void;
+  handleCardZoom: (cardId: string) => void;
 };
 
 const DEFAULT_VALUE: ListContextValue = {
@@ -93,6 +94,7 @@ const DEFAULT_VALUE: ListContextValue = {
   },
   handleCloseModal: noop,
   setCardPaneFilter: noop,
+  handleCardZoom: noop,
 };
 
 const ListContext = React.createContext(DEFAULT_VALUE);
@@ -125,7 +127,7 @@ const initList = ({
   return createListTemplate();
 };
 
-export function ListProvider({
+function ListProvider({
   isSmallScreen,
   children,
   slug = "",
@@ -133,7 +135,7 @@ export function ListProvider({
   storedLists,
   updateStoredList,
 }: Props) {
-  const {cards} = useCards();
+  const {cards, costSupplier} = useCards();
 
   const {userId, goToPage} = React.useContext(DataContext);
   const {cascadeUpgradeSelection} = useSettings();
@@ -250,9 +252,11 @@ export function ListProvider({
   };
 
   const handleToggleUsingOldPoints = () => {
-    const newList = toggleUsingOldPoints(currentList);
-    setCurrentList({...newList});
+    const newList = List.of(currentList);
+    newList.toggleUseOriginalCosts(costSupplier);
+    setCurrentList({...newList.listTemplate});
   };
+
   const handleIncrementStackSize = () => {
     if (stackSize < 12) {
       setStackSize(stackSize + 1);
@@ -612,4 +616,4 @@ export function ListProvider({
   }
 }
 
-export default ListContext;
+export {ListContext, ListProvider};

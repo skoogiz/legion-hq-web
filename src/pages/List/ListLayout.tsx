@@ -1,18 +1,19 @@
-import {Grid, Divider, styled} from "@mui/material";
+import {Grid, Divider, styled, Box} from "@mui/material";
 // import {useSettings} from "@legion-hq/hooks/app/useSettings";
 // import themes from "@legion-hq/constants/themes";
 import {CardModal} from "@legion-hq/components";
-import ListHeader from "./ListHeader";
+import {ListHeader} from "./ListHeader";
 import {RankSelector} from "./RankSelector";
-import ListUnits from "./ListUnits";
+import {ListUnits} from "./ListUnits";
 import ListCommands from "./ListCommands";
-import ListContingencies from "./ListContingencies";
+import {ListContingencies} from "./ListContingencies";
 import ListObjectives from "./ListObjectives";
 import {ListExtras} from "./ListExtras";
-import ListDisplay from "./ListDisplay";
+import {ListDisplay} from "./ListDisplay";
 import {ListId} from "./ListId";
 import {CardSelector} from "./CardSelector";
-import {useList} from "@legion-hq/hooks/list/useList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {ListBottomBar} from "@legion-hq/components/list";
 
 const ListContent = styled("div")<{isMobile: boolean}>`
   padding: 0 2px 2px;
@@ -37,7 +38,7 @@ export function ListLayout() {
     isModalOpen,
     modalContent,
     handleCloseModal,
-  } = useList();
+  } = useListBuilder();
 
   const isMobile = isSmallScreen;
 
@@ -81,10 +82,15 @@ export function ListLayout() {
     <CardModal id={modalContent} isOpen={isModalOpen} handleClose={handleCloseModal} />
   );
   return (
-    <Grid container direction="row">
-      {modal}
-      {builderPane}
-      {cardPane}
-    </Grid>
+    <>
+      <Box>
+        <Grid container direction="row" sx={{height: "100vh"}}>
+          {modal}
+          {builderPane}
+          {cardPane}
+        </Grid>
+      </Box>
+      <ListBottomBar />
+    </>
   );
 }

@@ -2,15 +2,16 @@ import ranks from "@legion-hq/constants/ranks";
 // import legionModes from '@legion-hq/constants/legionModes';
 // import cards from '@legion-hq/constants/cards';
 import {RankButton} from "./RankButton";
-import {useList} from "@legion-hq/hooks/list/useList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
 import {UNIT} from "@legion-hq/state/list";
 import {RankType} from "@legion-hq/types";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 // import battleForcesDict from '@legion-hq/constants/battleForcesDict';
 
 export function RankSelector() {
-  const {currentList, setCardPaneFilter, rankLimits} = useList();
+  const {setCardPaneFilter, rankLimits} = useListBuilder();
 
-  const {unitCounts} = currentList;
+  const {unitCounts} = useCurrentList();
 
   // let rankInteractions = 0;
   // if (currentList.rankInteractions) {

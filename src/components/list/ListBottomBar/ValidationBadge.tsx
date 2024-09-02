@@ -1,6 +1,6 @@
 import {styled} from "@mui/material";
 import {GppBad as GppBadIcon, GppGood as GppGoodIcon} from "@mui/icons-material";
-import {useList} from "@legion-hq/hooks/list/useList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
 
 const IconContainer = styled("div")`
   font-size: 20px;
@@ -17,7 +17,7 @@ const IconContainer = styled("div")`
 `;
 
 export function ValidationBadge() {
-  const {/*currentList, */ validationIssues} = useList();
+  const {/*currentList, */ validationIssues} = useListBuilder();
   // const [isValidationDialogOpen, setValidationDialogOpen] = React.useState(false);
 
   // const numActivations = currentList.units.reduce((num, unit) => {

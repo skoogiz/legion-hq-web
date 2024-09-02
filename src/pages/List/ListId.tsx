@@ -1,11 +1,11 @@
 import * as React from "react";
 import {Typography} from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
-import {useList} from "@legion-hq/hooks/list/useList";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 
 export function ListId() {
   const {userId} = React.useContext(DataContext);
-  const {currentList} = useList();
+  const currentList = useCurrentList();
   if (!currentList) return null;
   return (
     <div style={{display: "flex", flexFlow: "column nowrap", alignItems: " center"}}>

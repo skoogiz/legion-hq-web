@@ -7,8 +7,8 @@ import {
   Functions as CalculateIcon,
 } from "@mui/icons-material";
 import DataContext from "@legion-hq/context/DataContext";
-import {useList} from "@legion-hq/hooks/list/useList";
-import TemplateButton from "./TemplateButton";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {TemplateButton} from "./TemplateButton";
 import {LinkButton} from "./LinkButton";
 import {QRButton} from "./QRButton";
 import {TTSTextExportButton} from "./TTSTextExportButton";
@@ -16,11 +16,12 @@ import {ImageExportButton} from "./ImageExportButton";
 import TextExportButton from "./TextExportButton";
 import PrintExportButton from "./PrintExportButton";
 import {SimpleButton} from "./SimpleButton";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 
 export function ListExtras() {
   const {userId} = React.useContext(DataContext);
+
   const {
-    currentList,
     isKillPointMode,
     listSaveMessage,
     handleClearList,
@@ -28,7 +29,9 @@ export function ListExtras() {
     handleListFork,
     handleToggleUsingOldPoints,
     handleToggleIsKillPointMode,
-  } = useList();
+  } = useListBuilder();
+
+  const currentList = useCurrentList();
 
   return (
     <div

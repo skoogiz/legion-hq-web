@@ -1,30 +1,31 @@
-import React, {useState, useContext} from "react";
+import * as React from "react";
 import {Chip, Menu, MenuItem} from "@mui/material";
 import {PlaylistAdd as AddTemplateIcon} from "@mui/icons-material";
 import DataContext from "@legion-hq/context/DataContext";
-import ListContext from "@legion-hq/context/ListContext";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
 
-function TemplateButton() {
-  const {userLists} = useContext(DataContext);
-  const {currentList, handleMergeList} = useContext(ListContext);
-  const [anchorEl, setAnchorEl] = useState();
-  const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
-  const handleCloseMenu = () => setAnchorEl();
+export function TemplateButton() {
+  const {userLists} = React.useContext(DataContext);
+  const {handleMergeList} = useListBuilder();
+  const {faction} = useCurrentList();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) =>
+    setAnchorEl(event.currentTarget);
+  const handleCloseMenu = () => setAnchorEl(null);
 
-  const validUserLists = [];
-  userLists.forEach((userList) => {
-    if (userList.faction.includes(currentList.faction)) {
-      validUserLists.push(
-        <MenuItem key={userList.listId} onClick={() => handleMergeList(userList)}>
-          {userList.title}
-        </MenuItem>,
-      );
-    }
-  });
+  const validUserLists = userLists.filter((userList) =>
+    userList.faction.includes(faction),
+  );
+
   return (
     <React.Fragment>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
-        {validUserLists}
+        {validUserLists.map((userList) => (
+          <MenuItem key={userList.listId} onClick={() => handleMergeList(userList)}>
+            {userList.title}
+          </MenuItem>
+        ))}
       </Menu>
       <Chip
         clickable
@@ -38,5 +39,3 @@ function TemplateButton() {
     </React.Fragment>
   );
 }
-
-export default TemplateButton;

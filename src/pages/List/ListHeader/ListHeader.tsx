@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import {
   Menu,
   MenuItem,
@@ -11,14 +11,14 @@ import {
 } from "@mui/material";
 import {Info as InfoIcon, Warning as WarningIcon} from "@mui/icons-material";
 import {makeStyles} from "@mui/styles";
-import ListContext from "@legion-hq/context/ListContext";
 import legionModes from "@legion-hq/constants/legionModes";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
 import {ModeButton} from "./ModeButton";
 import {TitleField} from "./TitleField";
 import {KillPointsField} from "./KillPointsField";
 import {FactionButton} from "./FactionButton";
-import {useList} from "@legion-hq/hooks/list/useList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 
 const useStyles = makeStyles({
   container: {
@@ -46,31 +46,32 @@ const useStyles = makeStyles({
   },
 });
 
-function ListHeader() {
+export function ListHeader() {
   const {
-    currentList,
     handleSetBattleForce,
     currentKillPoints,
     isKillPointMode,
     handleChangeTitle,
     handleChangeMode,
     validationIssues,
-  } = useList();
+  } = useListBuilder();
+  const {faction, units, battleForce, mode, title, pointTotal} = useCurrentList();
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isBattleForceDialogOpen, setIsBattleForceDialogOpen] = React.useState(false);
   const [isValidationDialogOpen, setValidationDialogOpen] = React.useState(false);
-  const handleFactionMenuOpen = (event) => setAnchorEl(event.currentTarget);
+  const handleFactionMenuOpen = (event: React.MouseEvent<HTMLElement>) =>
+    setAnchorEl(event.currentTarget);
   const handleFactionMenuClose = () => setAnchorEl(null);
   const handleOpenBFDialog = () => setIsBattleForceDialogOpen(true);
   const handleCloseBFDialog = () => setIsBattleForceDialogOpen(false);
-  const numActivations = currentList.units.reduce((num, unit) => {
+  const numActivations = units.reduce((num, unit) => {
     num += unit.count;
     return num;
   }, 0);
 
   const validBattleForces = Object.values(battleForcesDict).filter(
-    (bf) => bf.faction === currentList.faction,
+    (bf) => bf.faction === faction,
   );
 
   var minValidationError = validationIssues.reduce((highest, e) => {
@@ -86,10 +87,10 @@ function ListHeader() {
           open={Boolean(anchorEl)}
           onClose={handleFactionMenuClose}
         >
-          {currentList.faction !== "fringe" && (
+          {faction !== "fringe" && (
             <MenuItem
               key="none"
-              selected={!currentList.battleForce || currentList.battleForce === ""}
+              selected={!battleForce || battleForce === ""}
               onClick={() => {
                 handleSetBattleForce("");
                 handleFactionMenuClose();
@@ -102,7 +103,7 @@ function ListHeader() {
             return (
               <MenuItem
                 key={battleForce.name}
-                selected={currentList.battleForce === battleForce.name}
+                selected={battleForce === battleForce.name}
                 onClick={() => {
                   handleSetBattleForce(battleForce.name);
                   handleFactionMenuClose();
@@ -114,12 +115,12 @@ function ListHeader() {
           })}
         </Menu>
         <div className={classes.item}>
-          <FactionButton faction={currentList.faction} onClick={handleFactionMenuOpen} />
+          <FactionButton faction={faction} onClick={handleFactionMenuOpen} />
         </div>
         <div className={classes.item}>
           <TitleField
             activations={numActivations}
-            title={currentList.title}
+            title={title}
             handleChange={(e) => {
               e.persist();
               handleChangeTitle(e.target.value);
@@ -128,9 +129,9 @@ function ListHeader() {
         </div>
         <div className={classes.item}>
           <ModeButton
-            currentMode={currentList.mode}
-            points={currentList.pointTotal}
-            maxPoints={legionModes[currentList.mode].maxPoints}
+            currentMode={mode}
+            points={pointTotal}
+            maxPoints={legionModes[mode].maxPoints}
             handleChangeMode={handleChangeMode}
           />
         </div>
@@ -184,7 +185,7 @@ function ListHeader() {
           </div>
         )}
       </div>
-      {currentList.battleForce && (
+      {battleForce && (
         <div className={classes.battleForceContainer}>
           <Button
             endIcon={<InfoIcon />}
@@ -192,16 +193,16 @@ function ListHeader() {
             size="small"
             onClick={handleOpenBFDialog}
           >
-            {currentList.battleForce}
+            {battleForce}
           </Button>
           <Dialog open={isBattleForceDialogOpen} onClose={handleCloseBFDialog}>
-            <DialogTitle>{currentList.battleForce} List Requirements</DialogTitle>
+            <DialogTitle>{battleForce} List Requirements</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                The list building rules for the {currentList.battleForce} battleforce is{" "}
+                The list building rules for the {battleForce} battleforce is{" "}
                 <a
                   style={{textDecoration: "none"}}
-                  href={battleForcesDict[currentList.battleForce].ruleUrl}
+                  href={battleForcesDict[battleForce].ruleUrl}
                   target="_blank"
                   rel="noreferrer noopener"
                 >
@@ -229,5 +230,3 @@ function ListHeader() {
     </div>
   );
 }
-
-export default ListHeader;

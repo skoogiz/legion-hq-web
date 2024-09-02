@@ -25,6 +25,19 @@ export class CardService {
     }, {});
   }
 
+  costSupplier = (
+    cardIds: string[],
+    useOriginalCosts = false,
+  ): Record<string, number> => {
+    return cardIds.reduce((acc, cardId) => {
+      const {prevCost, cost} = this.cards[cardId];
+      return {
+        ...acc,
+        [cardId]: useOriginalCosts && prevCost ? prevCost : cost,
+      };
+    }, {});
+  };
+
   static getInstance = () => {
     if (this.INSTANCE) return this.INSTANCE;
     this.INSTANCE = new CardService(cards as unknown as Record<string, LegionCard>);

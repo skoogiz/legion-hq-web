@@ -1,44 +1,51 @@
-import React, {useContext} from "react";
-import {Fade, Typography, Divider} from "@mui/material";
-import ListContext from "@legion-hq/context/ListContext";
+import {Fade, Typography, Divider, styled} from "@mui/material";
 import {factions} from "@legion-hq/constants";
 import CardImage from "./CardImage";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
+import {DISPLAY} from "@legion-hq/state/list";
+import {FactionType, ListUnit} from "@legion-hq/types";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
 
-function RowDisplay({unit, faction, handleCardZoom}) {
-  const counterStyles = {
-    height: 150,
-    width: 15,
-    marginRight: 4,
-    border: `1px solid ${factions[faction].primaryColor}`,
-    borderRadius: 2.5,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  };
-  // ×
+const Counter = styled("div")<{faction: FactionType}>`
+  height: 150;
+  width: 15;
+  margin-right: 4;
+  border: 1px solid ${({faction}) => factions[faction].primaryColor};
+  border-radius: 2.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
-  const counter = (
-    <div style={counterStyles}>
-      <Typography variant={unit.count > 9 ? "caption" : "button"}>
-        {unit.count}
-      </Typography>
-    </div>
-  );
-  const {counterpart} = unit;
-  const {flawId} = unit;
+function RowDisplay({
+  unit,
+  faction,
+  handleCardZoom,
+}: {
+  unit: ListUnit;
+  faction: FactionType;
+  handleCardZoom: (cardId: string) => void;
+}) {
+  const {counterpart, flawId} = unit;
   return (
     <div style={{display: "flex", flexFlow: "column nowrap"}}>
       <div style={{display: "flex", flexFlow: "row wrap"}}>
-        {unit.count > 1 && counter}
+        {unit.count > 1 && (
+          <Counter faction={faction}>
+            <Typography variant={unit.count > 9 ? "caption" : "button"}>
+              {unit.count}
+            </Typography>
+          </Counter>
+        )}
         <CardImage id={unit.unitId} handleClick={() => handleCardZoom(unit.unitId)} />
         {unit.upgradesEquipped.map((upgradeId, i) => {
           if (upgradeId) {
             if (unit.loadoutUpgrades && unit.loadoutUpgrades[i]) {
               const loadoutUpgradeId = unit.loadoutUpgrades[i];
               return (
-                <div key={upgradeId} style={{display: "flex", flexflow: "row nowrap"}}>
+                <div key={upgradeId} style={{display: "flex", flexFlow: "row nowrap"}}>
                   <CardImage
                     id={upgradeId}
                     handleClick={() => handleCardZoom(upgradeId)}
@@ -74,7 +81,7 @@ function RowDisplay({unit, faction, handleCardZoom}) {
               if (counterpart.loadoutUpgrades && counterpart.loadoutUpgrades[i]) {
                 const loadoutUpgradeId = counterpart.loadoutUpgrades[i];
                 return (
-                  <div key={upgradeId} style={{display: "flex", flexflow: "row nowrap"}}>
+                  <div key={upgradeId} style={{display: "flex", flexFlow: "row nowrap"}}>
                     <CardImage
                       id={upgradeId}
                       handleClick={() => handleCardZoom(upgradeId)}
@@ -103,7 +110,13 @@ function RowDisplay({unit, faction, handleCardZoom}) {
   );
 }
 
-function CommandRow({commandIds, handleCardZoom}) {
+function CommandRow({
+  commandIds,
+  handleCardZoom,
+}: {
+  commandIds: string[];
+  handleCardZoom: (cardId: string) => void;
+}) {
   return (
     <div style={{display: "flex", flexFlow: "row wrap"}}>
       {commandIds.map((id) => (
@@ -115,33 +128,20 @@ function CommandRow({commandIds, handleCardZoom}) {
   );
 }
 
-function ListDisplay() {
-  const list = useContext(ListContext);
-  const {currentList, cardPaneFilter, handleCardZoom} = list;
-  const {cards} = useCards();
+export function ListDisplay() {
+  const {cardPaneFilter, handleCardZoom} = useListBuilder();
+  const {faction, units, commandCards} = useCurrentList();
   return (
-    <Fade unmountOnExit exit={false} in={cardPaneFilter.action === "DISPLAY"}>
+    <Fade unmountOnExit exit={false} in={cardPaneFilter.action === DISPLAY}>
       <div style={{display: "flex", flexFlow: "column nowrap", alignItems: "stretch"}}>
-        {currentList.units.map((unit) => (
+        {units.map((unit) => (
           <div key={unit.unitObjectString}>
-            <RowDisplay
-              unit={{
-                ...unit,
-                flawId: cards[unit.unitId].flaw ? cards[unit.unitId].flaw : undefined,
-              }}
-              faction={currentList.faction}
-              handleCardZoom={handleCardZoom}
-            />
+            <RowDisplay unit={unit} faction={faction} handleCardZoom={handleCardZoom} />
             <Divider style={{marginBottom: 4}} />
           </div>
         ))}
-        <CommandRow
-          commandIds={currentList.commandCards}
-          handleCardZoom={handleCardZoom}
-        />
+        <CommandRow commandIds={commandCards} handleCardZoom={handleCardZoom} />
       </div>
     </Fade>
   );
 }
-
-export default ListDisplay;

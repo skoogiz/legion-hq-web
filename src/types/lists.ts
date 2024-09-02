@@ -8,6 +8,15 @@ export type ListIssue = {
   text: string;
 };
 
+export interface Counterpart {
+  count: number;
+  counterpartId: string;
+  totalUnitCost: number;
+  upgradesEquipped: Array<string | null>;
+  loadoutUpgrades: Array<string | null>;
+  additionalUpgradeSlots: Array<string | null>;
+}
+
 export interface ListUnit {
   unitId: string;
   count: number;
@@ -18,6 +27,17 @@ export interface ListUnit {
   loadoutUpgrades: Array<string | null>;
   additionalUpgradeSlots: Array<string | null>;
   validationIssues?: Array<ListIssue>;
+
+  flawId?: string;
+  counterpart?: Counterpart;
+  /**
+   * Upgrade modifiers.
+   *
+   * Record format:
+   *  - key: string <CARD_ID>
+   *  - value: number <POINT_DELTA>
+   */
+  upgradeInteractions?: Record<string, number>;
 }
 
 export interface ListTemplate {
@@ -45,10 +65,17 @@ export interface ListTemplate {
   uniques: Array<string>;
   commanders: Array<string>;
   unitCounts: UnitCount;
-  contingencies?: Array<unknown>;
+  contingencies?: Array<string>;
 
   isUsingOldPoints?: boolean;
   hasFieldCommander?: boolean;
 
-  rankInteractions?: unknown;
+  /**
+   * Rank modifiers.
+   *
+   * Record format:
+   *  - key: string <CARD_ID>
+   *  - value: number <BOUNDRY_DELTA>
+   */
+  rankInteractions?: Record<string, number>;
 }

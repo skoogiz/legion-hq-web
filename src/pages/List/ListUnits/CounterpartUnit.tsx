@@ -1,10 +1,9 @@
 import React from "react";
-import {makeStyles} from "@mui/styles";
 import {CardName, UnitAvatar, UnitPoints} from "@legion-hq/components";
 import UnitActions from "./UnitActions";
 import UnitUpgrades from "./UnitUpgrades";
 
-const useStyles = makeStyles((theme) => ({
+const styles: Record<string, React.CSSProperties> = {
   unitRow: {
     marginLeft: 25,
     display: "flex",
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: "1px solid rgba(255,255,255,0.12)",
     borderTop: "1px solid rgba(255,255,255,0.12)",
   },
-}));
+};
 
 function CounterpartUnit({
   counterpart,
@@ -43,7 +42,6 @@ function CounterpartUnit({
   changeLoadoutHandlers,
   deleteLoadoutHandlers,
 }) {
-  const classes = useStyles();
   const avatar = (
     <UnitAvatar key="avatar" id={counterpartId} handleClick={handleCardZoom} />
   );
@@ -68,10 +66,10 @@ function CounterpartUnit({
   const middleCell = [name, upgrades];
   const rightCell = [points, actions];
   return (
-    <div className={classes.unitRow}>
-      <div className={classes.leftCell}>{leftCell}</div>
-      <div className={classes.middleCell}>{middleCell}</div>
-      <div className={classes.rightCell}>{rightCell}</div>
+    <div style={styles.unitRow}>
+      <div style={styles.leftCell}>{leftCell}</div>
+      <div style={styles.middleCell}>{middleCell}</div>
+      <div style={styles.rightCell}>{rightCell}</div>
     </div>
   );
 }

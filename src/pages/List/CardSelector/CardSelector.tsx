@@ -16,7 +16,8 @@ import {
   UNIT,
   UNIT_UPGRADE,
 } from "@legion-hq/state/list";
-import {useList} from "@legion-hq/hooks/list/useList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 
 function Title({title}: {title: string}) {
   return <Typography variant="body2">{title}</Typography>;
@@ -24,7 +25,6 @@ function Title({title}: {title: string}) {
 
 export function CardSelector() {
   const {
-    currentList,
     cardPaneFilter,
     setCardPaneFilter,
     isApplyToAll,
@@ -48,7 +48,9 @@ export function CardSelector() {
     handleIncrementStackSize,
     handleDecrementStackSize,
     handleToggleIsApplyToAll,
-  } = useList();
+  } = useListBuilder();
+
+  const currentList = useCurrentList();
 
   let header;
   let clickHandler;

@@ -4,6 +4,7 @@ import {
   Toolbar,
   IconButton,
   useTheme,
+  styled,
   // InputBase,
   // alpha,
   // styled,
@@ -55,39 +56,43 @@ const styles = {
   },
 };
 
-function DefaultBar() {
+const Offset = styled("div")(({theme}) => theme.mixins.toolbar);
+
+export function ActionBar() {
   const {setIsDrawerOpen} = React.useContext(DataContext);
   const theme = useTheme();
   const {themeMode} = useSettings();
   return (
-    <Toolbar variant="dense">
-      <IconButton
-        color="inherit"
-        edge="start"
-        sx={{marginRight: theme.spacing(2)}}
-        onClick={() => setIsDrawerOpen(true)}
-      >
-        <MenuIcon />
-      </IconButton>
-      <img
-        alt="Legion HQ Logo"
-        src={themeMode === "light" ? lhqLogoLight : lhqLogoDark}
-        style={{height: 35}}
-      />
-      <div style={styles.grow} />
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://thefifthtrooper.com/"
-        style={{marginTop: 4}}
-      >
-        <img
-          alt="Fifth Trooper Logo"
-          src={themeMode === "light" ? ftLogoLight : ftLogoDark}
-          style={{height: 35}}
-        />
-      </a>
-      {/* {false && (
+    <>
+      <AppBar position="fixed" color="secondary">
+        <Toolbar variant="dense">
+          <IconButton
+            color="inherit"
+            edge="start"
+            sx={{marginRight: theme.spacing(2)}}
+            onClick={() => setIsDrawerOpen(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <img
+            alt="Legion HQ Logo"
+            src={themeMode === "light" ? lhqLogoLight : lhqLogoDark}
+            style={{height: 35}}
+          />
+          <div style={styles.grow} />
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://thefifthtrooper.com/"
+            style={{marginTop: 4}}
+          >
+            <img
+              alt="Fifth Trooper Logo"
+              src={themeMode === "light" ? ftLogoLight : ftLogoDark}
+              style={{height: 35}}
+            />
+          </a>
+          {/* {false && (
         <SearchBar>
           <SearchIconWrapper>
             <SearchIcon />
@@ -107,17 +112,9 @@ function DefaultBar() {
           />
         </SearchBar>
       )} */}
-    </Toolbar>
-  );
-}
-
-export function ActionBar() {
-  return (
-    <div style={styles.grow}>
-      <AppBar position="fixed" color="secondary">
-        <DefaultBar />
+        </Toolbar>
       </AppBar>
-      <div style={{height: 55}} />
-    </div>
+      <Offset />
+    </>
   );
 }

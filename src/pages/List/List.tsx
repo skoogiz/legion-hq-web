@@ -4,7 +4,6 @@ import {useMediaQuery, useTheme} from "@mui/material";
 import {ListProvider} from "@legion-hq/context/ListContext";
 import {ListTemplate} from "@legion-hq/types";
 import {ErrorFallback} from "@legion-hq/components";
-import {ListBottomBar} from "@legion-hq/components/list";
 import {ListLayout} from "./ListLayout";
 
 type Props = {
@@ -29,7 +28,6 @@ export function List({storedLists, updateStoredList}: Props) {
     >
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <ListLayout />
-        <ListBottomBar />
       </ErrorBoundary>
     </ListProvider>
   );

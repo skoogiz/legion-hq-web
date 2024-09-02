@@ -1,1 +1,1 @@
-export {default} from "./ListHeader";
+export {ListHeader} from "./ListHeader";

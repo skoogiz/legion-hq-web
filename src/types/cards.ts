@@ -67,4 +67,9 @@ export interface LegionCard {
   };
   history?: CardHistory[];
   commander?: string;
+
+  flaw?: string;
+  contingencies?: number;
+  counterpartId?: string;
+  prevCost?: number;
 }

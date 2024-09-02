@@ -1,1 +1,1 @@
-export {default} from "./ListDisplay";
+export {ListDisplay} from "./ListDisplay";

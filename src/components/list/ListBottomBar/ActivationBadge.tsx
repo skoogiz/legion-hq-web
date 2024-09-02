@@ -1,6 +1,5 @@
 import {styled} from "@mui/material";
 import {BrightnessAuto as ActivationIcon} from "@mui/icons-material";
-import {useList} from "@legion-hq/hooks/list/useList";
 import {Text} from "./ListBottomComponents";
 
 const IconContainer = styled("div")`
@@ -16,18 +15,15 @@ const IconContainer = styled("div")`
   }
 `;
 
-export function ActivationBadge() {
-  const {currentList} = useList();
+type Props = {
+  activations: number;
+};
 
-  const numActivations = currentList.units.reduce((num, unit) => {
-    num += unit.count;
-    return num;
-  }, 0);
-
+export function ActivationBadge({activations}: Props) {
   return (
     <IconContainer>
       <ActivationIcon />
-      <Text>{numActivations}</Text>
+      <Text>{activations}</Text>
     </IconContainer>
   );
 }
