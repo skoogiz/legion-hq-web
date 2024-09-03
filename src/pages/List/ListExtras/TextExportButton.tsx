@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, SyntheticEvent} from "react";
 import {
   useMediaQuery,
   Chip,
@@ -21,7 +21,7 @@ import {DialogModal} from "./DialogModal";
 import {ClipboardButton} from "./ClipboardButton";
 import {ListTemplate} from "@legion-hq/types";
 
-function generateListText(type, currentList) {
+function generateListText(type: number, currentList: ListTemplate) {
   if (type === 0) return generateStandardText(currentList);
   else if (type === 1) return generateMinimalText(currentList);
   else if (type === 2) return generateTournamentText(currentList);
@@ -29,10 +29,24 @@ function generateListText(type, currentList) {
   else return "";
 }
 
-function TabPanel({value, index, children}) {
+/**
+ * Dont understand the use of this
+ *
+ * @param param0
+ * @returns
+ */
+function TabPanel({
+  value,
+  index,
+  children,
+}: {
+  value: string;
+  index: number;
+  children: React.ReactNode;
+}) {
   return (
-    <div hidden={value !== index}>
-      {value === index && (
+    <div hidden={value !== `${index}`}>
+      {value === `${index}` && (
         <Box p={3}>
           <Typography>{children}</Typography>
         </Box>
@@ -41,13 +55,19 @@ function TabPanel({value, index, children}) {
   );
 }
 
+type DialogProps = {
+  tabValue: number;
+  content: string;
+  handleChangeTextType: (e: SyntheticEvent, value: number) => void;
+  handleChangeListText: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
 function DialogContent({
-  currentList,
   tabValue,
   content,
   handleChangeTextType,
   handleChangeListText,
-}) {
+}: DialogProps) {
   return (
     <div style={{display: "flex", flexFlow: "column nowrap", alignItems: "center"}}>
       <AppBar position="static" color="secondary">
@@ -102,13 +122,18 @@ function DialogContent({
   */
 }
 
-export function TextExportButton({currentList}: {currentList: ListTemplate}) {
+type Props = {
+  currentList: ListTemplate;
+};
+
+export function TextExportButton({currentList}: Props) {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [textType, setTextType] = useState(0);
   const [listText, setListText] = useState("");
-  const handleChangeTextType = (e, value) => setTextType(value);
-  const handleChangeListText = (e) => setListText(e.target.value);
+  const handleChangeTextType = (e: SyntheticEvent, value: number) => setTextType(value);
+  const handleChangeListText = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setListText(e.target.value);
   useEffect(() => {
     setListText(generateListText(textType, currentList));
   }, [currentList, isOpen, textType]);
@@ -129,7 +154,6 @@ export function TextExportButton({currentList}: {currentList: ListTemplate}) {
         actions={<ClipboardButton content={listText} />}
         content={
           <DialogContent
-            currentList={currentList}
             tabValue={textType}
             content={listText}
             handleChangeTextType={handleChangeTextType}

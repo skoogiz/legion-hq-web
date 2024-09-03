@@ -33,7 +33,6 @@
 
 */
 
-import upgradeTypes from "@legion-hq/constants/upgradeTypes";
 import {DefenceDiceType, FactionType, SurgeType} from "./constants";
 import {RankType} from "./units";
 import {UpgradeType} from "./upgrades";

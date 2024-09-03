@@ -7,6 +7,7 @@ type Props = {
   auth: unknown;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function LoginButton({auth}: Props) {
   const {isLoginDisabled, loginTooltipText, loginButtonText, loginHandler} =
     React.useContext(DataContext);

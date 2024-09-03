@@ -1,11 +1,16 @@
-import React, {useState} from "react";
-import clsx from "clsx";
+import * as React from "react";
 import {Typography} from "@mui/material";
-import {makeStyles} from "@mui/styles";
 import ControlPanel from "./ControlPanel";
 import AttackDie from "./AttackDie";
+import {
+  AttackDiceType,
+  BLACK_DICE,
+  DefenceDiceType,
+  RED_DICE,
+  WHITE_DICE,
+} from "@legion-hq/types";
 
-const useStyles = makeStyles((theme) => ({
+const styles: Record<string, React.CSSProperties> = {
   row: {
     display: "flex",
     flexFlow: "row wrap",
@@ -18,42 +23,49 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexGrow: 1,
   },
-}));
+};
 
-function getRandomInt(max) {
+function getRandomInt(max: number) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
 function Stats() {
-  const classes = useStyles();
-  const [isRolling, setIsRolling] = useState(false);
-  const [numRedAttackDice, setNumRedAttackDice] = useState(0);
-  const [redAttackResults, setRedAttackResults] = useState([]);
-  const [numBlackAttackDice, setNumBlackAttackDice] = useState(0);
-  const [blackAttackResults, setBlackAttackResults] = useState([]);
-  const [numWhiteAttackDice, setNumWhiteAttackDice] = useState(0);
-  const [whiteAttackResults, setWhiteAttackResults] = useState([]);
-  const handleSetDice = (type, color, num) => {
+  const [isRolling, setIsRolling] = React.useState(false);
+  const [numRedAttackDice, setNumRedAttackDice] = React.useState(0);
+  const [redAttackResults, setRedAttackResults] = React.useState<number[]>([]);
+  const [numBlackAttackDice, setNumBlackAttackDice] = React.useState(0);
+  const [blackAttackResults, setBlackAttackResults] = React.useState<number[]>([]);
+  const [numWhiteAttackDice, setNumWhiteAttackDice] = React.useState(0);
+  const [whiteAttackResults, setWhiteAttackResults] = React.useState<number[]>([]);
+
+  const handleSetDice = (
+    type: "attack" | "defense",
+    color: AttackDiceType | DefenceDiceType,
+    num: number,
+  ) => {
     if (type === "attack") {
-      if (color === "red") {
+      if (color === RED_DICE) {
         setNumRedAttackDice(num);
         setRedAttackResults(redAttackResults.slice(0, num));
       }
-      if (color === "black") {
+      if (color === BLACK_DICE) {
         setNumBlackAttackDice(num);
         setBlackAttackResults(blackAttackResults.slice(0, num));
       }
-      if (color === "white") {
+      if (color === WHITE_DICE) {
         setNumWhiteAttackDice(num);
         setWhiteAttackResults(whiteAttackResults.slice(0, num));
       }
     } else if (type === "defense") {
-      if (color === "red") {
+      if (color === RED_DICE) {
+        // TODO: Defence dice logic
       }
-      if (color === "white") {
+      if (color === WHITE_DICE) {
+        // TODO: Defence dice logic
       }
     }
   };
+
   const handleRollDice = () => {
     setIsRolling(true);
     for (let i = 0; i < numRedAttackDice; i++) {
@@ -73,12 +85,13 @@ function Stats() {
     }
     setTimeout(() => setIsRolling(false), 500);
   };
+
   return (
-    <div className={classes.column}>
-      <div className={classes.row}>
+    <div style={styles.column}>
+      <div style={styles.row}>
         <Typography variant="h5">Dice Roller</Typography>
       </div>
-      <div className={clsx(classes.row, classes.column)}>
+      <div style={{...styles.row, ...styles.column}}>
         <ControlPanel
           numRedAttackDice={numRedAttackDice}
           numBlackAttackDice={numBlackAttackDice}
@@ -87,31 +100,31 @@ function Stats() {
           handleRollDice={handleRollDice}
         />
       </div>
-      <div className={classes.row}>
+      <div style={styles.row}>
         {redAttackResults.map((result, i) => (
           <AttackDie
             key={`red_${result}_${i}`}
-            color="red"
+            color={RED_DICE}
             faceIndex={result}
             isRolling={isRolling}
           />
         ))}
       </div>
-      <div className={classes.row}>
+      <div style={styles.row}>
         {blackAttackResults.map((result, i) => (
           <AttackDie
             key={`black_${result}_${i}`}
-            color="black"
+            color={BLACK_DICE}
             faceIndex={result}
             isRolling={isRolling}
           />
         ))}
       </div>
-      <div className={classes.row}>
+      <div style={styles.row}>
         {whiteAttackResults.map((result, i) => (
           <AttackDie
             key={`white_${result}_${i}`}
-            color="white"
+            color={WHITE_DICE}
             faceIndex={result}
             isRolling={isRolling}
           />
