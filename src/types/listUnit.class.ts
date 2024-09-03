@@ -97,12 +97,12 @@ export class UnitImpl implements ListUnit {
       ...this.upgradesEquipped,
       ...this.loadoutUpgrades,
       ...this.additionalUpgradeSlots,
-      this.flawId ?? null,
-      this.counterpart?.counterpartId ?? null,
+      this.flawId,
+      this.counterpart?.counterpartId,
       ...(this.counterpart?.upgradesEquipped ?? []),
       ...(this.counterpart?.loadoutUpgrades ?? []),
       ...(this.counterpart?.additionalUpgradeSlots ?? []),
-    ].filter((upgrade) => upgrade !== null);
+    ].filter((upgrade) => Boolean(upgrade)) as string[];
   }
 
   get upgradeModifiers() {

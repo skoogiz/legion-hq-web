@@ -13,7 +13,7 @@ import {LinkButton} from "./LinkButton";
 import {QRButton} from "./QRButton";
 import {TTSTextExportButton} from "./TTSTextExportButton";
 import {ImageExportButton} from "./ImageExportButton";
-import TextExportButton from "./TextExportButton";
+import {TextExportButton} from "./TextExportButton";
 import PrintExportButton from "./PrintExportButton";
 import {SimpleButton} from "./SimpleButton";
 import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
@@ -27,8 +27,8 @@ export function ListExtras() {
     handleClearList,
     handleListSave,
     handleListFork,
-    handleToggleUsingOldPoints,
     handleToggleIsKillPointMode,
+    listActions: {handleToggleUsingOldPoints},
   } = useListBuilder();
 
   const currentList = useCurrentList();

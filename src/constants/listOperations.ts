@@ -1,16 +1,21 @@
 import _, {cloneDeep} from "lodash";
-import ranks from "@legion-hq/constants/ranks";
 import legionModes from "@legion-hq/constants/legionModes";
 import interactions from "@legion-hq/constants/cardInteractions";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
 import {CardService} from "@legion-hq/data-access/services";
 import {
+  CommandCard,
+  Counterpart,
   FactionType,
+  LegionCard,
+  LegionCardWithConditions,
   LegionMode,
   ListIssue,
   ListTemplate,
   ListUnit,
   RankType,
+  Requirements,
+  UnitCount,
   UnitRestrictions,
   UpgradeType,
 } from "@legion-hq/types";
@@ -165,44 +170,46 @@ function generateTournamentText(
       } else {
         units += `${unitCard.cardName} (${unit.totalUnitCost})\n`;
       }
-      for (let j = 0; j < unit.upgradesEquipped.length; j++) {
-        if (unit.upgradesEquipped[j]) {
-          const upgradeCard = cards[unit.upgradesEquipped[j]];
-          if (unit.loadoutUpgrades && unit.loadoutUpgrades[j]) {
-            const loadoutCard = cards[unit.loadoutUpgrades[j]];
+
+      unit.upgradesEquipped.forEach((upgradeId, index) => {
+        if (upgradeId) {
+          const upgradeCard = cards[upgradeId];
+          if (unit.loadoutUpgrades && unit.loadoutUpgrades[index]) {
+            const loadoutCard = cards[unit.loadoutUpgrades[index]];
             units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})`;
             units += `/${loadoutCard.cardName} (${loadoutCard.cost})\n`;
           } else {
             units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})\n`;
           }
         }
-      }
+      });
+
       if (unit.counterpart) {
         const {counterpart} = unit;
         const counterpartCard = cards[counterpart.counterpartId];
         units += `${counterpartCard.cardName} (${unit.counterpart.totalUnitCost})\n`;
-        for (let j = 0; j < counterpart.upgradesEquipped.length; j++) {
-          if (counterpart.upgradesEquipped[j]) {
-            const upgradeCard = cards[counterpart.upgradesEquipped[j]];
-            if (counterpart.loadoutUpgrades && counterpart.loadoutUpgrades[j]) {
-              const loadoutCard = cards[counterpart.loadoutUpgrades[j]];
+        counterpart.upgradesEquipped.forEach((upgradeId, index) => {
+          if (upgradeId) {
+            const upgradeCard = cards[upgradeId];
+            if (counterpart.loadoutUpgrades && counterpart.loadoutUpgrades[index]) {
+              const loadoutCard = cards[counterpart.loadoutUpgrades[index]];
               units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})`;
               units += `/${loadoutCard.cardName} (${loadoutCard.cost})\n`;
             } else {
               units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})\n`;
             }
           }
-        }
+        });
       }
     } else {
       for (let i = 0; i < unit.count; i++) {
         units += `${unitCard.cardName} (${unit.totalUnitCost / unit.count})\n`;
-        for (let j = 0; j < unit.upgradesEquipped.length; j++) {
-          if (unit.upgradesEquipped[j]) {
-            const upgradeCard = cards[unit.upgradesEquipped[j]];
+        unit.upgradesEquipped.forEach((upgradeId) => {
+          if (upgradeId) {
+            const upgradeCard = cards[upgradeId];
             units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})\n`;
           }
-        }
+        });
       }
     }
   });
@@ -236,21 +243,21 @@ function generateTournamentText(
   let conditions = "";
   if (list.objectiveCards.length > 0) {
     objectives += "Objectives:\n";
-    list.objectiveCards.forEach((id, i) => {
+    list.objectiveCards.forEach((id) => {
       const card = cards[id];
       objectives += ` - ${card.cardName}\n`;
     });
   }
   if (list.deploymentCards.length > 0) {
     deployments += "Deployments:\n";
-    list.deploymentCards.forEach((id, i) => {
+    list.deploymentCards.forEach((id) => {
       const card = cards[id];
       deployments += ` - ${card.cardName}\n`;
     });
   }
   if (list.conditionCards.length > 0) {
     conditions += "Conditions:\n";
-    list.conditionCards.forEach((id, i) => {
+    list.conditionCards.forEach((id) => {
       const card = cards[id];
       conditions += ` - ${card.cardName}\n`;
     });
@@ -284,50 +291,51 @@ function generateHTMLText(
       if (unit.unitId === "pz") {
         // Kraken
         units += `${unitCard.cardName} - Kraken (${unit.totalUnitCost})<br>`;
-      } else if (unit.unitId === "pz") {
+      } else if (unit.unitId === "qa") {
         // Kalani
         units += `${unitCard.cardName} - Kalani (${unit.totalUnitCost})<br>`;
       } else {
         units += `${unitCard.cardName} (${unit.totalUnitCost})<br>`;
       }
-      for (let j = 0; j < unit.upgradesEquipped.length; j++) {
-        if (unit.upgradesEquipped[j]) {
-          const upgradeCard = cards[unit.upgradesEquipped[j]];
-          if (unit.loadoutUpgrades && unit.loadoutUpgrades[j]) {
-            const loadoutCard = cards[unit.loadoutUpgrades[j]];
+      unit.upgradesEquipped.forEach((upgradeId, index) => {
+        if (upgradeId) {
+          const upgradeCard = cards[upgradeId];
+          if (unit.loadoutUpgrades && unit.loadoutUpgrades[index]) {
+            const loadoutCard = cards[unit.loadoutUpgrades[index]];
             units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})`;
             units += `/${loadoutCard.cardName} (${loadoutCard.cost})<br>`;
           } else {
             units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})<br>`;
           }
         }
-      }
+      });
+
       if (unit.counterpart) {
         const {counterpart} = unit;
         const counterpartCard = cards[counterpart.counterpartId];
         units += `${counterpartCard.cardName} (${unit.counterpart.totalUnitCost})\n`;
-        for (let j = 0; j < counterpart.upgradesEquipped.length; j++) {
-          if (counterpart.upgradesEquipped[j]) {
-            const upgradeCard = cards[counterpart.upgradesEquipped[j]];
-            if (counterpart.loadoutUpgrades && counterpart.loadoutUpgrades[j]) {
-              const loadoutCard = cards[counterpart.loadoutUpgrades[j]];
+        counterpart.upgradesEquipped.forEach((upgradeId, index) => {
+          if (upgradeId) {
+            const upgradeCard = cards[upgradeId];
+            if (counterpart.loadoutUpgrades && counterpart.loadoutUpgrades[index]) {
+              const loadoutCard = cards[counterpart.loadoutUpgrades[index]];
               units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})`;
               units += `/${loadoutCard.cardName} (${loadoutCard.cost})<br>`;
             } else {
               units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})<br>`;
             }
           }
-        }
+        });
       }
     } else {
       for (let i = 0; i < unit.count; i++) {
         units += `${unitCard.cardName} (${unit.totalUnitCost / unit.count})<br>`;
-        for (let j = 0; j < unit.upgradesEquipped.length; j++) {
-          if (unit.upgradesEquipped[j]) {
-            const upgradeCard = cards[unit.upgradesEquipped[j]];
+        unit.upgradesEquipped.forEach((upgradeId) => {
+          if (upgradeId) {
+            const upgradeCard = cards[upgradeId];
             units += ` - ${upgradeCard.cardName} (${upgradeCard.cost})<br>`;
           }
-        }
+        });
       }
     }
   });
@@ -368,7 +376,7 @@ function generateHTMLText(
   }
   if (list.deploymentCards.length > 0) {
     deployments += "Deployments:<br>";
-    list.deploymentCards.forEach((id, i) => {
+    list.deploymentCards.forEach((id) => {
       const card = cards[id];
       deployments += ` - ${card.cardName}<br>`;
     });
@@ -410,8 +418,10 @@ function generateStandardText(list: ListTemplate) {
   let special = "";
   let support = "";
   let heavy = "";
-  const unitLine = (unit) => {
-    const id = unit.unitId ? unit.unitId : unit.counterpartId;
+  const unitLine = (unit: ListUnit | Counterpart) => {
+    const id = (unit as {unitId?: string}).unitId
+      ? (unit as ListUnit).unitId
+      : (unit as Counterpart).counterpartId;
     const unitCard = cards[id];
     let line = " - ";
     if (unit.count > 1) line += `${unit.count}× `;
@@ -443,7 +453,7 @@ function generateStandardText(list: ListTemplate) {
     } else line += ` = ${unitCard.cost}`;
     return line + "\n";
   };
-  list.units.forEach((unit, i) => {
+  list.units.forEach((unit) => {
     const unitCard = cards[unit.unitId];
     if (unit.counterpart) counterpart += unitLine(unit.counterpart);
     if (unitCard.rank === "commander") commander += unitLine(unit);
@@ -560,7 +570,11 @@ function generateTTSJSONText(list: ListTemplate) {
 
   ttsJSON.units = [];
   for (let i = 0; i < list.units.length; i++) {
-    const unitJSON = {name: "", upgrades: [], loadout: []};
+    const unitJSON: {name: string; upgrades: string[]; loadout: string[]} = {
+      name: "",
+      upgrades: [],
+      loadout: [],
+    };
     const unit = list.units[i];
     const unitCard = cards[unit.unitId];
 
@@ -568,62 +582,62 @@ function generateTTSJSONText(list: ListTemplate) {
     else if (unitCard.title) unitJSON.name = `${unitCard.cardName} ${unitCard.title}`;
     else unitJSON.name = unitCard.cardName;
 
-    for (let j = 0; j < unit.upgradesEquipped.length; j++) {
-      if (unit.upgradesEquipped[j]) {
-        if (idToName[unit.upgradesEquipped[j]]) {
-          unitJSON.upgrades.push(idToName[unit.upgradesEquipped[j]]);
+    unit.upgradesEquipped.forEach((upgradeId) => {
+      if (upgradeId) {
+        if (idToName[upgradeId]) {
+          unitJSON.upgrades.push(idToName[upgradeId]);
         } else {
-          const upgradeCard = cards[unit.upgradesEquipped[j]];
+          const upgradeCard = cards[upgradeId];
           unitJSON.upgrades.push(upgradeCard.cardName);
         }
       }
-    }
-    if (unit.loadoutUpgrades) {
-      for (let j = 0; j < unit.loadoutUpgrades.length; j++) {
-        if (unit.loadoutUpgrades[j]) {
-          if (idToName[unit.loadoutUpgrades[j]]) {
-            unitJSON.loadout.push(idToName[unit.loadoutUpgrades[j]]);
-          } else {
-            const upgradeCard = cards[unit.loadoutUpgrades[j]];
-            unitJSON.loadout.push(upgradeCard.cardName);
-          }
+    });
+
+    unit.loadoutUpgrades?.forEach((upgradeId) => {
+      if (upgradeId) {
+        if (idToName[upgradeId]) {
+          unitJSON.loadout.push(idToName[upgradeId]);
+        } else {
+          const upgradeCard = cards[upgradeId];
+          unitJSON.loadout.push(upgradeCard.cardName);
         }
       }
-    }
+    });
+
     if (unit.counterpart) {
       const counterpart = unit.counterpart;
       const counterpartCard = cards[counterpart.counterpartId];
       unitJSON.upgrades.push(
         `${counterpartCard.cardName}${counterpartCard.title ? ` ${counterpartCard.title}}` : ""}`,
       );
-      for (let j = 0; j < counterpart.upgradesEquipped.length; j++) {
-        if (counterpart.upgradesEquipped[j]) {
-          if (idToName[counterpart.upgradesEquipped[j]]) {
-            unitJSON.upgrades.push(idToName[counterpart.upgradesEquipped[j]]);
+
+      counterpart.upgradesEquipped.forEach((upgradeId) => {
+        if (upgradeId) {
+          if (idToName[upgradeId]) {
+            unitJSON.upgrades.push(idToName[upgradeId]);
           } else {
-            const upgradeCard = cards[counterpart.upgradesEquipped[j]];
+            const upgradeCard = cards[upgradeId];
             unitJSON.upgrades.push(upgradeCard.cardName);
           }
         }
-      }
-      if (counterpart.loadoutUpgrades) {
-        for (let j = 0; j < counterpart.loadoutUpgrades.length; j++) {
-          if (counterpart.loadoutUpgrades[j]) {
-            if (idToName[counterpart.loadoutUpgrades[j]]) {
-              unitJSON.loadout.push(idToName[counterpart.loadoutUpgrades[j]]);
-            } else {
-              const upgradeCard = cards[counterpart.loadoutUpgrades[j]];
-              unitJSON.loadout.push(upgradeCard.cardName);
-            }
+      });
+
+      counterpart.loadoutUpgrades?.forEach((upgradeId) => {
+        if (upgradeId) {
+          if (idToName[upgradeId]) {
+            unitJSON.loadout.push(idToName[upgradeId]);
+          } else {
+            const upgradeCard = cards[upgradeId];
+            unitJSON.loadout.push(upgradeCard.cardName);
           }
         }
-      }
+      });
     }
     if (unitCard.flaw) unitJSON.upgrades.push(cards[unitCard.flaw].cardName);
     if (unit.count > 1) {
-      for (let j = 0; j < unit.count; j++) ttsJSON.units.push(unitJSON);
+      for (let j = 0; j < unit.count; j++) ttsJSON.units.push(JSON.stringify(unitJSON));
     } else {
-      ttsJSON.units.push(unitJSON);
+      ttsJSON.units.push(JSON.stringify(unitJSON));
     }
   }
 
@@ -713,7 +727,7 @@ function generateMinimalText(list: ListTemplate) {
         if (id) {
           const upgradeCard = cards[id];
           cUpgrades += `${upgradeCard.cardName}, `;
-          if (unit.counterpart.loadoutUpgrades) {
+          if (unit.counterpart?.loadoutUpgrades) {
             if (unit.counterpart.loadoutUpgrades[i]) {
               const loadoutCard = cards[unit.counterpart.loadoutUpgrades[i]];
               cLoadout += `${loadoutCard.cardName}, `;
@@ -734,7 +748,7 @@ function generateMinimalText(list: ListTemplate) {
     units += line + "\n";
   });
   let commands = list.commandCards.length > 0 ? "Commands: " : "";
-  list.commandCards.forEach((id, i) => {
+  list.commandCards.forEach((id) => {
     const commandCard = cards[id];
     if (commandCard.cardSubtype === "1") commands += "• ";
     else if (commandCard.cardSubtype === "2") commands += "•• ";
@@ -746,7 +760,7 @@ function generateMinimalText(list: ListTemplate) {
   let contingencies = "";
   if (list.contingencies && list.contingencies.length > 0) {
     contingencies += "\nContingencies: ";
-    list.contingencies.forEach((id, i) => {
+    list.contingencies.forEach((id) => {
       const commandCard = cards[id];
       if (commandCard.cardSubtype === "1") contingencies += "• ";
       else if (commandCard.cardSubtype === "2") contingencies += "•• ";
@@ -818,29 +832,47 @@ function getUnitHash(unit: ListUnit) {
   return `${unit.unitId}${unit.upgradesEquipped.join("")}`;
 }
 
-function equipCounterpartLoadoutUpgrade(list, unitIndex, upgradeIndex, upgradeId) {
+function equipCounterpartLoadoutUpgrade(
+  list: ListTemplate,
+  unitIndex: number,
+  upgradeIndex: number,
+  upgradeId: string,
+) {
   const unit = list.units[unitIndex];
   const counterpart = unit.counterpart;
-  counterpart.loadoutUpgrades[upgradeIndex] = upgradeId;
+  if (counterpart) counterpart.loadoutUpgrades[upgradeIndex] = upgradeId;
   return consolidate(list);
 }
 
-function unequipCounterpartLoadoutUpgrade(list, unitIndex, upgradeIndex) {
+function unequipCounterpartLoadoutUpgrade(
+  list: ListTemplate,
+  unitIndex: number,
+  upgradeIndex: number,
+) {
   const unit = list.units[unitIndex];
   const counterpart = unit.counterpart;
-  if (counterpart.loadoutUpgrades[upgradeIndex]) {
+  if (counterpart?.loadoutUpgrades[upgradeIndex]) {
     counterpart.loadoutUpgrades[upgradeIndex] = null;
   }
   return consolidate(list);
 }
 
-function equipLoadoutUpgrade(list, unitIndex, upgradeIndex, upgradeId) {
+function equipLoadoutUpgrade(
+  list: ListTemplate,
+  unitIndex: number,
+  upgradeIndex: number,
+  upgradeId: string,
+) {
   const unit = list.units[unitIndex];
   unit.loadoutUpgrades[upgradeIndex] = upgradeId;
   return consolidate(list);
 }
 
-function unequipLoadoutUpgrade(list, unitIndex, upgradeIndex) {
+function unequipLoadoutUpgrade(
+  list: ListTemplate,
+  unitIndex: number,
+  upgradeIndex: number,
+) {
   const unit = list.units[unitIndex];
   if (unit.loadoutUpgrades[upgradeIndex]) {
     unit.loadoutUpgrades[upgradeIndex] = null;
@@ -848,7 +880,12 @@ function unequipLoadoutUpgrade(list, unitIndex, upgradeIndex) {
   return consolidate(list);
 }
 
-function equipUpgradeToAll(list, unitIndex, upgradeIndex, upgradeId) {
+function equipUpgradeToAll(
+  list: ListTemplate,
+  unitIndex: number,
+  upgradeIndex: number,
+  upgradeId: string,
+) {
   // applying upgrade to multiple units
   const unit = list.units[unitIndex];
   const upgradeCard = cards[upgradeId];
@@ -856,7 +893,7 @@ function equipUpgradeToAll(list, unitIndex, upgradeIndex, upgradeId) {
   newUnit.upgradesEquipped[upgradeIndex] = upgradeId;
   const newUnitHash = getUnitHash(newUnit);
   newUnit.unitObjectString = newUnitHash;
-  if ("additionalUpgradeSlots" in upgradeCard) {
+  if (upgradeCard.additionalUpgradeSlots) {
     newUnit.additionalUpgradeSlots = [...upgradeCard.additionalUpgradeSlots];
     newUnit.upgradesEquipped.push(null);
   }
@@ -870,14 +907,19 @@ function equipUpgradeToAll(list, unitIndex, upgradeIndex, upgradeId) {
   return consolidate(list);
 }
 
-function equipUpgradeToOne(list, unitIndex, upgradeIndex, upgradeId) {
+function equipUpgradeToOne(
+  list: ListTemplate,
+  unitIndex: number,
+  upgradeIndex: number,
+  upgradeId: string,
+) {
   const unit = list.units[unitIndex];
   const upgradeCard = cards[upgradeId];
   const newUnit = JSON.parse(JSON.stringify(unit));
   newUnit.count = 1;
   newUnit.upgradesEquipped[upgradeIndex] = upgradeId;
   newUnit.unitObjectString = getUnitHash(newUnit);
-  if ("additionalUpgradeSlots" in upgradeCard) {
+  if (upgradeCard.additionalUpgradeSlots) {
     newUnit.additionalUpgradeSlots = [...upgradeCard.additionalUpgradeSlots];
     newUnit.upgradesEquipped.push(null);
   }
@@ -893,39 +935,48 @@ function equipUpgradeToOne(list, unitIndex, upgradeIndex, upgradeId) {
   return consolidate(list);
 }
 
-function equipCounterpartUpgrade(list, unitIndex, upgradeIndex, upgradeId) {
+function equipCounterpartUpgrade(
+  list: ListTemplate,
+  unitIndex: number,
+  upgradeIndex: number,
+  upgradeId: string,
+) {
   // TODO: change if counterparts could ever equip unique upgrades
   const counterpart = list.units[unitIndex].counterpart;
   const upgradeCard = cards[upgradeId];
-  counterpart.upgradesEquipped[upgradeIndex] = upgradeId;
-  counterpart.totalUnitCost += upgradeCard.cost;
-  return consolidate(list);
-}
-
-function unequipCounterpartUpgrade(list, unitIndex, upgradeIndex) {
-  // TODO: change if counterparts could ever equip unique upgrades
-  const counterpart = list.units[unitIndex].counterpart;
-  const upgradeCard = cards[counterpart.upgradesEquipped[upgradeIndex]];
-  counterpart.upgradesEquipped[upgradeIndex] = null;
-  counterpart.totalUnitCost -= upgradeCard.cost;
-  if (counterpart.loadoutUpgrades.length > 0) {
-    counterpart.loadoutUpgrades[upgradeIndex] = null;
+  if (counterpart) {
+    counterpart.upgradesEquipped[upgradeIndex] = upgradeId;
+    counterpart.totalUnitCost += upgradeCard.cost;
   }
   return consolidate(list);
 }
 
-function addCounterpart(list, unitIndex, counterpartId) {
+function unequipCounterpartUpgrade(
+  list: ListTemplate,
+  unitIndex: number,
+  upgradeIndex: number,
+) {
+  // TODO: change if counterparts could ever equip unique upgrades
+  const counterpart = list.units[unitIndex].counterpart;
+  if (counterpart && counterpart.upgradesEquipped[upgradeIndex]) {
+    const upgradeCard = cards[counterpart.upgradesEquipped[upgradeIndex]];
+    counterpart.upgradesEquipped[upgradeIndex] = null;
+    counterpart.totalUnitCost -= upgradeCard.cost;
+    if (counterpart.loadoutUpgrades.length > 0) {
+      counterpart.loadoutUpgrades[upgradeIndex] = null;
+    }
+  }
+  return consolidate(list);
+}
+
+function addCounterpart(list: ListTemplate, unitIndex: number, counterpartId: string) {
   const counterpartCard = cards[counterpartId];
   const unit = list.units[unitIndex];
   const unitCard = cards[unit.unitId];
-  unit.counterpart = {
-    count: 1,
+  unit.counterpart = ListFactories.createCounterpart({
     counterpartId: counterpartCard.id,
     totalUnitCost: counterpartCard.cost,
-    upgradesEquipped: [],
-    loadoutUpgrades: [],
-    additionalUpgradeSlots: [],
-  };
+  });
   for (let i = 0; i < counterpartCard.upgradeBar.length; i++) {
     unit.counterpart.upgradesEquipped.push(null);
     if (unitCard.keywords.includes("Loadout")) {
@@ -936,7 +987,7 @@ function addCounterpart(list, unitIndex, counterpartId) {
 }
 
 function removeCounterpart(list: ListTemplate, unitIndex: number) {
-  const counterpart = list.units[unitIndex].counterpart;
+  const counterpart = list.units[unitIndex].counterpart as Counterpart;
   list.uniques = deleteItem(
     list.uniques,
     list.uniques.indexOf(counterpart.counterpartId),
@@ -958,7 +1009,11 @@ function addUnit(list: ListTemplate, unitId: string, stackSize = 1) {
     list.units[unitIndex].count += stackSize;
     list.units[unitIndex].totalUnitCost += unitCard.cost * stackSize;
   } else {
-    const newUnitObject = ListFactories.createListUnit({unitId, unitCard, stackSize});
+    const newUnitObject = ListFactories.createListUnitByCard({
+      unitId,
+      unitCard,
+      stackSize,
+    });
     list.units.push(newUnitObject);
     list.unitObjectStrings.push(unitId);
     unitIndex = list.units.length - 1;
@@ -1038,9 +1093,10 @@ function getEligibleUnitsToAdd(list: ListTemplate, rank: RankType) {
     }
 
     if (!list.battleForce) {
-      if (!list.faction.includes(card.faction) && !card.affiliations) continue;
+      if (!list.faction.includes(card.faction as FactionType) && !card.affiliations)
+        continue;
       if (
-        !list.faction.includes(card.faction) &&
+        !list.faction.includes(card.faction as FactionType) &&
         card.affiliations &&
         !card.affiliations.includes(list.faction)
       )
@@ -1067,41 +1123,47 @@ function getEligibleUnitsToAdd(list: ListTemplate, rank: RankType) {
   return sortIds(validUnitIds);
 }
 
-function isRequirementsMet(requirements, unitCard) {
+function isRequirementsMet(
+  requirements: Requirements | undefined,
+  unitCard: LegionCard,
+): boolean {
+  if (!requirements) return true;
   if (requirements instanceof Array) {
     const operator = requirements[0];
     if (operator instanceof Object) {
       // requirements: [{cardName: 'Whatever'}]
       return _.isMatch(unitCard, operator);
     } else if (operator === "NOT") {
-      let operand = requirements[1];
+      const operand = requirements[1];
       if (operand instanceof Array) {
         // requirements: ['NOT', [...]]
-        operand = isRequirementsMet(operand, unitCard);
+        return !(operand.filter((op) => isRequirementsMet(op, unitCard)).length > 0);
       } else {
         // requirements: ['NOT', {cardName: 'Whatever'}]
         return !_.isMatch(unitCard, operand);
       }
     } else if (operator === "AND" || operator === "OR") {
-      let leftOperand = requirements[1];
-      let rightOperand = requirements[2];
-      if (leftOperand instanceof Array) {
-        leftOperand = isRequirementsMet(leftOperand, unitCard);
-      } else if (leftOperand instanceof Object) {
-        leftOperand = _.isMatch(unitCard, leftOperand);
+      const leftRequirement = requirements[1];
+      const rightRequirement = requirements[2];
+      let leftOperand;
+      let rightOperand;
+      if (leftRequirement instanceof Array) {
+        leftOperand = isRequirementsMet(leftRequirement, unitCard);
+      } else if (leftRequirement instanceof Object) {
+        leftOperand = _.isMatch(unitCard, leftRequirement);
       }
-      if (rightOperand instanceof Array) {
-        rightOperand = isRequirementsMet(rightOperand, unitCard);
-      } else if (rightOperand instanceof Object) {
-        rightOperand = _.isMatch(unitCard, rightOperand);
+      if (rightRequirement instanceof Array) {
+        rightOperand = isRequirementsMet(rightRequirement, unitCard);
+      } else if (rightRequirement instanceof Object) {
+        rightOperand = _.isMatch(unitCard, rightRequirement);
       }
       if (operator === "OR") {
         // requirements: ['OR', {cardName: 'Whatever'}, {cardType: 'Whatever'}]
-        return leftOperand || rightOperand;
+        return Boolean(leftOperand || rightOperand);
       } else {
         // operator === 'AND'
         // requirements: ['AND', {cardName: 'Whatever'}, {cardType: 'Whatever'}]
-        return leftOperand && rightOperand;
+        return Boolean(leftOperand && rightOperand);
       }
     } else {
       // Empty array of requirements
@@ -1114,12 +1176,12 @@ function isRequirementsMet(requirements, unitCard) {
 }
 
 function getEquippableLoadoutUpgrades(
-  list,
-  upgradeType,
-  id,
-  upgradeIndex,
-  upgradesEquipped,
-  additionalUpgradeSlots,
+  list: ListTemplate,
+  upgradeType: UpgradeType,
+  id: string,
+  upgradeIndex: number,
+  upgradesEquipped: string[],
+  additionalUpgradeSlots: UpgradeType[],
 ) {
   const upgrades = getEquippableUpgrades(
     list,
@@ -1128,8 +1190,8 @@ function getEquippableLoadoutUpgrades(
     upgradesEquipped,
     additionalUpgradeSlots,
   );
-  const validIds = upgrades.validIds;
-  const invalidIds = upgrades.invalidIds;
+  const validIds = upgrades.validIds ?? [];
+  const invalidIds = upgrades.invalidIds ?? [];
   const validLoadoutUpgradeIds = [];
   const invalidLoadoutUpgradeIds = [...invalidIds];
   const parentUpgradeCard = cards[upgradesEquipped[upgradeIndex]];
@@ -1151,12 +1213,12 @@ function getEquippableLoadoutUpgrades(
   };
 }
 
-function addContingency(list, commandId) {
-  list.contingencies.push(commandId);
+function addContingency(list: ListTemplate, commandId: string) {
+  list.contingencies?.push(commandId);
   return list;
 }
 
-function addCommand(list, commandId) {
+function addCommand(list: ListTemplate, commandId: string) {
   list.commandCards.push(commandId);
   return list;
 }
@@ -1179,12 +1241,12 @@ function removeBattle(list: ListTemplate, type: string, index: number) {
     list.deploymentCards = deleteItem(list.deploymentCards, index);
   } else if (type === "condition") {
     list.conditionCards = deleteItem(list.conditionCards, index);
-  } else return;
+  }
   return list;
 }
 
 function removeContingency(list: ListTemplate, contingencyIndex: number) {
-  list.contingencies = deleteItem(list.contingencies, contingencyIndex);
+  list.contingencies = deleteItem(list.contingencies ?? [], contingencyIndex);
   return list;
 }
 
@@ -1204,10 +1266,10 @@ function sortCommandIds(cardIds: string[]) {
 }
 
 function getEligibleBattlesToAdd(list: ListTemplate, type: string) {
-  const validIds = [];
-  const invalidIds = [];
+  const validIds = new Array<string>();
+  const invalidIds = new Array<string>();
   const scenarioMissionIds = ["Df", "Oe"];
-  const cardsById = cardIdsByType.battle; //Object.keys(cards);
+  // const cardsById = cardIdsByType.battle; //Object.keys(cards);
 
   let currentCards;
   if (type === "objective") currentCards = list.objectiveCards;
@@ -1232,11 +1294,11 @@ function getEligibleBattlesToAdd(list: ListTemplate, type: string) {
   return {validIds, invalidIds};
 }
 
-function getEligibleContingenciesToAdd(list) {
+function getEligibleContingenciesToAdd(list: ListTemplate) {
   if (!list.contingencies) list.contingencies = [];
-  const validCommandIds = [];
-  const invalidCommandIds = [];
-  const cardsById = cardIdsByType.command; // Object.keys(cards);
+  const validCommandIds = new Array<string>();
+  const invalidCommandIds = new Array<string>();
+  // const cardsById = cardIdsByType.command; // Object.keys(cards);
 
   let numContingencies = 0;
   list.units.forEach((unit) => {
@@ -1248,12 +1310,12 @@ function getEligibleContingenciesToAdd(list) {
     const card = cards[id];
     // if (card.cardType !== 'command') return;
     if (list.commandCards.includes(id)) return;
-    if (list.contingencies.includes(id)) return;
-    if (!list.faction.includes(card.faction)) return;
+    if (list.contingencies?.includes(id)) return;
+    if (!list.faction.includes(card.faction as FactionType)) return;
     if (id === "aa") return;
     if (id === "jl" || id === "ka" || id === "kb") return;
     if (
-      list.contingencies.length >= numContingencies ||
+      (list.contingencies?.length ?? 0) >= numContingencies ||
       (card.commander && !list.commanders.includes(card.commander))
     ) {
       invalidCommandIds.push(id);
@@ -1277,17 +1339,23 @@ function getEligibleCommandsToAdd(list: ListTemplate) {
     "storm tide: special forces": ["AD", "AH", "AI"],
   };
 
-  const validCommandIds = [];
-  const invalidCommandIds = [];
-  const cardsById = cardIdsByType.command; // Object.keys(cards);
+  const validCommandIds = new Array<string>();
+  const invalidCommandIds = new Array<string>();
+  // const cardsById = cardIdsByType.command; // Object.keys(cards);
 
-  const pipCounts = {"1": 0, "2": 0, "3": 0};
+  const pipCounts = {"1": 0, "2": 0, "3": 0, "4": 0};
   list.commandCards.forEach((id) => {
     const commandCard = cards[id];
-    pipCounts[commandCard.cardSubtype] += 1;
+    switch (commandCard.cardSubtype) {
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+        pipCounts[commandCard.cardSubtype] += 1;
+    }
   });
   cardIdsByType["command"].forEach((id) => {
-    const card = cards[id];
+    const card = cards[id] as CommandCard;
     // if (card.cardType !== 'command') return;
     if (list.commandCards.includes(id)) return;
     if (list.contingencies && list.contingencies.includes(id)) return;
@@ -1308,7 +1376,7 @@ function getEligibleCommandsToAdd(list: ListTemplate) {
       return;
     }
 
-    if (!list.faction.includes(card.faction)) return;
+    if (card.faction && !list.faction.includes(card.faction)) return;
     if (id === "aa") return; // Standing Orders
     if (id === "jl" || id === "ka" || id === "kb") return; // Duplicates
     if ((id === "tv" || id === "ud") && !list.uniques.includes("tn")) return; // grogu's command card
@@ -1336,15 +1404,15 @@ function getEquippableUpgrades(
   upgradeType: UpgradeType,
   id: string,
   upgradesEquipped: string[],
-  additionalUpgradeSlots,
+  additionalUpgradeSlots: UpgradeType[],
 ) {
   const impRemnantUpgrades = ["ej", "ek", "fv", "iy", "fu", "gm", "gl", "em", "en", "ja"];
   const validUpgradeIds = [];
   const invalidUpgradeIds = [];
-  const cardsById = cardIdsByType.upgrade; // Object.keys(cards);
+  // const cardsById = cardIdsByType.upgrade; // Object.keys(cards);
 
   if (!id) return {validUpgradeIds: [], invalidUpgradeIds: []};
-  const unitCard = cards[id];
+  const unitCard = _.cloneDeep(cards[id]) as LegionCardWithConditions;
   for (let i = 0; i < cardIdsByType["upgrade"].length; i++) {
     const id = cardIdsByType["upgrade"][i];
     const card = cards[id];
@@ -1417,7 +1485,7 @@ function getEquippableUpgrades(
   };
 }
 
-function sortIds(ids) {
+function sortIds(ids: string[]) {
   const sortedIds = ids.sort((a, b) => {
     const cardA = cards[a];
     const cardB = cards[b];
@@ -1439,7 +1507,7 @@ function sortIds(ids) {
  * @param {*} upgradeIndex
  * @param {*} upgradeId
  */
-function validateUpgrades(list, unitIndex) {
+function validateUpgrades(list: ListTemplate, unitIndex: number) {
   const unit = list.units[unitIndex];
   const card = cards[unit.unitId];
 
@@ -1473,7 +1541,7 @@ function validateUpgrades(list, unitIndex) {
     card.equip.forEach((equipReq) => {
       const equipCard = cards[equipReq];
       if (!unit.upgradesEquipped.includes(equipReq)) {
-        unit.validationIssues.push({
+        unit.validationIssues?.push({
           level: 2,
           text: card.displayName + " is missing " + equipCard.cardName + " (Equip)",
         });
@@ -1549,14 +1617,14 @@ function unequipUpgrade(
   unitIndex: number,
   upgradeIndex: number,
 ) {
-  const upgradeId = list.units[unitIndex].upgradesEquipped[upgradeIndex];
+  // const upgradeId = list.units[unitIndex].upgradesEquipped[upgradeIndex];
 
   if (action === UNIT_UPGRADE) {
-    function unequip(list, unitIndex, upgradeIndex) {
+    const unequip = (list: ListTemplate, unitIndex: number, upgradeIndex: number) => {
       const unit = list.units[unitIndex];
       const upgradeId = unit.upgradesEquipped[upgradeIndex];
-      const upgradeCard = cards[upgradeId];
-      const newUnit = JSON.parse(JSON.stringify(unit));
+      const upgradeCard = cards[upgradeId as string];
+      const newUnit = _.cloneDeep(unit);
       newUnit.count = 1;
       newUnit.upgradesEquipped[upgradeIndex] = null;
       if (newUnit.loadoutUpgrades && newUnit.loadoutUpgrades[upgradeIndex]) {
@@ -1576,7 +1644,7 @@ function unequipUpgrade(
       }
       list = decrementUnit(list, unitIndex);
       return consolidate(list);
-    }
+    };
     list = unequip(list, unitIndex, upgradeIndex);
   } else if (action === COUNTERPART_UPGRADE) {
     list = unequipCounterpartUpgrade(list, unitIndex, upgradeIndex);
@@ -1591,7 +1659,7 @@ function unequipUpgrade(
   return list;
 }
 
-function processUnitSegment(segment) {
+function processUnitSegment(segment: string): ListUnit {
   const unitSegment = segment.slice(0, 3);
   let loadoutSegment;
   let upgradeSegment = segment.slice(3);
@@ -1602,10 +1670,10 @@ function processUnitSegment(segment) {
   const unitCount = Number.parseInt(unitSegment.charAt(0));
   const unitId = unitSegment.charAt(1) + unitSegment.charAt(2);
   const unitCard = cards[unitId];
-  const newUnit = {
+  const newUnit: ListUnit = {
     unitId,
     count: unitCount,
-    hasUniques: unitCard.isUnique,
+    hasUniques: unitCard.isUnique ?? false,
     totalUnitCost: unitCard.cost * unitCount,
     unitObjectString: unitId,
     upgradesEquipped: [],
@@ -1622,7 +1690,7 @@ function processUnitSegment(segment) {
       const upgradeCard = cards[upgradeId];
       newUnit.upgradesEquipped[upgradeIndex] = upgradeId;
       newUnit.unitObjectString += upgradeId;
-      if ("additionalUpgradeSlots" in upgradeCard) {
+      if (upgradeCard.additionalUpgradeSlots) {
         newUnit.additionalUpgradeSlots = [upgradeCard.additionalUpgradeSlots[0]];
         newUnit.upgradesEquipped.push(null);
       }
@@ -1650,8 +1718,8 @@ function processUnitSegment(segment) {
   return newUnit;
 }
 
-function segmentToUnitObject(unitIndex, segment) {
-  let unit;
+function segmentToUnitObject(segment: string) {
+  let unit: ListUnit;
   let counterpart;
   if (segment.includes("+")) {
     unit = processUnitSegment(segment.split("+")[0]);
@@ -1680,7 +1748,7 @@ function segmentToUnitObject(unitIndex, segment) {
 }
 
 function convertHashToList(faction: FactionType, url: string) {
-  const list = JSON.parse(JSON.stringify(ListFactories.createListTemplate({faction})));
+  const list = ListFactories.createListTemplate({faction});
   list.contingencies = [];
   let segments;
   if (url.includes(":")) {
@@ -1703,10 +1771,10 @@ function convertHashToList(faction: FactionType, url: string) {
     list.battleForce = "";
     segments = url.split(",");
   }
-  const unitSegments = [];
-  const otherSegments = [];
+  const unitSegments = new Array<string>();
+  const otherSegments = new Array<string>();
   try {
-    let oldCounterparts = ["lw", "ji", "jj"];
+    const oldCounterparts = ["lw", "ji", "jj"];
     segments.forEach((segment) => {
       let hasOldCounterpart = false;
       oldCounterparts.forEach((id) => {
@@ -1716,14 +1784,16 @@ function convertHashToList(faction: FactionType, url: string) {
       else if (segment.length > 2) unitSegments.push(segment);
       else otherSegments.push(segment);
     });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     return false;
   }
   try {
-    list.units = unitSegments.map((segment, i) => segmentToUnitObject(i, segment));
+    list.units = unitSegments.map((segment) => segmentToUnitObject(segment));
     list.units.forEach((unit) => {
       list.unitObjectStrings.push(unit.unitObjectString);
     });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     return false;
   }
@@ -1738,7 +1808,7 @@ function convertHashToList(faction: FactionType, url: string) {
         if (commandCardSlots > 0) {
           list.commandCards.push(cardId);
         } else {
-          list.contingencies.push(cardId);
+          list.contingencies?.push(cardId);
         }
       } else if (card.cardSubtype === "objective") {
         list.objectiveCards.push(cardId);
@@ -1748,6 +1818,7 @@ function convertHashToList(faction: FactionType, url: string) {
         list.conditionCards.push(cardId);
       }
     });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     // console.log(e);
     return false;
@@ -1806,13 +1877,17 @@ function battleForceValidation(currentList: ListTemplate) {
   return validationIssues;
 }
 
-function mercValidation(currentList: ListTemplate, rank, mercs) {
-  const validationIssues = [];
+function mercValidation(
+  currentList: ListTemplate,
+  ranks: UnitCount,
+  mercs: UnitCount,
+): ListIssue[] {
+  const validationIssues = new Array<ListIssue>();
 
   let hasAoc = false;
-  let aocRanks = [];
+  const aocRanks = new Array<RankType>();
 
-  let mercLimits = {
+  const mercLimits: UnitCount = {
     commander: 1,
     operative: 1,
     corps: 2,
@@ -1827,24 +1902,20 @@ function mercValidation(currentList: ListTemplate, rank, mercs) {
     // Check for Allies of Convenience
     if (!hasAoc) {
       // check for AoC keyword or Underworlds Connection card
-      hasAoc =
+      hasAoc = Boolean(
         card.keywords.find((k) => k === "Allies of Convenience") ||
-        unit.upgradesEquipped.find((c) => c !== null && c === "rf");
+          unit.upgradesEquipped.find((c) => c !== null && c === "rf"),
+      );
     }
   });
 
   if (!battleForcesDict[currentList.battleForce]?.rules?.countMercs) {
-    Object.keys(ranks).forEach((t) => {
+    (Object.keys(ranks) as RankType[]).forEach((t) => {
       if (mercs[t] > mercLimits[t]) {
         if (!hasAoc || mercs[t] > mercLimits[t] + 1) {
           validationIssues.push({
             level: 2,
-            text:
-              "Too many MERCENARY " +
-              t.toUpperCase() +
-              " units! (maximum " +
-              (hasAoc ? mercLimits[t] + 1 : mercLimits[t]) +
-              ")",
+            text: `Too many MERCENARY ${t.toUpperCase()} units! (maximum ${hasAoc ? mercLimits[t] + 1 : mercLimits[t]})`,
           });
         }
         aocRanks.push(t);
@@ -1852,10 +1923,7 @@ function mercValidation(currentList: ListTemplate, rank, mercs) {
       if (aocRanks.length > 1) {
         validationIssues.push({
           level: 2,
-          text:
-            "Allies of Convenience only allows ONE additional merc of any rank (" +
-            aocRanks.join(", ") +
-            ")",
+          text: `Allies of Convenience only allows ONE additional merc of any rank (${aocRanks.join(", ")})`,
         });
       }
     });
@@ -1863,7 +1931,12 @@ function mercValidation(currentList: ListTemplate, rank, mercs) {
   return validationIssues;
 }
 
-function rankValidation(currentList: ListTemplate, ranks, mercs, rankReqs) {
+function rankValidation(
+  currentList: ListTemplate,
+  ranks: UnitCount,
+  mercs: UnitCount,
+  rankReqs: UnitRestrictions,
+): ListIssue[] {
   const validationIssues = [];
 
   // TODO this is ugly - probably should be a BF flag
@@ -1875,8 +1948,8 @@ function rankValidation(currentList: ListTemplate, ranks, mercs, rankReqs) {
   // Flag for a bf's combined comm/op limits, only when comm/op already overrun individually
   if (
     rankReqs.commOp &&
-    ranks.commander + ranks.commander > rankReqs.commOp &&
-    !(ranks.commander > rankReqs.commander || ranks.operative > rankReqs.operative)
+    ranks.commander + ranks.operative > rankReqs.commOp
+    // && !(ranks.commander > rankReqs.commander || ranks.operative > rankReqs.operative)
   ) {
     validationIssues.push({
       level: 2,
@@ -1884,9 +1957,9 @@ function rankValidation(currentList: ListTemplate, ranks, mercs, rankReqs) {
     });
   }
 
-  Object.keys(ranks).forEach((t) => {
-    let min = rankReqs[t][0];
-    let max = rankReqs[t][1];
+  (Object.keys(ranks) as RankType[]).forEach((t) => {
+    const min = rankReqs[t][0];
+    const max = rankReqs[t][1];
 
     // mercs don't count for minimum, unless they do
     const countMin = !countMercs ? ranks[t] - mercs[t] : ranks[t];
@@ -1923,15 +1996,18 @@ function rankValidation(currentList: ListTemplate, ranks, mercs, rankReqs) {
 }
 
 // TODO very lazy/gross implementation for now...
-function applyEntourage(currentList: ListTemplate, rankReqs) {
+function applyEntourage(currentList: ListTemplate, rankReqs: UnitRestrictions) {
   // for now, only empire uses the 'entourage' keyword, and this implementation for it is kind of nasty...
   if (currentList.faction !== "empire") {
     return;
   }
 
-  let entourage = [];
-  let specials = [];
-  let heavies = [];
+  const entourage = new Array<{
+    name: string;
+    type: RankType;
+  }>();
+  const specials = new Array<string>();
+  const heavies = new Array<string>();
 
   currentList.units.forEach((unit) => {
     const card = cards[unit.unitId];

@@ -1,5 +1,6 @@
 import {FactionType, LegionMode} from "./constants";
 import {RankType} from "./units";
+import {UpgradeType} from "./upgrades";
 
 export type UnitCount = Record<RankType, number>;
 
@@ -12,9 +13,11 @@ export interface Counterpart {
   count: number;
   counterpartId: string;
   totalUnitCost: number;
+  unitObjectString: string;
   upgradesEquipped: Array<string | null>;
   loadoutUpgrades: Array<string | null>;
   additionalUpgradeSlots: Array<string | null>;
+  hasUniques?: boolean;
 }
 
 export interface ListUnit {
@@ -25,7 +28,7 @@ export interface ListUnit {
   unitObjectString: string;
   upgradesEquipped: Array<string | null>;
   loadoutUpgrades: Array<string | null>;
-  additionalUpgradeSlots: Array<string | null>;
+  additionalUpgradeSlots: Array<UpgradeType>;
   validationIssues?: Array<ListIssue>;
 
   flawId?: string;

@@ -68,6 +68,9 @@ type ListContextValue = {
   handleCloseModal: () => void;
   setCardPaneFilter: (list: ListAction) => void;
   handleCardZoom: (cardId: string) => void;
+  listActions: {
+    handleToggleUsingOldPoints: () => void;
+  };
 };
 
 const DEFAULT_VALUE: ListContextValue = {
@@ -95,6 +98,9 @@ const DEFAULT_VALUE: ListContextValue = {
   handleCloseModal: noop,
   setCardPaneFilter: noop,
   handleCardZoom: noop,
+  listActions: {
+    handleToggleUsingOldPoints: noop,
+  },
 };
 
 const ListContext = React.createContext(DEFAULT_VALUE);
@@ -169,7 +175,7 @@ function ListProvider({
     // route '/list/rebels' fetches the rebel list from storage
     if (slug in factions) {
       if (listHash) {
-        const convertedList = convertHashToList(slug, listHash);
+        const convertedList = convertHashToList(slug as FactionType, listHash);
         if (convertedList) updateThenValidateList({...convertedList});
         else updateThenValidateList(JSON.parse(JSON.stringify(storedLists[slug])));
       } else updateThenValidateList(JSON.parse(JSON.stringify(storedLists[slug])));
@@ -416,7 +422,7 @@ function ListProvider({
     setCurrentList({...newList});
   };
 
-  const handleRemoveBattle = (type: string, battleId: string) => {
+  const handleRemoveBattle = (type: string, battleId: number) => {
     const newList = removeBattle(currentList, type, battleId);
     setCurrentList({...newList});
   };
@@ -569,7 +575,6 @@ function ListProvider({
     handleListSave,
     handleListFork,
     handleMergeList,
-    handleToggleUsingOldPoints,
     handleToggleIsKillPointMode,
     handleAddKillPoints,
   };
@@ -608,6 +613,9 @@ function ListProvider({
           ...messageProps,
           validationIssues,
           rankLimits: rankLimits ?? legionModes[currentList.mode].unitCounts,
+          listActions: {
+            handleToggleUsingOldPoints,
+          },
         }}
       >
         {children}

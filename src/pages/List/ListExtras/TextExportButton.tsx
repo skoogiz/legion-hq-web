@@ -102,7 +102,7 @@ function DialogContent({
   */
 }
 
-function TextExportButton({currentList}: {currentList: ListTemplate}) {
+export function TextExportButton({currentList}: {currentList: ListTemplate}) {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [textType, setTextType] = useState(0);
@@ -141,5 +141,3 @@ function TextExportButton({currentList}: {currentList: ListTemplate}) {
     </div>
   );
 }
-
-export default TextExportButton;

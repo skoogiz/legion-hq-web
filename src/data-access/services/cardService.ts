@@ -30,11 +30,15 @@ export class CardService {
     useOriginalCosts = false,
   ): Record<string, number> => {
     return cardIds.reduce((acc, cardId) => {
-      const {prevCost, cost} = this.cards[cardId];
-      return {
-        ...acc,
-        [cardId]: useOriginalCosts && prevCost ? prevCost : cost,
-      };
+      const card = this.cards[cardId];
+      if (card && (card.prevCost || card.cost)) {
+        return {
+          ...acc,
+          [cardId]: useOriginalCosts && card.prevCost ? card.prevCost : card.cost,
+        };
+      }
+      console.warn(`No card or cost found for id="${cardId}"`);
+      return acc;
     }, {});
   };
 

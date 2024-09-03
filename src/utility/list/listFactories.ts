@@ -1,4 +1,10 @@
-import {LegionCard, ListTemplate, ListUnit, UnitCount} from "@legion-hq/types";
+import {
+  Counterpart,
+  LegionCard,
+  ListTemplate,
+  ListUnit,
+  UnitCount,
+} from "@legion-hq/types";
 import {List} from "@legion-hq/types/list.class";
 
 export const createUnitCount = ({
@@ -39,6 +45,7 @@ export const createListTemplate = ({
   commanders = [],
   unitObjectStrings = [],
   unitCounts = createUnitCount(),
+  contingencies = [],
 }: Partial<ListTemplate> = {}): ListTemplate => ({
   listId,
   version,
@@ -61,6 +68,7 @@ export const createListTemplate = ({
   commanders,
   unitObjectStrings,
   unitCounts,
+  contingencies,
 });
 
 export const createList = ({
@@ -110,7 +118,7 @@ export const createList = ({
     unitCounts,
   });
 
-export const createListUnit = ({
+export const createListUnitByCard = ({
   unitId,
   unitCard: {isUnique, cost, upgradeBar, keywords, flaw},
   stackSize = 1,
@@ -138,3 +146,19 @@ export const createListUnit = ({
     flawId: flaw,
   };
 };
+
+export const createCounterpart = ({
+  count = 1,
+  counterpartId = "",
+  totalUnitCost = 0,
+  upgradesEquipped = [],
+  loadoutUpgrades = [],
+  additionalUpgradeSlots = [],
+}: Partial<Counterpart> = {}): Counterpart => ({
+  count,
+  counterpartId,
+  totalUnitCost,
+  upgradesEquipped,
+  loadoutUpgrades,
+  additionalUpgradeSlots,
+});
