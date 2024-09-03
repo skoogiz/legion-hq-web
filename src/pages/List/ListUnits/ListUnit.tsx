@@ -1,7 +1,7 @@
 import React from "react";
 import {makeStyles} from "@mui/styles";
 import {CardName, UnitAvatar, UnitPoints} from "@legion-hq/components";
-import UnitActions from "./UnitActions";
+import {UnitActions} from "./UnitActions";
 import UnitUpgrades from "./UnitUpgrades";
 import UnitFlaw from "./UnitFlaw";
 

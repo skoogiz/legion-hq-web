@@ -1,6 +1,6 @@
 import React from "react";
 import {CardName, UnitAvatar, UnitPoints} from "@legion-hq/components";
-import UnitActions from "./UnitActions";
+import {UnitActions} from "./UnitActions";
 import UnitUpgrades from "./UnitUpgrades";
 
 const styles: Record<string, React.CSSProperties> = {
