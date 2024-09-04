@@ -10,7 +10,6 @@ import {
   DialogContentText,
 } from "@mui/material";
 import {Info as InfoIcon, Warning as WarningIcon} from "@mui/icons-material";
-import {makeStyles} from "@mui/styles";
 import legionModes from "@legion-hq/constants/legionModes";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
 import {ModeButton} from "./ModeButton";
@@ -20,7 +19,7 @@ import {FactionButton} from "./FactionButton";
 import {useListBuilder} from "@legion-hq/hooks/list/useList";
 import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 
-const useStyles = makeStyles({
+const styles: Record<string, React.CSSProperties> = {
   container: {
     display: "flex",
     alignItems: "center",
@@ -44,7 +43,7 @@ const useStyles = makeStyles({
     alignItems: "start",
     justifyContent: "start",
   },
-});
+};
 
 export function ListHeader() {
   const {
@@ -55,8 +54,14 @@ export function ListHeader() {
     handleChangeMode,
     validationIssues,
   } = useListBuilder();
-  const {faction, units, battleForce, mode, title, pointTotal} = useCurrentList();
-  const classes = useStyles();
+  const {
+    faction,
+    units,
+    battleForce: currentBattleForce,
+    mode,
+    title,
+    pointTotal,
+  } = useCurrentList();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isBattleForceDialogOpen, setIsBattleForceDialogOpen] = React.useState(false);
   const [isValidationDialogOpen, setValidationDialogOpen] = React.useState(false);
@@ -74,13 +79,13 @@ export function ListHeader() {
     (bf) => bf.faction === faction,
   );
 
-  var minValidationError = validationIssues.reduce((highest, e) => {
+  const minValidationError = validationIssues.reduce((highest, e) => {
     return e.level > highest ? e.level : highest;
   }, 0);
 
   return (
-    <div id="list-header" className={classes.columnContainer}>
-      <div className={classes.container}>
+    <div id="list-header" style={styles.columnContainer}>
+      <div style={styles.container}>
         <Menu
           keepMounted
           anchorEl={anchorEl}
@@ -90,7 +95,7 @@ export function ListHeader() {
           {faction !== "fringe" && (
             <MenuItem
               key="none"
-              selected={!battleForce || battleForce === ""}
+              selected={!currentBattleForce || currentBattleForce === ""}
               onClick={() => {
                 handleSetBattleForce("");
                 handleFactionMenuClose();
@@ -103,7 +108,7 @@ export function ListHeader() {
             return (
               <MenuItem
                 key={battleForce.name}
-                selected={battleForce === battleForce.name}
+                selected={currentBattleForce === battleForce.name}
                 onClick={() => {
                   handleSetBattleForce(battleForce.name);
                   handleFactionMenuClose();
@@ -114,20 +119,20 @@ export function ListHeader() {
             );
           })}
         </Menu>
-        <div className={classes.item}>
+        <div style={styles.item}>
           <FactionButton faction={faction} onClick={handleFactionMenuOpen} />
         </div>
-        <div className={classes.item}>
+        <div style={styles.item}>
           <TitleField
             activations={numActivations}
             title={title}
-            handleChange={(e) => {
+            handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               e.persist();
               handleChangeTitle(e.target.value);
             }}
           />
         </div>
-        <div className={classes.item}>
+        <div style={styles.item}>
           <ModeButton
             currentMode={mode}
             points={pointTotal}
@@ -136,7 +141,7 @@ export function ListHeader() {
           />
         </div>
         {validationIssues.length > 0 && (
-          <div className={classes.battleForceContainer}>
+          <div style={styles.battleForceContainer}>
             <IconButton onClick={() => setValidationDialogOpen(true)}>
               <WarningIcon style={{color: minValidationError < 2 ? "yellow" : "red"}} />
             </IconButton>
@@ -147,17 +152,16 @@ export function ListHeader() {
             >
               <DialogTitle>List Errors</DialogTitle>
               <DialogContent>
-                <div className={classes.valError}>
-                  <WarningIcon className={classes.item} style={{color: "yellow"}} />
+                <div style={styles.valError}>
+                  <WarningIcon style={{...styles.item, color: "yellow"}} />
                   <DialogContentText>
                     Work in progress... double-check your army rules and unit cards!
                   </DialogContentText>
                 </div>
                 {validationIssues.map((el, i) => (
-                  <div key={i} className={classes.valError}>
+                  <div key={i} style={styles.valError}>
                     <WarningIcon
-                      className={classes.item}
-                      style={{color: el.level === 1 ? "yellow" : "red"}}
+                      style={{...styles.item, color: el.level === 1 ? "yellow" : "red"}}
                     />
                     <DialogContentText>{el.text}</DialogContentText>
                   </div>
@@ -180,29 +184,29 @@ export function ListHeader() {
           </div>
         )}
         {isKillPointMode && (
-          <div className={classes.item}>
+          <div style={styles.item}>
             <KillPointsField killPoints={currentKillPoints} />
           </div>
         )}
       </div>
-      {battleForce && (
-        <div className={classes.battleForceContainer}>
+      {currentBattleForce && (
+        <div style={styles.battleForceContainer}>
           <Button
             endIcon={<InfoIcon />}
             variant="outlined"
             size="small"
             onClick={handleOpenBFDialog}
           >
-            {battleForce}
+            {currentBattleForce}
           </Button>
           <Dialog open={isBattleForceDialogOpen} onClose={handleCloseBFDialog}>
-            <DialogTitle>{battleForce} List Requirements</DialogTitle>
+            <DialogTitle>{currentBattleForce} List Requirements</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                The list building rules for the {battleForce} battleforce is{" "}
+                The list building rules for the {currentBattleForce} battleforce is{" "}
                 <a
                   style={{textDecoration: "none"}}
-                  href={battleForcesDict[battleForce].ruleUrl}
+                  href={battleForcesDict[currentBattleForce].ruleUrl}
                   target="_blank"
                   rel="noreferrer noopener"
                 >

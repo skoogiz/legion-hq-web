@@ -1,11 +1,11 @@
 import React from "react";
-import {makeStyles} from "@mui/styles";
 import {CardName, UnitAvatar, UnitPoints} from "@legion-hq/components";
 import {UnitActions} from "./UnitActions";
-import UnitUpgrades from "./UnitUpgrades";
-import UnitFlaw from "./UnitFlaw";
+import {UnitUpgrades} from "./UnitUpgrades";
+import {UnitFlaw} from "./UnitFlaw";
+import {LegionCard, ListUnit as ListUnitType} from "@legion-hq/types";
 
-const useStyles = makeStyles((theme) => ({
+const styles: Record<string, React.CSSProperties> = {
   unitRow: {
     display: "flex",
     flexFlow: "row nowrap",
@@ -28,13 +28,32 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     borderLeft: "1px solid rgba(255,255,255,0.12)",
   },
-}));
+};
 
-function ListUnit({
+type Props = {
+  unit: ListUnitType;
+  unitCard: LegionCard;
+  counterpartId?: string;
+  counterpartUnit?: JSX.Element;
+  isKillPointMode: boolean;
+  handleCardZoom: () => void;
+  handleDecrementUnit: () => void;
+  handleIncrementUnit: () => void;
+  handleAddKillPoints: () => void;
+  handleRemoveKillPoints: () => void;
+  addCounterpartHandler: () => void;
+  removeCounterpartHandler: () => void;
+  zoomUpgradeHandlers: () => void;
+  swapUpgradeHandlers: () => void;
+  addUpgradeHandlers: () => void;
+  deleteUpgradeHandlers: () => void;
+  changeLoadoutHandlers: () => void;
+  deleteLoadoutHandlers: () => void;
+};
+
+export function ListUnit({
   unit,
-  uniques,
   unitCard,
-  unitIndex,
   counterpartId,
   counterpartUnit,
   isKillPointMode,
@@ -51,8 +70,7 @@ function ListUnit({
   deleteUpgradeHandlers,
   changeLoadoutHandlers,
   deleteLoadoutHandlers,
-}) {
-  const classes = useStyles();
+}: Props) {
   const avatar = (
     <UnitAvatar
       key="avatar"
@@ -99,18 +117,16 @@ function ListUnit({
   const middleCell = [name, upgrades, flaws];
   const rightCell = [points, actions];
   return (
-    <div className={classes.unitColumn}>
-      <div className={classes.unitRow}>
-        <div className={classes.leftCell}>
+    <div style={styles.unitColumn}>
+      <div style={styles.unitRow}>
+        <div style={styles.leftCell}>
           <div style={{marginTop: 2}} />
           {leftCell}
         </div>
-        <div className={classes.middleCell}>{middleCell}</div>
-        <div className={classes.rightCell}>{rightCell}</div>
+        <div style={styles.middleCell}>{middleCell}</div>
+        <div style={styles.rightCell}>{rightCell}</div>
       </div>
       {counterpartUnit}
     </div>
   );
 }
-
-export default ListUnit;

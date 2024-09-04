@@ -7,7 +7,7 @@ type Props = {
   flawId: string;
 };
 
-function UnitFlaw({flawId}: Props) {
+export function UnitFlaw({flawId}: Props) {
   const {cards} = useCards();
   const {handleCardZoom} = useListBuilder();
   const flawCard = cards[flawId];
@@ -29,5 +29,3 @@ function UnitFlaw({flawId}: Props) {
     </div>
   );
 }
-
-export default UnitFlaw;

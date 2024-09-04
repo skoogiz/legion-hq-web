@@ -5,7 +5,7 @@ function generateLink(list: ListTemplate) {
   const urlStrings = [];
   list.units.forEach((unit) => {
     let urlString = `${unit.count}${unit.unitId}`;
-    unit.upgradesEquipped.forEach((upgradeId, i) => {
+    unit.upgradesEquipped.forEach((upgradeId) => {
       urlString += upgradeId ? upgradeId : "0";
     });
     if (unit.loadoutUpgrades && unit.loadoutUpgrades.length > 0) {
@@ -17,7 +17,7 @@ function generateLink(list: ListTemplate) {
     if (unit.counterpart) {
       const {counterpart} = unit;
       urlString += `+1${counterpart.counterpartId}`;
-      counterpart.upgradesEquipped.forEach((upgradeId, i) => {
+      counterpart.upgradesEquipped.forEach((upgradeId) => {
         urlString += upgradeId ? upgradeId : "0";
       });
       if (counterpart.loadoutUpgrades && counterpart.loadoutUpgrades.length > 0) {

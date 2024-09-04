@@ -1,18 +1,9 @@
 import React from "react";
-import clsx from "clsx";
 import {Collapse, Typography, Divider, IconButton} from "@mui/material";
-import {makeStyles} from "@mui/styles";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import {LegionCard} from "@legion-hq/components";
 
-const useStyles = makeStyles((theme) => ({
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
+const styles: Record<string, React.CSSProperties> = {
   expandOpen: {transform: "rotate(180deg)"},
   rowContainerWrap: {
     display: "flex",
@@ -36,9 +27,15 @@ const useStyles = makeStyles((theme) => ({
   divider: {
     flexGrow: 1,
   },
-}));
+};
 
-function CollapsedContent({children, isExpanded}) {
+function CollapsedContent({
+  children,
+  isExpanded,
+}: {
+  children: React.ReactNode;
+  isExpanded: boolean;
+}) {
   return (
     <Collapse unmountOnExit timeout="auto" in={isExpanded}>
       {children}
@@ -46,31 +43,41 @@ function CollapsedContent({children, isExpanded}) {
   );
 }
 
-function MultiSelectorContent({
-  action,
+type Props = {
+  validIds?: string[];
+  invalidIds?: string[];
+  equippedIds?: string[];
+  handleClick: (id: string) => void;
+  handleCardZoom: (id: string) => void;
+};
+/**
+ * @deprecated
+ * @param param0
+ * @returns
+ */
+export function MultiSelectorContent({
   validIds = [],
   invalidIds = [],
   equippedIds = [],
   handleClick,
   handleCardZoom,
-}) {
-  const classes = useStyles();
+}: Props) {
   const [isExpanded, setIsExpanded] = React.useState(false);
   const handleExpandClick = () => setIsExpanded(!isExpanded);
   if (validIds.length === 0) {
     return (
-      <div className={classes.columnContainer}>
+      <div style={styles.columnContainer}>
         <Typography>No eligible cards found</Typography>
       </div>
     );
   }
   return (
-    <div className={classes.columnContainer}>
-      <div className={classes.rowContainerWrap} style={{alignItems: "center"}}>
+    <div style={styles.columnContainer}>
+      <div style={{...styles.rowContainerWrap, alignItems: "center"}}>
         <Typography style={{marginRight: 8}}>Eligible Commands</Typography>
-        <Divider className={classes.divider} />
+        <Divider style={styles.divider} />
       </div>
-      <div className={classes.rowContainerWrap}>
+      <div style={styles.rowContainerWrap}>
         {validIds.map((id) => (
           <LegionCard
             key={id}
@@ -82,15 +89,19 @@ function MultiSelectorContent({
         ))}
       </div>
       {invalidIds.length > 0 && (
-        <div className={classes.rowContainerNoWrap}>
+        <div style={styles.rowContainerNoWrap}>
           <Typography style={{marginRight: 8}}>Ineligible Commands</Typography>
-          <Divider className={classes.divider} />
+          <Divider style={styles.divider} />
           <IconButton
             size="small"
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: isExpanded,
+            sx={(theme) => ({
+              transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+              // marginLeft: "auto",
+              marginLeft: 8,
+              transition: theme.transitions.create("transform", {
+                duration: theme.transitions.duration.shortest,
+              }),
             })}
-            style={{marginLeft: 8}}
             onClick={handleExpandClick}
           >
             <ExpandMoreIcon />
@@ -98,7 +109,7 @@ function MultiSelectorContent({
         </div>
       )}
       <CollapsedContent isExpanded={isExpanded}>
-        <div className={classes.rowContainerWrap}>
+        <div style={styles.rowContainerWrap}>
           {invalidIds.map((id) => (
             <LegionCard
               key={id}
@@ -112,5 +123,3 @@ function MultiSelectorContent({
     </div>
   );
 }
-
-export default MultiSelectorContent;

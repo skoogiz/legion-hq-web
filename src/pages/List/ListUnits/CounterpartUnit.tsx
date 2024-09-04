@@ -1,7 +1,8 @@
 import React from "react";
 import {CardName, UnitAvatar, UnitPoints} from "@legion-hq/components";
 import {UnitActions} from "./UnitActions";
-import UnitUpgrades from "./UnitUpgrades";
+import {UnitUpgrades} from "./UnitUpgrades";
+import {Counterpart, LegionCard} from "@legion-hq/types";
 
 const styles: Record<string, React.CSSProperties> = {
   unitRow: {
@@ -28,11 +29,24 @@ const styles: Record<string, React.CSSProperties> = {
   },
 };
 
-function CounterpartUnit({
+type Props = {
+  counterpart: Counterpart;
+  counterpartId: string;
+  counterpartCard: LegionCard;
+  handleCardZoom: () => void;
+  handleRemoveCounterpart: () => void;
+  zoomUpgradeHandlers: () => void;
+  swapUpgradeHandlers: () => void;
+  addUpgradeHandlers: () => void;
+  deleteUpgradeHandlers: () => void;
+  changeLoadoutHandlers: () => void;
+  deleteLoadoutHandlers: () => void;
+};
+
+export function CounterpartUnit({
   counterpart,
   counterpartId,
   counterpartCard,
-  unitIndex,
   handleCardZoom,
   handleRemoveCounterpart,
   zoomUpgradeHandlers,
@@ -41,7 +55,7 @@ function CounterpartUnit({
   deleteUpgradeHandlers,
   changeLoadoutHandlers,
   deleteLoadoutHandlers,
-}) {
+}: Props) {
   const avatar = (
     <UnitAvatar key="avatar" id={counterpartId} handleClick={handleCardZoom} />
   );
@@ -73,5 +87,3 @@ function CounterpartUnit({
     </div>
   );
 }
-
-export default CounterpartUnit;

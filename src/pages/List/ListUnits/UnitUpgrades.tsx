@@ -1,23 +1,41 @@
 import React from "react";
 import AddCounterpartButton from "./AddCounterpartButton";
 import AddUpgradeButton from "./AddUpgradeButton";
-import UpgradeChip from "./UpgradeChip";
+import {UpgradeChip} from "./UpgradeChip";
 
-function UnitUpgrades({
+type Props = {
+  counterpartId: string;
+  upgradesEquipped: Array<string | null>;
+  upgradeInteractions?: Record<string, number>;
+  totalUpgradeBar;
+  loadoutUpgrades;
+  // handleCardZoom: () => void;
+  // handleRemoveCounterpart: () => void;
+
+  addCounterpartHandler: () => void;
+
+  zoomUpgradeHandlers: () => void;
+  swapUpgradeHandlers: () => void;
+  addUpgradeHandlers: () => void;
+  deleteUpgradeHandlers: () => void;
+  changeLoadoutHandlers: () => void;
+  deleteLoadoutHandlers: () => void;
+};
+
+export function UnitUpgrades({
   counterpartId,
   upgradesEquipped,
   upgradeInteractions,
   totalUpgradeBar,
   loadoutUpgrades,
   addCounterpartHandler,
-  removeCounterpartHandler,
   zoomUpgradeHandlers,
   swapUpgradeHandlers,
   addUpgradeHandlers,
   deleteUpgradeHandlers,
   changeLoadoutHandlers,
   deleteLoadoutHandlers,
-}) {
+}: Props) {
   const addCounterpartButtons = [];
   const addUpgradesButtons = [];
   const upgradeChips = [];
@@ -64,5 +82,3 @@ function UnitUpgrades({
     </div>
   );
 }
-
-export default UnitUpgrades;

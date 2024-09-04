@@ -2,8 +2,15 @@ import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {useListBuilder} from "@legion-hq/hooks/list/useList";
 import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 import DragDropContainer from "./DragDropContainer";
-import ListUnit from "./ListUnit";
-import CounterpartUnit from "./CounterpartUnit";
+import {ListUnit} from "./ListUnit";
+import {CounterpartUnit} from "./CounterpartUnit";
+import {
+  COUNTERPART,
+  COUNTERPART_LOADOUT_UPGRADE,
+  COUNTERPART_UPGRADE,
+  LOADOUT_UPGRADE,
+  UNIT_UPGRADE,
+} from "@legion-hq/state/list";
 
 export function ListUnits() {
   const {
@@ -48,7 +55,7 @@ export function ListUnits() {
     ) {
       addCounterpartHandler = () =>
         setCardPaneFilter({
-          action: "COUNTERPART",
+          action: COUNTERPART,
           unitIndex,
           counterpartId,
         });
@@ -56,7 +63,7 @@ export function ListUnits() {
       if (unit.unitId !== "tj") {
         addCounterpartHandler = () =>
           setCardPaneFilter({
-            action: "COUNTERPART",
+            action: COUNTERPART,
             unitIndex,
             counterpartId,
           });
@@ -88,12 +95,12 @@ export function ListUnits() {
           );
           cAddUpgradeHandlers.push(undefined);
           cDeleteUpgradeHandlers.push(() =>
-            handleUnequipUpgrade("COUNTERPART_UPGRADE", unitIndex, upgradeIndex),
+            handleUnequipUpgrade(COUNTERPART_UPGRADE, unitIndex, upgradeIndex),
           );
           if (hasLoadout && Boolean(cLoadoutUpgrades[upgradeIndex])) {
             cChangeLoadoutHandlers.push(() =>
               setCardPaneFilter({
-                action: "COUNTERPART_LOADOUT_UPGRADE",
+                action: COUNTERPART_LOADOUT_UPGRADE,
                 upgradeType,
                 unitIndex,
                 upgradeIndex,
@@ -112,7 +119,7 @@ export function ListUnits() {
           } else if (hasLoadout && !cLoadoutUpgrades[upgradeIndex]) {
             cChangeLoadoutHandlers.push(() =>
               setCardPaneFilter({
-                action: "COUNTERPART_LOADOUT_UPGRADE",
+                action: COUNTERPART_LOADOUT_UPGRADE,
                 upgradeType,
                 unitIndex,
                 upgradeIndex,
@@ -128,7 +135,7 @@ export function ListUnits() {
           cSwapUpgradeHandlers.push(undefined);
           cAddUpgradeHandlers.push(() =>
             setCardPaneFilter({
-              action: "COUNTERPART_UPGRADE",
+              action: COUNTERPART_UPGRADE,
               upgradeType,
               unitIndex,
               upgradeIndex,
@@ -149,7 +156,6 @@ export function ListUnits() {
           counterpart={unit.counterpart}
           counterpartId={counterpartId}
           counterpartCard={counterpartCard}
-          unitIndex={unitIndex}
           handleCardZoom={() => handleCardZoom(counterpartId)}
           handleRemoveCounterpart={removeCounterpartHandler}
           zoomUpgradeHandlers={cZoomUpgradeHandlers}
@@ -169,7 +175,7 @@ export function ListUnits() {
         addUpgradeHandlers.push(undefined);
         swapUpgradeHandlers.push(() =>
           setCardPaneFilter({
-            action: "UNIT_UPGRADE",
+            action: UNIT_UPGRADE,
             upgradeType,
             unitIndex,
             upgradeIndex,
@@ -185,7 +191,7 @@ export function ListUnits() {
         if (hasLoadout && loadoutUpgrades[upgradeIndex]) {
           changeLoadoutHandlers.push(() =>
             setCardPaneFilter({
-              action: "LOADOUT_UPGRADE",
+              action: LOADOUT_UPGRADE,
               upgradeType,
               unitIndex,
               upgradeIndex,
@@ -195,12 +201,12 @@ export function ListUnits() {
             }),
           );
           deleteLoadoutHandlers.push(() =>
-            handleUnequipUpgrade("LOADOUT_UPGRADE", unitIndex, upgradeIndex),
+            handleUnequipUpgrade(LOADOUT_UPGRADE, unitIndex, upgradeIndex),
           );
         } else if (hasLoadout && !loadoutUpgrades[upgradeIndex]) {
           changeLoadoutHandlers.push(() =>
             setCardPaneFilter({
-              action: "LOADOUT_UPGRADE",
+              action: LOADOUT_UPGRADE,
               upgradeType,
               unitIndex,
               upgradeIndex,
@@ -216,7 +222,7 @@ export function ListUnits() {
         swapUpgradeHandlers.push(undefined);
         addUpgradeHandlers.push(() =>
           setCardPaneFilter({
-            action: "UNIT_UPGRADE",
+            action: UNIT_UPGRADE,
             upgradeType,
             unitIndex,
             upgradeIndex,

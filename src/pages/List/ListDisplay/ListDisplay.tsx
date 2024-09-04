@@ -1,6 +1,6 @@
 import {Fade, Typography, Divider, styled} from "@mui/material";
 import {factions} from "@legion-hq/constants";
-import CardImage from "./CardImage";
+import {CardImage} from "./CardImage";
 import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 import {DISPLAY} from "@legion-hq/state/list";
 import {FactionType, ListUnit} from "@legion-hq/types";

@@ -1,11 +1,17 @@
-import React from "react";
 import {Divider, Chip, Button, IconButton, Icon, Typography} from "@mui/material";
 import {Clear as ClearIcon} from "@mui/icons-material";
 import {CardIcon} from "@legion-hq/components";
 import loadoutIcon from "@legion-hq/assets/loadout.png";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {LegionCard} from "@legion-hq/types";
 
-function UpgradeLabel({card, handleSwapUpgrade, handleChangeLoadout}) {
+type UpgradeLabelProps = {
+  card: LegionCard;
+  handleSwapUpgrade?: () => void;
+  handleChangeLoadout: () => void;
+};
+
+function UpgradeLabel({card, handleSwapUpgrade, handleChangeLoadout}: UpgradeLabelProps) {
   if (handleChangeLoadout) {
     return (
       <div style={{display: "flex", alignItems: "center"}}>
@@ -61,12 +67,19 @@ function UpgradeLabel({card, handleSwapUpgrade, handleChangeLoadout}) {
   );
 }
 
+type LoadoutLabelProps = {
+  upgradeCard: LegionCard;
+  loadoutCard: LegionCard;
+  handleChangeLoadout: () => void;
+  handleDeleteLoadout: () => void;
+};
+
 function LoadoutLabel({
   upgradeCard,
   loadoutCard,
   handleChangeLoadout,
   handleDeleteLoadout,
-}) {
+}: LoadoutLabelProps) {
   return (
     <div style={{alignItems: "flex-start", flexFlow: "column nowrap"}}>
       <UpgradeLabel card={upgradeCard} handleChangeLoadout={handleChangeLoadout} />
@@ -85,7 +98,12 @@ function LoadoutLabel({
   );
 }
 
-function UpgradeAvatar({card, handleClick}) {
+type UpgradeAvatarProps = {
+  card: LegionCard;
+  handleClick: () => void;
+};
+
+function UpgradeAvatar({card, handleClick}: UpgradeAvatarProps) {
   return (
     <CardIcon
       size="small"
@@ -97,7 +115,19 @@ function UpgradeAvatar({card, handleClick}) {
   );
 }
 
-function UpgradeChip({
+type Props = {
+  chipSize?: "small" | "medium";
+  upgradeInteractions?: Record<string, number>;
+  upgradeId: string;
+  loadoutId: string;
+  handleClick: () => void;
+  handleSwap?: () => void;
+  handleDelete?: () => void;
+  handleChangeLoadout: () => void;
+  handleDeleteLoadout: () => void;
+};
+
+export function UpgradeChip({
   chipSize = "medium",
   upgradeInteractions,
   upgradeId,
@@ -107,7 +137,7 @@ function UpgradeChip({
   handleDelete,
   handleChangeLoadout,
   handleDeleteLoadout,
-}) {
+}: Props) {
   const {cards} = useCards();
   const upgradeCard = cards[upgradeId];
   const loadoutCard = cards[loadoutId];
@@ -140,5 +170,3 @@ function UpgradeChip({
     />
   );
 }
-
-export default UpgradeChip;

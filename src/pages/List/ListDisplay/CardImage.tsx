@@ -1,53 +1,55 @@
-import React from "react";
+import * as React from "react";
 import {Img} from "react-image";
-import {Skeleton} from "@mui/material";
-import {makeStyles} from "@mui/styles";
+import {css, Skeleton, styled} from "@mui/material";
 import urls from "@legion-hq/constants/urls";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    marginRight: 4,
-    zIndex: 1,
-    "&:hover": {
-      transition: ".25s ease",
-      cursor: "pointer",
-      opacity: 0.75,
-    },
-  },
-  loadoutContainer: {
-    marginRight: 4,
-    marginLeft: -50,
-    zIndex: 0,
-    "&:hover": {
-      transition: ".25s ease",
-      cursor: "pointer",
-      zIndex: 1,
-      opacity: 0.75,
-    },
-  },
+const Container = styled("div")<{isLoadout: boolean}>`
+  margin-right: 4px;
+  z-index: ${({isLoadout}) => (isLoadout ? 0 : 1)};
+  ${({isLoadout}) =>
+    isLoadout &&
+    css`
+      margin-left: -50px;
+    `}
+  &:hover {
+    transition: 0.25s ease;
+    cursor: pointer;
+    opacity: 0.75;
+    ${({isLoadout}) =>
+      isLoadout &&
+      css`
+        z-index: 1;
+      `}
+  }
+`;
+
+const styles: Record<string, React.CSSProperties> = {
   unit: {width: 210, height: 150},
   upgrade: {width: "auto", minWidth: 96, height: 150},
   command: {width: 150, height: 210},
   counterpart: {width: 210, height: 150},
   flaw: {width: "auto", height: 150},
-}));
+};
 
-function CardImage({id, handleClick, isLoadout = false}) {
+type Props = {
+  id: string;
+  handleClick: () => void;
+  isLoadout?: boolean;
+};
+
+export function CardImage({id, handleClick, isLoadout = false}: Props) {
   const {cards} = useCards();
   const card = cards[id];
-  const classes = useStyles();
   return (
-    <div className={isLoadout ? classes.loadoutContainer : classes.container}>
+    <Container isLoadout={isLoadout}>
       <Img
         alt={card.cardName}
         src={`${urls.cdn}/${card.cardType}Cards/${card.imageName}`}
-        loader={<Skeleton variant="rect" className={classes[card.cardType]} />}
-        className={classes[card.cardType]}
+        loader={<Skeleton variant="rectangular" sx={{...styles[card.cardType]}} />}
+        style={styles[card.cardType]}
         onClick={handleClick}
       />
-    </div>
+    </Container>
   );
 }
-
-export default CardImage;

@@ -68,6 +68,9 @@ type ListContextValue = {
   handleCloseModal: () => void;
   setCardPaneFilter: (list: ListAction) => void;
   handleCardZoom: (cardId: string) => void;
+  handleChangeTitle: (title: string) => void;
+  handleChangeMode: (mode: LegionMode) => void;
+  handleSetBattleForce: (battleForce: string) => void;
   listActions: {
     handleToggleUsingOldPoints: () => void;
   };
@@ -98,6 +101,9 @@ const DEFAULT_VALUE: ListContextValue = {
   handleCloseModal: noop,
   setCardPaneFilter: noop,
   handleCardZoom: noop,
+  handleChangeTitle: noop,
+  handleChangeMode: noop,
+  handleSetBattleForce: noop,
   listActions: {
     handleToggleUsingOldPoints: noop,
   },

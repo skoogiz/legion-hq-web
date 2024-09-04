@@ -10,7 +10,7 @@ type Props = {
   points: number;
   maxPoints: number;
   tooltip?: string;
-  handleChangeMode: (mode: string) => void;
+  handleChangeMode: (mode: LegionMode) => void;
 };
 
 export function ModeButton({
