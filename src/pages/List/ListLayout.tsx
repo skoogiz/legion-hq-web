@@ -50,7 +50,7 @@ export function ListLayout() {
 
   const builderPane = leftPaneWidth > 0 && (
     <Grid item xs={leftPaneWidth} style={paneStyles}>
-      <ListContent isMobile={isMobile}>
+      <ListContent id="list-content" isMobile={isMobile}>
         <StickyPanel>
           <ListHeader />
           <div style={{marginTop: 8}} />

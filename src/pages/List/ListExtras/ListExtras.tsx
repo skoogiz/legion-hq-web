@@ -14,7 +14,7 @@ import {QRButton} from "./QRButton";
 import {TTSTextExportButton} from "./TTSTextExportButton";
 import {ImageExportButton} from "./ImageExportButton";
 import {TextExportButton} from "./TextExportButton";
-import PrintExportButton from "./PrintExportButton";
+import {PrintExportButton} from "./PrintExportButton";
 import {SimpleButton} from "./SimpleButton";
 import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
 

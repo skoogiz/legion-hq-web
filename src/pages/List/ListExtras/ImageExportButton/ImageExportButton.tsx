@@ -4,15 +4,15 @@ import {Chip} from "@mui/material";
 import {ListTemplate} from "@legion-hq/types";
 import {Image as ImageIcon} from "@mui/icons-material";
 import loadingIcon from "@legion-hq/assets/LoadingIcon.png";
-import {DialogModal} from "./DialogModal";
+import {DialogModal} from "../DialogModal";
 
 type Props = {
   currentList: ListTemplate;
   isMobile?: boolean;
 };
 
-function ImageExport({currentList}: Props) {
-  const [listSrc, setListSrc] = React.useState();
+function ImageExport() {
+  const [listSrc, setListSrc] = React.useState<string | undefined>();
   const options = {
     cacheBust: true,
     quality: 0.85,
@@ -23,7 +23,7 @@ function ImageExport({currentList}: Props) {
   };
   if (!listSrc) {
     const list = document.getElementById("list-content");
-    domtoimage.toJpeg(list, options).then((src) => setListSrc(src));
+    domtoimage.toJpeg(list, options).then((src: string) => setListSrc(src));
     return <img alt="loading" className="pulse" src={loadingIcon} />;
   }
   return <img alt="list" src={listSrc} style={{width: "100%"}} />;
@@ -46,7 +46,7 @@ export function ImageExportButton({isMobile = false, currentList}: Props) {
         isOpen={isOpen}
         isMobile={isMobile}
         title="Export Image"
-        content={<ImageExport currentList={currentList} />}
+        content={<ImageExport />}
         handleClose={() => setIsOpen(false)}
       />
     </div>
