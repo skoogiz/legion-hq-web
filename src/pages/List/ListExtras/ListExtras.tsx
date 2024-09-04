@@ -28,7 +28,7 @@ export function ListExtras() {
     handleListSave,
     handleListFork,
     handleToggleIsKillPointMode,
-    listActions: {handleToggleUsingOldPoints},
+    handleToggleUsingOldPoints,
   } = useListBuilder();
 
   const currentList = useCurrentList();

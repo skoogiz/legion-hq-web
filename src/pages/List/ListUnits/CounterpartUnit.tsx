@@ -35,12 +35,12 @@ type Props = {
   counterpartCard: LegionCard;
   handleCardZoom: () => void;
   handleRemoveCounterpart: () => void;
-  zoomUpgradeHandlers: () => void;
-  swapUpgradeHandlers: () => void;
-  addUpgradeHandlers: () => void;
-  deleteUpgradeHandlers: () => void;
-  changeLoadoutHandlers: () => void;
-  deleteLoadoutHandlers: () => void;
+  zoomUpgradeHandlers: Array<() => void>;
+  swapUpgradeHandlers: Array<() => void>;
+  addUpgradeHandlers: Array<() => void>;
+  deleteUpgradeHandlers: Array<() => void>;
+  changeLoadoutHandlers: Array<() => void>;
+  deleteLoadoutHandlers: Array<() => void>;
 };
 
 export function CounterpartUnit({

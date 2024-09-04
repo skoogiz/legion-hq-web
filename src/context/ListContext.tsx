@@ -65,15 +65,63 @@ type ListContextValue = {
   }[];
   rankLimits: UnitRestrictions;
   modalContent?: string;
-  handleCloseModal: () => void;
-  setCardPaneFilter: (list: ListAction) => void;
-  handleCardZoom: (cardId: string) => void;
+  // Unit functions
+  getEligibleUnitsToAdd: typeof getEligibleUnitsToAdd;
+  getEquippableUpgrades: typeof getEquippableUpgrades;
+  getEquippableLoadoutUpgrades: typeof getEquippableLoadoutUpgrades;
+  handleAddUnit: (unitId: string) => void;
+  handleAddCounterpart: (unitIndex: number, counterpartId: string) => void;
+  handleRemoveCounterpart: (unitIndex: number) => void;
+  handleEquipUpgrade: (
+    action: ListActionType, // Action Type
+    unitIndex: number,
+    upgradeIndex: number,
+    upgradeId: string,
+    isApplyToAll: boolean,
+  ) => void;
+  handleUnequipUpgrade: (
+    action: ListActionType,
+    unitIndex: number,
+    upgradeIndex: number,
+  ) => void;
+  handleIncrementUnit: (index: number) => void;
+  handleDecrementUnit: (index: number) => void;
+  handleSetBattleForce: (battleForce: string) => void;
+  // Battle functions
+  getEligibleBattlesToAdd: typeof getEligibleBattlesToAdd;
+  handleAddBattle: (type: string, battleId: string) => void;
+  handleRemoveBattle: (type: string, battleId: number) => void;
+  // Command functions
+  getEligibleCommandsToAdd: typeof getEligibleCommandsToAdd;
+  handleAddCommand: (commandId: string) => void;
+  handleRemoveCommand: (index: number) => void;
+  getEligibleContingenciesToAdd: typeof getEligibleContingenciesToAdd;
+  handleAddContingency: (commandId: string) => void;
+  handleRemoveContingency: (index: number) => void;
+  // List functions
+  reorderUnits: (startIndex: number, endIndex: number) => void;
+  handleClearList: () => void;
+  handleToggleIsApplyToAll: () => void;
   handleChangeTitle: (title: string) => void;
   handleChangeMode: (mode: LegionMode) => void;
-  handleSetBattleForce: (battleForce: string) => void;
-  listActions: {
-    handleToggleUsingOldPoints: () => void;
-  };
+  handleIncrementStackSize: () => void;
+  handleDecrementStackSize: () => void;
+  handleListSave: (list: ListTemplate) => void;
+  handleListFork: (list: ListTemplate) => void;
+  handleMergeList: (list: ListTemplate) => void;
+  handleToggleIsKillPointMode: () => void;
+  handleAddKillPoints: (points: number) => void;
+  handleToggleUsingOldPoints: () => void;
+  // Modal functions
+  handleOpenModal: () => void;
+  handleCloseModal: () => void;
+  handleCardZoom: (cardId: string) => void;
+  // View functions
+  setCardPaneFilter: (list: ListAction) => void;
+  setLeftPaneWidth: (width: number) => void;
+  setRightPaneWidth: (width: number) => void;
+  // Message functions
+  listSaveMessage?: string;
 };
 
 const DEFAULT_VALUE: ListContextValue = {
@@ -98,15 +146,51 @@ const DEFAULT_VALUE: ListContextValue = {
     support: [0, 0],
     heavy: [0, 0],
   },
-  handleCloseModal: noop,
-  setCardPaneFilter: noop,
-  handleCardZoom: noop,
+  // Unit functions
+  getEligibleUnitsToAdd: () => [],
+  getEquippableUpgrades: () => ({validIds: [], invalidIds: []}),
+  getEquippableLoadoutUpgrades: () => ({validIds: [], invalidIds: []}),
+  handleAddUnit: noop,
+  handleAddCounterpart: noop,
+  handleRemoveCounterpart: noop,
+  handleEquipUpgrade: noop,
+  handleUnequipUpgrade: noop,
+  handleIncrementUnit: noop,
+  handleDecrementUnit: noop,
+  handleSetBattleForce: noop,
+  // Battle functions
+  getEligibleBattlesToAdd: () => undefined,
+  handleAddBattle: noop,
+  handleRemoveBattle: noop,
+  // Command functions
+  getEligibleCommandsToAdd: () => ({validIds: [], invalidIds: []}),
+  handleAddCommand: noop,
+  handleRemoveCommand: noop,
+  getEligibleContingenciesToAdd: () => ({validIds: [], invalidIds: []}),
+  handleAddContingency: noop,
+  handleRemoveContingency: noop,
+  // List functions
+  reorderUnits: noop,
+  handleClearList: noop,
+  handleToggleIsApplyToAll: noop,
   handleChangeTitle: noop,
   handleChangeMode: noop,
-  handleSetBattleForce: noop,
-  listActions: {
-    handleToggleUsingOldPoints: noop,
-  },
+  handleIncrementStackSize: noop,
+  handleDecrementStackSize: noop,
+  handleListSave: noop,
+  handleListFork: noop,
+  handleMergeList: noop,
+  handleToggleIsKillPointMode: noop,
+  handleAddKillPoints: noop,
+  handleToggleUsingOldPoints: noop,
+  // Modal functions
+  handleOpenModal: noop,
+  handleCloseModal: noop,
+  handleCardZoom: noop,
+  // View functions
+  setCardPaneFilter: noop,
+  setLeftPaneWidth: noop,
+  setRightPaneWidth: noop,
 };
 
 const ListContext = React.createContext(DEFAULT_VALUE);
@@ -583,6 +667,7 @@ function ListProvider({
     handleMergeList,
     handleToggleIsKillPointMode,
     handleAddKillPoints,
+    handleToggleUsingOldPoints,
   };
   const modalProps = {
     handleOpenModal,
@@ -619,9 +704,6 @@ function ListProvider({
           ...messageProps,
           validationIssues,
           rankLimits: rankLimits ?? legionModes[currentList.mode].unitCounts,
-          listActions: {
-            handleToggleUsingOldPoints,
-          },
         }}
       >
         {children}

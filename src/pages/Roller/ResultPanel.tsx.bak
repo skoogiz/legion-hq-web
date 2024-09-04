@@ -1,13 +1,19 @@
-import React from "react";
 import {Typography} from "@mui/material";
 import {attackDice} from "@legion-hq/constants/dice";
 
-function ResultPanel({
+type Props = {
+  isRolling: boolean;
+  redAttackResults;
+  blackAttackResults;
+  whiteAttackResults;
+};
+
+export function ResultPanel({
   isRolling,
   redAttackResults,
   blackAttackResults,
   whiteAttackResults,
-}) {
+}: Props) {
   let totalHits = 0;
   let totalCrits = 0;
   let totalSurges = 0;
@@ -43,5 +49,3 @@ function ResultPanel({
     </div>
   );
 }
-
-export default ResultPanel;

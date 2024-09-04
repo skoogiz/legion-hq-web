@@ -1,19 +1,10 @@
 import React from "react";
-import clsx from "clsx";
 import {Collapse, Typography, Divider, IconButton} from "@mui/material";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
-import {makeStyles} from "@mui/styles";
 import {LegionCard} from "@legion-hq/components";
+import {ListActionType} from "@legion-hq/state/list";
 
-const useStyles = makeStyles((theme) => ({
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {transform: "rotate(180deg)"},
+const styles: Record<string, React.CSSProperties> = {
   rowContainerWrap: {
     display: "flex",
     flexWrap: "wrap",
@@ -36,9 +27,15 @@ const useStyles = makeStyles((theme) => ({
   divider: {
     flexGrow: 1,
   },
-}));
+};
 
-function CollapsedContent({children, isExpanded}) {
+function CollapsedContent({
+  children,
+  isExpanded,
+}: {
+  children: React.ReactNode;
+  isExpanded: boolean;
+}) {
   return (
     <Collapse unmountOnExit timeout="auto" in={isExpanded}>
       {children}
@@ -46,25 +43,32 @@ function CollapsedContent({children, isExpanded}) {
   );
 }
 
-function SelectorContent({
+type Props = {
+  action: ListActionType;
+  validIds?: string[];
+  invalidIds?: string[];
+  handleClick: (id: string) => void;
+  handleCardZoom: (id: string) => void;
+};
+
+export function SelectorContent({
   action,
   validIds = [],
   invalidIds = [],
   handleClick,
   handleCardZoom,
-}) {
-  const classes = useStyles();
+}: Props) {
   const [isExpanded, setIsExpanded] = React.useState(false);
   const handleExpandClick = () => setIsExpanded(!isExpanded);
   if (validIds.length === 0) {
     return (
-      <div className={classes.columnContainer}>
+      <div style={styles.columnContainer}>
         <Typography>No eligible cards found</Typography>
       </div>
     );
   } else if (!action.includes("UPGRADE")) {
     return (
-      <div className={classes.rowContainerWrap}>
+      <div style={styles.rowContainerWrap}>
         {validIds.map((id) => (
           <LegionCard
             key={id}
@@ -77,12 +81,12 @@ function SelectorContent({
     );
   }
   return (
-    <div className={classes.columnContainer}>
-      <div className={classes.rowContainerWrap} style={{alignItems: "center"}}>
+    <div style={styles.columnContainer}>
+      <div style={{...styles.rowContainerWrap, alignItems: "center"}}>
         <Typography style={{marginRight: 8}}>Equippable upgrades</Typography>
-        <Divider className={classes.divider} />
+        <Divider style={styles.divider} />
       </div>
-      <div className={classes.rowContainerWrap}>
+      <div style={styles.rowContainerWrap}>
         {validIds.map((id) => (
           <LegionCard
             key={id}
@@ -93,15 +97,18 @@ function SelectorContent({
         ))}
       </div>
       {invalidIds.length > 0 && (
-        <div className={classes.rowContainerNoWrap}>
+        <div style={styles.rowContainerNoWrap}>
           <Typography style={{marginRight: 8}}>Unequippable upgrades</Typography>
-          <Divider className={classes.divider} />
+          <Divider style={styles.divider} />
           <IconButton
             size="small"
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: isExpanded,
+            sx={(theme) => ({
+              transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+              marginLeft: 8,
+              transition: theme.transitions.create("transform", {
+                duration: theme.transitions.duration.shortest,
+              }),
             })}
-            style={{marginLeft: 8}}
             onClick={handleExpandClick}
           >
             <ExpandMoreIcon />
@@ -109,7 +116,7 @@ function SelectorContent({
         </div>
       )}
       <CollapsedContent isExpanded={isExpanded}>
-        <div className={classes.rowContainerWrap}>
+        <div style={styles.rowContainerWrap}>
           {invalidIds.map((id) => (
             <LegionCard
               key={id}
@@ -123,5 +130,3 @@ function SelectorContent({
     </div>
   );
 }
-
-export default SelectorContent;

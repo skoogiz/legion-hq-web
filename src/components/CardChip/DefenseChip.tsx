@@ -1,4 +1,3 @@
-import React from "react";
 import {Img} from "react-image";
 import {Chip} from "@mui/material";
 import symbols from "@legion-hq/constants/symbols";

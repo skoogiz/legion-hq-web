@@ -1,18 +1,31 @@
 import React from "react";
 import {Typography, Button, Slider} from "@mui/material";
 import symbols from "@legion-hq/constants/symbols";
+import {AttackDiceType, DefenceDiceType} from "@legion-hq/types";
 
-function valuetext(value) {
+type Props = {
+  numRedAttackDice: number;
+  numBlackAttackDice: number;
+  numWhiteAttackDice: number;
+  handleSetDice: (
+    type: "attack" | "defense",
+    color: AttackDiceType | DefenceDiceType,
+    num: number,
+  ) => void;
+  handleRollDice: () => void;
+};
+
+function valuetext(value: number) {
   return `${value} dice`;
 }
 
-function ControlPanel({
+export function ControlPanel({
   numRedAttackDice,
   numBlackAttackDice,
   numWhiteAttackDice,
   handleSetDice,
   handleRollDice,
-}) {
+}: Props) {
   const {attack} = symbols;
   const {red, black, white} = attack;
   const [isDisabled, setIsDisabled] = React.useState(false);
@@ -37,7 +50,10 @@ function ControlPanel({
             defaultValue={0}
             valueLabelDisplay="auto"
             getAriaValueText={() => valuetext(numRedAttackDice)}
-            onChange={(e, value) => handleSetDice("attack", "red", value)}
+            onChange={(e, value) => {
+              e.preventDefault();
+              handleSetDice("attack", "red", value as number);
+            }}
           />
         </div>
         <div style={{display: "flex", width: "100%", marginBottom: 4}}>
@@ -50,7 +66,10 @@ function ControlPanel({
             defaultValue={0}
             valueLabelDisplay="auto"
             getAriaValueText={() => valuetext(numBlackAttackDice)}
-            onChange={(e, value) => handleSetDice("attack", "black", value)}
+            onChange={(e, value) => {
+              e.preventDefault();
+              handleSetDice("attack", "black", value as number);
+            }}
           />
         </div>
         <div style={{display: "flex", width: "100%", marginBottom: 4}}>
@@ -63,7 +82,10 @@ function ControlPanel({
             defaultValue={0}
             valueLabelDisplay="auto"
             getAriaValueText={() => valuetext(numWhiteAttackDice)}
-            onChange={(e, value) => handleSetDice("attack", "white", value)}
+            onChange={(e, value) => {
+              e.preventDefault();
+              handleSetDice("attack", "white", value as number);
+            }}
           />
         </div>
         <Button
@@ -82,5 +104,3 @@ function ControlPanel({
     </div>
   );
 }
-
-export default ControlPanel;

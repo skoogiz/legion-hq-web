@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Typography} from "@mui/material";
-import ControlPanel from "./ControlPanel";
+import {ControlPanel} from "./ControlPanel";
 import AttackDie from "./AttackDie";
 import {
   AttackDiceType,

@@ -1,25 +1,21 @@
-import React from "react";
-import AddCounterpartButton from "./AddCounterpartButton";
-import AddUpgradeButton from "./AddUpgradeButton";
+import {UpgradeType} from "@legion-hq/types";
+import {AddCounterpartButton} from "./AddCounterpartButton";
+import {AddUpgradeButton} from "./AddUpgradeButton";
 import {UpgradeChip} from "./UpgradeChip";
 
 type Props = {
-  counterpartId: string;
+  counterpartId?: string;
   upgradesEquipped: Array<string | null>;
   upgradeInteractions?: Record<string, number>;
-  totalUpgradeBar;
-  loadoutUpgrades;
-  // handleCardZoom: () => void;
-  // handleRemoveCounterpart: () => void;
-
-  addCounterpartHandler: () => void;
-
-  zoomUpgradeHandlers: () => void;
-  swapUpgradeHandlers: () => void;
-  addUpgradeHandlers: () => void;
-  deleteUpgradeHandlers: () => void;
-  changeLoadoutHandlers: () => void;
-  deleteLoadoutHandlers: () => void;
+  totalUpgradeBar: UpgradeType[];
+  loadoutUpgrades: Array<string | null>;
+  addCounterpartHandler?: () => void;
+  zoomUpgradeHandlers: Array<() => void>;
+  swapUpgradeHandlers: Array<() => void>;
+  addUpgradeHandlers: Array<() => void>;
+  deleteUpgradeHandlers: Array<() => void>;
+  changeLoadoutHandlers: Array<() => void>;
+  deleteLoadoutHandlers: Array<() => void>;
 };
 
 export function UnitUpgrades({
@@ -36,11 +32,11 @@ export function UnitUpgrades({
   changeLoadoutHandlers,
   deleteLoadoutHandlers,
 }: Props) {
-  const addCounterpartButtons = [];
-  const addUpgradesButtons = [];
-  const upgradeChips = [];
+  const addCounterpartButtons: JSX.Element[] = [];
+  const addUpgradesButtons: JSX.Element[] = [];
+  const upgradeChips: JSX.Element[] = [];
   const hasLoadout = loadoutUpgrades ? loadoutUpgrades.length > 0 : false;
-  if (addCounterpartHandler) {
+  if (counterpartId && addCounterpartHandler) {
     addCounterpartButtons.push(
       <AddCounterpartButton
         key={counterpartId}
@@ -56,7 +52,9 @@ export function UnitUpgrades({
           key={upgradeId}
           upgradeId={upgradeId}
           upgradeInteractions={upgradeInteractions}
-          loadoutId={hasLoadout ? loadoutUpgrades[upgradeIndex] : undefined}
+          loadoutId={
+            hasLoadout ? (loadoutUpgrades[upgradeIndex] ?? undefined) : undefined
+          }
           handleClick={zoomUpgradeHandlers[upgradeIndex]}
           handleSwap={swapUpgradeHandlers[upgradeIndex]}
           handleDelete={deleteUpgradeHandlers[upgradeIndex]}

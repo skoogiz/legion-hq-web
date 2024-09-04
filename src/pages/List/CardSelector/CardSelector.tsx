@@ -1,8 +1,7 @@
-import * as React from "react";
 import {Fade, Typography} from "@mui/material";
 import {LegionCard} from "@legion-hq/components";
 import {SelectorHeader} from "./SelectorHeader";
-import SelectorContent from "./SelectorContent";
+import {SelectorContent} from "./SelectorContent";
 import StackController from "./StackController";
 import {ToggleButton} from "./ToggleButton";
 import {
@@ -84,7 +83,7 @@ export function CardSelector() {
     invalidIds = upgradeIds.invalidIds;
     clickHandler = (upgradeId: string) =>
       handleEquipUpgrade(
-        "UNIT_UPGRADE",
+        UNIT_UPGRADE,
         cardPaneFilter.unitIndex,
         cardPaneFilter.upgradeIndex,
         upgradeId,
@@ -111,7 +110,7 @@ export function CardSelector() {
     invalidIds = upgradeIds.invalidIds;
     clickHandler = (upgradeId) =>
       handleEquipUpgrade(
-        "COUNTERPART_UPGRADE",
+        COUNTERPART_UPGRADE,
         cardPaneFilter.unitIndex,
         cardPaneFilter.upgradeIndex,
         upgradeId,
@@ -130,7 +129,7 @@ export function CardSelector() {
     invalidIds = upgradeIds.invalidIds;
     clickHandler = (upgradeId) =>
       handleEquipUpgrade(
-        "LOADOUT_UPGRADE",
+        LOADOUT_UPGRADE,
         cardPaneFilter.unitIndex,
         cardPaneFilter.upgradeIndex,
         upgradeId,
@@ -156,7 +155,7 @@ export function CardSelector() {
     invalidIds = upgradeIds.invalidIds;
     clickHandler = (upgradeId) =>
       handleEquipUpgrade(
-        "COUNTERPART_LOADOUT_UPGRADE",
+        COUNTERPART_LOADOUT_UPGRADE,
         cardPaneFilter.unitIndex,
         cardPaneFilter.upgradeIndex,
         upgradeId,

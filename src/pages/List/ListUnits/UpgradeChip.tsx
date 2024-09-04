@@ -119,7 +119,7 @@ type Props = {
   chipSize?: "small" | "medium";
   upgradeInteractions?: Record<string, number>;
   upgradeId: string;
-  loadoutId: string;
+  loadoutId?: string;
   handleClick: () => void;
   handleSwap?: () => void;
   handleDelete?: () => void;
@@ -140,7 +140,7 @@ export function UpgradeChip({
 }: Props) {
   const {cards} = useCards();
   const upgradeCard = cards[upgradeId];
-  const loadoutCard = cards[loadoutId];
+  const loadoutCard = loadoutId ? cards[loadoutId] : undefined;
   let pointDelta = 0;
   if (upgradeInteractions && upgradeId in upgradeInteractions) {
     pointDelta = upgradeInteractions[upgradeId];

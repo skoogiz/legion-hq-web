@@ -38,12 +38,12 @@ export function ListUnits() {
     let counterpartUnit;
     let addCounterpartHandler;
     let removeCounterpartHandler;
-    const addUpgradeHandlers = [];
-    const zoomUpgradeHandlers = [];
-    const swapUpgradeHandlers = [];
-    const deleteUpgradeHandlers = [];
-    const changeLoadoutHandlers = [];
-    const deleteLoadoutHandlers = [];
+    const addUpgradeHandlers = new Array<() => void>();
+    const zoomUpgradeHandlers = new Array<() => void>();
+    const swapUpgradeHandlers = new Array<() => void>();
+    const deleteUpgradeHandlers = new Array<() => void>();
+    const changeLoadoutHandlers = new Array<() => void>();
+    const deleteLoadoutHandlers = new Array<() => void>();
     const totalUpgradeBar = [...unitCard.upgradeBar, ...unit.additionalUpgradeSlots];
     if (counterpartId === "tn" && faction === "empire") {
       addCounterpartHandler = undefined;
@@ -69,12 +69,12 @@ export function ListUnits() {
           });
       }
     } else if (counterpartId && uniques.includes(counterpartId) && unit.counterpart) {
-      const cAddUpgradeHandlers = [];
-      const cSwapUpgradeHandlers = [];
-      const cZoomUpgradeHandlers = [];
-      const cDeleteUpgradeHandlers = [];
-      const cChangeLoadoutHandlers = [];
-      const cDeleteLoadoutHandlers = [];
+      const cAddUpgradeHandlers = new Array<() => void>();
+      const cSwapUpgradeHandlers = new Array<() => void>();
+      const cZoomUpgradeHandlers = new Array<() => void>();
+      const cDeleteUpgradeHandlers = new Array<() => void>();
+      const cChangeLoadoutHandlers = new Array<() => void>();
+      const cDeleteLoadoutHandlers = new Array<() => void>();
       const counterpart = unit.counterpart;
       const cLoadoutUpgrades = counterpart.loadoutUpgrades;
       removeCounterpartHandler = () => handleRemoveCounterpart(unitIndex);
@@ -84,7 +84,7 @@ export function ListUnits() {
           cZoomUpgradeHandlers.push(() => handleCardZoom(upgradeId));
           cSwapUpgradeHandlers.push(() =>
             setCardPaneFilter({
-              action: "COUNTERPART_UPGRADE",
+              action: COUNTERPART_UPGRADE,
               upgradeType,
               unitIndex,
               upgradeIndex,

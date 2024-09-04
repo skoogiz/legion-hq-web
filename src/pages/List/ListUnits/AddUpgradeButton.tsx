@@ -1,8 +1,13 @@
-import React from "react";
 import {IconButton, Icon, Avatar} from "@mui/material";
 import upgradeTypes from "@legion-hq/constants/upgradeTypes";
+import {UpgradeType} from "@legion-hq/types";
 
-function AddUpgradeButton({type, handleClick}) {
+type Props = {
+  type: UpgradeType;
+  handleClick: () => void;
+};
+
+export function AddUpgradeButton({type, handleClick}: Props) {
   const size = 32;
   return (
     <IconButton size="small" style={{marginBottom: 4}} onClick={handleClick}>
@@ -16,5 +21,3 @@ function AddUpgradeButton({type, handleClick}) {
     </IconButton>
   );
 }
-
-export default AddUpgradeButton;

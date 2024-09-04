@@ -1,4 +1,3 @@
-import * as React from "react";
 import {SpriteCardProps} from "./SpriteCard.types";
 import {SpriteCard} from "./SpriteCard";
 import {

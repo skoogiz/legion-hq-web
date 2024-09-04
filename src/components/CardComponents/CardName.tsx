@@ -1,4 +1,3 @@
-import React from "react";
 import {Typography, TypographyOwnProps} from "@mui/material";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 

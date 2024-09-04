@@ -70,6 +70,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prettier:write": "prettier . --write",
-    "prettier:check": "prettier . --check"
+    "prettier:check": "prettier . --check",
+    "typescript:app": "tsc -p tsconfig.app.json",
+    "typescript:node": "tsc -p tsconfig.node.json"
   }
 }

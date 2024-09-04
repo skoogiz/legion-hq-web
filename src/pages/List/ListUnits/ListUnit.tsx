@@ -43,12 +43,12 @@ type Props = {
   handleRemoveKillPoints: () => void;
   addCounterpartHandler: () => void;
   removeCounterpartHandler: () => void;
-  zoomUpgradeHandlers: () => void;
-  swapUpgradeHandlers: () => void;
-  addUpgradeHandlers: () => void;
-  deleteUpgradeHandlers: () => void;
-  changeLoadoutHandlers: () => void;
-  deleteLoadoutHandlers: () => void;
+  zoomUpgradeHandlers: Array<() => void>;
+  swapUpgradeHandlers: Array<() => void>;
+  addUpgradeHandlers: Array<() => void>;
+  deleteUpgradeHandlers: Array<() => void>;
+  changeLoadoutHandlers: Array<() => void>;
+  deleteLoadoutHandlers: Array<() => void>;
 };
 
 export function ListUnit({
@@ -101,7 +101,7 @@ export function ListUnit({
       totalUpgradeBar={[...unitCard.upgradeBar, ...unit.additionalUpgradeSlots]}
       loadoutUpgrades={unit.loadoutUpgrades}
       addCounterpartHandler={addCounterpartHandler}
-      removeCounterpartHandler={removeCounterpartHandler}
+      // removeCounterpartHandler={removeCounterpartHandler}
       swapUpgradeHandlers={swapUpgradeHandlers}
       zoomUpgradeHandlers={zoomUpgradeHandlers}
       addUpgradeHandlers={addUpgradeHandlers}

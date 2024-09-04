@@ -1405,13 +1405,16 @@ function getEquippableUpgrades(
   id: string,
   upgradesEquipped: string[],
   additionalUpgradeSlots: UpgradeType[],
-) {
+): {
+  validIds: string[];
+  invalidIds: string[];
+} {
   const impRemnantUpgrades = ["ej", "ek", "fv", "iy", "fu", "gm", "gl", "em", "en", "ja"];
   const validUpgradeIds = [];
   const invalidUpgradeIds = [];
   // const cardsById = cardIdsByType.upgrade; // Object.keys(cards);
 
-  if (!id) return {validUpgradeIds: [], invalidUpgradeIds: []};
+  if (!id) return {validIds: [], invalidIds: []};
   const unitCard = _.cloneDeep(cards[id]) as LegionCardWithConditions;
   for (let i = 0; i < cardIdsByType["upgrade"].length; i++) {
     const id = cardIdsByType["upgrade"][i];
