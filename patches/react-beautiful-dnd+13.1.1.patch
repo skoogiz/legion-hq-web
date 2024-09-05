@@ -1,0 +1,58 @@
+diff --git a/node_modules/react-beautiful-dnd/.DS_Store b/node_modules/react-beautiful-dnd/.DS_Store
+new file mode 100644
+index 0000000..8b53665
+Binary files /dev/null and b/node_modules/react-beautiful-dnd/.DS_Store differ
+diff --git a/node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js b/node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js
+index ecced69..4753f5f 100644
+--- a/node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js
++++ b/node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js
+@@ -8235,7 +8235,18 @@ function PublicDraggable(props) {
+   }));
+ }
+ 
+-function Droppable(props) {
++function Droppable(passedProps) {
++  var defaultProps = {
++    mode: 'standard',
++    type: 'DEFAULT',
++    direction: 'vertical',
++    isDropDisabled: false,
++    isCombineEnabled: false,
++    ignoreContainerClipping: false,
++    renderClone: null,
++    getContainerForClone: getBody
++  };
++  var props = { ...defaultProps, ...passedProps };
+   var appContext = useContext(AppContext);
+   !appContext ? process.env.NODE_ENV !== "production" ? invariant(false, 'Could not find app context') : invariant(false) : void 0;
+   var contextId = appContext.contextId,
+@@ -8494,21 +8505,10 @@ function getBody() {
+   return document.body;
+ }
+ 
+-var defaultProps = {
+-  mode: 'standard',
+-  type: 'DEFAULT',
+-  direction: 'vertical',
+-  isDropDisabled: false,
+-  isCombineEnabled: false,
+-  ignoreContainerClipping: false,
+-  renderClone: null,
+-  getContainerForClone: getBody
+-};
+ var ConnectedDroppable = connect(makeMapStateToProps$1, mapDispatchToProps$1, null, {
+   context: StoreContext,
+   pure: true,
+   areStatePropsEqual: isStrictEqual
+ })(Droppable);
+-ConnectedDroppable.defaultProps = defaultProps;
+ 
+ export { DragDropContext, PublicDraggable as Draggable, ConnectedDroppable as Droppable, resetServerContext, useKeyboardSensor, useMouseSensor, useTouchSensor };
+diff --git a/node_modules/react-beautiful-dnd/src/.DS_Store b/node_modules/react-beautiful-dnd/src/.DS_Store
+new file mode 100644
+index 0000000..717a915
+Binary files /dev/null and b/node_modules/react-beautiful-dnd/src/.DS_Store differ
+diff --git a/node_modules/react-beautiful-dnd/src/view/.DS_Store b/node_modules/react-beautiful-dnd/src/view/.DS_Store
+new file mode 100644
+index 0000000..2d21381
+Binary files /dev/null and b/node_modules/react-beautiful-dnd/src/view/.DS_Store differ

@@ -7,8 +7,6 @@ import {
   DroppableProps,
 } from "react-beautiful-dnd";
 import {ListUtils} from "@legion-hq/utility/list";
-import {ErrorBoundary} from "react-error-boundary";
-import {ErrorFallback} from "@legion-hq/components";
 
 const ItemList = React.memo<{draggableItems: {id: string; component: JSX.Element}[]}>(
   function ItemList({draggableItems}) {
@@ -28,7 +26,7 @@ const ItemList = React.memo<{draggableItems: {id: string; component: JSX.Element
   },
 );
 
-export const StrictModeDroppable = ({children, ...props}: DroppableProps) => {
+export function StrictModeDroppable({children, ...props}: DroppableProps) {
   const [enabled, setEnabled] = React.useState(false);
   React.useEffect(() => {
     const animation = requestAnimationFrame(() => setEnabled(true));
@@ -41,7 +39,7 @@ export const StrictModeDroppable = ({children, ...props}: DroppableProps) => {
     return null;
   }
   return <Droppable {...props}>{children}</Droppable>;
-};
+}
 
 type Props = {
   items: {id: string; component: JSX.Element}[];
