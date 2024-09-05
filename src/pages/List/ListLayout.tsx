@@ -17,7 +17,7 @@ import {ListBottomBar} from "@legion-hq/components/list";
 
 const ListContent = styled("div")<{isMobile: boolean}>`
   padding: 0 2px 2px;
-  overflow: auto;
+  // overflow: auto;
   height: calc(100vh - ${({isMobile}) => (isMobile ? "125px" : "75px")});
 `;
 

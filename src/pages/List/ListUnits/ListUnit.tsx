@@ -19,8 +19,8 @@ const styles: Record<string, React.CSSProperties> = {
     marginRight: 2,
     display: "flex",
     flexFlow: "column nowrap",
-    overflowX: "auto",
-    overflowY: "hidden",
+    // overflowX: "auto",
+    // overflowY: "hidden",
   },
   rightCell: {
     display: "flex",

@@ -1,7 +1,7 @@
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {useListBuilder} from "@legion-hq/hooks/list/useList";
 import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
-import DragDropContainer from "./DragDropContainer";
+import {DragDropContainer} from "./DragDropContainer";
 import {ListUnit} from "./ListUnit";
 import {CounterpartUnit} from "./CounterpartUnit";
 import {
@@ -110,11 +110,7 @@ export function ListUnits() {
               }),
             );
             cDeleteLoadoutHandlers.push(() =>
-              handleUnequipUpgrade(
-                "COUNTERPART_LOADOUT_UPGRADE",
-                unitIndex,
-                upgradeIndex,
-              ),
+              handleUnequipUpgrade(COUNTERPART_LOADOUT_UPGRADE, unitIndex, upgradeIndex),
             );
           } else if (hasLoadout && !cLoadoutUpgrades[upgradeIndex]) {
             cChangeLoadoutHandlers.push(() =>
@@ -186,7 +182,7 @@ export function ListUnits() {
           }),
         );
         deleteUpgradeHandlers.push(() =>
-          handleUnequipUpgrade("UNIT_UPGRADE", unitIndex, upgradeIndex),
+          handleUnequipUpgrade(UNIT_UPGRADE, unitIndex, upgradeIndex),
         );
         if (hasLoadout && loadoutUpgrades[upgradeIndex]) {
           changeLoadoutHandlers.push(() =>
