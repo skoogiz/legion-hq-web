@@ -31,17 +31,27 @@ import {
   getEligibleBattlesToAdd,
   validateList,
   getRankLimits,
+  EMPTY_VALIDATION,
 } from "@legion-hq/constants/listOperations";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {useSettings} from "@legion-hq/hooks/app/useSettings";
 import {
+  EquipedUpgrades,
   FactionType,
   LegionMode,
   ListTemplate,
   UnitRestrictions,
   UpgradeType,
 } from "@legion-hq/types";
-import {DISPLAY, ListAction, ListActionType, UNIT_UPGRADE} from "@legion-hq/state/list";
+import {
+  DISPLAY,
+  UNIT_UPGRADE,
+  ListAction,
+  ListActionType,
+  listReducer,
+  getActions,
+  ListActions,
+} from "@legion-hq/state/list";
 import {ListUtils} from "@legion-hq/utility/list";
 import {createListTemplate} from "@legion-hq/utility/list/listFactories";
 import {legionModes} from "@legion-hq/constants";
@@ -77,7 +87,7 @@ type ListContextValue = {
     unitIndex: number,
     upgradeIndex: number,
     upgradeId: string,
-    isApplyToAll: boolean,
+    isApplyToAll?: boolean,
   ) => void;
   handleUnequipUpgrade: (
     action: ListActionType,
@@ -122,6 +132,7 @@ type ListContextValue = {
   setRightPaneWidth: (width: number) => void;
   // Message functions
   listSaveMessage?: string;
+  listActions: Omit<ListActions, "updateList">;
 };
 
 const DEFAULT_VALUE: ListContextValue = {
@@ -159,14 +170,14 @@ const DEFAULT_VALUE: ListContextValue = {
   handleDecrementUnit: noop,
   handleSetBattleForce: noop,
   // Battle functions
-  getEligibleBattlesToAdd: () => undefined,
+  getEligibleBattlesToAdd: () => EMPTY_VALIDATION,
   handleAddBattle: noop,
   handleRemoveBattle: noop,
   // Command functions
-  getEligibleCommandsToAdd: () => ({validIds: [], invalidIds: []}),
+  getEligibleCommandsToAdd: () => EMPTY_VALIDATION,
   handleAddCommand: noop,
   handleRemoveCommand: noop,
-  getEligibleContingenciesToAdd: () => ({validIds: [], invalidIds: []}),
+  getEligibleContingenciesToAdd: () => EMPTY_VALIDATION,
   handleAddContingency: noop,
   handleRemoveContingency: noop,
   // List functions
@@ -191,6 +202,10 @@ const DEFAULT_VALUE: ListContextValue = {
   setCardPaneFilter: noop,
   setLeftPaneWidth: noop,
   setRightPaneWidth: noop,
+  listActions: {
+    addCounterpart: noop,
+    removeCounterpart: noop,
+  },
 };
 
 const ListContext = React.createContext(DEFAULT_VALUE);
@@ -216,7 +231,7 @@ const initList = ({
 }: {
   storedLists: Record<string, ListTemplate>;
   slug: string;
-}) => {
+}): ListTemplate => {
   if (slug) {
     return storedLists[slug] ?? createListTemplate({faction: slug as FactionType});
   }
@@ -231,6 +246,14 @@ function ListProvider({
   storedLists,
   updateStoredList,
 }: Props) {
+  const [state, dispatch] = React.useReducer(listReducer, {
+    currentList: initList({slug, storedLists}),
+  });
+
+  const {updateList, ...listActions} = getActions(dispatch);
+
+  const {currentList} = state;
+
   const {cards, costSupplier} = useCards();
 
   const {userId, goToPage} = React.useContext(DataContext);
@@ -242,9 +265,9 @@ function ListProvider({
   const [error, setError] = React.useState<string | Error | undefined>();
   const [message, setMessage] = React.useState<string>("");
   const [listSaveMessage, setListSaveMessage] = React.useState<string | undefined>();
-  const [currentList, setCurrentList] = React.useState<ListTemplate>(
-    initList({slug, storedLists}),
-  );
+  // const [currentList, updateList] = React.useState<ListTemplate>(
+  //   initList({slug, storedLists}),
+  // );
   const [leftPaneWidth, setLeftPaneWidth] = React.useState(0);
   const [rightPaneWidth, setRightPaneWidth] = React.useState(0);
   const [modalContent, setModalContent] = React.useState<string | undefined>();
@@ -301,13 +324,15 @@ function ListProvider({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
+
   React.useEffect(() => {
     // Save list before unmount
     return () => {
-      if (currentList) updateStoredList(currentList);
+      if (state.currentList) updateStoredList(state.currentList);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentList]);
+  }, [state.currentList]);
+
   React.useEffect(() => {
     if (isSmallScreen) {
       setLeftPaneWidth(12);
@@ -317,6 +342,7 @@ function ListProvider({
       setRightPaneWidth(6);
     }
   }, [isSmallScreen]);
+
   React.useEffect(() => {
     if (isSmallScreen) {
       if (cardPaneFilter.action === DISPLAY) {
@@ -332,7 +358,7 @@ function ListProvider({
 
   const updateThenValidateList = (list: ListTemplate) => {
     const rankLimits = getRankLimits(list);
-    setCurrentList(list);
+    updateList(list);
     doUnitValidation(list, rankLimits);
     setRankLimits(rankLimits);
   };
@@ -344,13 +370,13 @@ function ListProvider({
       startIndex,
       endIndex,
     );
-    setCurrentList({...currentList});
+    updateList({...currentList});
   };
 
   const handleToggleUsingOldPoints = () => {
     const newList = List.of(currentList);
     newList.toggleUseOriginalCosts(costSupplier);
-    setCurrentList({...newList.listTemplate});
+    updateList({...newList.listTemplate});
   };
 
   const handleIncrementStackSize = () => {
@@ -385,10 +411,10 @@ function ListProvider({
   };
 
   const handleChangeTitle = (title: string) =>
-    setCurrentList({...changeListTitle(currentList, title)});
+    updateList({...changeListTitle(state.currentList, title)});
 
   const handleChangeMode = (mode: LegionMode) => {
-    updateThenValidateList({...setListMode(currentList, mode)});
+    updateThenValidateList({...setListMode(state.currentList, mode)});
   };
 
   const handleEquipUpgrade = (
@@ -396,22 +422,13 @@ function ListProvider({
     unitIndex: number,
     upgradeIndex: number,
     upgradeId: string,
-    isApplyToAll: boolean,
+    applyToAll = false,
   ) => {
-    const unit = currentList.units[unitIndex];
+    const unit = state.currentList.units[unitIndex];
     let applyFilter;
     let nextAvailIndex: number | undefined;
     let nextAvailType: string | null | undefined;
-    console.log("UPGRADE", {
-      unit,
-      units: currentList.units,
-      action,
-      unitIndex,
-      upgradeIndex,
-      upgradeId,
-      isApplyToAll,
-    });
-    if (isApplyToAll || unit.count === 1) {
+    if (applyToAll || unit.count === 1) {
       let i = (upgradeIndex + 1) % unit.upgradesEquipped.length;
       let numUpgradesEquipped = 0;
 
@@ -437,8 +454,8 @@ function ListProvider({
 
       if (letUpgradesCascade && nextAvailIndex !== undefined && nextAvailType) {
         applyFilter = (
-          newUpgradesEquipped: Array<string | null>,
-          newAdditionalUpgradeSlots: Array<string | null>,
+          newUpgradesEquipped: EquipedUpgrades,
+          newAdditionalUpgradeSlots: Array<UpgradeType>,
         ) =>
           setCardPaneFilter({
             action: UNIT_UPGRADE,
@@ -454,12 +471,12 @@ function ListProvider({
     } // else applyFilter = () => setCardPaneFilter({ action: 'DISPLAY' })
 
     const newList = equipUpgrade(
-      currentList,
+      state.currentList,
       action,
       unitIndex,
       upgradeIndex,
       upgradeId,
-      isApplyToAll,
+      applyToAll,
     );
     if (applyFilter && newList.units[unitIndex]) {
       const newUnit = newList.units[unitIndex];
@@ -489,32 +506,32 @@ function ListProvider({
 
   const handleAddCommand = (commandId: string) => {
     const newList = addCommand(currentList, commandId);
-    setCurrentList({...newList});
+    updateList({...newList});
   };
 
   const handleAddContingency = (commandId: string) => {
     const newList = addContingency(currentList, commandId);
-    setCurrentList({...newList});
+    updateList({...newList});
   };
 
   const handleRemoveCommand = (commandIndex: number) => {
     const newList = removeCommand(currentList, commandIndex);
-    setCurrentList({...newList});
+    updateList({...newList});
   };
 
   const handleRemoveContingency = (contingencyIndex: number) => {
     const newList = removeContingency(currentList, contingencyIndex);
-    setCurrentList({...newList});
+    updateList({...newList});
   };
 
   const handleAddBattle = (type: string, battleId: string) => {
     const newList = addBattle(currentList, type, battleId);
-    setCurrentList({...newList});
+    updateList({...newList});
   };
 
   const handleRemoveBattle = (type: string, battleId: number) => {
     const newList = removeBattle(currentList, type, battleId);
-    setCurrentList({...newList});
+    updateList({...newList});
   };
 
   const handleAddCounterpart = (unitIndex: number, counterpartId: string) => {
@@ -567,7 +584,7 @@ function ListProvider({
       Axios.put(`${urls.api}/lists/${listId}`, currentList)
         .then((response) => {
           const newList = response.data;
-          setCurrentList(newList);
+          updateList(newList);
           setListSaveMessage("List Updated!");
         })
         .catch((e) => {
@@ -578,7 +595,7 @@ function ListProvider({
       Axios.post(`${urls.api}/lists`, {...rest, userId})
         .then((response) => {
           const {listId} = response.data;
-          setCurrentList(createListTemplate({...currentList, listId: `${listId}`}));
+          updateList(createListTemplate({...currentList, listId: `${listId}`}));
           setListSaveMessage("List Created!");
         })
         .catch((e) => {
@@ -614,7 +631,7 @@ function ListProvider({
   };
 
   const handleSetBattleForce = (battleForce: string) => {
-    updateThenValidateList({...currentList, battleForce});
+    updateThenValidateList({...state.currentList, battleForce});
   };
 
   // Maybe there should be a 'units only' flag, but lists will be something like 50-100 entities max anyhow...
@@ -650,7 +667,6 @@ function ListProvider({
     handleRemoveContingency,
   };
   const listProps = {
-    currentList,
     stackSize,
     reorderUnits,
     isKillPointMode,
@@ -689,12 +705,22 @@ function ListProvider({
     listSaveMessage,
   };
 
+  const value = React.useMemo(
+    () => ({
+      currentList: state.currentList,
+      rankLimits: rankLimits ?? legionModes[state.currentList.mode].unitCounts,
+      validationIssues,
+    }),
+    [state.currentList, rankLimits, validationIssues],
+  );
+
   if (error) return <ErrorFallback error={error} message={message} />;
   if (status === "loading") return <LoadingWidget />;
   if (status === "idle") {
     return (
       <ListContext.Provider
         value={{
+          ...value,
           ...unitProps,
           ...commandProps,
           ...battleProps,
@@ -702,8 +728,7 @@ function ListProvider({
           ...modalProps,
           ...viewProps,
           ...messageProps,
-          validationIssues,
-          rankLimits: rankLimits ?? legionModes[currentList.mode].unitCounts,
+          listActions,
         }}
       >
         {children}

@@ -3,6 +3,7 @@ import {CardName, UnitAvatar, UnitPoints} from "@legion-hq/components";
 import {UnitActions} from "./UnitActions";
 import {UnitUpgrades} from "./UnitUpgrades";
 import {Counterpart, LegionCard} from "@legion-hq/types";
+import {useCardZoom} from "@legion-hq/hooks/list/useCardZoom";
 
 const styles: Record<string, React.CSSProperties> = {
   unitRow: {
@@ -33,9 +34,7 @@ type Props = {
   counterpart: Counterpart;
   counterpartId: string;
   counterpartCard: LegionCard;
-  handleCardZoom: () => void;
   handleRemoveCounterpart: () => void;
-  zoomUpgradeHandlers: Array<() => void>;
   swapUpgradeHandlers: Array<() => void>;
   addUpgradeHandlers: Array<() => void>;
   deleteUpgradeHandlers: Array<() => void>;
@@ -47,17 +46,21 @@ export function CounterpartUnit({
   counterpart,
   counterpartId,
   counterpartCard,
-  handleCardZoom,
   handleRemoveCounterpart,
-  zoomUpgradeHandlers,
   swapUpgradeHandlers,
   addUpgradeHandlers,
   deleteUpgradeHandlers,
   changeLoadoutHandlers,
   deleteLoadoutHandlers,
 }: Props) {
+  const {handleCardZoom} = useCardZoom();
+
   const avatar = (
-    <UnitAvatar key="avatar" id={counterpartId} handleClick={handleCardZoom} />
+    <UnitAvatar
+      key="avatar"
+      id={counterpartId}
+      handleClick={() => handleCardZoom(counterpartId)}
+    />
   );
   const name = <CardName key="name" id={counterpartId} />;
   const points = <UnitPoints key="points" unit={counterpart} />;
@@ -68,7 +71,6 @@ export function CounterpartUnit({
       upgradesEquipped={counterpart.upgradesEquipped}
       totalUpgradeBar={counterpartCard.upgradeBar}
       loadoutUpgrades={counterpart.loadoutUpgrades}
-      zoomUpgradeHandlers={zoomUpgradeHandlers}
       swapUpgradeHandlers={swapUpgradeHandlers}
       addUpgradeHandlers={addUpgradeHandlers}
       deleteUpgradeHandlers={deleteUpgradeHandlers}

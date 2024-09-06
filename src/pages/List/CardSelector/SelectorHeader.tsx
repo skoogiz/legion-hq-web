@@ -1,6 +1,7 @@
 import {Paper, IconButton, styled} from "@mui/material";
 import {Clear as ClearIcon} from "@mui/icons-material";
-import {DISPLAY, ListAction} from "@legion-hq/state/list";
+import {DISPLAY} from "@legion-hq/state/list";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
 
 const Container = styled(Paper)`
   top: 0;
@@ -15,19 +16,14 @@ const Container = styled(Paper)`
 `;
 
 type Props = {
-  headerContent: JSX.Element;
-  cardPaneFilter: ListAction;
-  setCardPaneFilter: (action: ListAction) => void;
+  children: React.ReactNode;
 };
 
-export function SelectorHeader({
-  headerContent,
-  // cardPaneFilter,
-  setCardPaneFilter,
-}: Props) {
+export function SelectorHeader({children}: Props) {
+  const {setCardPaneFilter} = useListBuilder();
   return (
     <Container>
-      {headerContent}
+      {children}
       <div style={{flexGrow: 1}} />
       <IconButton onClick={() => setCardPaneFilter({action: DISPLAY})}>
         <ClearIcon />

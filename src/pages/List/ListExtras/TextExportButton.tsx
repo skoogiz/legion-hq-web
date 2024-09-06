@@ -1,4 +1,4 @@
-import React, {useState, useEffect, SyntheticEvent} from "react";
+import * as React from "react";
 import {
   useMediaQuery,
   Chip,
@@ -58,7 +58,7 @@ function TabPanel({
 type DialogProps = {
   tabValue: number;
   content: string;
-  handleChangeTextType: (e: SyntheticEvent, value: number) => void;
+  handleChangeTextType: (value: number) => void;
   handleChangeListText: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -75,7 +75,10 @@ function DialogContent({
           variant="scrollable"
           indicatorColor="primary"
           value={tabValue}
-          onChange={handleChangeTextType}
+          onChange={(event, value) => {
+            event.preventDefault();
+            handleChangeTextType(value);
+          }}
         >
           <Tab label="Standard" />
           <Tab label="Minimal" />
@@ -128,13 +131,13 @@ type Props = {
 
 export function TextExportButton({currentList}: Props) {
   const theme = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
-  const [textType, setTextType] = useState(0);
-  const [listText, setListText] = useState("");
-  const handleChangeTextType = (e: SyntheticEvent, value: number) => setTextType(value);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [textType, setTextType] = React.useState(0);
+  const [listText, setListText] = React.useState("");
+  const handleChangeTextType = (value: number) => setTextType(value);
   const handleChangeListText = (e: React.ChangeEvent<HTMLInputElement>) =>
     setListText(e.target.value);
-  useEffect(() => {
+  React.useEffect(() => {
     setListText(generateListText(textType, currentList));
   }, [currentList, isOpen, textType]);
   const isFullscreen = useMediaQuery(theme.breakpoints.down("sm"));

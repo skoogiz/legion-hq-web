@@ -2,6 +2,7 @@ import {UpgradeType} from "@legion-hq/types";
 import {AddCounterpartButton} from "./AddCounterpartButton";
 import {AddUpgradeButton} from "./AddUpgradeButton";
 import {UpgradeChip} from "./UpgradeChip";
+import {useCardZoom} from "@legion-hq/hooks/list/useCardZoom";
 
 type Props = {
   counterpartId?: string;
@@ -10,7 +11,6 @@ type Props = {
   totalUpgradeBar: UpgradeType[];
   loadoutUpgrades: Array<string | null>;
   addCounterpartHandler?: () => void;
-  zoomUpgradeHandlers: Array<() => void>;
   swapUpgradeHandlers: Array<() => void>;
   addUpgradeHandlers: Array<() => void>;
   deleteUpgradeHandlers: Array<() => void>;
@@ -25,13 +25,14 @@ export function UnitUpgrades({
   totalUpgradeBar,
   loadoutUpgrades,
   addCounterpartHandler,
-  zoomUpgradeHandlers,
   swapUpgradeHandlers,
   addUpgradeHandlers,
   deleteUpgradeHandlers,
   changeLoadoutHandlers,
   deleteLoadoutHandlers,
 }: Props) {
+  const {getCardZoomCallback} = useCardZoom();
+
   const addCounterpartButtons: JSX.Element[] = [];
   const addUpgradesButtons: JSX.Element[] = [];
   const upgradeChips: JSX.Element[] = [];
@@ -55,7 +56,7 @@ export function UnitUpgrades({
           loadoutId={
             hasLoadout ? (loadoutUpgrades[upgradeIndex] ?? undefined) : undefined
           }
-          handleClick={zoomUpgradeHandlers[upgradeIndex]}
+          handleClick={getCardZoomCallback(upgradeId)}
           handleSwap={swapUpgradeHandlers[upgradeIndex]}
           handleDelete={deleteUpgradeHandlers[upgradeIndex]}
           handleChangeLoadout={changeLoadoutHandlers[upgradeIndex]}

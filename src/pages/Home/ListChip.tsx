@@ -13,20 +13,27 @@ import DataContext from "@legion-hq/context/DataContext";
 import urls from "@legion-hq/constants/urls";
 import factions from "@legion-hq/constants/factions";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
+import {LegionCard, ListTemplate} from "@legion-hq/types";
 
-function findFirstCommanderId(list, cards) {
+function findFirstCommanderId(list: ListTemplate, cards: Record<string, LegionCard>) {
   for (let i = 0; i < list.units.length; i++) {
     const card = cards[list.units[i].unitId];
-    if (card.rank === "commander") return card.id;
+    if (card.rank === "commander") return card;
   }
   return undefined;
 }
 
-function ListChip({userList, deleteUserList}) {
+type Props = {
+  userList: ListTemplate;
+  deleteUserList: (id: string) => void;
+};
+
+export function ListChip({userList, deleteUserList}: Props) {
   const {goToPage} = React.useContext(DataContext);
   const {cards} = useCards();
-  const [anchorEl, setAnchorEl] = React.useState();
-  const handleOpenDeleteMenu = (event) => setAnchorEl(event.currentTarget);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>();
+  const handleOpenDeleteMenu = (event: React.MouseEvent<HTMLElement>) =>
+    setAnchorEl(event.currentTarget);
   const handleCloseDeleteMenu = () => setAnchorEl(null);
   if (userList.faction in factions) {
     const factionTheme = createTheme({
@@ -35,7 +42,7 @@ function ListChip({userList, deleteUserList}) {
         secondary: {main: factions[userList.faction].secondaryColor},
       },
     });
-    const card = cards[findFirstCommanderId(userList, cards)];
+    const card = findFirstCommanderId(userList, cards);
     return (
       <React.Fragment>
         <ThemeProvider theme={factionTheme}>
@@ -79,7 +86,7 @@ function ListChip({userList, deleteUserList}) {
           <MenuItem
             onClick={() => {
               handleCloseDeleteMenu();
-              deleteUserList(userList.listId);
+              if (userList.listId) deleteUserList(userList.listId);
             }}
           >
             Yes
@@ -90,5 +97,3 @@ function ListChip({userList, deleteUserList}) {
     );
   } else return <div />;
 }
-
-export default ListChip;

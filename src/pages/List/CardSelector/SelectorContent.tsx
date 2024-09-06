@@ -3,6 +3,7 @@ import {Collapse, Typography, Divider, IconButton} from "@mui/material";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
 import {LegionCard} from "@legion-hq/components";
 import {ListActionType} from "@legion-hq/state/list";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
 
 const styles: Record<string, React.CSSProperties> = {
   rowContainerWrap: {
@@ -48,7 +49,6 @@ type Props = {
   validIds?: string[];
   invalidIds?: string[];
   handleClick: (id: string) => void;
-  handleCardZoom: (id: string) => void;
 };
 
 export function SelectorContent({
@@ -56,8 +56,8 @@ export function SelectorContent({
   validIds = [],
   invalidIds = [],
   handleClick,
-  handleCardZoom,
 }: Props) {
+  const {handleCardZoom} = useListBuilder();
   const [isExpanded, setIsExpanded] = React.useState(false);
   const handleExpandClick = () => setIsExpanded(!isExpanded);
   if (validIds.length === 0) {

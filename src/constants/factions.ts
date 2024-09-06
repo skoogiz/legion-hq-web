@@ -8,7 +8,7 @@ import separatistsWhite from "@legion-hq/assets/factions/separatistsWhite.svg";
 import separatistsBlack from "@legion-hq/assets/factions/separatistsBlack.svg";
 import fringeWhite from "@legion-hq/assets/factions/fringeWhite.svg";
 import fringeBlack from "@legion-hq/assets/factions/fringeBlack.svg";
-import type {FactionInfo} from "@legion-hq/types";
+import type {FactionInfo, FactionType} from "@legion-hq/types";
 
 const factions: Record<string, FactionInfo> = {
   rebels: {
@@ -74,5 +74,8 @@ const factions: Record<string, FactionInfo> = {
     },
   },
 };
+
+export const getFactionTypes = (): FactionType[] =>
+  Object.keys(factions) as FactionType[];
 
 export default factions;

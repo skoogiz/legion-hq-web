@@ -1,13 +1,19 @@
-import React from "react";
+import * as React from "react";
 import {Typography, IconButton} from "@mui/material";
 import {Add as AddIcon, Remove as MinusIcon} from "@mui/icons-material";
 
-function StackController({
+type Props = {
+  stackSize: number;
+  handleIncrementStackSize: () => void;
+  handleDecrementStackSize: () => void;
+};
+
+export function StackController({
   stackSize,
   handleIncrementStackSize,
   handleDecrementStackSize,
-}) {
-  const rowContainerStyle = {
+}: Props) {
+  const rowContainerStyle: React.CSSProperties = {
     display: "flex",
     flexWrap: "nowrap",
     alignItems: "center",
@@ -36,5 +42,3 @@ function StackController({
     </div>
   );
 }
-
-export default StackController;

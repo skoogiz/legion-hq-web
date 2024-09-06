@@ -11,6 +11,7 @@ import {
   LOADOUT_UPGRADE,
   UNIT_UPGRADE,
 } from "@legion-hq/state/list";
+import {noop} from "lodash";
 
 export function ListUnits() {
   const {
@@ -18,7 +19,6 @@ export function ListUnits() {
     isKillPointMode,
     setCardPaneFilter,
     handleUnequipUpgrade,
-    handleCardZoom,
     handleIncrementUnit,
     handleDecrementUnit,
     handleRemoveCounterpart,
@@ -32,14 +32,13 @@ export function ListUnits() {
   const items = units.map((unit, unitIndex) => {
     const unitCard = cards[unit.unitId];
     const {counterpartId} = unitCard;
-    const counterpartCard = cards[counterpartId];
+    const counterpartCard = counterpartId ? cards[counterpartId] : undefined;
     const {loadoutUpgrades} = unit;
     const hasLoadout = loadoutUpgrades ? loadoutUpgrades.length > 0 : false;
     let counterpartUnit;
     let addCounterpartHandler;
     let removeCounterpartHandler;
     const addUpgradeHandlers = new Array<() => void>();
-    const zoomUpgradeHandlers = new Array<() => void>();
     const swapUpgradeHandlers = new Array<() => void>();
     const deleteUpgradeHandlers = new Array<() => void>();
     const changeLoadoutHandlers = new Array<() => void>();
@@ -68,10 +67,14 @@ export function ListUnits() {
             counterpartId,
           });
       }
-    } else if (counterpartId && uniques.includes(counterpartId) && unit.counterpart) {
+    } else if (
+      counterpartId &&
+      counterpartCard &&
+      uniques.includes(counterpartId) &&
+      unit.counterpart
+    ) {
       const cAddUpgradeHandlers = new Array<() => void>();
       const cSwapUpgradeHandlers = new Array<() => void>();
-      const cZoomUpgradeHandlers = new Array<() => void>();
       const cDeleteUpgradeHandlers = new Array<() => void>();
       const cChangeLoadoutHandlers = new Array<() => void>();
       const cDeleteLoadoutHandlers = new Array<() => void>();
@@ -81,7 +84,6 @@ export function ListUnits() {
       counterpart.upgradesEquipped.forEach((upgradeId, upgradeIndex) => {
         const upgradeType = counterpartCard.upgradeBar[upgradeIndex];
         if (upgradeId) {
-          cZoomUpgradeHandlers.push(() => handleCardZoom(upgradeId));
           cSwapUpgradeHandlers.push(() =>
             setCardPaneFilter({
               action: COUNTERPART_UPGRADE,
@@ -93,7 +95,7 @@ export function ListUnits() {
               additionalUpgradeSlots: [],
             }),
           );
-          cAddUpgradeHandlers.push(undefined);
+          cAddUpgradeHandlers.push(noop);
           cDeleteUpgradeHandlers.push(() =>
             handleUnequipUpgrade(COUNTERPART_UPGRADE, unitIndex, upgradeIndex),
           );
@@ -124,11 +126,10 @@ export function ListUnits() {
                 additionalUpgradeSlots: [],
               }),
             );
-            cDeleteLoadoutHandlers.push(undefined);
+            cDeleteLoadoutHandlers.push(noop);
           }
         } else {
-          cZoomUpgradeHandlers.push(undefined);
-          cSwapUpgradeHandlers.push(undefined);
+          cSwapUpgradeHandlers.push(noop);
           cAddUpgradeHandlers.push(() =>
             setCardPaneFilter({
               action: COUNTERPART_UPGRADE,
@@ -140,10 +141,10 @@ export function ListUnits() {
               additionalUpgradeSlots: [],
             }),
           );
-          cDeleteUpgradeHandlers.push(undefined);
+          cDeleteUpgradeHandlers.push(noop);
           if (hasLoadout) {
-            cChangeLoadoutHandlers.push(undefined);
-            cDeleteLoadoutHandlers.push(undefined);
+            cChangeLoadoutHandlers.push(noop);
+            cDeleteLoadoutHandlers.push(noop);
           }
         }
       });
@@ -152,9 +153,7 @@ export function ListUnits() {
           counterpart={unit.counterpart}
           counterpartId={counterpartId}
           counterpartCard={counterpartCard}
-          handleCardZoom={() => handleCardZoom(counterpartId)}
           handleRemoveCounterpart={removeCounterpartHandler}
-          zoomUpgradeHandlers={cZoomUpgradeHandlers}
           swapUpgradeHandlers={cSwapUpgradeHandlers}
           addUpgradeHandlers={cAddUpgradeHandlers}
           deleteUpgradeHandlers={cDeleteUpgradeHandlers}
@@ -167,8 +166,7 @@ export function ListUnits() {
     unit.upgradesEquipped.forEach((upgradeId, upgradeIndex) => {
       const upgradeType = totalUpgradeBar[upgradeIndex];
       if (upgradeId) {
-        zoomUpgradeHandlers.push(() => handleCardZoom(upgradeId));
-        addUpgradeHandlers.push(undefined);
+        addUpgradeHandlers.push(noop);
         swapUpgradeHandlers.push(() =>
           setCardPaneFilter({
             action: UNIT_UPGRADE,
@@ -211,11 +209,10 @@ export function ListUnits() {
               additionalUpgradeSlots: unit.additionalUpgradeSlots,
             }),
           );
-          deleteLoadoutHandlers.push(undefined);
+          deleteLoadoutHandlers.push(noop);
         }
       } else {
-        zoomUpgradeHandlers.push(undefined);
-        swapUpgradeHandlers.push(undefined);
+        swapUpgradeHandlers.push(noop);
         addUpgradeHandlers.push(() =>
           setCardPaneFilter({
             action: UNIT_UPGRADE,
@@ -228,10 +225,10 @@ export function ListUnits() {
             additionalUpgradeSlots: unit.additionalUpgradeSlots,
           }),
         );
-        deleteUpgradeHandlers.push(undefined);
+        deleteUpgradeHandlers.push(noop);
         if (hasLoadout) {
-          changeLoadoutHandlers.push(undefined);
-          deleteLoadoutHandlers.push(undefined);
+          changeLoadoutHandlers.push(noop);
+          deleteLoadoutHandlers.push(noop);
         }
       }
     });
@@ -240,13 +237,12 @@ export function ListUnits() {
       component: (
         <ListUnit
           unit={unit}
-          uniques={uniques}
+          // uniques={uniques}
           unitCard={unitCard}
-          unitIndex={unitIndex}
+          // unitIndex={unitIndex}
           counterpartId={counterpartId}
           counterpartUnit={counterpartUnit}
           isKillPointMode={isKillPointMode}
-          handleCardZoom={() => handleCardZoom(unit.unitId)}
           handleDecrementUnit={() => handleDecrementUnit(unitIndex)}
           handleIncrementUnit={() => handleIncrementUnit(unitIndex)}
           handleAddKillPoints={() => handleAddKillPoints(unit.totalUnitCost / unit.count)}
@@ -254,8 +250,7 @@ export function ListUnits() {
             handleAddKillPoints((-1 * unit.totalUnitCost) / unit.count)
           }
           addCounterpartHandler={addCounterpartHandler}
-          removeCounterpartHandler={removeCounterpartHandler}
-          zoomUpgradeHandlers={zoomUpgradeHandlers}
+          // removeCounterpartHandler={removeCounterpartHandler}
           swapUpgradeHandlers={swapUpgradeHandlers}
           addUpgradeHandlers={addUpgradeHandlers}
           deleteUpgradeHandlers={deleteUpgradeHandlers}

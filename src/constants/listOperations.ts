@@ -6,6 +6,7 @@ import {CardService} from "@legion-hq/data-access/services";
 import {
   CommandCard,
   Counterpart,
+  EquipedUpgrades,
   FactionType,
   LegionCard,
   LegionCardWithConditions,
@@ -30,6 +31,10 @@ import {
 import {List} from "@legion-hq/types/list.class";
 
 const {cards, cardIdsByType, costSupplier} = CardService.getInstance();
+
+type ValidationResult = {validIds: string[]; invalidIds: string[]};
+
+export const EMPTY_VALIDATION: ValidationResult = {validIds: [], invalidIds: []};
 
 function rehashList(list: ListTemplate) {
   const unitObjectStrings = [];
@@ -804,7 +809,7 @@ function deleteItem<T>(items: Array<T>, i: number): T[] {
   return items.slice(0, i).concat(items.slice(i + 1, items.length));
 }
 
-function changeListTitle(list: ListTemplate, title: string) {
+function changeListTitle(list: ListTemplate, title: string): ListTemplate {
   return {...list, title: title.substring(0, 30)};
 }
 
@@ -969,7 +974,11 @@ function unequipCounterpartUpgrade(
   return consolidate(list);
 }
 
-function addCounterpart(list: ListTemplate, unitIndex: number, counterpartId: string) {
+function addCounterpart(
+  list: ListTemplate,
+  unitIndex: number,
+  counterpartId: string,
+): ListTemplate {
   const counterpartCard = cards[counterpartId];
   const unit = list.units[unitIndex];
   const unitCard = cards[unit.unitId];
@@ -986,7 +995,7 @@ function addCounterpart(list: ListTemplate, unitIndex: number, counterpartId: st
   return consolidate(list);
 }
 
-function removeCounterpart(list: ListTemplate, unitIndex: number) {
+function removeCounterpart(list: ListTemplate, unitIndex: number): ListTemplate {
   const counterpart = list.units[unitIndex].counterpart as Counterpart;
   list.uniques = deleteItem(
     list.uniques,
@@ -1180,18 +1189,17 @@ function getEquippableLoadoutUpgrades(
   upgradeType: UpgradeType,
   id: string,
   upgradeIndex: number,
-  upgradesEquipped: string[],
+  upgradesEquipped: EquipedUpgrades,
   additionalUpgradeSlots: UpgradeType[],
-) {
-  const upgrades = getEquippableUpgrades(
+): ValidationResult {
+  if (!upgradesEquipped[upgradeIndex]) return EMPTY_VALIDATION;
+  const {validIds, invalidIds} = getEquippableUpgrades(
     list,
     upgradeType,
     id,
     upgradesEquipped,
     additionalUpgradeSlots,
   );
-  const validIds = upgrades.validIds ?? [];
-  const invalidIds = upgrades.invalidIds ?? [];
   const validLoadoutUpgradeIds = [];
   const invalidLoadoutUpgradeIds = [...invalidIds];
   const parentUpgradeCard = cards[upgradesEquipped[upgradeIndex]];
@@ -1265,7 +1273,7 @@ function sortCommandIds(cardIds: string[]) {
   });
 }
 
-function getEligibleBattlesToAdd(list: ListTemplate, type: string) {
+function getEligibleBattlesToAdd(list: ListTemplate, type: string): ValidationResult {
   const validIds = new Array<string>();
   const invalidIds = new Array<string>();
   const scenarioMissionIds = ["Df", "Oe"];
@@ -1275,7 +1283,7 @@ function getEligibleBattlesToAdd(list: ListTemplate, type: string) {
   if (type === "objective") currentCards = list.objectiveCards;
   else if (type === "deployment") currentCards = list.deploymentCards;
   else if (type === "condition") currentCards = list.conditionCards;
-  else return;
+  else return EMPTY_VALIDATION;
   cardIdsByType["battle"].forEach((id) => {
     const card = cards[id];
     // if (card.cardType !== 'battle') return;
@@ -1403,12 +1411,9 @@ function getEquippableUpgrades(
   list: ListTemplate,
   upgradeType: UpgradeType,
   id: string,
-  upgradesEquipped: string[],
+  upgradesEquipped: EquipedUpgrades,
   additionalUpgradeSlots: UpgradeType[],
-): {
-  validIds: string[];
-  invalidIds: string[];
-} {
+): ValidationResult {
   const impRemnantUpgrades = ["ej", "ek", "fv", "iy", "fu", "gm", "gl", "em", "en", "ja"];
   const validUpgradeIds = [];
   const invalidUpgradeIds = [];

@@ -1,5 +1,5 @@
-import {AppSettings, AppSettingType} from "@legion-hq/constants/settings";
 import * as React from "react";
+import {AppSettings, AppSettingType} from "@legion-hq/constants/settings";
 import {AppSettingPayload} from "./App.types";
 
 export enum ActionType {

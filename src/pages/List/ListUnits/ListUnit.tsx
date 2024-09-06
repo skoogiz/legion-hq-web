@@ -4,6 +4,7 @@ import {UnitActions} from "./UnitActions";
 import {UnitUpgrades} from "./UnitUpgrades";
 import {UnitFlaw} from "./UnitFlaw";
 import {LegionCard, ListUnit as ListUnitType} from "@legion-hq/types";
+import {useCardZoom} from "@legion-hq/hooks/list/useCardZoom";
 
 const styles: Record<string, React.CSSProperties> = {
   unitRow: {
@@ -36,14 +37,12 @@ type Props = {
   counterpartId?: string;
   counterpartUnit?: JSX.Element;
   isKillPointMode: boolean;
-  handleCardZoom: () => void;
   handleDecrementUnit: () => void;
   handleIncrementUnit: () => void;
   handleAddKillPoints: () => void;
   handleRemoveKillPoints: () => void;
-  addCounterpartHandler: () => void;
-  removeCounterpartHandler: () => void;
-  zoomUpgradeHandlers: Array<() => void>;
+  addCounterpartHandler?: () => void;
+  // removeCounterpartHandler: () => void;
   swapUpgradeHandlers: Array<() => void>;
   addUpgradeHandlers: Array<() => void>;
   deleteUpgradeHandlers: Array<() => void>;
@@ -57,26 +56,26 @@ export function ListUnit({
   counterpartId,
   counterpartUnit,
   isKillPointMode,
-  handleCardZoom,
   handleDecrementUnit,
   handleIncrementUnit,
   handleAddKillPoints,
   handleRemoveKillPoints,
   addCounterpartHandler,
-  removeCounterpartHandler,
-  zoomUpgradeHandlers,
+  // removeCounterpartHandler,
   swapUpgradeHandlers,
   addUpgradeHandlers,
   deleteUpgradeHandlers,
   changeLoadoutHandlers,
   deleteLoadoutHandlers,
 }: Props) {
+  const {handleCardZoom} = useCardZoom();
+
   const avatar = (
     <UnitAvatar
       key="avatar"
       id={unitCard.id}
       count={unit.count}
-      handleClick={handleCardZoom}
+      handleClick={() => handleCardZoom(unitCard.id)}
     />
   );
   const name = <CardName key="name" id={unitCard.id} />;
@@ -103,7 +102,6 @@ export function ListUnit({
       addCounterpartHandler={addCounterpartHandler}
       // removeCounterpartHandler={removeCounterpartHandler}
       swapUpgradeHandlers={swapUpgradeHandlers}
-      zoomUpgradeHandlers={zoomUpgradeHandlers}
       addUpgradeHandlers={addUpgradeHandlers}
       deleteUpgradeHandlers={deleteUpgradeHandlers}
       changeLoadoutHandlers={changeLoadoutHandlers}

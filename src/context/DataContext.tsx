@@ -4,20 +4,23 @@ import Axios from "axios";
 import {AlertTitle, Alert, Snackbar} from "@mui/material";
 // import ErrorFallback from '@legion-hq/common/ErrorFallback';
 import {urls} from "@legion-hq/constants";
-import {useAuth0, User} from "@auth0/auth0-react";
+import {useAuth0} from "@auth0/auth0-react";
 import auth from "@legion-hq/constants/auth";
 import {RouterLink, useRoutes} from "@legion-hq/routes";
 import {noop} from "lodash";
+import {ListTemplate} from "@legion-hq/types";
 const {returnTo} = auth.prod;
 
 type DataContextValue = {
+  auth?: Record<string, unknown>;
+  faction?: string;
   isDrawerOpen: boolean;
   userId?: string;
   routes: Record<string, RouterLink>;
-  userLists: Array<User>;
+  userLists: Array<ListTemplate>;
   goToPage: (newRoute: To) => void;
   fetchUserLists: (userId: string) => void;
-  setUserLists: (userLists: Array<User>) => void;
+  setUserLists: (userLists: Array<ListTemplate>) => void;
   setIsDrawerOpen: (open: boolean) => void;
   deleteUserList: (listId: string) => void;
   isLoginDisabled: boolean;
@@ -58,7 +61,7 @@ export function DataProvider({enableLogin, children}: Props) {
   const [error, setError] = React.useState<string | Error | undefined>();
   const [userId, setUserId] = React.useState<string | undefined>();
   const [message, setMessage] = React.useState<string | undefined>();
-  const [userLists, setUserLists] = React.useState<Array<User>>([]);
+  const [userLists, setUserLists] = React.useState<Array<ListTemplate>>([]);
 
   const {routes} = useRoutes();
 
@@ -186,6 +189,7 @@ export function DataProvider({enableLogin, children}: Props) {
 
   const value = React.useMemo(
     () => ({
+      auth,
       isDrawerOpen,
       userId,
       routes,

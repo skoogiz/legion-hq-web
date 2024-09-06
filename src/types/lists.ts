@@ -14,11 +14,13 @@ export interface Counterpart {
   counterpartId: string;
   totalUnitCost: number;
   unitObjectString: string;
-  upgradesEquipped: Array<string | null>;
-  loadoutUpgrades: Array<string | null>;
-  additionalUpgradeSlots: Array<string | null>;
+  upgradesEquipped: EquipedUpgrades;
+  loadoutUpgrades: EquipedUpgrades;
+  additionalUpgradeSlots: Array<UpgradeType>;
   hasUniques?: boolean;
 }
+
+export type EquipedUpgrades = Array<string | null>;
 
 export interface ListUnit {
   unitId: string;
@@ -26,8 +28,8 @@ export interface ListUnit {
   hasUniques: boolean;
   totalUnitCost: number;
   unitObjectString: string;
-  upgradesEquipped: Array<string | null>;
-  loadoutUpgrades: Array<string | null>;
+  upgradesEquipped: EquipedUpgrades;
+  loadoutUpgrades: EquipedUpgrades;
   additionalUpgradeSlots: Array<UpgradeType>;
   validationIssues?: Array<ListIssue>;
 

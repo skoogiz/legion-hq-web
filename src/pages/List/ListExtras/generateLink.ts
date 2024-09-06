@@ -10,8 +10,8 @@ function generateLink(list: ListTemplate) {
     });
     if (unit.loadoutUpgrades && unit.loadoutUpgrades.length > 0) {
       urlString += "_";
-      unit.loadoutUpgrades.forEach((upgradeId, i) => {
-        urlString += unit.loadoutUpgrades[i] ? `${unit.loadoutUpgrades[i]}` : "0";
+      unit.loadoutUpgrades.forEach((upgradeId) => {
+        urlString += upgradeId ? `${upgradeId}` : "0";
       });
     }
     if (unit.counterpart) {
@@ -22,10 +22,8 @@ function generateLink(list: ListTemplate) {
       });
       if (counterpart.loadoutUpgrades && counterpart.loadoutUpgrades.length > 0) {
         urlString += "_";
-        counterpart.loadoutUpgrades.forEach((upgradeId, i) => {
-          urlString += counterpart.loadoutUpgrades[i]
-            ? counterpart.loadoutUpgrades[i]
-            : "0";
+        counterpart.loadoutUpgrades.forEach((upgradeId) => {
+          urlString += upgradeId ? upgradeId : "0";
         });
       }
     }

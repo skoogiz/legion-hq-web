@@ -1,38 +1,26 @@
 import * as React from "react";
-import clsx from "clsx";
 import {ErrorBoundary} from "react-error-boundary";
 import {Grid, Typography, Container, Fade, Button, Collapse, Box} from "@mui/material";
-import {makeStyles} from "@mui/styles";
 import {
   Announcement as NewsIcon,
   ExpandMore as ExpandMoreIcon,
 } from "@mui/icons-material";
 import {LoginButton} from "./LoginButton";
-import ListChip from "./ListChip";
+import {ListChip} from "./ListChip";
 import {FactionChip} from "./FactionChip";
-import ListChipDropdown from "./ListChipDropdown";
+import {ListChipDropdown} from "./ListChipDropdown";
 import {ErrorFallback} from "@legion-hq/components";
 import DataContext from "@legion-hq/context/DataContext";
-import factions from "@legion-hq/constants/factions";
+import * as Factions from "@legion-hq/constants/factions";
 import ftLogoLight from "@legion-hq/assets/ftLogoLight.png";
 import ftLogoDark from "@legion-hq/assets/ftLogoDark.png";
 import lhqLogoLight from "@legion-hq/assets/lhqLogoLight.png";
 import lhqLogoDark from "@legion-hq/assets/lhqLogoDark.png";
 import {useNews} from "@legion-hq/data-access/hooks/useNews";
 import {useSettings} from "@legion-hq/hooks/app/useSettings";
+import {ListTemplate} from "@legion-hq/types";
 
-const useStyles = makeStyles((theme) => ({
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {transform: "rotate(180deg)"},
-}));
-
-function Post({title, date, body}) {
+function Post({title, date, body}: {title: string; date: string; body: string}) {
   return (
     <div style={{maxWidth: 400}}>
       <Typography variant="body1">{title}</Typography>
@@ -45,14 +33,19 @@ function Post({title, date, body}) {
 }
 
 function Home() {
-  const {auth, userId, userLists, fetchUserLists, deleteUserList, isLoginDisabled} =
-    React.useContext(DataContext);
+  const {
+    // auth,
+    userId,
+    userLists,
+    fetchUserLists,
+    deleteUserList,
+    isLoginDisabled,
+  } = React.useContext(DataContext);
   const {themeMode} = useSettings();
   const {newsPosts} = useNews();
-  const classes = useStyles();
-  const listChips = {};
+  const listChips: Record<string, Array<ListTemplate>> = {};
   const [isNewsOpen, setIsNewsOpen] = React.useState(true);
-  Object.keys(factions).forEach((faction) => (listChips[faction] = []));
+  Factions.getFactionTypes().forEach((faction) => (listChips[faction] = []));
   if (userLists) {
     userLists.forEach((userList) => {
       if (userList.faction in listChips) {
@@ -107,8 +100,12 @@ function Home() {
                   Latest news
                   <ExpandMoreIcon
                     fontSize="small"
-                    className={clsx(classes.expand, {
-                      [classes.expandOpen]: isNewsOpen,
+                    sx={(theme) => ({
+                      transform: isNewsOpen ? "rotate(180deg)" : "rotate(0deg)",
+                      marginLeft: "auto",
+                      transition: theme.transitions.create("transform", {
+                        duration: theme.transitions.duration.shortest,
+                      }),
                     })}
                   />
                 </Button>
@@ -127,7 +124,7 @@ function Home() {
               <Grid item>
                 <div style={{height: 10}} />
               </Grid>
-              {Object.keys(factions).map((faction) => (
+              {Factions.getFactionTypes().map((faction) => (
                 <Grid
                   key={faction}
                   item
@@ -141,14 +138,13 @@ function Home() {
                     <FactionChip faction={faction} />
                   </Grid>
                   {listChips[faction].length > 4 ? (
-                    <ListChipDropdown
-                      faction={faction}
-                      chips={listChips[faction].map((userList) => (
+                    <ListChipDropdown faction={faction}>
+                      {listChips[faction].map((userList) => (
                         <Grid item key={userList.listId}>
                           <ListChip userList={userList} deleteUserList={deleteUserList} />
                         </Grid>
                       ))}
-                    />
+                    </ListChipDropdown>
                   ) : (
                     listChips[faction].map((userList) => (
                       <Grid item key={userList.listId}>
@@ -161,7 +157,7 @@ function Home() {
               <Grid item>
                 <div style={{height: 10}} />
               </Grid>
-              <Grid item>{!isLoginDisabled && <LoginButton auth={auth} />}</Grid>
+              <Grid item>{!isLoginDisabled && <LoginButton />}</Grid>
               <Grid item>
                 <div style={{height: 10}} />
               </Grid>

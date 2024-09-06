@@ -1,6 +1,7 @@
 import {Interactions} from "@legion-hq/constants/cardInteractions";
 import {ListTemplate} from "./lists";
 import {UnitImpl} from "./listUnit.class";
+import {BattleType} from "./cards";
 
 interface ListData extends ListTemplate {
   units: UnitImpl[];
@@ -66,6 +67,8 @@ export class List implements ListTemplate {
   get commandCards() {
     return this.data.commandCards;
   }
+
+  // Battle cards
   get objectiveCards() {
     return this.data.objectiveCards;
   }
@@ -75,6 +78,19 @@ export class List implements ListTemplate {
   get deploymentCards() {
     return this.data.deploymentCards;
   }
+  getBattleCardsByType = (type: BattleType) => {
+    switch (type) {
+      case "condition":
+        return this.conditionCards;
+      case "deployment":
+        return this.deploymentCards;
+      case "objective":
+        return this.objectiveCards;
+      default:
+        return [];
+    }
+  };
+
   // List of cardIds of unique personas.
   get uniques() {
     return this.data.uniques;

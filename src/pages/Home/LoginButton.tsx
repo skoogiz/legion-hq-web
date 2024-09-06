@@ -3,13 +3,14 @@ import {Button} from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import {LargerTooltip} from "@legion-hq/components";
 
-type Props = {
-  auth: unknown;
-};
+// type Props = {
+//   auth?: Record<string, unknown>;
+// };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function LoginButton({auth}: Props) {
-  const {isLoginDisabled, loginTooltipText, loginButtonText, loginHandler} =
+// export function LoginButton({auth}: Props) {
+export function LoginButton() {
+  const {/* auth, */ isLoginDisabled, loginTooltipText, loginButtonText, loginHandler} =
     React.useContext(DataContext);
   return (
     <LargerTooltip arrow title={loginTooltipText}>

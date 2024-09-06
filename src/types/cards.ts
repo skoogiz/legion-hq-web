@@ -130,3 +130,5 @@ export interface CommandCard extends CardBase {
   keywords: string[];
   battleForce?: string;
 }
+
+export type BattleType = "objective" | "deployment" | "condition";
