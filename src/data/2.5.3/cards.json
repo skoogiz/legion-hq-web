@@ -9961,7 +9961,10 @@
       "gear",
       "armament"
     ],
-    "history": []
+    "history": [],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AB": {
     "id": "AB",
@@ -9975,7 +9978,10 @@
     "keywords": [
       "Barrage",
       "Steady"
-    ]
+    ],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AC": {
     "id": "AC",
@@ -9988,7 +9994,10 @@
     "faction": "",
     "keywords": [
       "Inspire"
-    ]
+    ],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AD": {
     "id": "AD",
@@ -10002,7 +10011,10 @@
     "keywords": [
       "Tactical",
       "Nimble"
-    ]
+    ],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AE": {
     "id": "AE",
@@ -10015,7 +10027,10 @@
     "faction": "",
     "keywords": [
       "Suppressive"
-    ]
+    ],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AF": {
     "id": "AF",
@@ -10026,7 +10041,10 @@
     "imageName": "Man the Guns.jpeg",
     "products": [],
     "faction": "",
-    "keywords": []
+    "keywords": [],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AG": {
     "id": "AG",
@@ -10040,7 +10058,10 @@
     "keywords": [
       "Dauntless",
       "Steady"
-    ]
+    ],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AH": {
     "id": "AH",
@@ -10055,7 +10076,10 @@
       "Infiltrate",
       "Scout",
       "Low Profile"
-    ]
+    ],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AI": {
     "id": "AI",
@@ -10066,7 +10090,10 @@
     "imageName": "Surgical Strike.jpeg",
     "products": [],
     "faction": "",
-    "keywords": []
+    "keywords": [],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AJ": {
     "id": "AJ",
@@ -10077,7 +10104,10 @@
     "imageName": "Tank Shock.jpeg",
     "products": [],
     "faction": "",
-    "keywords": []
+    "keywords": [],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "AK": {
     "id": "AK",
@@ -10104,7 +10134,10 @@
       "gear",
       "armament"
     ],
-    "history": []
+    "history": [],
+    "metaData": {
+      "isCustomCard": true
+    }
   },
   "qb": {
     "id": "qb",

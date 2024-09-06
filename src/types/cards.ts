@@ -33,15 +33,54 @@
 
 */
 
-import {DefenceDiceType, SurgeType} from "./constants";
+import {DefenceDiceType, FactionType, SurgeType} from "./constants";
 import {RankType} from "./units";
+import {UpgradeType} from "./upgrades";
 
-export interface LegionCard {
+export type CardHistory = {
+  date: string;
+  description: string;
+};
+
+type RequirementCondition =
+  | {cardName: string}
+  | {force: boolean}
+  | {rank: RankType}
+  | {
+      cardSubtype: string;
+    }
+  | {
+      faction: FactionType;
+    }
+  | {
+      imageName: string;
+    }
+  | {"dark side": boolean}
+  | {"light side": boolean};
+
+type RequirementOption =
+  | RequirementCondition
+  | ["AND" | "OR", RequirementOption, RequirementOption];
+
+export type Requirements =
+  | RequirementCondition
+  | [RequirementCondition]
+  | ["NOT", RequirementCondition]
+  | ["NOT", [RequirementCondition]]
+  | ["AND" | "OR", RequirementOption, RequirementOption];
+
+interface CardBase {
+  id: string;
   cardName: string;
   cardType: string;
-  displayName: string;
   cardSubtype: string;
   imageName: string;
+}
+
+export interface LegionCard extends CardBase {
+  title?: string;
+  displayName: string;
+  faction?: string;
   isUnique?: boolean;
   keywords: string[];
   rank: RankType;
@@ -52,5 +91,44 @@ export interface LegionCard {
   speed: number;
   defense: DefenceDiceType;
   surges: SurgeType[];
-  upgradeBar: string[];
+  upgradeBar: UpgradeType[];
+  metaData?: {
+    isCustomCard?: boolean;
+  };
+  history?: CardHistory[];
+  commander?: string;
+
+  flaw?: string;
+  contingencies?: number;
+  counterpartId?: string;
+  prevCost?: number;
+  flexResponse?: number;
+  equip?: string[];
+  entourage?: {
+    name: string;
+    type: RankType;
+  };
+  affiliations?: FactionType;
+  specialIssue?: string;
+  detachment?: string;
+  requirements?: Requirements;
+  additionalUpgradeSlots?: UpgradeType[];
+  battleForce?: string;
 }
+
+export type LegionCardWithConditions = LegionCard &
+  Record<UpgradeType, boolean | undefined> & {
+    "light side"?: boolean;
+    "dark side"?: boolean;
+  };
+
+export interface CommandCard extends CardBase {
+  cardSubtype: "1" | "2" | "3" | "4";
+  cardType: "command";
+  commander: string;
+  faction: string;
+  keywords: string[];
+  battleForce?: string;
+}
+
+export type BattleType = "objective" | "deployment" | "condition";

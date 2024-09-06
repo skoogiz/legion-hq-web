@@ -1,51 +1,53 @@
-import React from "react";
-import {Fade, Typography} from "@mui/material";
-import ListContext from "@legion-hq/context/ListContext";
-import {LegionCard} from "@legion-hq/common/LegionCard";
-import SelectorHeader from "./SelectorHeader";
-import SelectorContent from "./SelectorContent";
-import StackController from "./StackController";
-import ToggleButton from "./ToggleButton";
-
-function Title({title}: {title: string}) {
-  return <Typography variant="body2">{title}</Typography>;
-}
+import {Fade} from "@mui/material";
+import {SelectorHeader} from "./SelectorHeader";
+import {SelectorContent} from "./SelectorContent";
+import {StackController} from "./StackController";
+import {ToggleButton} from "./ToggleButton";
+import {
+  BATTLE,
+  COMMAND,
+  CONTINGENCY,
+  COUNTERPART,
+  COUNTERPART_LOADOUT_UPGRADE,
+  COUNTERPART_UPGRADE,
+  LOADOUT_UPGRADE,
+  UNIT,
+  UNIT_UPGRADE,
+} from "@legion-hq/state/list";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
+import {noop} from "lodash";
+import {Title} from "./CardSelectorComponents";
+import {BattleCardSelector} from "./BattleCardSelector";
+import {CommandCardSelector} from "./CommandCardSelector";
 
 export function CardSelector() {
   const {
-    currentList,
     cardPaneFilter,
-    setCardPaneFilter,
     isApplyToAll,
     stackSize,
     getEligibleUnitsToAdd,
     getEquippableUpgrades,
     getEquippableLoadoutUpgrades,
-    getEligibleCommandsToAdd,
-    getEligibleContingenciesToAdd,
-    getEligibleBattlesToAdd,
     handleAddUnit,
-    handleAddCommand,
-    handleAddContingency,
-    handleRemoveCommand,
-    handleRemoveContingency,
-    handleAddBattle,
-    handleRemoveBattle,
-    handleCardZoom,
     handleEquipUpgrade,
     handleAddCounterpart,
     handleIncrementStackSize,
     handleDecrementStackSize,
     handleToggleIsApplyToAll,
-  } = React.useContext(ListContext);
+  } = useListBuilder();
+
+  const currentList = useCurrentList();
+
   let header;
+  let content: JSX.Element | undefined;
   let clickHandler;
-  let validIds = [];
-  let invalidIds = [];
+  let validIds: string[] = [];
+  let invalidIds: string[] = [];
   const {action} = cardPaneFilter;
-  if (action === "UNIT") {
+  if (action === UNIT) {
     validIds = getEligibleUnitsToAdd(currentList, cardPaneFilter.rank);
-    clickHandler = (unitId) => handleAddUnit(unitId);
+    clickHandler = (unitId: string) => handleAddUnit(unitId);
     header = (
       <StackController
         stackSize={stackSize}
@@ -53,12 +55,12 @@ export function CardSelector() {
         handleDecrementStackSize={handleDecrementStackSize}
       />
     );
-  } else if (action === "COUNTERPART") {
+  } else if (action === COUNTERPART) {
     validIds = [cardPaneFilter.counterpartId];
-    clickHandler = (counterpartId) =>
+    clickHandler = (counterpartId: string) =>
       handleAddCounterpart(cardPaneFilter.unitIndex, counterpartId);
     header = <Title title="Add counterpart" />;
-  } else if (action === "UNIT_UPGRADE") {
+  } else if (action === UNIT_UPGRADE) {
     const upgradeIds = getEquippableUpgrades(
       currentList,
       cardPaneFilter.upgradeType,
@@ -68,9 +70,9 @@ export function CardSelector() {
     );
     validIds = upgradeIds.validIds;
     invalidIds = upgradeIds.invalidIds;
-    clickHandler = (upgradeId) =>
+    clickHandler = (upgradeId: string) =>
       handleEquipUpgrade(
-        "UNIT_UPGRADE",
+        UNIT_UPGRADE,
         cardPaneFilter.unitIndex,
         cardPaneFilter.upgradeIndex,
         upgradeId,
@@ -85,7 +87,7 @@ export function CardSelector() {
         handleChange={handleToggleIsApplyToAll}
       />
     );
-  } else if (action === "COUNTERPART_UPGRADE") {
+  } else if (action === COUNTERPART_UPGRADE) {
     const upgradeIds = getEquippableUpgrades(
       currentList,
       cardPaneFilter.upgradeType,
@@ -95,15 +97,15 @@ export function CardSelector() {
     );
     validIds = upgradeIds.validIds;
     invalidIds = upgradeIds.invalidIds;
-    clickHandler = (upgradeId) =>
+    clickHandler = (upgradeId: string) =>
       handleEquipUpgrade(
-        "COUNTERPART_UPGRADE",
+        COUNTERPART_UPGRADE,
         cardPaneFilter.unitIndex,
         cardPaneFilter.upgradeIndex,
         upgradeId,
       );
     header = <Title title="Add counterpart upgrade" />;
-  } else if (action === "LOADOUT_UPGRADE") {
+  } else if (action === LOADOUT_UPGRADE) {
     const upgradeIds = getEquippableLoadoutUpgrades(
       currentList,
       cardPaneFilter.upgradeType,
@@ -114,15 +116,15 @@ export function CardSelector() {
     );
     validIds = upgradeIds.validIds;
     invalidIds = upgradeIds.invalidIds;
-    clickHandler = (upgradeId) =>
+    clickHandler = (upgradeId: string) =>
       handleEquipUpgrade(
-        "LOADOUT_UPGRADE",
+        LOADOUT_UPGRADE,
         cardPaneFilter.unitIndex,
         cardPaneFilter.upgradeIndex,
         upgradeId,
       );
     header = <Title title="Add loadout upgrade" />;
-  } else if (action === "COUNTERPART_LOADOUT_UPGRADE") {
+  } else if (action === COUNTERPART_LOADOUT_UPGRADE) {
     const {
       upgradeType,
       counterpartId,
@@ -140,101 +142,37 @@ export function CardSelector() {
     );
     validIds = upgradeIds.validIds;
     invalidIds = upgradeIds.invalidIds;
-    clickHandler = (upgradeId) =>
+    clickHandler = (upgradeId: string) =>
       handleEquipUpgrade(
-        "COUNTERPART_LOADOUT_UPGRADE",
+        COUNTERPART_LOADOUT_UPGRADE,
         cardPaneFilter.unitIndex,
         cardPaneFilter.upgradeIndex,
         upgradeId,
       );
     header = <Title title="Add loadout upgrade" />;
-  } else if (action === "COMMAND") {
-    const commandIds = getEligibleCommandsToAdd(currentList);
-    validIds = commandIds.validIds;
-    invalidIds = commandIds.invalidIds;
-    clickHandler = (commandId) => handleAddCommand(commandId);
-    if (currentList.commandCards.length === 0) {
-      header = <Title title="Add command cards" />;
-    } else {
-      const currentCommands = currentList.commandCards.map((commandId, i) => (
-        <LegionCard
-          isBasic
-          id={commandId}
-          key={commandId}
-          handleCardZoom={() => handleCardZoom(commandId)}
-          handleDelete={() => handleRemoveCommand(i)}
-        />
-      ));
-      header = (
-        <div style={{display: "flex", alignItems: "center", flexFlow: "row wrap"}}>
-          <Title title="Commands:" style={{marginRight: 4}} />
-          {currentCommands}
-        </div>
-      );
-    }
-  } else if (action === "CONTINGENCY") {
-    const commandIds = getEligibleContingenciesToAdd(currentList);
-    validIds = commandIds.validIds;
-    invalidIds = commandIds.invalidIds;
-    clickHandler = (commandId) => handleAddContingency(commandId);
-    if (currentList.contingencies || currentList.contingencies.length === 0) {
-      header = <Title title="Add contingency cards" />;
-    } else {
-      const currentContingencies = currentList.contingencies.map((commandId, i) => (
-        <LegionCard
-          isBasic
-          id={commandId}
-          key={commandId}
-          handleCardZoom={() => handleCardZoom(commandId)}
-          handleDelete={() => handleRemoveContingency(i)}
-        />
-      ));
-      header = (
-        <div style={{display: "flex", alignItems: "center", flexFlow: "row wrap"}}>
-          <Title title="Commands:" style={{marginRight: 4}} />
-          {currentContingencies}
-        </div>
-      );
-    }
-  } else if (action === "BATTLE") {
-    const battleIds = getEligibleBattlesToAdd(currentList, cardPaneFilter.type);
-    validIds = battleIds.validIds;
-    invalidIds = battleIds.invalidIds;
-    clickHandler = (battleId) => handleAddBattle(cardPaneFilter.type, battleId);
-    const currentBattles = currentList[`${cardPaneFilter.type}Cards`].map((id, i) => {
-      return (
-        <LegionCard
-          isBasic={true}
-          id={id}
-          key={id}
-          handleCardZoom={() => handleCardZoom(id)}
-          handleDelete={() => handleRemoveBattle(cardPaneFilter.type, i)}
-        />
-      );
-    });
-    header = (
-      <div style={{display: "flex", alignItems: "center", flexFlow: "row wrap"}}>
-        {currentBattles}
-      </div>
-    );
+  } else if (action === COMMAND) {
+    content = <CommandCardSelector />;
+  } else if (action === CONTINGENCY) {
+    content = <CommandCardSelector contingency />;
+  } else if (action === BATTLE) {
+    content = <BattleCardSelector type={cardPaneFilter.type} />;
   } else {
     header = <Title title={`${action} is an invalid action.`} />;
   }
   return (
     <Fade unmountOnExit exit={false} in={cardPaneFilter.action !== "DISPLAY"}>
       <div style={{display: "contents"}}>
-        <SelectorHeader
-          headerContent={header}
-          cardPaneFilter={cardPaneFilter}
-          setCardPaneFilter={setCardPaneFilter}
-        />
-        <SelectorContent
-          action={action}
-          validIds={validIds}
-          invalidIds={invalidIds}
-          handleClick={clickHandler}
-          handleCardZoom={handleCardZoom}
-        />
+        {content ?? (
+          <>
+            <SelectorHeader>{header}</SelectorHeader>
+            <SelectorContent
+              action={action}
+              validIds={validIds}
+              invalidIds={invalidIds}
+              handleClick={clickHandler ?? noop}
+            />
+          </>
+        )}
       </div>
     </Fade>
   );

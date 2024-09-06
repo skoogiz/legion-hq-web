@@ -25,6 +25,23 @@ export class CardService {
     }, {});
   }
 
+  costSupplier = (
+    cardIds: string[],
+    useOriginalCosts = false,
+  ): Record<string, number> => {
+    return cardIds.reduce((acc, cardId) => {
+      const card = this.cards[cardId];
+      if (card && (card.prevCost || card.cost)) {
+        return {
+          ...acc,
+          [cardId]: useOriginalCosts && card.prevCost ? card.prevCost : card.cost,
+        };
+      }
+      console.warn(`No card or cost found for id="${cardId}"`);
+      return acc;
+    }, {});
+  };
+
   static getInstance = () => {
     if (this.INSTANCE) return this.INSTANCE;
     this.INSTANCE = new CardService(cards as unknown as Record<string, LegionCard>);

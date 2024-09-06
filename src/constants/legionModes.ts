@@ -2,7 +2,10 @@ import {LegionMode, LegionModeInfo} from "@legion-hq/types";
 
 const legionModes: Record<LegionMode, LegionModeInfo> = {
   "500-point mode": {
-    name: "Skirmish Format",
+    id: "500-point mode",
+    name: "Skirmish",
+    longName: "Skirmish (500 pts)",
+    description: "Skirmish Format",
     maxPoints: 500,
     unitCounts: {
       commander: [1, 1],
@@ -14,7 +17,10 @@ const legionModes: Record<LegionMode, LegionModeInfo> = {
     },
   },
   "standard mode": {
-    name: "Standard Format",
+    id: "standard mode",
+    name: "Standard",
+    longName: "Standard (800 pts)",
+    description: "Standard Format",
     maxPoints: 800,
     unitCounts: {
       commander: [1, 2],
@@ -26,7 +32,10 @@ const legionModes: Record<LegionMode, LegionModeInfo> = {
     },
   },
   "grand army mode": {
-    name: "Grand Army Format",
+    id: "grand army mode",
+    name: "Grand Army",
+    longName: "Grand Army (1600 pts)",
+    description: "Grand Army Format",
     maxPoints: 1600,
     unitCounts: {
       commander: [1, 4],
@@ -38,6 +47,7 @@ const legionModes: Record<LegionMode, LegionModeInfo> = {
     },
   },
   "storm tide: infantry": {
+    id: "storm tide: infantry",
     name: "Storm Tide: Infantry Division",
     maxPoints: 1200,
     unitCounts: {
@@ -48,8 +58,10 @@ const legionModes: Record<LegionMode, LegionModeInfo> = {
       support: [0, 4],
       heavy: [0, 2],
     },
+    unofficial: true,
   },
   "storm tide: armored": {
+    id: "storm tide: armored",
     name: "Storm Tide: Armored Division",
     maxPoints: 1200,
     unitCounts: {
@@ -60,8 +72,10 @@ const legionModes: Record<LegionMode, LegionModeInfo> = {
       support: [0, 3],
       heavy: [0, 4],
     },
+    unofficial: true,
   },
   "storm tide: special forces": {
+    id: "storm tide: special forces",
     name: "Storm Tide: Special Forces Division",
     maxPoints: 1200,
     unitCounts: {
@@ -72,6 +86,7 @@ const legionModes: Record<LegionMode, LegionModeInfo> = {
       support: [0, 2],
       heavy: [0, 2],
     },
+    unofficial: true,
   },
 };
 

@@ -4,7 +4,7 @@ import {TextField} from "@mui/material";
 type Props = {
   activations: number;
   title: string;
-  handleChange: (event: React.SyntheticEvent) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export function TitleField({activations, title, handleChange}: Props) {

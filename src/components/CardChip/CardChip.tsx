@@ -1,4 +1,3 @@
-import React from "react";
 import {SpeedChip} from "./SpeedChip";
 import {SurgeChips} from "./SurgeChips";
 import {DefenseChip} from "./DefenseChip";

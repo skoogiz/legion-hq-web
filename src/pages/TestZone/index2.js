@@ -1,6 +1,7 @@
 import React from "react";
 import "./spinner.scss";
-import redhit from "./redhit.png";
+// import redhit from "./redhit.png";
+
 function Info() {
   return (
     <div style={{marginTop: 40}}>

@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Route, Routes} from "react-router-dom";
-import LoadingWidget from "@legion-hq/common/LoadingWidget";
-import {createListTemplate} from "@legion-hq/constants/listTemplate";
 import {type ListTemplate} from "@legion-hq/types";
+import {LoadingWidget} from "./components";
+import {createListTemplate} from "./utility/list/listFactories";
 
 const Home = React.lazy(() => import("@legion-hq/pages/Home"));
 const News = React.lazy(() => import("@legion-hq/pages/News"));

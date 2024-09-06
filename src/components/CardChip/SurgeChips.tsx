@@ -1,14 +1,14 @@
-import React, {useContext} from "react";
+import React from "react";
 import {Img} from "react-image";
 import {Chip} from "@mui/material";
-import DataContext from "@legion-hq/context/DataContext";
 import symbols from "@legion-hq/constants/symbols";
 import {ChipProps} from "./CardChip.types";
 import {SurgeType} from "@legion-hq/types";
+import {useSettings} from "@legion-hq/hooks/app/useSettings";
 
 function SurgeLabel({type}: {type: SurgeType}) {
-  const {userSettings} = useContext(DataContext);
-  const themeType = userSettings.themeColor === "light" ? "dark" : "light";
+  const {themeMode} = useSettings();
+  const themeType = themeMode === "light" ? "dark" : "light";
   return (
     <Img
       alt={`${type} surge`}

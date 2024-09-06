@@ -1,3 +1,5 @@
+import {RankType} from "./units";
+
 export type FactionType = "rebels" | "empire" | "republic" | "separatists" | "fringe";
 
 export interface FactionInfo {
@@ -24,17 +26,24 @@ export type LegionMode =
 
 type Quantity = [min: number, max: number];
 
+export type UnitRestrictions = Record<RankType, Quantity> & {
+  // commander: Quantity;
+  // operative: Quantity;
+  // corps: Quantity;
+  // special: Quantity;
+  // support: Quantity;
+  // heavy: Quantity;
+  commOp?: number;
+};
+
 export interface LegionModeInfo {
+  id: LegionMode;
   name: string;
+  longName?: string;
+  description?: string;
   maxPoints: number;
-  unitCounts: {
-    commander: Quantity;
-    operative: Quantity;
-    corps: Quantity;
-    special: Quantity;
-    support: Quantity;
-    heavy: Quantity;
-  };
+  unitCounts: UnitRestrictions;
+  unofficial?: boolean;
 }
 
 export const BLACK_DICE = "black";

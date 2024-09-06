@@ -1,6 +1,5 @@
-import React, {useState} from "react";
-import {Button, IconButton, Typography} from "@mui/material";
-import {makeStyles} from "@mui/styles";
+import * as React from "react";
+import {Button, IconButton, styled, Typography} from "@mui/material";
 import {
   PlusOne as PlusOneIcon,
   Add as PlusIcon,
@@ -9,29 +8,35 @@ import {
   Delete as DeleteIcon,
 } from "@mui/icons-material";
 import {Icon as IconifyIcon} from "@iconify/react";
+import {noop} from "lodash";
 
-const useStyles = makeStyles((theme) => ({
-  buttons: {
-    display: "flex",
-    flexFlow: "row nowrap",
-    justifyContent: "center",
-    minWidth: "72px",
-  },
-}));
+const Container = styled("div")`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  min-width: 72px;
+`;
 
-function UnitActions({
-  incrementUnit = undefined,
+type Props = {
+  incrementUnit?: () => void;
+  decrementUnit: () => void;
+  isKillPointMode?: boolean;
+  handleAddKillPoints?: () => void;
+  handleRemoveKillPoints?: () => void;
+};
+
+export function UnitActions({
+  incrementUnit,
   decrementUnit,
-  isKillPointMode,
-  handleAddKillPoints,
-  handleRemoveKillPoints,
-}) {
-  const [numKilled, setNumKilled] = useState(0);
-  const classes = useStyles();
+  isKillPointMode = false,
+  handleAddKillPoints = noop,
+  handleRemoveKillPoints = noop,
+}: Props) {
+  const [numKilled, setNumKilled] = React.useState(0);
   const fontSize = 26;
   if (isKillPointMode) {
     return (
-      <div className={classes.buttons}>
+      <Container>
         <Button
           size="small"
           onClick={() => {
@@ -58,11 +63,11 @@ function UnitActions({
             {numKilled > 0 ? `(${numKilled})` : ""}
           </Typography>
         </Button>
-      </div>
+      </Container>
     );
   } else {
     return (
-      <div className={classes.buttons}>
+      <Container>
         {incrementUnit ? (
           <React.Fragment>
             <IconButton
@@ -85,9 +90,7 @@ function UnitActions({
             <DeleteIcon style={{fontSize}} />
           </IconButton>
         )}
-      </div>
+      </Container>
     );
   }
 }
-
-export default UnitActions;

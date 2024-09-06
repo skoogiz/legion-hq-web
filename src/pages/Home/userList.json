@@ -1,0 +1,169 @@
+[
+  {
+    "units": [
+      {
+        "unitId": "rd",
+        "count": 1,
+        "hasUniques": true,
+        "totalUnitCost": 138,
+        "unitObjectString": "rddfspdasgsi",
+        "upgradesEquipped": [
+          "df",
+          null,
+          null,
+          "sp",
+          "da",
+          "sg",
+          "si"
+        ],
+        "loadoutUpgrades": [],
+        "additionalUpgradeSlots": [],
+        "upgradeInteractions": {}
+      },
+      {
+        "unitId": "rc",
+        "count": 1,
+        "hasUniques": true,
+        "totalUnitCost": 206,
+        "unitObjectString": "rcdydtdfrq",
+        "upgradesEquipped": [
+          "dy",
+          "dt",
+          null,
+          "df",
+          "rq"
+        ],
+        "loadoutUpgrades": [],
+        "additionalUpgradeSlots": [],
+        "upgradeInteractions": {}
+      },
+      {
+        "unitId": "rb",
+        "count": 2,
+        "hasUniques": false,
+        "totalUnitCost": 196,
+        "unitObjectString": "rbrnrl",
+        "upgradesEquipped": [
+          "rn",
+          "rl",
+          null,
+          null
+        ],
+        "loadoutUpgrades": [],
+        "additionalUpgradeSlots": [],
+        "upgradeInteractions": {}
+      },
+      {
+        "unitId": "qz",
+        "count": 1,
+        "hasUniques": false,
+        "totalUnitCost": 44,
+        "unitObjectString": "qz",
+        "upgradesEquipped": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "loadoutUpgrades": [],
+        "additionalUpgradeSlots": [],
+        "upgradeInteractions": {}
+      },
+      {
+        "unitId": "sq",
+        "count": 2,
+        "hasUniques": false,
+        "totalUnitCost": 130,
+        "unitObjectString": "sq",
+        "upgradesEquipped": [
+          null
+        ],
+        "loadoutUpgrades": [],
+        "additionalUpgradeSlots": [],
+        "upgradeInteractions": {}
+      },
+      {
+        "unitId": "sm",
+        "count": 1,
+        "hasUniques": false,
+        "totalUnitCost": 82,
+        "unitObjectString": "smsnmd",
+        "upgradesEquipped": [
+          "sn",
+          null,
+          null,
+          null,
+          "md"
+        ],
+        "loadoutUpgrades": [],
+        "additionalUpgradeSlots": [],
+        "upgradeInteractions": {}
+      }
+    ],
+    "commandCards": [
+      "mw",
+      "rr",
+      "rx",
+      "sk",
+      "nj",
+      "rt"
+    ],
+    "contingencies": [],
+    "objectiveCards": [
+      "Oa",
+      "Ob",
+      "Oc"
+    ],
+    "deploymentCards": [
+      "Da",
+      "Db",
+      "Dc"
+    ],
+    "conditionCards": [
+      "Ca",
+      "Cb",
+      "Cc"
+    ],
+    "uniques": [
+      "rd",
+      "sp",
+      "sg",
+      "si",
+      "rc",
+      "rq"
+    ],
+    "commanders": [
+      "Gar Saxon",
+      "Maul"
+    ],
+    "unitObjectStrings": [
+      "rddfspdasgsi",
+      "rcdydtdfrq",
+      "rbrnrl",
+      "qz",
+      "sq",
+      "smsnmd"
+    ],
+    "_id": "66d98e0e7a13b259c942b6d7",
+    "title": "Untitled",
+    "game": "legion",
+    "mode": "standard mode",
+    "faction": "fringe",
+    "notes": "",
+    "pointTotal": 796,
+    "battleForce": "Shadow Collective",
+    "unitCounts": {
+      "commander": 2,
+      "operative": 0,
+      "corps": 3,
+      "special": 0,
+      "support": 2,
+      "heavy": 1
+    },
+    "userId": 16612,
+    "createdAt": "2024-09-05T10:55:10.290Z",
+    "updatedAt": "2024-09-05T10:55:10.290Z",
+    "listId": 334603,
+    "__v": 0
+  }
+]

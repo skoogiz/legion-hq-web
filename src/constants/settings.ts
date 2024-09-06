@@ -1,79 +1,139 @@
-export type SettingOption = {
-  key: Lowercase<string>;
-  name: string;
+export type AppSettings = {
+  themeMode: "dark" | "light" | "blue";
+  cardStyle: "images" | "text";
+  chipSize: "small" | "medium";
+  builderOrientation: "right" | "left";
+  cascadeUpgradeSelection: "yes" | "no";
+  includeCustomCards: "yes" | "no";
+  includeCustomGameModes: "yes" | "no";
 };
 
-type SettingKey =
-  | "themeColor"
-  | "cardStyle"
-  | "chipSize"
-  | "builderOrientation"
-  | "cascadeUpgradeSelection";
+export type AppSettingType = keyof AppSettings;
 
-type Setting = {
-  key: SettingKey;
-  name: string;
-  values: SettingOption[];
+export type SettingFieldGroup = "display" | "filter" | "general";
+export type SettingFieldType = "select" | "radio" | "toggle";
+
+export type SettingField = {
+  name: AppSettingType;
+  label: string;
+  options: Record<string, string>;
+  groupId?: SettingFieldGroup;
+  inputType?: SettingFieldType;
+  visible?: boolean;
 };
 
-type Settings = {
-  default: Record<SettingKey, Lowercase<string>>;
-  list: Setting[];
-  fields: Record<string, unknown>;
+const DEFAULT_SETTINGS: AppSettings = {
+  themeMode: "dark",
+  cardStyle: "images",
+  chipSize: "medium",
+  builderOrientation: "right",
+  cascadeUpgradeSelection: "yes",
+  includeCustomCards: "yes",
+  includeCustomGameModes: "yes",
 };
 
-const settings: Settings = {
-  default: {
-    themeColor: "dark",
-    cardStyle: "images",
-    chipSize: "medium",
-    builderOrientation: "right",
-    cascadeUpgradeSelection: "yes",
+const fields: SettingField[] = [
+  {
+    name: "themeMode",
+    label: "Theme",
+    options: {
+      dark: "Dark Side",
+      light: "Light Side",
+      blue: "Fifth Trooper",
+    },
+    groupId: "display",
   },
-  fields: {
-    cascadeUpgradeSelection: {
-      name: "Cascade Upgrade Selecting",
-      options: {
-        yes: "Yes",
-        no: "No",
+  {
+    name: "cardStyle",
+    label: "Cards as",
+    options: {
+      images: "Images",
+      text: "Text",
+    },
+    groupId: "display",
+  },
+  {
+    name: "chipSize",
+    label: "Chip Size",
+    options: {
+      small: "Small",
+      medium: "Large",
+    },
+    groupId: "display",
+  },
+  {
+    name: "includeCustomCards",
+    label: "Include custom cards",
+    options: {
+      yes: "Yes",
+      no: "No",
+    },
+    groupId: "filter",
+    inputType: "toggle",
+  },
+  {
+    name: "builderOrientation",
+    label: "Orientation",
+    options: {
+      right: "Right",
+      left: "Left",
+    },
+    visible: false,
+  },
+  {
+    name: "cascadeUpgradeSelection",
+    label: "Cascade Upgrade Selecting",
+    options: {
+      yes: "Yes",
+      no: "No",
+    },
+    inputType: "toggle",
+  },
+  {
+    name: "includeCustomGameModes",
+    label: "Include custom game modes",
+    options: {
+      yes: "Yes",
+      no: "No",
+    },
+    groupId: "filter",
+    inputType: "toggle",
+  },
+];
+
+class SettingsConfig {
+  readonly fieldMap: Record<SettingFieldGroup, SettingField[]>;
+
+  constructor(fields: SettingField[]) {
+    this.fieldMap = fields.reduce<Record<SettingFieldGroup, SettingField[]>>(
+      (acc, field) => {
+        const group = field.groupId ?? "general";
+        return {
+          ...acc,
+          [group]: [...acc[group], field],
+        };
       },
-    },
-  },
-  list: [
-    {
-      key: "themeColor",
-      name: "Theme",
-      values: [
-        {key: "dark", name: "Dark Side"},
-        {key: "light", name: "Light Side"},
-        {key: "blue", name: "Fifth Trooper"},
-      ],
-    },
-    {
-      key: "cardStyle",
-      name: "Card Style",
-      values: [
-        {key: "images", name: "Images"},
-        {key: "text", name: "Text"},
-      ],
-    },
-    {
-      key: "chipSize",
-      name: "Chip Size",
-      values: [
-        {key: "small", name: "Small"},
-        {key: "medium", name: "Large"},
-      ],
-    },
-    {
-      key: "cascadeUpgradeSelection",
-      name: "Cascade Upgrade Selecting",
-      values: [
-        {key: "yes", name: "Yes"},
-        {key: "no", name: "No"},
-      ],
-    },
-  ],
-};
+      {
+        general: [],
+        display: [],
+        filter: [],
+      },
+    );
+  }
 
-export default settings;
+  get fields(): SettingField[] {
+    return Object.values(this.fieldMap).reduce((acc, list) => [...acc, ...list], []);
+  }
+
+  get fieldGroupNames(): SettingFieldGroup[] {
+    return Object.keys(this.fieldMap) as SettingFieldGroup[];
+  }
+
+  fieldsByGroup = (groupName: SettingFieldGroup): SettingField[] => {
+    return this.fieldMap[groupName] ?? [];
+  };
+}
+
+const settingsConfig = new SettingsConfig(fields);
+
+export {DEFAULT_SETTINGS, settingsConfig};

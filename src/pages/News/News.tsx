@@ -1,4 +1,3 @@
-import * as React from "react";
 import {Typography, Divider, Container, Box} from "@mui/material";
 import {useNews} from "@legion-hq/data-access/hooks/useNews";
 import {NewsPost} from "@legion-hq/types/news";
