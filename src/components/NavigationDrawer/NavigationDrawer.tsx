@@ -7,6 +7,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Toolbar,
 } from "@mui/material";
 import DataContext from "@legion-hq/context/DataContext";
 import {Launch as LaunchIcon} from "@mui/icons-material";
@@ -34,16 +35,16 @@ export function NavigationDrawer() {
     React.useContext(DataContext);
   return (
     <SwipeableDrawer
+      anchor="right"
       open={isDrawerOpen}
       onOpen={() => setIsDrawerOpen(true)}
       onClose={() => setIsDrawerOpen(false)}
     >
       <div style={{width: 250}}>
-        <List>
-          <ListItem>
-            <ListItemText primary="Legion HQ" secondary="The Fifth Trooper" />
-          </ListItem>
-        </List>
+        <Toolbar variant="dense">
+          <ListItemText primary="Legion HQ" secondary="The Fifth Trooper" />
+        </Toolbar>
+        <Divider />
         <List dense={true}>
           <NavDrawerLink
             text="Home"
