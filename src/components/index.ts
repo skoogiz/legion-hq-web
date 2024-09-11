@@ -10,6 +10,7 @@ export * from "./FactionComponents";
 export * from "./IconBadge";
 export * from "./HelpChip";
 export * from "./KeywordChip";
+export * from "./LegionButton";
 export * from "./ListComponents";
 export * from "./NavigationDrawer";
 export * from "./SpriteCard";

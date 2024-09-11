@@ -1,120 +1,48 @@
 import * as React from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  useTheme,
-  styled,
-  // InputBase,
-  // alpha,
-  // styled,
-} from "@mui/material";
-import {Menu as MenuIcon /*, Search as SearchIcon*/} from "@mui/icons-material";
+import {AppBar, Toolbar, IconButton, Container} from "@mui/material";
+import {Menu as MenuIcon} from "@mui/icons-material";
 import DataContext from "@legion-hq/context/DataContext";
-import ftLogoLight from "@legion-hq/assets/ftLogoLight.png";
-import ftLogoDark from "@legion-hq/assets/ftLogoDark.png";
 import lhqLogoLight from "@legion-hq/assets/lhqLogoLight.png";
 import lhqLogoDark from "@legion-hq/assets/lhqLogoDark.png";
 import {useSettings} from "@legion-hq/hooks/app/useSettings";
-
-// export const SearchBar = styled("div")`
-//   ${({theme}) => ({
-//     position: "relative",
-//     borderRadius: theme.shape.borderRadius,
-//     backgroundColor: alpha(theme.palette.common.white, 0.15),
-//     "&:hover": {
-//       backgroundColor: alpha(theme.palette.common.white, 0.25),
-//     },
-//     marginRight: theme.spacing(2),
-//     marginLeft: 0,
-//     width: "100%",
-//     flexGrow: 1,
-//     [theme.breakpoints.up("sm")]: {
-//       marginLeft: theme.spacing(3),
-//       width: "auto",
-//     },
-//   })};
-// `;
-
-// export const SearchIconWrapper = styled("div")`
-//   ${({theme}) => ({
-//     padding: theme.spacing(0, 2),
-//     height: "100%",
-//     position: "absolute",
-//     pointerEvents: "none",
-//     display: "flex",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   })};
-// `;
-
-const styles = {
-  grow: {flexGrow: 1},
-  inputRoot: {
-    color: "inherit",
-    width: "100%",
-  },
-};
-
-const Offset = styled("div")(({theme}) => theme.mixins.toolbar);
+import {Link} from "react-router-dom";
 
 export function ActionBar() {
   const {setIsDrawerOpen} = React.useContext(DataContext);
-  const theme = useTheme();
   const {themeMode} = useSettings();
   return (
     <>
-      <AppBar position="fixed" color="secondary">
+      <AppBar component="div" position="relative" color="secondary">
         <Toolbar variant="dense">
-          <IconButton
-            color="inherit"
-            edge="start"
-            sx={{marginRight: theme.spacing(2)}}
-            onClick={() => setIsDrawerOpen(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <img
-            alt="Legion HQ Logo"
-            src={themeMode === "light" ? lhqLogoLight : lhqLogoDark}
-            style={{height: 35}}
-          />
-          <div style={styles.grow} />
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://thefifthtrooper.com/"
-            style={{marginTop: 4}}
-          >
-            <img
-              alt="Fifth Trooper Logo"
-              src={themeMode === "light" ? ftLogoLight : ftLogoDark}
-              style={{height: 35}}
-            />
-          </a>
-          {/* {false && (
-        <SearchBar>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <InputBase
-            placeholder="Search..."
+          <Container
+            maxWidth="xl"
+            disableGutters
             sx={{
-              root: styles.inputRoot,
-              input: {
-                padding: theme.spacing(1, 1, 1, 0),
-                // vertical padding + font size from searchIcon
-                paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-                transition: theme.transitions.create("width"),
-                width: "100%",
-              },
+              margin: "0 auto",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
             }}
-          />
-        </SearchBar>
-      )} */}
+          >
+            <Link
+              to={"/"}
+              style={{
+                height: "2em",
+              }}
+            >
+              <img
+                alt="Legion HQ Logo"
+                src={themeMode === "light" ? lhqLogoLight : lhqLogoDark}
+                style={{height: "inherit"}}
+              />
+            </Link>
+            <div style={{flexGrow: 1}} />
+            <IconButton color="inherit" edge="end" onClick={() => setIsDrawerOpen(true)}>
+              <MenuIcon />
+            </IconButton>
+          </Container>
         </Toolbar>
       </AppBar>
-      <Offset />
     </>
   );
 }

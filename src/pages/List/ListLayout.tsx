@@ -48,48 +48,41 @@ export function ListLayout() {
     height: `calc(100vh - ${isMobile ? "125px" : "75px"})`,
   };
 
-  const builderPane = leftPaneWidth > 0 && (
-    <Grid item xs={leftPaneWidth} style={paneStyles}>
-      <ListContent id="list-content" isMobile={isMobile}>
-        <StickyPanel>
-          <ListHeader />
-          <div style={{marginTop: 8}} />
-          <RankSelector />
-        </StickyPanel>
-        <ListUnits />
-        <Divider style={{marginBottom: 4}} />
-        <ListCommands />
-        <Divider style={{marginBottom: 4}} />
-        <ListContingencies />
-        <Divider style={{marginBottom: 4}} />
-        <ListObjectives />
-      </ListContent>
-      <Divider style={{marginBottom: 4}} />
-      <ListExtras />
-      <ListId />
-      <div style={{marginTop: 24}} />
-    </Grid>
-  );
-
-  const cardPane = rightPaneWidth > 0 && (
-    <Grid item xs={rightPaneWidth} style={paneStyles}>
-      <ListDisplay />
-      <CardSelector />
-    </Grid>
-  );
-
-  const modal = (
-    <CardModal id={modalContent} isOpen={isModalOpen} handleClose={handleCloseModal} />
-  );
   return (
     <>
       <Box>
         <Grid container direction="row" sx={{height: "100vh"}}>
-          {modal}
-          {builderPane}
-          {cardPane}
+          {leftPaneWidth > 0 && (
+            <Grid item xs={leftPaneWidth} style={paneStyles}>
+              <ListContent id="list-content" isMobile={isMobile}>
+                <StickyPanel>
+                  <ListHeader />
+                  <div style={{marginTop: 8}} />
+                  <RankSelector />
+                </StickyPanel>
+                <ListUnits />
+                <Divider style={{marginBottom: 4}} />
+                <ListCommands />
+                <Divider style={{marginBottom: 4}} />
+                <ListContingencies />
+                <Divider style={{marginBottom: 4}} />
+                <ListObjectives />
+              </ListContent>
+              <Divider style={{marginBottom: 4}} />
+              <ListExtras />
+              <ListId />
+              <div style={{marginTop: 24}} />
+            </Grid>
+          )}
+          {rightPaneWidth > 0 && (
+            <Grid item xs={rightPaneWidth} style={paneStyles}>
+              <ListDisplay />
+              <CardSelector />
+            </Grid>
+          )}
         </Grid>
       </Box>
+      <CardModal id={modalContent} isOpen={isModalOpen} handleClose={handleCloseModal} />
       <ListBottomBar />
     </>
   );

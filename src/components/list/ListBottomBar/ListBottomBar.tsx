@@ -1,4 +1,4 @@
-import {AppBar, Container, styled, Toolbar} from "@mui/material";
+import {AppBar, Container, styled, Toolbar, Tooltip} from "@mui/material";
 import {getFactionColor} from "@legion-hq/theme/themeUtils";
 import {RankSummary} from "./RankSummary";
 import {factions, legionModes} from "@legion-hq/constants";
@@ -6,6 +6,7 @@ import {ValidationBadge} from "./ValidationBadge";
 import {ActivationBadge} from "./ActivationBadge";
 import {Text} from "./ListBottomComponents";
 import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
+import {useListBuilder} from "@legion-hq/hooks/list/useList";
 
 const Divider = styled("div")`
   width: 1px;
@@ -18,6 +19,7 @@ const Divider = styled("div")`
 const Offset = styled("div")(({theme}) => theme.mixins.toolbar);
 
 export function ListBottomBar() {
+  const {validationIssues} = useListBuilder();
   const {faction, battleForce, mode, pointTotal, unitCounts, activations} =
     useCurrentList();
 
@@ -33,6 +35,7 @@ export function ListBottomBar() {
           top: "auto",
           bottom: 0,
           backgroundColor: getFactionColor({theme, faction}),
+          // maxHeight: 56,
         })}
       >
         <Toolbar>
@@ -100,7 +103,19 @@ export function ListBottomBar() {
                   columnGap: "0.2em",
                 }}
               >
-                <ValidationBadge />
+                <Tooltip
+                  title={
+                    <ul>
+                      {validationIssues.map(({level, text}, index) => (
+                        <li key={`${level}_${index}`}>{`(${level}) ${text}`}</li>
+                      ))}
+                    </ul>
+                  }
+                >
+                  <div>
+                    <ValidationBadge />
+                  </div>
+                </Tooltip>
                 <Text>{legionModes[mode].name}</Text>
                 <Divider />
                 <Text>{pointTotal}</Text>
