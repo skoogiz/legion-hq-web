@@ -3,8 +3,8 @@ import {Clear as ClearIcon} from "@mui/icons-material";
 import {DISPLAY} from "@legion-hq/state/list";
 import {useListBuilder} from "@legion-hq/hooks/list/useList";
 
-const Container = styled(Paper)`
-  top: 0;
+const Container = styled(Paper)<{toolbarSticky: boolean}>`
+  top: ${({toolbarSticky, theme}) => (toolbarSticky ? 64 : 0)};
   z-index: 1;
   margin-bottom: 4;
   display: flex;
@@ -20,9 +20,9 @@ type Props = {
 };
 
 export function SelectorHeader({children}: Props) {
-  const {setCardPaneFilter} = useListBuilder();
+  const {toolbar, setCardPaneFilter} = useListBuilder();
   return (
-    <Container>
+    <Container toolbarSticky={toolbar.isSticky}>
       {children}
       <div style={{flexGrow: 1}} />
       <IconButton onClick={() => setCardPaneFilter({action: DISPLAY})}>

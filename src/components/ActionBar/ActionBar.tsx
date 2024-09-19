@@ -8,11 +8,18 @@ import {useSettings} from "@legion-hq/hooks/app/useSettings";
 import {Link} from "react-router-dom";
 
 export function ActionBar() {
+  // const {pathname} = useLocation();
   const {setIsDrawerOpen} = React.useContext(DataContext);
   const {themeMode} = useSettings();
   return (
     <>
-      <AppBar component="div" position="relative" color="secondary">
+      <AppBar
+        component="div"
+        position="relative"
+        color="secondary"
+        // color={pathname === "/" ? "transparent" : "secondary"}
+        // sx={pathname === "/" ? {boxShadow: "none", transition: "none"} : {}}
+      >
         <Toolbar variant="dense">
           <Container
             maxWidth="xl"

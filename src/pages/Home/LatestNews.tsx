@@ -29,9 +29,11 @@ export function LatestNews() {
   const {newsPosts} = useNews();
   return (
     <Box display="flex" flexDirection="column" rowGap={1} alignItems="center" py={1}>
-      {(newsPosts.length > 3 ? newsPosts.slice(0, 3) : newsPosts).map((newsPost) => (
-        <Post post={newsPost} />
-      ))}
+      {(newsPosts.length > 3 ? newsPosts.slice(0, 3) : newsPosts).map(
+        (newsPost, index) => (
+          <Post key={`news_${index}`} post={newsPost} />
+        ),
+      )}
     </Box>
   );
 }

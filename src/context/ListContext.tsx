@@ -65,7 +65,6 @@ type ListContextValue = {
   currentKillPoints: number;
   isApplyToAll: boolean;
   isModalOpen: boolean;
-  isSmallScreen: boolean;
   cardPaneFilter: ListAction;
   leftPaneWidth: number;
   rightPaneWidth: number;
@@ -133,6 +132,10 @@ type ListContextValue = {
   // Message functions
   listSaveMessage?: string;
   listActions: Omit<ListActions, "updateList">;
+  toolbar: {
+    isSticky: boolean;
+    setIsSticky: (isSticky: boolean) => void;
+  };
 };
 
 const DEFAULT_VALUE: ListContextValue = {
@@ -142,7 +145,6 @@ const DEFAULT_VALUE: ListContextValue = {
   currentKillPoints: 0,
   isApplyToAll: false,
   isModalOpen: false,
-  isSmallScreen: false,
   cardPaneFilter: {
     action: DISPLAY,
   },
@@ -205,6 +207,10 @@ const DEFAULT_VALUE: ListContextValue = {
   listActions: {
     addCounterpart: noop,
     removeCounterpart: noop,
+  },
+  toolbar: {
+    isSticky: false,
+    setIsSticky: noop,
   },
 };
 
@@ -283,6 +289,8 @@ function ListProvider({
     }[]
   >([]);
   const [rankLimits, setRankLimits] = React.useState<UnitRestrictions>();
+
+  const [isToolbarSticky, setIsToolbarSticky] = React.useState(false);
 
   React.useEffect(() => {
     // route '/list/rebels' fetches the rebel list from storage
@@ -693,7 +701,6 @@ function ListProvider({
     handleCardZoom,
   };
   const viewProps = {
-    isSmallScreen,
     cardPaneFilter,
     setCardPaneFilter,
     leftPaneWidth,
@@ -710,8 +717,12 @@ function ListProvider({
       currentList: state.currentList,
       rankLimits: rankLimits ?? legionModes[state.currentList.mode].unitCounts,
       validationIssues,
+      toolbar: {
+        isSticky: isToolbarSticky,
+        setIsSticky: setIsToolbarSticky,
+      },
     }),
-    [state.currentList, rankLimits, validationIssues],
+    [state.currentList, rankLimits, validationIssues, isToolbarSticky],
   );
 
   if (error) return <ErrorFallback error={error} message={message} />;
@@ -728,6 +739,7 @@ function ListProvider({
           ...modalProps,
           ...viewProps,
           ...messageProps,
+
           listActions,
         }}
       >

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Typography} from "@mui/material";
+import {Box, Container, Paper, styled} from "@mui/material";
 import {ControlPanel} from "./ControlPanel";
 import AttackDie from "./AttackDie";
 import {
@@ -9,21 +9,22 @@ import {
   RED_DICE,
   WHITE_DICE,
 } from "@legion-hq/types";
+import {PageColumn, PageTitle} from "@legion-hq/components/PageLayout";
 
-const styles: Record<string, React.CSSProperties> = {
-  row: {
-    display: "flex",
-    flexFlow: "row wrap",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  column: {
-    display: "flex",
-    flexFlow: "column nowrap",
-    alignItems: "center",
-    flexGrow: 1,
-  },
-};
+const DiceRow = styled("div")({
+  display: "flex",
+  flexFlow: "row wrap",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
+const ControlWrapper = styled("div")({
+  display: "flex",
+  flexFlow: "column nowrap",
+  alignItems: "center",
+  justifyContent: "center",
+  flexGrow: 1,
+});
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -87,50 +88,61 @@ function Stats() {
   };
 
   return (
-    <div style={styles.column}>
-      <div style={styles.row}>
-        <Typography variant="h5">Dice Roller</Typography>
-      </div>
-      <div style={{...styles.row, ...styles.column}}>
-        <ControlPanel
-          numRedAttackDice={numRedAttackDice}
-          numBlackAttackDice={numBlackAttackDice}
-          numWhiteAttackDice={numWhiteAttackDice}
-          handleSetDice={handleSetDice}
-          handleRollDice={handleRollDice}
-        />
-      </div>
-      <div style={styles.row}>
-        {redAttackResults.map((result, i) => (
-          <AttackDie
-            key={`red_${result}_${i}`}
-            color={RED_DICE}
-            faceIndex={result}
-            isRolling={isRolling}
-          />
-        ))}
-      </div>
-      <div style={styles.row}>
-        {blackAttackResults.map((result, i) => (
-          <AttackDie
-            key={`black_${result}_${i}`}
-            color={BLACK_DICE}
-            faceIndex={result}
-            isRolling={isRolling}
-          />
-        ))}
-      </div>
-      <div style={styles.row}>
-        {whiteAttackResults.map((result, i) => (
-          <AttackDie
-            key={`white_${result}_${i}`}
-            color={WHITE_DICE}
-            faceIndex={result}
-            isRolling={isRolling}
-          />
-        ))}
-      </div>
-    </div>
+    <Container maxWidth="md">
+      <PageColumn>
+        <PageTitle>Dice Roller</PageTitle>
+        <Paper elevation={3} square={false} sx={{alignSelf: "stretch"}}>
+          <Box
+            display="flex"
+            alignSelf="stretch"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            p={2}
+          >
+            <ControlWrapper>
+              <ControlPanel
+                numRedAttackDice={numRedAttackDice}
+                numBlackAttackDice={numBlackAttackDice}
+                numWhiteAttackDice={numWhiteAttackDice}
+                handleSetDice={handleSetDice}
+                handleRollDice={handleRollDice}
+              />
+            </ControlWrapper>
+          </Box>
+        </Paper>
+        <Paper elevation={3} square={false} sx={{alignSelf: "stretch"}}>
+          <Box
+            display="flex"
+            alignSelf="stretch"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            minHeight="80px"
+            px={2}
+            pt={1}
+            pb={3}
+          >
+            {[
+              {dice: RED_DICE, attackResult: redAttackResults},
+              {dice: BLACK_DICE, attackResult: blackAttackResults},
+              {dice: WHITE_DICE, attackResult: whiteAttackResults},
+            ].map(({dice, attackResult}) => (
+              <DiceRow key={dice}>
+                {attackResult.map((result, i) => (
+                  <AttackDie
+                    key={`${dice}_${result}_${i}`}
+                    color={dice as AttackDiceType}
+                    faceIndex={result}
+                    isRolling={isRolling}
+                  />
+                ))}
+              </DiceRow>
+            ))}
+          </Box>
+        </Paper>
+      </PageColumn>
+    </Container>
   );
 }
 

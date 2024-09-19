@@ -1,9 +1,6 @@
-import {Grid, Divider, styled, Box} from "@mui/material";
-// import {useSettings} from "@legion-hq/hooks/app/useSettings";
-// import themes from "@legion-hq/constants/themes";
-import {CardModal} from "@legion-hq/components";
+import {Divider, Box, Container, Paper} from "@mui/material";
+
 import {ListHeader} from "./ListHeader";
-import {RankSelector} from "./RankSelector";
 import {ListUnits} from "./ListUnits";
 import ListCommands from "./ListCommands";
 import {ListContingencies} from "./ListContingencies";
@@ -13,77 +10,66 @@ import {ListDisplay} from "./ListDisplay";
 import {ListId} from "./ListId";
 import {CardSelector} from "./CardSelector";
 import {useListBuilder} from "@legion-hq/hooks/list/useList";
-import {ListBottomBar} from "@legion-hq/components/list";
-
-const ListContent = styled("div")<{isMobile: boolean}>`
-  padding: 0 2px 2px;
-  // overflow: auto;
-  height: calc(100vh - ${({isMobile}) => (isMobile ? "125px" : "75px")});
-`;
-
-const StickyPanel = styled("div")`
-  top: 0;
-  z-index: 2;
-  position: -webkit-sticky;
-  position: sticky;
-`;
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import {ListToolbar} from "./ListHeader/ListToolbar";
 
 export function ListLayout() {
+  // const theme = useTheme();
   // const {themeMode} = useSettings();
   // const palette = themes.palettes[themeMode];
-  const {
-    isSmallScreen,
-    leftPaneWidth,
-    rightPaneWidth,
-    isModalOpen,
-    modalContent,
-    handleCloseModal,
-  } = useListBuilder();
+  const {leftPaneWidth, rightPaneWidth} = useListBuilder();
 
-  const isMobile = isSmallScreen;
+  // console.log("PANELS", {leftPaneWidth, rightPaneWidth});
 
-  const paneStyles = {
-    padding: "0 2px 2px",
-    overflow: "auto",
-    height: `calc(100vh - ${isMobile ? "125px" : "75px"})`,
-  };
+  const headerElevation = 2;
 
   return (
     <>
-      <Box>
-        <Grid container direction="row" sx={{height: "100vh"}}>
+      <Paper
+        elevation={headerElevation}
+        square
+        sx={(theme) => ({
+          backgroundColor: theme.palette.secondary.main,
+        })}
+      >
+        <Container maxWidth="xl">
+          <Box display="flex" flexDirection="column" rowGap={1} pt={2} pb={1}>
+            <ListHeader />
+          </Box>
+        </Container>
+      </Paper>
+
+      <ListToolbar elevation={headerElevation} />
+
+      <Container maxWidth={false} disableGutters sx={{flexGrow: 1}}>
+        <Grid container /* direction="row" sx={{height: "100vh"}} */>
           {leftPaneWidth > 0 && (
-            <Grid item xs={leftPaneWidth} style={paneStyles}>
-              <ListContent id="list-content" isMobile={isMobile}>
-                <StickyPanel>
-                  <ListHeader />
-                  <div style={{marginTop: 8}} />
-                  <RankSelector />
-                </StickyPanel>
-                <ListUnits />
+            <Grid xs={leftPaneWidth} /* style={paneStyles} */>
+              <Box display="flex" flexDirection="column" pt={2} rowGap={2}>
+                <Box id="list-content" display="flex" flexDirection="column" rowGap={2}>
+                  <ListUnits />
+                  <Divider />
+                  <ListCommands />
+                  <Divider />
+                  <ListContingencies />
+                  <Divider />
+                  <ListObjectives />
+                </Box>
                 <Divider style={{marginBottom: 4}} />
-                <ListCommands />
-                <Divider style={{marginBottom: 4}} />
-                <ListContingencies />
-                <Divider style={{marginBottom: 4}} />
-                <ListObjectives />
-              </ListContent>
-              <Divider style={{marginBottom: 4}} />
-              <ListExtras />
-              <ListId />
-              <div style={{marginTop: 24}} />
+                <ListExtras />
+                <ListId />
+                <div style={{marginTop: 24}} />
+              </Box>
             </Grid>
           )}
           {rightPaneWidth > 0 && (
-            <Grid item xs={rightPaneWidth} style={paneStyles}>
+            <Grid xs={rightPaneWidth} /* style={paneStyles}*/>
               <ListDisplay />
               <CardSelector />
             </Grid>
           )}
         </Grid>
-      </Box>
-      <CardModal id={modalContent} isOpen={isModalOpen} handleClose={handleCloseModal} />
-      <ListBottomBar />
+      </Container>
     </>
   );
 }

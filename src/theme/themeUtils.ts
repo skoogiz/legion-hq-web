@@ -1,5 +1,5 @@
 import {FactionType} from "@legion-hq/types";
-import {Theme} from "@mui/material";
+import {PaletteColor, Theme} from "@mui/material";
 
 export const colorName = (faction?: string) => {
   switch (faction) {
@@ -21,7 +21,7 @@ export const getFactionColor = ({
 }: {
   faction: FactionType;
   theme: Theme;
-}) => {
+}): PaletteColor => {
   const color = colorName(faction);
-  return color ? theme.palette[color].main : undefined;
+  return color ? theme.palette[color] : theme.palette.primary;
 };
