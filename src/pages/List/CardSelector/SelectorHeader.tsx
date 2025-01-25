@@ -4,7 +4,7 @@ import {DISPLAY} from "@legion-hq/state/list";
 import {useListBuilder} from "@legion-hq/hooks/list/useList";
 
 const Container = styled(Paper)<{toolbarSticky: boolean}>`
-  top: ${({toolbarSticky, theme}) => (toolbarSticky ? 64 : 0)};
+  top: ${({toolbarSticky}) => (toolbarSticky ? 64 : 0)};
   z-index: 1;
   margin-bottom: 4;
   display: flex;

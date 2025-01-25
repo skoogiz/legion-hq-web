@@ -15,6 +15,7 @@ export function ListHeader() {
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
+      alignSelf="stretch"
     >
       <div style={{alignSelf: "stretch"}}>
         <TitleField

@@ -1,6 +1,29 @@
-import {styled} from "@mui/material";
+import * as React from "react";
+import {
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Stack,
+  styled,
+} from "@mui/material";
 import {GppBad as GppBadIcon, GppGood as GppGoodIcon} from "@mui/icons-material";
 import {useListBuilder} from "@legion-hq/hooks/list/useList";
+import RichTooltip from "./RichTooltip";
+import {Warning as WarningIcon} from "@mui/icons-material";
+
+const styles: Record<string, React.CSSProperties> = {
+  container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  item: {marginRight: 6},
+  valError: {
+    display: "flex",
+    alignItems: "start",
+    justifyContent: "start",
+  },
+};
 
 const IconContainer = styled("div")`
   font-size: 20px;
@@ -33,10 +56,55 @@ export function ValidationBadge() {
   //   return e.level > highest ? e.level : highest;
   // }, 0);
 
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <IconContainer>
-      {validationIssues.length > 0 ? <GppBadIcon /> : <GppGoodIcon />}
-      {/* {validationIssues.length > 0 && (
+    <RichTooltip
+      content={
+        <Stack maxWidth={480}>
+          <DialogTitle>List Errors</DialogTitle>
+          <DialogContent>
+            <div style={styles.valError}>
+              <WarningIcon style={{...styles.item, color: "yellow"}} />
+              <DialogContentText>
+                Work in progress... double-check your army rules and unit cards!
+              </DialogContentText>
+            </div>
+            {validationIssues.map((el, i) => (
+              <div key={i} style={styles.valError}>
+                <WarningIcon
+                  style={{
+                    ...styles.item,
+                    color: el.level === 1 ? "yellow" : "red",
+                  }}
+                />
+                <DialogContentText>{el.text}</DialogContentText>
+              </div>
+            ))}
+            <br />
+            <DialogContentText>
+              All Star Wars: Legion documents are located on the Atomic Mass Games{" "}
+              <a
+                style={{textDecoration: "none"}}
+                href="https://atomicmassgames.com/star-wars-legion-documents"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                website
+              </a>
+              .
+            </DialogContentText>
+          </DialogContent>
+        </Stack>
+      }
+      open={open}
+      placement="top"
+      arrow
+      onClose={() => setOpen(false)}
+    >
+      <IconContainer onClick={() => setOpen(!open)}>
+        {validationIssues.length > 0 ? <GppBadIcon /> : <GppGoodIcon />}
+        {/* {validationIssues.length > 0 && (
         <div className={classes.battleForceContainer}>
           <IconButton onClick={() => setValidationDialogOpen(true)}>
             <WarningIcon style={{color: minValidationError < 2 ? "yellow" : "red"}} />
@@ -58,6 +126,7 @@ export function ValidationBadge() {
           </DialogContent>
         </div>
       )} */}
-    </IconContainer>
+      </IconContainer>
+    </RichTooltip>
   );
 }

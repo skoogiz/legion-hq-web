@@ -27,7 +27,7 @@ function ListObjectives() {
     <Chip
       color="primary"
       key={id}
-      label={cards[id].cardName}
+      label={cards[id].title ?? cards[id].cardName}
       style={chipStyle}
       onClick={() => handleCardZoom(id)}
       onDelete={() => handleRemoveBattle("objective", i)}
@@ -37,7 +37,7 @@ function ListObjectives() {
     <Chip
       color="primary"
       key={id}
-      label={cards[id].cardName}
+      label={cards[id].title ?? cards[id].cardName}
       style={chipStyle}
       onClick={() => handleCardZoom(id)}
       onDelete={() => handleRemoveBattle("deployment", i)}
@@ -47,7 +47,7 @@ function ListObjectives() {
     <Chip
       color="primary"
       key={id}
-      label={cards[id].cardName}
+      label={cards[id].title ?? cards[id].cardName}
       style={chipStyle}
       onClick={() => handleCardZoom(id)}
       onDelete={() => handleRemoveBattle("condition", i)}

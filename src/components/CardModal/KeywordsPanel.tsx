@@ -7,13 +7,14 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import {ExpandMore as ExpandMoreIcon} from "@mui/icons-material";
-import keywords from "@legion-hq/constants/keywords";
+import {useKeywords} from "@legion-hq/data-access/hooks/useKeywords";
 
 type Props = {
   keywords?: string[];
 };
 
 export function KeywordsPanel({keywords: cardKeywords = []}: Props) {
+  const {keywords} = useKeywords();
   if (!Array.isArray(cardKeywords) || cardKeywords.length === 0) return null;
   const columnContainerStyles = {
     display: "flex",

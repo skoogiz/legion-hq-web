@@ -12,14 +12,13 @@ import {CardSelector} from "./CardSelector";
 import {useListBuilder} from "@legion-hq/hooks/list/useList";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import {ListToolbar} from "./ListHeader/ListToolbar";
+import {KeywordSection} from "./KeywordSection";
 
 export function ListLayout() {
   // const theme = useTheme();
   // const {themeMode} = useSettings();
   // const palette = themes.palettes[themeMode];
   const {leftPaneWidth, rightPaneWidth} = useListBuilder();
-
-  // console.log("PANELS", {leftPaneWidth, rightPaneWidth});
 
   const headerElevation = 2;
 
@@ -32,7 +31,7 @@ export function ListLayout() {
           backgroundColor: theme.palette.secondary.main,
         })}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" disableGutters>
           <Box display="flex" flexDirection="column" rowGap={1} pt={2} pb={1}>
             <ListHeader />
           </Box>
@@ -59,6 +58,7 @@ export function ListLayout() {
                 <ListExtras />
                 <ListId />
                 <div style={{marginTop: 24}} />
+                <KeywordSection />
               </Box>
             </Grid>
           )}

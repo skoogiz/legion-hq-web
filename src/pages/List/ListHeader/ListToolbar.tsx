@@ -54,7 +54,6 @@ export function ListToolbar({elevation = 3}: Props) {
 
   const callbackSetVisible = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries;
-    console.log("ENTRY", entry);
     if (toolbar.isSticky !== entry.isIntersecting)
       toolbar.setIsSticky(entry.isIntersecting);
   };
@@ -95,8 +94,6 @@ export function ListToolbar({elevation = 3}: Props) {
   const minValidationError = validationIssues.reduce((highest, e) => {
     return e.level > highest ? e.level : highest;
   }, 0);
-
-  console.log("VISIBLE", toolbar.isSticky);
 
   return (
     <>

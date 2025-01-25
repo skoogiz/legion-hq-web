@@ -79,7 +79,7 @@ interface CardBase {
 
 export interface LegionCard extends CardBase {
   title?: string;
-  displayName: string;
+  displayName?: string;
   faction?: string;
   isUnique?: boolean;
   keywords: string[];

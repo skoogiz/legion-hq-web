@@ -180,6 +180,23 @@ export class List implements ListTemplate {
     });
   }
 
+  getUnitByIndex(index: number): UnitImpl | undefined {
+    return this.units[index];
+  }
+
+  get cardIds(): Set<string> {
+    const cardIdList = new Set<string>();
+    this.units.forEach(({cardIds}) => {
+      cardIds.forEach((cardId) => cardIdList.add(cardId));
+    });
+    this.commandCards.forEach((cardId) => cardIdList.add(cardId));
+    this.objectiveCards.forEach((cardId) => cardIdList.add(cardId));
+    this.conditionCards.forEach((cardId) => cardIdList.add(cardId));
+    this.deploymentCards.forEach((cardId) => cardIdList.add(cardId));
+    this.contingencies?.forEach((cardId) => cardIdList.add(cardId));
+    return cardIdList;
+  }
+
   static of(data: ListTemplate) {
     return new List(data);
   }
