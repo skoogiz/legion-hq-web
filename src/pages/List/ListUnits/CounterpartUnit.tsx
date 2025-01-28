@@ -4,31 +4,8 @@ import {UnitActions} from "./UnitActions";
 import {UnitUpgrades} from "./UnitUpgrades";
 import {Counterpart, LegionCard} from "@legion-hq/types";
 import {useCardZoom} from "@legion-hq/hooks/list/useCardZoom";
-
-const styles: Record<string, React.CSSProperties> = {
-  unitRow: {
-    marginLeft: 25,
-    display: "flex",
-    flexFlow: "row nowrap",
-  },
-  leftCell: {marginRight: 4},
-  counterpart: {marginLeft: 20},
-  middleCell: {
-    flex: 1,
-    marginRight: 2,
-    display: "flex",
-    flexFlow: "column nowrap",
-    overflowX: "auto",
-    overflowY: "hidden",
-  },
-  rightCell: {
-    display: "flex",
-    flexFlow: "column nowrap",
-    alignItems: "center",
-    borderLeft: "1px solid rgba(255,255,255,0.12)",
-    borderTop: "1px solid rgba(255,255,255,0.12)",
-  },
-};
+import {ItemActions, ItemCardSection, ItemContent, ItemHeader} from "./CardComponents";
+import {Divider} from "@mui/material";
 
 type Props = {
   counterpart: Counterpart;
@@ -54,38 +31,40 @@ export function CounterpartUnit({
   deleteLoadoutHandlers,
 }: Props) {
   const {handleCardZoom} = useCardZoom();
-
-  const avatar = (
-    <UnitAvatar
-      key="avatar"
-      id={counterpartId}
-      handleClick={() => handleCardZoom(counterpartId)}
-    />
-  );
-  const name = <LegacyCardName key="name" id={counterpartId} />;
-  const points = <UnitPoints key="points" unit={counterpart} />;
-  const actions = <UnitActions key="actions" decrementUnit={handleRemoveCounterpart} />;
-  const upgrades = (
-    <UnitUpgrades
-      key="upgrades"
-      upgradesEquipped={counterpart.upgradesEquipped}
-      totalUpgradeBar={counterpartCard.upgradeBar}
-      loadoutUpgrades={counterpart.loadoutUpgrades}
-      swapUpgradeHandlers={swapUpgradeHandlers}
-      addUpgradeHandlers={addUpgradeHandlers}
-      deleteUpgradeHandlers={deleteUpgradeHandlers}
-      changeLoadoutHandlers={changeLoadoutHandlers}
-      deleteLoadoutHandlers={deleteLoadoutHandlers}
-    />
-  );
-  const leftCell = [avatar];
-  const middleCell = [name, upgrades];
-  const rightCell = [points, actions];
   return (
-    <div style={styles.unitRow}>
-      <div style={styles.leftCell}>{leftCell}</div>
-      <div style={styles.middleCell}>{middleCell}</div>
-      <div style={styles.rightCell}>{rightCell}</div>
-    </div>
+    <ItemCardSection>
+      <ItemContent>
+        <ItemHeader>
+          <UnitAvatar
+            key="avatar"
+            id={counterpartId}
+            handleClick={() => handleCardZoom(counterpartId)}
+          />
+          <div style={{display: "flex", flexGrow: 1}}>
+            <LegacyCardName key="name" id={counterpartId} />
+          </div>
+          <UnitPoints key="points" unit={counterpart} subcost />
+        </ItemHeader>
+        {counterpartCard.upgradeBar && counterpartCard.upgradeBar.length > 0 && (
+          <>
+            <Divider />
+            <UnitUpgrades
+              key="upgrades"
+              upgradesEquipped={counterpart.upgradesEquipped}
+              totalUpgradeBar={counterpartCard.upgradeBar}
+              loadoutUpgrades={counterpart.loadoutUpgrades}
+              swapUpgradeHandlers={swapUpgradeHandlers}
+              addUpgradeHandlers={addUpgradeHandlers}
+              deleteUpgradeHandlers={deleteUpgradeHandlers}
+              changeLoadoutHandlers={changeLoadoutHandlers}
+              deleteLoadoutHandlers={deleteLoadoutHandlers}
+            />
+          </>
+        )}
+      </ItemContent>
+      <ItemActions>
+        <UnitActions key="actions" decrementUnit={handleRemoveCounterpart} />
+      </ItemActions>
+    </ItemCardSection>
   );
 }

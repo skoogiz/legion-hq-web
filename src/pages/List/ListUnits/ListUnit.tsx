@@ -5,7 +5,14 @@ import {UnitUpgrades} from "./UnitUpgrades";
 import {UnitFlaw} from "./UnitFlaw";
 import {LegionCard, ListUnit as ListUnitType} from "@legion-hq/types";
 import {useCardZoom} from "@legion-hq/hooks/list/useCardZoom";
-import {Divider, Paper, styled} from "@mui/material";
+import {Divider} from "@mui/material";
+import {
+  ItemActions,
+  ItemCard,
+  ItemCardSection,
+  ItemContent,
+  ItemHeader,
+} from "./CardComponents";
 
 const styles: Record<string, React.CSSProperties> = {
   unitRow: {
@@ -24,24 +31,6 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: "center",
   },
 };
-
-const ItemCard = styled(Paper)({
-  display: "flex",
-  flexDirection: "column",
-});
-
-const ItemHeader = styled("div")(({theme}) => ({
-  display: "flex",
-  alignItems: "center",
-  columnGap: theme.spacing(2),
-  padding: theme.spacing(0.5),
-}));
-
-const ItemFooter = styled("div")({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "end",
-});
 
 type Props = {
   unit: ListUnitType;
@@ -85,67 +74,68 @@ export function ListUnit({
 
   return (
     <ItemCard>
-      <ItemHeader>
-        <UnitAvatar
-          key="avatar"
-          id={unitCard.id}
-          count={unit.count}
-          handleClick={() => handleCardZoom(unitCard.id)}
-        />
-        <div style={{display: "flex", flexGrow: 1}}>
-          <CardName
-            name={cardName}
-            displayName={displayName}
-            title={title}
-            isUnique={isUnique}
-          />
-        </div>
-        <UnitPoints unit={unit} size="large" />
-      </ItemHeader>
+      <ItemCardSection>
+        <ItemContent>
+          <ItemHeader>
+            <UnitAvatar
+              key="avatar"
+              id={unitCard.id}
+              count={unit.count}
+              handleClick={() => handleCardZoom(unitCard.id)}
+            />
+            <div style={{display: "flex", flexGrow: 1}}>
+              <CardName
+                name={cardName}
+                displayName={displayName}
+                title={title}
+                isUnique={isUnique}
+              />
+            </div>
+            <UnitPoints unit={unit} size="large" />
+          </ItemHeader>
 
-      <Divider />
+          <Divider />
 
-      <div style={styles.unitRow}>
-        <div style={styles.middleCell}>
-          {unitCard.flaw && <UnitFlaw key="flaws" flawId={unitCard.flaw} />}
-          <UnitUpgrades
-            key="upgrades"
-            counterpartId={counterpartId}
-            upgradesEquipped={unit.upgradesEquipped}
-            upgradeInteractions={unit.upgradeInteractions}
-            totalUpgradeBar={[...unitCard.upgradeBar, ...unit.additionalUpgradeSlots]}
-            loadoutUpgrades={unit.loadoutUpgrades}
-            addCounterpartHandler={addCounterpartHandler}
-            // removeCounterpartHandler={removeCounterpartHandler}
-            swapUpgradeHandlers={swapUpgradeHandlers}
-            addUpgradeHandlers={addUpgradeHandlers}
-            deleteUpgradeHandlers={deleteUpgradeHandlers}
-            changeLoadoutHandlers={changeLoadoutHandlers}
-            deleteLoadoutHandlers={deleteLoadoutHandlers}
+          <div style={styles.unitRow}>
+            <div style={styles.middleCell}>
+              {unitCard.flaw && <UnitFlaw key="flaws" flawId={unitCard.flaw} />}
+              <UnitUpgrades
+                key="upgrades"
+                counterpartId={counterpartId}
+                upgradesEquipped={unit.upgradesEquipped}
+                upgradeInteractions={unit.upgradeInteractions}
+                totalUpgradeBar={[...unitCard.upgradeBar, ...unit.additionalUpgradeSlots]}
+                loadoutUpgrades={unit.loadoutUpgrades}
+                addCounterpartHandler={addCounterpartHandler}
+                // removeCounterpartHandler={removeCounterpartHandler}
+                swapUpgradeHandlers={swapUpgradeHandlers}
+                addUpgradeHandlers={addUpgradeHandlers}
+                deleteUpgradeHandlers={deleteUpgradeHandlers}
+                changeLoadoutHandlers={changeLoadoutHandlers}
+                deleteLoadoutHandlers={deleteLoadoutHandlers}
+              />
+            </div>
+          </div>
+        </ItemContent>
+        <ItemActions>
+          <UnitActions
+            key="actions"
+            isKillPointMode={isKillPointMode}
+            handleAddKillPoints={handleAddKillPoints}
+            handleRemoveKillPoints={handleRemoveKillPoints}
+            decrementUnit={handleDecrementUnit}
+            incrementUnit={unit.hasUniques ? undefined : handleIncrementUnit}
+            unitCount={unit.count}
           />
-        </div>
-      </div>
+        </ItemActions>
+      </ItemCardSection>
 
       {counterpartUnit && (
         <>
-          <Divider />
-          <div style={{border: "solid red 2px"}}>{counterpartUnit}</div>
+          <Divider sx={{opacity: 0.8, height: 2}} />
+          {counterpartUnit}
         </>
       )}
-
-      <Divider />
-
-      <ItemFooter>
-        <UnitActions
-          key="actions"
-          isKillPointMode={isKillPointMode}
-          handleAddKillPoints={handleAddKillPoints}
-          handleRemoveKillPoints={handleRemoveKillPoints}
-          decrementUnit={handleDecrementUnit}
-          incrementUnit={unit.hasUniques ? undefined : handleIncrementUnit}
-          unitCount={unit.count}
-        />
-      </ItemFooter>
     </ItemCard>
   );
 }

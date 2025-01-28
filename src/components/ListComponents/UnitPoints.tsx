@@ -3,6 +3,7 @@ import {Typography, useTheme} from "@mui/material";
 type Props = {
   size?: "small" | "medium" | "large";
   unit: {totalUnitCost: number; count: number};
+  subcost?: boolean;
 };
 
 const fontSize = (size: "small" | "medium" | "large") => {
@@ -16,7 +17,11 @@ const fontSize = (size: "small" | "medium" | "large") => {
   }
 };
 
-export function UnitPoints({size = "medium", unit: {totalUnitCost, count}}: Props) {
+export function UnitPoints({
+  size = "medium",
+  unit: {totalUnitCost, count},
+  subcost = false,
+}: Props) {
   const theme = useTheme();
   return (
     <div
@@ -27,6 +32,16 @@ export function UnitPoints({size = "medium", unit: {totalUnitCost, count}}: Prop
         paddingInline: theme.spacing(0.5),
       }}
     >
+      {subcost && (
+        <Typography
+          sx={{
+            fontSize: fontSize(size),
+            color: theme.palette.text.secondary,
+          }}
+        >
+          {"("}
+        </Typography>
+      )}
       {count > 1 && (
         <Typography sx={{fontSize: "0.8em", color: theme.palette.text.secondary}}>
           {`${totalUnitCost / count} /`}
@@ -40,6 +55,16 @@ export function UnitPoints({size = "medium", unit: {totalUnitCost, count}}: Prop
       >
         {totalUnitCost}
       </Typography>
+      {subcost && (
+        <Typography
+          sx={{
+            fontSize: fontSize(size),
+            color: theme.palette.text.secondary,
+          }}
+        >
+          {")"}
+        </Typography>
+      )}
     </div>
   );
 }

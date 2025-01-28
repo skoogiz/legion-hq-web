@@ -1,12 +1,12 @@
 import * as React from "react";
-import {Button, styled} from "@mui/material";
-import {Delete as DeleteIcon, Remove, Add} from "@mui/icons-material";
+import {IconButton, styled} from "@mui/material";
+import {Delete as DeleteIcon, RemoveCircle, AddCircle} from "@mui/icons-material";
 import {Icon as IconifyIcon} from "@iconify/react";
 import {noop} from "lodash";
 
 const Container = styled("div")({
   display: "flex",
-  flexFlow: "row nowrap",
+  flexFlow: "column",
   alignItems: "center",
   justifyContent: "center",
   margin: 0,
@@ -49,17 +49,16 @@ export function UnitActions({
   if (isKillPointMode) {
     return (
       <Container>
-        <Button
+        <IconButton
           size="small"
           onClick={() => {
-            setNumKilled(numKilled - 1);
-            handleRemoveKillPoints();
+            setNumKilled(numKilled + 1);
+            handleAddKillPoints();
           }}
-          disableElevation
           sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
         >
-          <Remove style={{fontSize}} />
-        </Button>
+          <AddCircle style={{fontSize}} />
+        </IconButton>
         <KillCount>
           <IconifyIcon
             style={{fontSize: "1.0em", opacity: "0.4"}}
@@ -67,53 +66,45 @@ export function UnitActions({
           />
           <span>{numKilled}</span>
         </KillCount>
-        <Button
+        <IconButton
           size="small"
           onClick={() => {
-            setNumKilled(numKilled + 1);
-            handleAddKillPoints();
+            setNumKilled(numKilled - 1);
+            handleRemoveKillPoints();
           }}
-          disableElevation
           sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
         >
-          <Add style={{fontSize}} />
-        </Button>
+          <RemoveCircle style={{fontSize}} />
+        </IconButton>
       </Container>
     );
   } else {
-    return (
+    return incrementUnit ? (
       <Container>
-        {incrementUnit ? (
-          <>
-            <Button
-              size="small"
-              onClick={decrementUnit}
-              disableElevation
-              sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
-            >
-              <Remove style={{fontSize}} />
-            </Button>
-            <UnitCount>{unitCount}</UnitCount>
-            <Button
-              size="small"
-              onClick={incrementUnit}
-              disableElevation
-              sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
-            >
-              <Add style={{fontSize}} />
-            </Button>
-          </>
-        ) : (
-          <Button
-            size="small"
-            onClick={decrementUnit}
-            disableElevation
-            sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
-          >
-            <DeleteIcon style={{fontSize}} />
-          </Button>
-        )}
+        <IconButton
+          size="small"
+          onClick={incrementUnit}
+          sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
+        >
+          <AddCircle style={{fontSize}} />
+        </IconButton>
+        <UnitCount>{unitCount}</UnitCount>
+        <IconButton
+          size="small"
+          onClick={decrementUnit}
+          sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
+        >
+          <RemoveCircle style={{fontSize}} />
+        </IconButton>
       </Container>
+    ) : (
+      <IconButton
+        size="small"
+        onClick={decrementUnit}
+        sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
+      >
+        <DeleteIcon style={{fontSize}} />
+      </IconButton>
     );
   }
 }
