@@ -1,7 +1,7 @@
 import React from "react";
 import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {useCurrentList} from "@legion-hq/hooks/list/useCurrentList";
-import {Chip} from "@mui/material";
+import {Chip, Paper, useTheme} from "@mui/material";
 import {Modal} from "@legion-hq/ui/Modal/Modal";
 import {useKeywords} from "@legion-hq/data-access/hooks/useKeywords";
 
@@ -22,9 +22,12 @@ export function KeywordSection() {
     setCurrentKeyword(null);
   };
 
+const theme = useTheme();
+
   return (
     <>
-      <div>
+      <div style={{paddingBlock: theme.spacing(3),paddingInline: theme.spacing(2)}}>
+        <Paper style={{padding: theme.spacing(2)}}>
         <h5>Keywords</h5>
         <div
           style={{
@@ -41,6 +44,7 @@ export function KeywordSection() {
               <Chip key={keyword} label={keyword} onClick={() => openModal(keyword)} />
             ))}
         </div>
+        </Paper>
       </div>
       {currentKeyword && (
         <Modal open={open} onClose={closeModal} title={currentKeyword}>

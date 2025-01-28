@@ -13,6 +13,9 @@ import {useListBuilder} from "@legion-hq/hooks/list/useList";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import {ListToolbar} from "./ListHeader/ListToolbar";
 import {KeywordSection} from "./KeywordSection";
+import { RankEmblem } from "@legion-hq/components/RankEmblem";
+import { RankType } from "@legion-hq/types";
+import ranks from "@legion-hq/constants/ranks";
 
 export function ListLayout() {
   // const theme = useTheme();
@@ -41,10 +44,14 @@ export function ListLayout() {
       <ListToolbar elevation={headerElevation} />
 
       <Container maxWidth={false} disableGutters sx={{flexGrow: 1}}>
+
         <Grid container /* direction="row" sx={{height: "100vh"}} */>
           {leftPaneWidth > 0 && (
             <Grid xs={leftPaneWidth} /* style={paneStyles} */>
               <Box display="flex" flexDirection="column" pt={2} rowGap={2}>
+              <Box display="flex" columnGap={1} alignItems="center" justifyContent="center">
+                {(Object.keys(ranks) as RankType[]).map((rank) => <RankEmblem rank={rank} /> )}
+              </Box>
                 <Box id="list-content" display="flex" flexDirection="column" rowGap={2}>
                   <ListUnits />
                   <Divider />

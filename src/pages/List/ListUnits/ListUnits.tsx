@@ -12,8 +12,16 @@ import {
   UNIT_UPGRADE,
 } from "@legion-hq/state/list";
 import {noop} from "lodash";
+import {styled, useTheme} from "@mui/material";
+
+const ListContainer = styled("div")(({theme}) => ({
+  display: "flex",
+  flexDirection: "column",
+  paddingInline: theme.spacing(2),
+}));
 
 export function ListUnits() {
+  const theme = useTheme();
   const {
     reorderUnits,
     isKillPointMode,
@@ -261,8 +269,18 @@ export function ListUnits() {
     };
   });
   return (
-    <div id="list-units" style={{display: "flex", flexFlow: "column"}}>
-      <DragDropContainer items={items} reorderUnits={reorderUnits} />
-    </div>
+    <ListContainer id="list-units">
+      <DragDropContainer
+        items={items}
+        reorderUnits={reorderUnits}
+        containerProps={{
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            rowGap: theme.spacing(2),
+          },
+        }}
+      />
+    </ListContainer>
   );
 }

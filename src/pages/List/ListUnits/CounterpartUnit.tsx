@@ -1,5 +1,5 @@
 import React from "react";
-import {CardName, UnitAvatar, UnitPoints} from "@legion-hq/components";
+import {LegacyCardName, UnitAvatar, UnitPoints} from "@legion-hq/components";
 import {UnitActions} from "./UnitActions";
 import {UnitUpgrades} from "./UnitUpgrades";
 import {Counterpart, LegionCard} from "@legion-hq/types";
@@ -62,7 +62,7 @@ export function CounterpartUnit({
       handleClick={() => handleCardZoom(counterpartId)}
     />
   );
-  const name = <CardName key="name" id={counterpartId} />;
+  const name = <LegacyCardName key="name" id={counterpartId} />;
   const points = <UnitPoints key="points" unit={counterpart} />;
   const actions = <UnitActions key="actions" decrementUnit={handleRemoveCounterpart} />;
   const upgrades = (

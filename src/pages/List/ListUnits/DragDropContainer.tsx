@@ -44,9 +44,10 @@ export function StrictModeDroppable({children, ...props}: DroppableProps) {
 type Props = {
   items: {id: string; component: JSX.Element}[];
   reorderUnits: (startIndex: number, endIndex: number) => void;
+  containerProps?: {style?: React.CSSProperties};
 };
 
-export function DragDropContainer({items, reorderUnits}: Props) {
+export function DragDropContainer({items, reorderUnits, containerProps}: Props) {
   const [draggableItems, setDraggableItems] = React.useState(items);
   React.useEffect(() => {
     setDraggableItems(items);
@@ -66,7 +67,11 @@ export function DragDropContainer({items, reorderUnits}: Props) {
     <DragDropContext onDragEnd={onDragEnd}>
       <StrictModeDroppable droppableId="list">
         {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            style={containerProps?.style}
+          >
             <ItemList draggableItems={draggableItems} />
             {provided.placeholder}
           </div>

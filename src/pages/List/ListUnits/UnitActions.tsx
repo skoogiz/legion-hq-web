@@ -1,21 +1,31 @@
 import * as React from "react";
-import {Button, IconButton, styled, Typography} from "@mui/material";
-import {
-  PlusOne as PlusOneIcon,
-  Add as PlusIcon,
-  Remove as NegativeIcon,
-  RemoveCircleOutline as MinusOneIcon,
-  Delete as DeleteIcon,
-} from "@mui/icons-material";
+import {Button, styled} from "@mui/material";
+import {Delete as DeleteIcon, Remove, Add} from "@mui/icons-material";
 import {Icon as IconifyIcon} from "@iconify/react";
 import {noop} from "lodash";
 
-const Container = styled("div")`
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  min-width: 72px;
-`;
+const Container = styled("div")({
+  display: "flex",
+  flexFlow: "row nowrap",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: 0,
+  padding: 0,
+});
+
+const UnitCount = styled("div")(({theme}) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  paddingInline: theme.spacing(1),
+  color: theme.palette.text.secondary,
+  fontWeight: 900,
+  fontSize: "1.2em",
+}));
+
+const KillCount = styled(UnitCount)(({theme}) => ({
+  columnGap: theme.spacing(1),
+}));
 
 type Props = {
   incrementUnit?: () => void;
@@ -23,6 +33,7 @@ type Props = {
   isKillPointMode?: boolean;
   handleAddKillPoints?: () => void;
   handleRemoveKillPoints?: () => void;
+  unitCount?: number;
 };
 
 export function UnitActions({
@@ -31,6 +42,7 @@ export function UnitActions({
   isKillPointMode = false,
   handleAddKillPoints = noop,
   handleRemoveKillPoints = noop,
+  unitCount,
 }: Props) {
   const [numKilled, setNumKilled] = React.useState(0);
   const fontSize = 26;
@@ -43,25 +55,28 @@ export function UnitActions({
             setNumKilled(numKilled - 1);
             handleRemoveKillPoints();
           }}
-          style={{marginLeft: 2, marginRight: 1}}
+          disableElevation
+          sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
         >
-          <NegativeIcon style={{fontSize: 13}} />
-          <IconifyIcon style={{fontSize: 21}} icon="fa-solid:skull-crossbones" />
+          <Remove style={{fontSize}} />
         </Button>
+        <KillCount>
+          <IconifyIcon
+            style={{fontSize: "1.0em", opacity: "0.4"}}
+            icon="fa-solid:skull-crossbones"
+          />
+          <span>{numKilled}</span>
+        </KillCount>
         <Button
-          variant="contained"
           size="small"
           onClick={() => {
             setNumKilled(numKilled + 1);
             handleAddKillPoints();
           }}
-          style={{marginLeft: 1, marginRight: 2}}
+          disableElevation
+          sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
         >
-          <PlusIcon style={{fontSize: 13}} />
-          <IconifyIcon style={{fontSize: 21}} icon="fa-solid:skull-crossbones" />
-          <Typography variant="caption" style={{marginLeft: 2}}>
-            {numKilled > 0 ? `(${numKilled})` : ""}
-          </Typography>
+          <Add style={{fontSize}} />
         </Button>
       </Container>
     );
@@ -69,26 +84,34 @@ export function UnitActions({
     return (
       <Container>
         {incrementUnit ? (
-          <React.Fragment>
-            <IconButton
+          <>
+            <Button
               size="small"
               onClick={decrementUnit}
-              style={{marginLeft: 2, marginRight: 1}}
+              disableElevation
+              sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
             >
-              <MinusOneIcon style={{fontSize}} />
-            </IconButton>
-            <IconButton
+              <Remove style={{fontSize}} />
+            </Button>
+            <UnitCount>{unitCount}</UnitCount>
+            <Button
               size="small"
               onClick={incrementUnit}
-              style={{marginLeft: 1, marginRight: 2}}
+              disableElevation
+              sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
             >
-              <PlusOneIcon style={{fontSize}} />
-            </IconButton>
-          </React.Fragment>
+              <Add style={{fontSize}} />
+            </Button>
+          </>
         ) : (
-          <IconButton size="small" onClick={decrementUnit}>
+          <Button
+            size="small"
+            onClick={decrementUnit}
+            disableElevation
+            sx={(theme) => ({margin: 0, paddingBlock: theme.spacing(0.5)})}
+          >
             <DeleteIcon style={{fontSize}} />
-          </IconButton>
+          </Button>
         )}
       </Container>
     );
