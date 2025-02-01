@@ -1,13 +1,8 @@
 import React from "react";
 import {CssBaseline} from "@mui/material";
-import {
-  createTheme,
-  ThemeProvider as MuiThemeProvider,
-  responsiveFontSizes,
-} from "@mui/material/styles";
-import themes from "@legion-hq/constants/themes";
+import {ThemeProvider as MuiThemeProvider} from "@mui/material/styles";
 import {useAppContext} from "@legion-hq/context/app/useAppContext";
-import {createPalette} from "./createPalette";
+import {createTheme} from "./createTheme";
 
 type Props = {
   children: React.ReactNode;
@@ -16,15 +11,7 @@ type Props = {
 export function ThemeProvider({children}: Props) {
   const {settings} = useAppContext();
 
-  let theme = responsiveFontSizes(
-    createTheme({
-      palette: themes.palettes[settings.themeMode],
-    }),
-  );
-
-  theme = createTheme(theme, {
-    ...createPalette(theme),
-  });
+  const theme = createTheme(settings);
 
   return (
     <MuiThemeProvider theme={theme}>

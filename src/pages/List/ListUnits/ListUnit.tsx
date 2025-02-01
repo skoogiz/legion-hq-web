@@ -5,29 +5,30 @@ import {UnitUpgrades} from "./UnitUpgrades";
 import {UnitFlaw} from "./UnitFlaw";
 import {LegionCard, ListUnit as ListUnitType} from "@legion-hq/types";
 import {useCardZoom} from "@legion-hq/hooks/list/useCardZoom";
+import {Divider} from "@mui/material";
+import {
+  ItemActions,
+  ItemCard,
+  ItemCardSection,
+  ItemContent,
+  ItemHeader,
+} from "./CardComponents";
 
 const styles: Record<string, React.CSSProperties> = {
   unitRow: {
     display: "flex",
     flexFlow: "row nowrap",
-    borderTop: "1px solid rgba(255,255,255,0.12)",
   },
-  unitColumn: {display: "flex", flexFlow: "column nowrap"},
-  leftCell: {marginRight: 4},
-  counterpart: {marginLeft: 20},
   middleCell: {
     flex: 1,
     marginRight: 2,
     display: "flex",
     flexFlow: "column nowrap",
-    // overflowX: "auto",
-    // overflowY: "hidden",
   },
   rightCell: {
     display: "flex",
     flexFlow: "column nowrap",
     alignItems: "center",
-    borderLeft: "1px solid rgba(255,255,255,0.12)",
   },
 };
 
@@ -69,62 +70,72 @@ export function ListUnit({
   deleteLoadoutHandlers,
 }: Props) {
   const {handleCardZoom} = useCardZoom();
+  const {cardName, displayName, title, isUnique} = unitCard;
 
-  const avatar = (
-    <UnitAvatar
-      key="avatar"
-      id={unitCard.id}
-      count={unit.count}
-      handleClick={() => handleCardZoom(unitCard.id)}
-    />
-  );
-  const name = <CardName key="name" id={unitCard.id} />;
-  const points = <UnitPoints key="points" unit={unit} />;
-  const actions = (
-    <UnitActions
-      key="actions"
-      isKillPointMode={isKillPointMode}
-      handleAddKillPoints={handleAddKillPoints}
-      handleRemoveKillPoints={handleRemoveKillPoints}
-      decrementUnit={handleDecrementUnit}
-      incrementUnit={unit.hasUniques ? undefined : handleIncrementUnit}
-    />
-  );
-
-  const upgrades = (
-    <UnitUpgrades
-      key="upgrades"
-      counterpartId={counterpartId}
-      upgradesEquipped={unit.upgradesEquipped}
-      upgradeInteractions={unit.upgradeInteractions}
-      totalUpgradeBar={[...unitCard.upgradeBar, ...unit.additionalUpgradeSlots]}
-      loadoutUpgrades={unit.loadoutUpgrades}
-      addCounterpartHandler={addCounterpartHandler}
-      // removeCounterpartHandler={removeCounterpartHandler}
-      swapUpgradeHandlers={swapUpgradeHandlers}
-      addUpgradeHandlers={addUpgradeHandlers}
-      deleteUpgradeHandlers={deleteUpgradeHandlers}
-      changeLoadoutHandlers={changeLoadoutHandlers}
-      deleteLoadoutHandlers={deleteLoadoutHandlers}
-    />
-  );
-  const flaws = unitCard.flaw ? (
-    <UnitFlaw key="flaws" flawId={unitCard.flaw} />
-  ) : undefined;
-  const leftCell = [avatar];
-  const middleCell = [name, upgrades, flaws];
-  const rightCell = [points, actions];
   return (
-    <div style={styles.unitColumn}>
-      <div style={styles.unitRow}>
-        <div style={styles.leftCell}>
-          <div style={{marginTop: 2}} />
-          {leftCell}
-        </div>
-        <div style={styles.middleCell}>{middleCell}</div>
-        <div style={styles.rightCell}>{rightCell}</div>
-      </div>
-      {counterpartUnit}
-    </div>
+    <ItemCard>
+      <ItemCardSection>
+        <ItemContent>
+          <ItemHeader>
+            <UnitAvatar
+              key="avatar"
+              id={unitCard.id}
+              count={unit.count}
+              handleClick={() => handleCardZoom(unitCard.id)}
+            />
+            <div style={{display: "flex", flexGrow: 1}}>
+              <CardName
+                name={cardName}
+                displayName={displayName}
+                title={title}
+                isUnique={isUnique}
+              />
+            </div>
+            <UnitPoints unit={unit} size="large" />
+          </ItemHeader>
+
+          <Divider />
+
+          <div style={styles.unitRow}>
+            <div style={styles.middleCell}>
+              {unitCard.flaw && <UnitFlaw key="flaws" flawId={unitCard.flaw} />}
+              <UnitUpgrades
+                key="upgrades"
+                counterpartId={counterpartId}
+                upgradesEquipped={unit.upgradesEquipped}
+                upgradeInteractions={unit.upgradeInteractions}
+                totalUpgradeBar={[...unitCard.upgradeBar, ...unit.additionalUpgradeSlots]}
+                loadoutUpgrades={unit.loadoutUpgrades}
+                addCounterpartHandler={addCounterpartHandler}
+                // removeCounterpartHandler={removeCounterpartHandler}
+                swapUpgradeHandlers={swapUpgradeHandlers}
+                addUpgradeHandlers={addUpgradeHandlers}
+                deleteUpgradeHandlers={deleteUpgradeHandlers}
+                changeLoadoutHandlers={changeLoadoutHandlers}
+                deleteLoadoutHandlers={deleteLoadoutHandlers}
+              />
+            </div>
+          </div>
+        </ItemContent>
+        <ItemActions>
+          <UnitActions
+            key="actions"
+            isKillPointMode={isKillPointMode}
+            handleAddKillPoints={handleAddKillPoints}
+            handleRemoveKillPoints={handleRemoveKillPoints}
+            decrementUnit={handleDecrementUnit}
+            incrementUnit={unit.hasUniques ? undefined : handleIncrementUnit}
+            unitCount={unit.count}
+          />
+        </ItemActions>
+      </ItemCardSection>
+
+      {counterpartUnit && (
+        <>
+          <Divider sx={{opacity: 0.8, height: 2}} />
+          {counterpartUnit}
+        </>
+      )}
+    </ItemCard>
   );
 }

@@ -2,24 +2,15 @@ import * as React from "react";
 import {Chip, Menu, MenuItem} from "@mui/material";
 import legionModes from "@legion-hq/constants/legionModes";
 import {LegionMode} from "@legion-hq/types";
-import {LargerTooltip} from "@legion-hq/components";
 import {useAppContext} from "@legion-hq/context/app/useAppContext";
+import {ArrowDropDown} from "@mui/icons-material";
 
 type Props = {
   currentMode: LegionMode;
-  points: number;
-  maxPoints: number;
-  tooltip?: string;
   handleChangeMode: (mode: LegionMode) => void;
 };
 
-export function ModeButton({
-  currentMode,
-  points,
-  maxPoints,
-  tooltip = "Toggle between Skirmish (500), Standard (800), and Grand Army (1600) formats.",
-  handleChangeMode,
-}: Props) {
+export function ModeButton({currentMode, handleChangeMode}: Props) {
   const {
     settings: {includeCustomGameModes},
   } = useAppContext();
@@ -31,8 +22,35 @@ export function ModeButton({
 
   const showCustomGameModes = includeCustomGameModes === "yes";
 
+  const mode = React.useMemo(() => legionModes[currentMode], [currentMode]);
+
   return (
-    <React.Fragment>
+    <>
+      <Chip
+        clickable
+        variant="filled"
+        label={
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <span>{mode.name}</span>
+            <ArrowDropDown />
+          </div>
+        }
+        onClick={handleOpenMenu}
+        color="accent"
+        size="small"
+        sx={{
+          fontWeight: 500,
+          textTransform: "uppercase",
+          borderRadius: "6px",
+          ".MuiChip-label": {pr: "4px"},
+        }}
+      />
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
         {Object.values(legionModes).map(({id, name, longName, unofficial}) => (
           <MenuItem
@@ -48,19 +66,6 @@ export function ModeButton({
           </MenuItem>
         ))}
       </Menu>
-      <LargerTooltip
-        title={
-          legionModes[currentMode].description || legionModes[currentMode].name || tooltip
-        }
-      >
-        <Chip
-          clickable
-          variant={points > maxPoints ? "filled" : "outlined"}
-          label={`${points}/${maxPoints}`}
-          onClick={handleOpenMenu}
-          style={points > maxPoints ? {backgroundColor: "#f44336"} : {}}
-        />
-      </LargerTooltip>
-    </React.Fragment>
+    </>
   );
 }

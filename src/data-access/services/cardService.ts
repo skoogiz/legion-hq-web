@@ -25,6 +25,17 @@ export class CardService {
     }, {});
   }
 
+  keywords = (cardIds: Array<string> | Set<string>): string[] => {
+    const keywords = new Set<string>();
+    cardIds.forEach((id) => {
+      const card = this.cards[id];
+      if (card && card.keywords) {
+        card.keywords.forEach((keyword) => keywords.add(keyword));
+      }
+    });
+    return [...keywords];
+  };
+
   costSupplier = (
     cardIds: string[],
     useOriginalCosts = false,

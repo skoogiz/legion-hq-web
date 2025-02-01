@@ -15,7 +15,7 @@ const Divider = styled("div")`
   opacity
 `;
 
-const Offset = styled("div")(({theme}) => theme.mixins.toolbar);
+// const Offset = styled("div")(({theme}) => theme.mixins.toolbar);
 
 export function ListBottomBar() {
   const {faction, battleForce, mode, pointTotal, unitCounts, activations} =
@@ -25,14 +25,15 @@ export function ListBottomBar() {
 
   return (
     <>
-      <Offset />
+      {/* <Offset /> */}
       <AppBar
         component="div"
-        position="fixed"
+        position="sticky"
         sx={(theme) => ({
           top: "auto",
           bottom: 0,
-          backgroundColor: getFactionColor({theme, faction}),
+          backgroundColor: getFactionColor({theme, faction}).main,
+          // maxHeight: 56,
         })}
       >
         <Toolbar>
@@ -100,7 +101,9 @@ export function ListBottomBar() {
                   columnGap: "0.2em",
                 }}
               >
-                <ValidationBadge />
+                <div>
+                  <ValidationBadge />
+                </div>
                 <Text>{legionModes[mode].name}</Text>
                 <Divider />
                 <Text>{pointTotal}</Text>

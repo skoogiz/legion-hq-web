@@ -12,6 +12,7 @@ import {useCards} from "@legion-hq/data-access/hooks/useCards";
 import {ImagePanel} from "./ImagePanel";
 import {KeywordsPanel} from "./KeywordsPanel";
 import {HistoryPanel} from "./HistoryPanel";
+import {getModalTitle} from "@legion-hq/utility/cards/cardUtils";
 
 type Props = {
   id?: string;
@@ -25,14 +26,13 @@ export function CardModal({id, isOpen, handleClose}: Props) {
   const isFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
   if (!id) return null;
   const card = cards[id];
+  const {title, subtitle} = getModalTitle(card);
   return (
     <Dialog fullScreen={isFullscreen} open={isOpen} onClose={handleClose}>
-      <DialogTitle style={{padding: "16px 16px 0"}}>
-        {card.displayName ? card.displayName : card.cardName}
-      </DialogTitle>
-      {card.title && (
+      <DialogTitle style={{padding: "16px 16px 0"}}>{title}</DialogTitle>
+      {subtitle && (
         <DialogContentText style={{padding: "8px 16px", marginBottom: 0}}>
-          {card.title}
+          {subtitle}
         </DialogContentText>
       )}
       <DialogContent style={{padding: 8}}>

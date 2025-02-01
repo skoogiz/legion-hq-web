@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Chip, ClickAwayListener, Tooltip, Typography} from "@mui/material";
-import keywords from "@legion-hq/constants/keywords";
+import {useKeywords} from "@legion-hq/data-access/hooks/useKeywords";
 
 type Props = {
   keyword: string;
@@ -8,6 +8,7 @@ type Props = {
 };
 
 export function KeywordChip({keyword, size}: Props) {
+  const {keywords} = useKeywords();
   const [isOpen, setIsOpen] = React.useState(false);
   const handleTooltipOpen = () => setIsOpen(true);
   const handleTooltipClose = () => setIsOpen(false);

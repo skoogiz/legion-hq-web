@@ -13,10 +13,11 @@ export function KeywordChips({keywords, size = "medium"}: Props) {
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "flex-end",
+        backgroundColor: "hotpink"
       }}
     >
       <Typography variant="body2" color="textSecondary" style={{marginRight: 4}}>
-        Keywords
+        Keywords Test
       </Typography>
       <div style={{flexGrow: 1}} />
       {keywords.map((keyword) => (

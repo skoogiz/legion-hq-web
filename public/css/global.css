@@ -11,6 +11,11 @@ img {
   max-width: 90vw;
 }
 
+.app-root {
+  display: flex;
+  flex-direction: column;
+}
+
 .App {
   top: 35%;
   left: 50%;

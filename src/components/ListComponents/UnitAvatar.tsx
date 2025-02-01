@@ -13,6 +13,7 @@ export function UnitAvatar({id, count = 1, handleClick}: Props) {
   if (card.cardType === "counterpart") {
     return (
       <CardIcon
+        variant="rounded"
         size="medium"
         cardType={card.cardType}
         cardName={card.cardName}
@@ -22,6 +23,14 @@ export function UnitAvatar({id, count = 1, handleClick}: Props) {
     );
   }
   return (
+    <CardIcon
+      variant="rounded"
+      cardName={card.cardName}
+      cardType={card.cardType}
+      imageName={card.imageName}
+      handleClick={handleClick}
+    />
+    /*
     <IconBadge
       count={count}
       rank={card.rank}
@@ -34,5 +43,6 @@ export function UnitAvatar({id, count = 1, handleClick}: Props) {
         />
       }
     />
+    */
   );
 }

@@ -1,4 +1,4 @@
-import _, {cloneDeep} from "lodash";
+import _, {cloneDeep, fill, flow, pull} from "lodash";
 import legionModes from "@legion-hq/constants/legionModes";
 import interactions from "@legion-hq/constants/cardInteractions";
 import battleForcesDict from "@legion-hq/constants/battleForcesDict";
@@ -29,6 +29,7 @@ import {
   UNIT_UPGRADE,
 } from "@legion-hq/state/list";
 import {List} from "@legion-hq/types/list.class";
+import {UnitImpl} from "@legion-hq/types/listUnit.class";
 
 const {cards, cardIdsByType, costSupplier} = CardService.getInstance();
 
@@ -144,7 +145,12 @@ function consolidate(list: ListTemplate) {
   const currentList = List.of(list);
   currentList.addModifiers(interactions);
   currentList.calculatePoints(costSupplier);
-  return currentList.listTemplate;
+
+  const listTemplate = currentList.listTemplate;
+
+  console.log("List Consolidated", listTemplate);
+
+  return listTemplate;
 }
 
 function getNumActivations(list: ListTemplate) {
@@ -974,35 +980,70 @@ function unequipCounterpartUpgrade(
   return consolidate(list);
 }
 
+const handleUnitAction = (
+  list: ListTemplate,
+  unitIndex: number,
+  cardService = CardService.getInstance(),
+) => {
+  const currentList = List.of(list);
+  const unit = currentList.units[unitIndex];
+  const unitCard = cardService.cards[unit.unitId];
+  return {currentList, unit, unitCard};
+};
+
+const executeUnitAction = ({
+  list,
+  unitIndex,
+  cardService = CardService.getInstance(),
+  unitAction,
+}: {
+  list: ListTemplate;
+  unitIndex: number;
+  cardService?: CardService;
+  unitAction: (params: {
+    currentList: List;
+    unit: UnitImpl | undefined;
+    unitCard: LegionCard;
+  }) => ListTemplate;
+}) => flow([handleUnitAction, unitAction, consolidate])(list, unitIndex, cardService);
+
 function addCounterpart(
   list: ListTemplate,
   unitIndex: number,
   counterpartId: string,
 ): ListTemplate {
-  const counterpartCard = cards[counterpartId];
-  const unit = list.units[unitIndex];
-  const unitCard = cards[unit.unitId];
-  unit.counterpart = ListFactories.createCounterpart({
-    counterpartId: counterpartCard.id,
-    totalUnitCost: counterpartCard.cost,
+  return executeUnitAction({
+    list,
+    unitIndex,
+    unitAction: ({currentList, unit}) => {
+      const counterpartCard = cards[counterpartId];
+      if (unit && counterpartCard) {
+        unit.addCounterpart(
+          ListFactories.createCounterpart({
+            counterpartId: counterpartCard.id,
+            totalUnitCost: counterpartCard.cost,
+            upgradesEquipped: fill(Array(counterpartCard.upgradeBar.length), null),
+          }),
+        );
+      }
+      return currentList.listTemplate;
+    },
   });
-  for (let i = 0; i < counterpartCard.upgradeBar.length; i++) {
-    unit.counterpart.upgradesEquipped.push(null);
-    if (unitCard.keywords.includes("Loadout")) {
-      unit.counterpart.loadoutUpgrades.push(null);
-    }
-  }
-  return consolidate(list);
 }
 
 function removeCounterpart(list: ListTemplate, unitIndex: number): ListTemplate {
-  const counterpart = list.units[unitIndex].counterpart as Counterpart;
-  list.uniques = deleteItem(
-    list.uniques,
-    list.uniques.indexOf(counterpart.counterpartId),
-  );
-  delete list.units[unitIndex].counterpart;
-  return consolidate(list);
+  return executeUnitAction({
+    list,
+    unitIndex,
+    unitAction: ({currentList, unit}) => {
+      const counterpart = unit?.counterpart;
+      if (counterpart) {
+        unit.removeCounterpart();
+        pull(currentList.uniques, counterpart.counterpartId);
+      }
+      return currentList.listTemplate;
+    },
+  });
 }
 
 function addUnit(list: ListTemplate, unitId: string, stackSize = 1) {

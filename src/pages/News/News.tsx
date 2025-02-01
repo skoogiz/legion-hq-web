@@ -1,17 +1,22 @@
-import {Typography, Divider, Container, Box} from "@mui/material";
+import {Typography, Card, CardContent, Container} from "@mui/material";
 import {useNews} from "@legion-hq/data-access/hooks/useNews";
 import {NewsPost} from "@legion-hq/types/news";
+import {PageColumn, PageTitle} from "@legion-hq/components/PageLayout";
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 function Post({title, date, body}: NewsPost) {
   return (
-    <div>
-      <Divider sx={{marginTop: "1em", marginBottom: "1em"}} />
-      <Typography variant="h6">{title}</Typography>
-      <Typography variant="caption" color="textSecondary">
-        {date}
-      </Typography>
-      <Typography variant="body2">{body}</Typography>
-    </div>
+    <Grid xxs={12}>
+      <Card>
+        <CardContent>
+          <Typography variant="h6">{title}</Typography>
+          <Typography variant="caption" color="textSecondary">
+            {date}
+          </Typography>
+          <Typography variant="body2">{body}</Typography>
+        </CardContent>
+      </Card>
+    </Grid>
   );
 }
 
@@ -19,51 +24,21 @@ function News() {
   const {newsPosts} = useNews();
   return (
     <Container maxWidth="lg">
-      <Box
-        sx={{
-          display: "flex",
-          flexFlow: "column nowrap",
-          alignItems: "stretch",
-          padding: "2em 0",
-        }}
-      >
-        <Typography variant="h4" style={{marginBottom: 8}}>
-          Website Updates
-        </Typography>
-        {newsPosts.map((post, i) => (
-          <Post
-            key={`${post.title}_${i}`}
-            title={post.title}
-            date={post.date}
-            body={post.body}
-          />
-        ))}
-      </Box>
+      <PageColumn>
+        <PageTitle>Website Updates</PageTitle>
+        <Grid container flexDirection="column" xxs={12} gap={2}>
+          {newsPosts.map((post, i) => (
+            <Post
+              key={`${post.title}_${i}`}
+              title={post.title}
+              date={post.date}
+              body={post.body}
+            />
+          ))}
+        </Grid>
+      </PageColumn>
     </Container>
   );
 }
-
-/*
-<div>
-  <WidgetBot
-    width={500}
-    height={500}
-    server="227631467532910602"
-    channel="714567106620031076"
-    shard="https://e.widgetbot.io"
-  />
-</div>
-<div>
-  <iframe
-    width="350"
-    height="500"
-    frameBorder="0"
-    title="Legion Discord"
-    allowtransparency="true"
-    src="https://discordapp.com/widget?id=227631467532910602&theme=dark&username="
-  >
-  </iframe>
-</div>
-*/
 
 export default News;

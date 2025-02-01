@@ -1,4 +1,5 @@
-import {ListUnit} from "./lists";
+import {fill} from "lodash";
+import {Counterpart, ListUnit} from "./lists";
 
 export class UnitImpl implements ListUnit {
   private unit: ListUnit;
@@ -88,6 +89,23 @@ export class UnitImpl implements ListUnit {
     this.unit.totalUnitCost = pointTotal;
   }
 
+  get hasLoudout(): boolean {
+    return this.loadoutUpgrades && this.loadoutUpgrades.length > 0;
+  }
+
+  addCounterpart(counterpart: Counterpart) {
+    this.data.counterpart = {
+      ...counterpart,
+      loadoutUpgrades: this.hasLoudout
+        ? fill(Array(counterpart.upgradesEquipped?.length ?? 0), null)
+        : [],
+    };
+  }
+
+  removeCounterpart() {
+    delete this.data.counterpart;
+  }
+
   /**
    * @returns list of all card ids used by this unit.
    */
@@ -96,12 +114,10 @@ export class UnitImpl implements ListUnit {
       this.unitId,
       ...this.upgradesEquipped,
       ...this.loadoutUpgrades,
-      ...this.additionalUpgradeSlots,
       this.flawId,
       this.counterpart?.counterpartId,
       ...(this.counterpart?.upgradesEquipped ?? []),
       ...(this.counterpart?.loadoutUpgrades ?? []),
-      ...(this.counterpart?.additionalUpgradeSlots ?? []),
     ].filter((upgrade) => Boolean(upgrade)) as string[];
   }
 

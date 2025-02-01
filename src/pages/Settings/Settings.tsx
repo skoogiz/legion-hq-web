@@ -1,5 +1,4 @@
 import {
-  Container,
   Grid,
   Typography,
   FormControl,
@@ -12,10 +11,12 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Container,
 } from "@mui/material";
 import {useSettings} from "@legion-hq/hooks/app/useSettings";
 import {OptionSwitch} from "@legion-hq/components";
 import {SettingField, SettingFieldGroup} from "@legion-hq/constants/settings";
+import {PageColumn, PageTitle} from "@legion-hq/components/PageLayout";
 
 function SettingInput({
   field,
@@ -138,45 +139,44 @@ export function Settings() {
   return (
     <Fade in={true}>
       <Container maxWidth="sm">
-        <Grid container direction="column" alignItems="center" rowGap={3}>
-          <Grid item xs={12} alignSelf="stretch">
-            <Typography variant="h3" mt={3} mb={2}>
-              Settings
-            </Typography>
+        <PageColumn>
+          <PageTitle>Settings</PageTitle>
+          <Grid container direction="column" alignItems="center" rowGap={3}>
+            {userSettings.config.fieldGroupNames.map((groupName) => {
+              const fields = userSettings.config.fieldsByGroup(groupName);
+              return (
+                <Grid item key={`group:${groupName}`} xs={12} alignSelf="stretch">
+                  <Paper key={groupName} square={false} sx={{p: 2}}>
+                    <Box display="flex" flexDirection="column" gap={3}>
+                      <Typography
+                        variant="h5"
+                        component="h3"
+                        sx={(theme) => ({
+                          color: theme.palette.text.secondary,
+                        })}
+                      >
+                        {getGroupLabel(groupName)}
+                      </Typography>
+                      {fields.map((field) =>
+                        (field.visible ?? true) ? (
+                          <Box key={`${groupName}:${field.name}`} alignSelf="stretch">
+                            <SettingInput
+                              field={field}
+                              value={userSettings[field.name]}
+                              handleClick={(value: string) => {
+                                userSettings.setSettingsValue(field.name, value);
+                              }}
+                            />
+                          </Box>
+                        ) : null,
+                      )}
+                    </Box>
+                  </Paper>
+                </Grid>
+              );
+            })}
           </Grid>
-          {userSettings.config.fieldGroupNames.map((groupName) => {
-            const fields = userSettings.config.fieldsByGroup(groupName);
-            return (
-              <Grid key={`group:${groupName}`} item xs={12} alignSelf="stretch">
-                <Paper key={groupName} square={false} sx={{p: 2}}>
-                  <Box display="flex" flexDirection="column" gap={3}>
-                    <Typography
-                      variant="h5"
-                      sx={(theme) => ({
-                        color: theme.palette.text.secondary,
-                      })}
-                    >
-                      {getGroupLabel(groupName)}
-                    </Typography>
-                    {fields.map((field) =>
-                      (field.visible ?? true) ? (
-                        <Box key={`${groupName}:${field.name}`} width="100%">
-                          <SettingInput
-                            field={field}
-                            value={userSettings[field.name]}
-                            handleClick={(value: string) => {
-                              userSettings.setSettingsValue(field.name, value);
-                            }}
-                          />
-                        </Box>
-                      ) : null,
-                    )}
-                  </Box>
-                </Paper>
-              </Grid>
-            );
-          })}
-        </Grid>
+        </PageColumn>
       </Container>
     </Fade>
   );

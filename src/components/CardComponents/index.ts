@@ -1,1 +1,1 @@
-export {CardName} from "./CardName";
+export {LegacyCardName, CardName} from "./CardName";

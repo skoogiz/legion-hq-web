@@ -38,6 +38,7 @@
     "react-router-dom": "^6.26.0",
     "react-to-print": "^2.15.1",
     "three": "^0.137.0",
+    "ts-pattern": "^5.3.1",
     "typeface-roboto": "0.0.75",
     "universal-cookie": "^4.0.3",
     "vite-plugin-svgr": "^4.2.0"

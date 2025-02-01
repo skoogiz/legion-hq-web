@@ -1,6 +1,6 @@
-import {IconButton, Icon, Avatar} from "@mui/material";
-import upgradeTypes from "@legion-hq/constants/upgradeTypes";
+import {IconButton, Icon} from "@mui/material";
 import {UpgradeType} from "@legion-hq/types";
+import {UpgradeIcon} from "@legion-hq/components/UpgradeIcon";
 
 type Props = {
   type: UpgradeType;
@@ -12,11 +12,7 @@ export function AddUpgradeButton({type, handleClick}: Props) {
   return (
     <IconButton size="small" style={{marginBottom: 4}} onClick={handleClick}>
       <Icon style={{height: size, width: size}}>
-        <Avatar
-          alt={type}
-          src={upgradeTypes[type].icon}
-          style={{height: size, width: size}}
-        />
+        <UpgradeIcon type={type} />
       </Icon>
     </IconButton>
   );

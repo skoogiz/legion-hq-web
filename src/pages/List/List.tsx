@@ -5,6 +5,8 @@ import {ListProvider} from "@legion-hq/context/ListContext";
 import {ListTemplate} from "@legion-hq/types";
 import {ErrorFallback} from "@legion-hq/components";
 import {ListLayout} from "./ListLayout";
+import {ListBottomBar} from "@legion-hq/components/list";
+import {ListModals} from "./ListModals";
 
 type Props = {
   storedLists: Record<string, ListTemplate>;
@@ -13,9 +15,7 @@ type Props = {
 
 export function List({storedLists, updateStoredList}: Props) {
   const {breakpoints} = useTheme();
-
   const isSmallScreen = useMediaQuery(breakpoints.down("md"));
-
   const {slug, listHash} = useParams();
 
   return (
@@ -28,6 +28,8 @@ export function List({storedLists, updateStoredList}: Props) {
     >
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <ListLayout />
+        <ListBottomBar />
+        <ListModals />
       </ErrorBoundary>
     </ListProvider>
   );
