@@ -27,7 +27,8 @@ export const ItemActions = styled("div")(({theme}) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: theme.palette.mercenaries?.main,
+  backgroundColor:
+    theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.10)",
   width: "48px",
   // borderTopRightRadius: theme.shape.borderRadius,
   // borderBottomRightRadius: theme.shape.borderRadius,

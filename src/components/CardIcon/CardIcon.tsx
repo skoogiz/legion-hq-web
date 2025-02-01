@@ -1,6 +1,5 @@
 import * as React from "react";
-import {Img} from "react-image";
-import {Avatar, AvatarOwnProps, Skeleton} from "@mui/material";
+import {Avatar, AvatarOwnProps /* Skeleton */} from "@mui/material";
 import urls from "@legion-hq/constants/urls";
 
 type Size = "small" | "medium" | "large";
@@ -45,23 +44,9 @@ export function CardIcon({
           cursor: handleClick ? "pointer" : undefined,
         }}
         onClick={handleClick}
-        //loader={placeholder}
+        // loader={placeholder}
         // decode={false}
       />
-      {/*
-      <Img
-        decode={false}
-        alt={cardName}
-        src={`${urls.cdn}/${cardType}Icons/${imageName}`}
-        loader={placeholder}
-        style={{
-          ...styles.image,
-          ...styles[size],
-          cursor: handleClick ? "pointer" : undefined,
-        }}
-        onClick={handleClick}
-      />
-      */}
     </>
   );
 }
