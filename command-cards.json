@@ -1,0 +1,3686 @@
+[
+  {
+    "__typename": "command",
+    "name": "Standing Orders",
+    "pips": 4,
+    "imageRef": "Standing Orders.jpeg",
+    "identifiers": {
+      "name": "Standing Orders",
+      "legionhqId": "aa",
+      "tni": "command|4|Standing Orders"
+    }
+  },
+  {
+    "__typename": "command",
+    "name": "Assault",
+    "pips": 3,
+    "imageRef": "Assault.jpeg",
+    "identifiers": {
+      "name": "Assault",
+      "legionhqId": "bj",
+      "tni": "command|3|Assault"
+    }
+  },
+  {
+    "__typename": "command",
+    "name": "Push",
+    "pips": 2,
+    "imageRef": "Push.jpeg",
+    "identifiers": {
+      "name": "Push",
+      "legionhqId": "bk",
+      "tni": "command|2|Push"
+    }
+  },
+  {
+    "__typename": "command",
+    "name": "Ambush",
+    "pips": 1,
+    "imageRef": "Ambush.jpeg",
+    "identifiers": {
+      "name": "Ambush",
+      "legionhqId": "bl",
+      "tni": "command|1|Ambush"
+    }
+  },
+  {
+    "__typename": "command",
+    "name": "Master of Evil",
+    "pips": 3,
+    "imageRef": "Master of Evil.jpeg",
+    "identifiers": {
+      "name": "Master of Evil",
+      "legionhqId": "bm",
+      "tni": "command|3|Master of Evil"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Darth Vader"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Imperial Discipline",
+    "pips": 3,
+    "imageRef": "Imperial Discipline.jpeg",
+    "identifiers": {
+      "name": "Imperial Discipline",
+      "legionhqId": "bn",
+      "tni": "command|3|Imperial Discipline"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "General Veers"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "An Entire Legion",
+    "pips": 3,
+    "imageRef": "An Entire Legion.jpeg",
+    "identifiers": {
+      "name": "An Entire Legion",
+      "legionhqId": "bo",
+      "tni": "command|3|An Entire Legion"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Emperor Palpatine"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Z-6 Jetpack Rocket",
+    "pips": 3,
+    "keywords": [
+      "Blast",
+      "Impact"
+    ],
+    "imageRef": "Z-6 Jetpack Rocket.jpeg",
+    "identifiers": {
+      "name": "Z-6 Jetpack Rocket",
+      "legionhqId": "bp",
+      "tni": "command|3|Z-6 Jetpack Rocket"
+    },
+    "restrictions": [
+      {
+        "commander": "Boba Fett"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Lying In Wait",
+    "pips": 3,
+    "keywords": [
+      "Sharpshooter"
+    ],
+    "imageRef": "Lying In Wait.jpeg",
+    "identifiers": {
+      "name": "Lying In Wait",
+      "legionhqId": "bq",
+      "tni": "command|3|Lying In Wait"
+    },
+    "restrictions": [
+      {
+        "commander": "Bossk"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "New Ways to Motivate Them",
+    "pips": 2,
+    "imageRef": "New Ways to Motivate Them.jpeg",
+    "identifiers": {
+      "name": "New Ways to Motivate Them",
+      "legionhqId": "br",
+      "tni": "command|2|New Ways to Motivate Them"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Darth Vader"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Evasive Maneuvers",
+    "pips": 2,
+    "imageRef": "Evasive Maneuvers.jpeg",
+    "identifiers": {
+      "name": "Evasive Maneuvers",
+      "legionhqId": "bs",
+      "tni": "command|2|Evasive Maneuvers"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "General Veers"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Give In To Your Anger",
+    "pips": 2,
+    "imageRef": "Give In To Your Anger.jpeg",
+    "identifiers": {
+      "name": "Give In To Your Anger",
+      "legionhqId": "bt",
+      "tni": "command|2|Give In To Your Anger"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Emperor Palpatine"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "ZX Flame Projector",
+    "pips": 2,
+    "keywords": [
+      "Blast",
+      "Spray"
+    ],
+    "imageRef": "ZX Flame Projector.jpeg",
+    "identifiers": {
+      "name": "ZX Flame Projector",
+      "legionhqId": "bu",
+      "tni": "command|2|ZX Flame Projector"
+    },
+    "restrictions": [
+      {
+        "commander": "Boba Fett"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Maximum Firepower",
+    "pips": 1,
+    "keywords": [
+      "Impact",
+      "Immune"
+    ],
+    "imageRef": "Maximum Firepower.jpeg",
+    "identifiers": {
+      "name": "Maximum Firepower",
+      "legionhqId": "bv",
+      "tni": "command|1|Maximum Firepower"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "General Veers"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Implacable",
+    "pips": 1,
+    "imageRef": "Implacable.jpeg",
+    "identifiers": {
+      "name": "Implacable",
+      "legionhqId": "bw",
+      "tni": "command|1|Implacable"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Darth Vader"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "And Now You Will Die",
+    "pips": 1,
+    "imageRef": "And Now You Will Die.jpeg",
+    "identifiers": {
+      "name": "And Now You Will Die",
+      "legionhqId": "bx",
+      "tni": "command|1|And Now You Will Die"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Emperor Palpatine"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Voracious Ambition",
+    "pips": 1,
+    "imageRef": "Voracious Ambition.jpeg",
+    "identifiers": {
+      "name": "Voracious Ambition",
+      "legionhqId": "by",
+      "tni": "command|1|Voracious Ambition"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Director Orson Krennic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Whipcord Launcher",
+    "pips": 1,
+    "imageRef": "Whipcord Launcher.jpeg",
+    "identifiers": {
+      "name": "Whipcord Launcher",
+      "legionhqId": "bz",
+      "tni": "command|1|Whipcord Launcher"
+    },
+    "restrictions": [
+      {
+        "commander": "Boba Fett"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Covert Observation",
+    "pips": 1,
+    "imageRef": "Covert Observation.jpeg",
+    "identifiers": {
+      "name": "Covert Observation",
+      "legionhqId": "ca",
+      "tni": "command|1|Covert Observation"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Pinned Down",
+    "pips": 2,
+    "imageRef": "Pinned Down.jpeg",
+    "identifiers": {
+      "name": "Pinned Down",
+      "legionhqId": "cb",
+      "tni": "command|2|Pinned Down"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Coordinated Fire",
+    "pips": 3,
+    "imageRef": "Coordinated Fire.jpeg",
+    "identifiers": {
+      "name": "Coordinated Fire",
+      "legionhqId": "cc",
+      "tni": "command|3|Coordinated Fire"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Return of the Jedi",
+    "pips": 3,
+    "imageRef": "Return of the Jedi.jpeg",
+    "identifiers": {
+      "name": "Return of the Jedi",
+      "legionhqId": "cd",
+      "tni": "command|3|Return of the Jedi"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Luke Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Somebody Has to Save Our Skins",
+    "pips": 3,
+    "imageRef": "Somebody Has to Save Our Skins.jpeg",
+    "identifiers": {
+      "name": "Somebody Has to Save Our Skins",
+      "legionhqId": "ce",
+      "tni": "command|3|Somebody Has to Save Our Skins"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Leia Organa"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Change of Plans",
+    "pips": 3,
+    "imageRef": "Change of Plans.jpeg",
+    "identifiers": {
+      "name": "Change of Plans",
+      "legionhqId": "cf",
+      "tni": "command|3|Change of Plans"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Han Solo"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Notorious Scoundrels",
+    "pips": 3,
+    "imageRef": "Notorious Scoundrels.jpeg",
+    "identifiers": {
+      "name": "Notorious Scoundrels",
+      "legionhqId": "cg",
+      "tni": "command|3|Notorious Scoundrels"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Chewbacca"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Covering Fire",
+    "pips": 3,
+    "imageRef": "Covering Fire.jpeg",
+    "identifiers": {
+      "name": "Covering Fire",
+      "legionhqId": "ch",
+      "tni": "command|3|Covering Fire"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Complete the Mission",
+    "pips": 3,
+    "keywords": [
+      "Low Profile"
+    ],
+    "imageRef": "Complete the Mission.jpeg",
+    "identifiers": {
+      "name": "Complete the Mission",
+      "legionhqId": "ci",
+      "tni": "command|3|Complete the Mission"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Jyn Erso"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Legacy of Mandalore",
+    "pips": 3,
+    "keywords": [
+      "Inspire"
+    ],
+    "imageRef": "Legacy of Mandalore.jpeg",
+    "identifiers": {
+      "name": "Legacy of Mandalore",
+      "legionhqId": "cj",
+      "tni": "command|3|Legacy of Mandalore"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Sabine Wren"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "My Ally is the Force",
+    "pips": 2,
+    "imageRef": "My Ally is the Force.jpeg",
+    "identifiers": {
+      "name": "My Ally is the Force",
+      "legionhqId": "ck",
+      "tni": "command|2|My Ally is the Force"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Luke Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "No Time for Sorrows",
+    "pips": 2,
+    "imageRef": "No Time for Sorrows.jpeg",
+    "identifiers": {
+      "name": "No Time for Sorrows",
+      "legionhqId": "cl",
+      "tni": "command|2|No Time for Sorrows"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Leia Organa"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Reckless Diversion",
+    "pips": 2,
+    "imageRef": "Reckless Diversion.jpeg",
+    "identifiers": {
+      "name": "Reckless Diversion",
+      "legionhqId": "cm",
+      "tni": "command|2|Reckless Diversion"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Han Solo"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Brains and Brawn",
+    "pips": 2,
+    "imageRef": "Brains and Brawn.jpeg",
+    "identifiers": {
+      "name": "Brains and Brawn",
+      "legionhqId": "cn",
+      "tni": "command|2|Brains and Brawn"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Chewbacca"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Trust Goes Both Ways",
+    "pips": 2,
+    "keywords": [
+      "Inspire",
+      "Teamwork"
+    ],
+    "imageRef": "Trust Goes Both Ways.jpeg",
+    "identifiers": {
+      "name": "Trust Goes Both Ways",
+      "legionhqId": "co",
+      "tni": "command|2|Trust Goes Both Ways"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Jyn Erso"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Turning the Tide",
+    "pips": 2,
+    "keywords": [
+      "Inspire"
+    ],
+    "imageRef": "Turning the Tide.jpeg",
+    "identifiers": {
+      "name": "Turning the Tide",
+      "legionhqId": "cp",
+      "tni": "command|2|Turning the Tide"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Son of Skywalker",
+    "pips": 1,
+    "imageRef": "Son of Skywalker.jpeg",
+    "identifiers": {
+      "name": "Son of Skywalker",
+      "legionhqId": "cq",
+      "tni": "command|1|Son of Skywalker"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Luke Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Coordinated Bombardment",
+    "pips": 1,
+    "keywords": [
+      "Immune"
+    ],
+    "imageRef": "Coordinated Bombardment.jpeg",
+    "identifiers": {
+      "name": "Coordinated Bombardment",
+      "legionhqId": "cr",
+      "tni": "command|1|Coordinated Bombardment"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Leia Organa"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Sorry About the Mess",
+    "pips": 1,
+    "imageRef": "Sorry About the Mess.jpeg",
+    "identifiers": {
+      "name": "Sorry About the Mess",
+      "legionhqId": "cs",
+      "tni": "command|1|Sorry About the Mess"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Han Solo"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Rebellious",
+    "pips": 1,
+    "keywords": [
+      "Charge"
+    ],
+    "imageRef": "Rebellious.jpeg",
+    "identifiers": {
+      "name": "Rebellious",
+      "legionhqId": "ct",
+      "tni": "command|1|Rebellious"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Jyn Erso"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Common Cause",
+    "pips": 1,
+    "imageRef": "Common Cause.jpeg",
+    "identifiers": {
+      "name": "Common Cause",
+      "legionhqId": "cu",
+      "tni": "command|1|Common Cause"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Chewbacca"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Sabotaged Communications",
+    "pips": 1,
+    "imageRef": "Sabotaged Communications.jpeg",
+    "identifiers": {
+      "name": "Sabotaged Communications",
+      "legionhqId": "cv",
+      "tni": "command|1|Sabotaged Communications"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "I am a Jedi",
+    "pips": 3,
+    "imageRef": "I am a Jedi.jpeg",
+    "identifiers": {
+      "name": "I am a Jedi",
+      "legionhqId": "fp",
+      "tni": "command|3|I am a Jedi"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Luke Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Darkness Descends",
+    "pips": 3,
+    "keywords": [
+      "Infiltrate",
+      "Scout"
+    ],
+    "imageRef": "Darkness Descends.jpeg",
+    "identifiers": {
+      "name": "Darkness Descends",
+      "legionhqId": "fq",
+      "tni": "command|3|Darkness Descends"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Darth Vader"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Annihilation Looms",
+    "pips": 3,
+    "imageRef": "Annihilation Looms.jpeg",
+    "identifiers": {
+      "name": "Annihilation Looms",
+      "legionhqId": "gd",
+      "tni": "command|3|Annihilation Looms"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Director Orson Krennic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Deploy the Garrison",
+    "pips": 2,
+    "imageRef": "Deploy the Garrison.jpeg",
+    "identifiers": {
+      "name": "Deploy the Garrison",
+      "legionhqId": "ge",
+      "tni": "command|2|Deploy the Garrison"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Director Orson Krennic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Merciless Munitions",
+    "pips": 1,
+    "keywords": [
+      "Arm",
+      "Detonate",
+      "Poison Token"
+    ],
+    "imageRef": "Merciless Munitions.jpeg",
+    "identifiers": {
+      "name": "Merciless Munitions",
+      "legionhqId": "gf",
+      "tni": "command|1|Merciless Munitions"
+    },
+    "restrictions": [
+      {
+        "commander": "Bossk"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Reptilian Rampage",
+    "pips": 2,
+    "imageRef": "Reptilian Rampage.jpeg",
+    "identifiers": {
+      "name": "Reptilian Rampage",
+      "legionhqId": "gg",
+      "tni": "command|2|Reptilian Rampage"
+    },
+    "restrictions": [
+      {
+        "commander": "Bossk"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Explosions!",
+    "pips": 1,
+    "keywords": [
+      "Arm",
+      "Detonate"
+    ],
+    "imageRef": "Explosions!.jpeg",
+    "identifiers": {
+      "name": "Explosions!",
+      "legionhqId": "gh",
+      "tni": "command|1|Explosions!"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Sabine Wren"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Symbol of Rebellion",
+    "pips": 2,
+    "keywords": [
+      "Graffiti Token"
+    ],
+    "imageRef": "Symbol of Rebellion.jpeg",
+    "identifiers": {
+      "name": "Symbol of Rebellion",
+      "legionhqId": "gi",
+      "tni": "command|2|Symbol of Rebellion"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Sabine Wren"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "General Kenobi",
+    "pips": 3,
+    "imageRef": "General Kenobi.jpeg",
+    "identifiers": {
+      "name": "General Kenobi",
+      "legionhqId": "hi",
+      "tni": "command|3|General Kenobi"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Obi-Wan Kenobi"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Hello There!",
+    "pips": 1,
+    "keywords": [
+      "Nimble",
+      "Surge Token"
+    ],
+    "imageRef": "Hello There!.jpeg",
+    "identifiers": {
+      "name": "Hello There!",
+      "legionhqId": "hj",
+      "tni": "command|1|Hello There!"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Obi-Wan Kenobi"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Supreme Commander",
+    "pips": 2,
+    "keywords": [
+      "Guardian"
+    ],
+    "imageRef": "Supreme Commander.jpeg",
+    "identifiers": {
+      "name": "Supreme Commander",
+      "legionhqId": "hk",
+      "tni": "command|2|Supreme Commander"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "General Grievous"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Crush Them!",
+    "pips": 3,
+    "imageRef": "Crush Them!.jpeg",
+    "identifiers": {
+      "name": "Crush Them!",
+      "legionhqId": "hl",
+      "tni": "command|3|Crush Them!"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "General Grievous"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Trained In Your Jedi Arts",
+    "pips": 1,
+    "keywords": [
+      "Disengage",
+      "Suppressive",
+      "Versatile"
+    ],
+    "imageRef": "Trained In Your Jedi Arts.jpeg",
+    "identifiers": {
+      "name": "Trained In Your Jedi Arts",
+      "legionhqId": "im",
+      "tni": "command|1|Trained In Your Jedi Arts"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "General Grievous"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Knowledge and Defense",
+    "pips": 2,
+    "keywords": [
+      "Guardian"
+    ],
+    "imageRef": "Knowledge and Defense.jpeg",
+    "identifiers": {
+      "name": "Knowledge and Defense",
+      "legionhqId": "in",
+      "tni": "command|2|Knowledge and Defense"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Obi-Wan Kenobi"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "We're Not Programmed",
+    "pips": 3,
+    "keywords": [
+      "Inspire",
+      "Surge Token"
+    ],
+    "imageRef": "We're Not Programmed.jpeg",
+    "identifiers": {
+      "name": "We're Not Programmed",
+      "legionhqId": "ir",
+      "tni": "command|3|We're Not Programmed"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Clone Captain Rex"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "You Disappoint Me",
+    "pips": 3,
+    "imageRef": "You Disappoint Me.jpeg",
+    "identifiers": {
+      "name": "You Disappoint Me",
+      "legionhqId": "is",
+      "tni": "command|3|You Disappoint Me"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Count Dooku"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Vader's Might",
+    "pips": 1,
+    "imageRef": "Vader's Might.jpeg",
+    "identifiers": {
+      "name": "Vader's Might",
+      "legionhqId": "jc",
+      "tni": "command|1|Vader's Might"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Darth Vader"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "You Serve Your Master Well",
+    "pips": 1,
+    "imageRef": "You Serve Your Master Well.jpeg",
+    "identifiers": {
+      "name": "You Serve Your Master Well",
+      "legionhqId": "jd",
+      "tni": "command|1|You Serve Your Master Well"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Luke Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Fear and Dead Men",
+    "pips": 2,
+    "imageRef": "Fear and Dead Men.jpeg",
+    "identifiers": {
+      "name": "Fear and Dead Men",
+      "legionhqId": "je",
+      "tni": "command|2|Fear and Dead Men"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Darth Vader"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Full of Surprises",
+    "pips": 2,
+    "imageRef": "Full of Surprises.jpeg",
+    "identifiers": {
+      "name": "Full of Surprises",
+      "legionhqId": "jf",
+      "tni": "command|2|Full of Surprises"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Luke Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Blast Off!",
+    "pips": 1,
+    "keywords": [
+      "Disengage",
+      "Jump"
+    ],
+    "imageRef": "Blast Off!.jpeg",
+    "identifiers": {
+      "name": "Blast Off!",
+      "legionhqId": "jl",
+      "tni": "command|1|Blast Off!"
+    },
+    "restrictions": [
+      {
+        "commander": "R2-D2"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Blast Off!",
+    "pips": 1,
+    "keywords": [
+      "Disengage",
+      "Jump"
+    ],
+    "imageRef": "Blast Off!.jpeg",
+    "identifiers": {
+      "name": "Blast Off!",
+      "legionhqId": "jm",
+      "tni": "command|1|Blast Off!"
+    },
+    "restrictions": [
+      {
+        "commander": "R2-D2"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Fear, Surprise, Intimidation",
+    "pips": 1,
+    "keywords": [
+      "Arsenal",
+      "Relentless",
+      "Versatile"
+    ],
+    "imageRef": "Fear, Surprise, Intimidation.jpeg",
+    "identifiers": {
+      "name": "Fear, Surprise, Intimidation",
+      "legionhqId": "jr",
+      "tni": "command|1|Fear, Surprise, Intimidation"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Count Dooku"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Double the Fall",
+    "pips": 2,
+    "imageRef": "Double the Fall.jpeg",
+    "identifiers": {
+      "name": "Double the Fall",
+      "legionhqId": "js",
+      "tni": "command|2|Double the Fall"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Count Dooku"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Call Me Captain",
+    "pips": 1,
+    "keywords": [
+      "Fire Support"
+    ],
+    "imageRef": "You Can Call Me Captain.jpeg",
+    "identifiers": {
+      "name": "Call Me Captain",
+      "legionhqId": "jt",
+      "tni": "command|1|Call Me Captain"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Clone Captain Rex"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Take That, Clankers!",
+    "pips": 2,
+    "imageRef": "Eat This, Clankers!.jpeg",
+    "identifiers": {
+      "name": "Take That, Clankers!",
+      "legionhqId": "ju",
+      "tni": "command|2|Take That, Clankers!"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Clone Captain Rex"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Smoke Screen",
+    "pips": 3,
+    "keywords": [
+      "Smoke"
+    ],
+    "imageRef": "Smoke Screen.jpeg",
+    "identifiers": {
+      "name": "Smoke Screen",
+      "legionhqId": "jz",
+      "tni": "command|3|Smoke Screen"
+    },
+    "restrictions": [
+      {
+        "commander": "R2-D2"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Impromptu Immolation",
+    "pips": 2,
+    "keywords": [
+      "Blast",
+      "Spray",
+      "Suppressive"
+    ],
+    "imageRef": "Impromptu Immolation.jpeg",
+    "identifiers": {
+      "name": "Impromptu Immolation",
+      "legionhqId": "ka",
+      "tni": "command|2|Impromptu Immolation"
+    },
+    "restrictions": [
+      {
+        "commander": "R2-D2"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Smoke Screen",
+    "pips": 3,
+    "keywords": [
+      "Smoke"
+    ],
+    "imageRef": "Smoke Screen.jpeg",
+    "identifiers": {
+      "name": "Smoke Screen",
+      "legionhqId": "kb",
+      "tni": "command|3|Smoke Screen"
+    },
+    "restrictions": [
+      {
+        "commander": "R2-D2"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Impromptu Immolation",
+    "pips": 2,
+    "keywords": [
+      "Blast",
+      "Spray",
+      "Suppressive"
+    ],
+    "imageRef": "Impromptu Immolation.jpeg",
+    "identifiers": {
+      "name": "Impromptu Immolation",
+      "legionhqId": "kc",
+      "tni": "command|2|Impromptu Immolation"
+    },
+    "restrictions": [
+      {
+        "commander": "R2-D2"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Crack Shot",
+    "pips": 1,
+    "keywords": [
+      "Gunslinger"
+    ],
+    "imageRef": "Crack Shot.jpeg",
+    "identifiers": {
+      "name": "Crack Shot",
+      "legionhqId": "kj",
+      "tni": "command|1|Crack Shot"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Cassian Andor"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Pulse Scan",
+    "pips": 1,
+    "keywords": [
+      "Sharpshooter"
+    ],
+    "imageRef": "Pulse Scan.jpeg",
+    "identifiers": {
+      "name": "Pulse Scan",
+      "legionhqId": "kk",
+      "tni": "command|1|Pulse Scan"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Iden Versio"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Diplomatic Cover",
+    "pips": 3,
+    "keywords": [
+      "Permanent",
+      "Secret Mission",
+      "Reliable",
+      "Divulge",
+      "Infiltrate"
+    ],
+    "imageRef": "Diplomatic Cover.jpeg",
+    "identifiers": {
+      "name": "Diplomatic Cover",
+      "legionhqId": "ln",
+      "tni": "command|3|Diplomatic Cover"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Padme Amidala"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "I'm in Control",
+    "pips": 2,
+    "imageRef": "I'm in Control.jpeg",
+    "identifiers": {
+      "name": "I'm in Control",
+      "legionhqId": "lo",
+      "tni": "command|2|I'm in Control"
+    },
+    "restrictions": [
+      {
+        "commander": "Cad Bane"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "I Make the Rules Now",
+    "pips": 3,
+    "keywords": [
+      "Divulge",
+      "Bane Token",
+      "Here I Am",
+      "Smoke and Mirrors",
+      "Kablamo!"
+    ],
+    "imageRef": "I Make the Rules Now.jpeg",
+    "identifiers": {
+      "name": "I Make the Rules Now",
+      "legionhqId": "lp",
+      "tni": "command|3|I Make the Rules Now"
+    },
+    "restrictions": [
+      {
+        "commander": "Cad Bane"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Our Fate is in Your Hands",
+    "pips": 1,
+    "keywords": [
+      "Danger Sense"
+    ],
+    "imageRef": "Our Fate is in Your Hands.jpeg",
+    "identifiers": {
+      "name": "Our Fate is in Your Hands",
+      "legionhqId": "lq",
+      "tni": "command|1|Our Fate is in Your Hands"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Padme Amidala"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Volunteer Mission",
+    "pips": 3,
+    "keywords": [
+      "Danger Sense"
+    ],
+    "imageRef": "Volunteer Mission.jpeg",
+    "identifiers": {
+      "name": "Volunteer Mission",
+      "legionhqId": "lr",
+      "tni": "command|3|Volunteer Mission"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Cassian Andor"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Last Stand",
+    "pips": 2,
+    "keywords": [
+      "Indomitable"
+    ],
+    "imageRef": "Last Stand.jpeg",
+    "identifiers": {
+      "name": "Last Stand",
+      "legionhqId": "ls",
+      "tni": "command|2|Last Stand"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Cassian Andor"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Sacrifice",
+    "pips": 3,
+    "keywords": [
+      "Guardian"
+    ],
+    "imageRef": "Sacrifice.jpeg",
+    "identifiers": {
+      "name": "Sacrifice",
+      "legionhqId": "lt",
+      "tni": "command|3|Sacrifice"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "K-2SO"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Incapacitate",
+    "pips": 2,
+    "imageRef": "Incapacitate.jpeg",
+    "identifiers": {
+      "name": "Incapacitate",
+      "legionhqId": "ly",
+      "tni": "command|2|Incapacitate"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Iden Versio"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Concussive Blast",
+    "pips": 2,
+    "keywords": [
+      "Blast",
+      "Scatter",
+      "Suppressive"
+    ],
+    "imageRef": "Concussive Blast.jpeg",
+    "identifiers": {
+      "name": "Concussive Blast",
+      "legionhqId": "lz",
+      "tni": "command|2|Concussive Blast"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Iden Versio"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Tactical Strike",
+    "pips": 3,
+    "keywords": [
+      "Steady",
+      "Tactical"
+    ],
+    "imageRef": "Tactical Strike.jpeg",
+    "identifiers": {
+      "name": "Tactical Strike",
+      "legionhqId": "ma",
+      "tni": "command|3|Tactical Strike"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Iden Versio"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "I'm Your Worst Nightmare",
+    "pips": 1,
+    "keywords": [
+      "Uncanny Luck"
+    ],
+    "imageRef": "I'm Your Worst Nightmare.jpeg",
+    "identifiers": {
+      "name": "I'm Your Worst Nightmare",
+      "legionhqId": "mg",
+      "tni": "command|1|I'm Your Worst Nightmare"
+    },
+    "restrictions": [
+      {
+        "commander": "Cad Bane"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Aggressive Negotiations",
+    "pips": 2,
+    "keywords": [
+      "Permanent",
+      "Secret Mission",
+      "Reliable",
+      "Divulge",
+      "Infiltrate"
+    ],
+    "imageRef": "Aggressive Negotiations.jpeg",
+    "identifiers": {
+      "name": "Aggressive Negotiations",
+      "legionhqId": "mi",
+      "tni": "command|2|Aggressive Negotiations"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Padme Amidala"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Synchronized Offensive",
+    "pips": 1,
+    "imageRef": "Synchronized Offensive.jpeg",
+    "identifiers": {
+      "name": "Synchronized Offensive",
+      "legionhqId": "mt",
+      "tni": "command|1|Synchronized Offensive"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Mechanized Incursion",
+    "pips": 1,
+    "imageRef": "Mechanized Incursion.jpeg",
+    "identifiers": {
+      "name": "Mechanized Incursion",
+      "legionhqId": "mu",
+      "tni": "command|1|Mechanized Incursion"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Hero of the Clone Wars",
+    "pips": 3,
+    "keywords": [
+      "Permanent",
+      "Exemplar",
+      "Reliable"
+    ],
+    "imageRef": "Hero of the Clone Wars.jpeg",
+    "identifiers": {
+      "name": "Hero of the Clone Wars",
+      "legionhqId": "mv",
+      "tni": "command|3|Hero of the Clone Wars"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Anakin Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Duel of the Fates",
+    "pips": 1,
+    "keywords": [
+      "Disengage"
+    ],
+    "imageRef": "Duel of the Fates.jpeg",
+    "identifiers": {
+      "name": "Duel of the Fates",
+      "legionhqId": "mw",
+      "tni": "command|1|Duel of the Fates"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Maul"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "This is Where the Fun Begins",
+    "pips": 1,
+    "keywords": [
+      "Permanent",
+      "Outmaneuver",
+      "Relentless"
+    ],
+    "imageRef": "This is Where the Fun Begins.jpeg",
+    "identifiers": {
+      "name": "This is Where the Fun Begins",
+      "legionhqId": "nf",
+      "tni": "command|1|This is Where the Fun Begins"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Anakin Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "You Underestimate My Power",
+    "pips": 2,
+    "keywords": [
+      "Permanent",
+      "Master of the Force"
+    ],
+    "imageRef": "You Underestimate My Power.jpeg",
+    "identifiers": {
+      "name": "You Underestimate My Power",
+      "legionhqId": "ng",
+      "tni": "command|2|You Underestimate My Power"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Anakin Skywalker"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "The Phantom Menace",
+    "pips": 2,
+    "keywords": [
+      "Divulge",
+      "Infiltrate"
+    ],
+    "imageRef": "The Phantom Menace.jpeg",
+    "identifiers": {
+      "name": "The Phantom Menace",
+      "legionhqId": "ni",
+      "tni": "command|2|The Phantom Menace"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Maul"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "At Last",
+    "pips": 3,
+    "keywords": [
+      "Jedi Hunter"
+    ],
+    "imageRef": "At Last.jpeg",
+    "identifiers": {
+      "name": "At Last",
+      "legionhqId": "nj",
+      "tni": "command|3|At Last"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Maul"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Ace Up His Sleeve",
+    "pips": 2,
+    "imageRef": "Ace Up His Sleeve.jpeg",
+    "identifiers": {
+      "name": "Ace Up His Sleeve",
+      "legionhqId": "nn",
+      "tni": "command|2|Ace Up His Sleeve"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Lando Calrissian"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Face Me!",
+    "pips": 1,
+    "keywords": [
+      "Agile",
+      "Block"
+    ],
+    "imageRef": "Face Me!.jpeg",
+    "identifiers": {
+      "name": "Face Me!",
+      "legionhqId": "no",
+      "tni": "command|1|Face Me!"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Agent Kallus"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "All In",
+    "pips": 3,
+    "imageRef": "All In.jpeg",
+    "identifiers": {
+      "name": "All In",
+      "legionhqId": "nt",
+      "tni": "command|3|All In"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Lando Calrissian"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Orbital Strike",
+    "pips": 2,
+    "imageRef": "Orbital Strike.jpeg",
+    "identifiers": {
+      "name": "Orbital Strike",
+      "legionhqId": "nu",
+      "tni": "command|2|Orbital Strike"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Roger, Roger!",
+    "pips": 3,
+    "imageRef": "Roger, Roger!.jpeg",
+    "identifiers": {
+      "name": "Roger, Roger!",
+      "legionhqId": "nv",
+      "tni": "command|3|Roger, Roger!"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Idiot's Array",
+    "pips": 1,
+    "imageRef": "Idiot's Array.jpeg",
+    "identifiers": {
+      "name": "Idiot's Array",
+      "legionhqId": "nw",
+      "tni": "command|1|Idiot's Array"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Lando Calrissian"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Air Support",
+    "pips": 2,
+    "keywords": [
+      "Field Commander",
+      "Beam",
+      "Immune"
+    ],
+    "imageRef": "Air Support.jpeg",
+    "identifiers": {
+      "name": "Air Support",
+      "legionhqId": "nx",
+      "tni": "command|2|Air Support"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Attack of the Clones",
+    "pips": 3,
+    "imageRef": "Attack of the Clones.jpeg",
+    "identifiers": {
+      "name": "Attack of the Clones",
+      "legionhqId": "ny",
+      "tni": "command|3|Attack of the Clones"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "ISB Investigation",
+    "pips": 2,
+    "imageRef": "ISB Investigation.jpeg",
+    "identifiers": {
+      "name": "ISB Investigation",
+      "legionhqId": "oj",
+      "tni": "command|2|ISB Investigation"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Agent Kallus"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Ruthless Tactics",
+    "pips": 3,
+    "imageRef": "Ruthless Tactics.jpeg",
+    "identifiers": {
+      "name": "Ruthless Tactics",
+      "legionhqId": "ok",
+      "tni": "command|3|Ruthless Tactics"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Agent Kallus"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Size Matters Not",
+    "pips": 1,
+    "keywords": [
+      "Jump",
+      "Charge",
+      "Disengage"
+    ],
+    "imageRef": "Size Matters Not.jpeg",
+    "identifiers": {
+      "name": "Size Matters Not",
+      "legionhqId": "pi",
+      "tni": "command|1|Size Matters Not"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Yoda"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "There Is No Try",
+    "pips": 2,
+    "keywords": [
+      "Outmaneuver",
+      "Relentless"
+    ],
+    "imageRef": "There Is No Try.jpeg",
+    "identifiers": {
+      "name": "There Is No Try",
+      "legionhqId": "pj",
+      "tni": "command|2|There Is No Try"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Yoda"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Luminous Beings Are We",
+    "pips": 3,
+    "imageRef": "Luminous Beings Are We.jpeg",
+    "identifiers": {
+      "name": "Luminous Beings Are We",
+      "legionhqId": "pk",
+      "tni": "command|3|Luminous Beings Are We"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Yoda"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Size Matters Sometimes",
+    "pips": 2,
+    "keywords": [
+      "Deflect",
+      "Guardian"
+    ],
+    "imageRef": "Size Matters Sometimes.jpeg",
+    "identifiers": {
+      "name": "Size Matters Sometimes",
+      "legionhqId": "pp",
+      "tni": "command|2|Size Matters Sometimes"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Chewbacca"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Grroooogrrraaaawrrrrrrrrmph",
+    "pips": 1,
+    "imageRef": "Grroooogrrraaaawrrrrrrrrmph.jpeg",
+    "identifiers": {
+      "name": "Grroooogrrraaaawrrrrrrrrmph",
+      "legionhqId": "pu",
+      "tni": "command|1|Grroooogrrraaaawrrrrrrrrmph"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "MROWGH GHRRMROWRIG!",
+    "pips": 2,
+    "keywords": [
+      "Agile"
+    ],
+    "imageRef": "MROWGH GHRRMROWRIG!.jpeg",
+    "identifiers": {
+      "name": "MROWGH GHRRMROWRIG!",
+      "legionhqId": "pv",
+      "tni": "command|2|MROWGH GHRRMROWRIG!"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "YHWARGGHHHHHHHHHH!",
+    "pips": 3,
+    "keywords": [
+      "Demoralize"
+    ],
+    "imageRef": "YHWARGGHHHHHHHHHH!.jpeg",
+    "identifiers": {
+      "name": "YHWARGGHHHHHHHHHH!",
+      "legionhqId": "pw",
+      "tni": "command|3|YHWARGGHHHHHHHHHH!"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "They Too Will Suffer",
+    "pips": 1,
+    "imageRef": "They Too Will Suffer.jpeg",
+    "identifiers": {
+      "name": "They Too Will Suffer",
+      "legionhqId": "qe",
+      "tni": "command|1|They Too Will Suffer"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Super Tactical Droid"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Preservation Protocols",
+    "pips": 2,
+    "keywords": [
+      "AI",
+      "Disengage",
+      "Impervious"
+    ],
+    "imageRef": "Preservation Protocols.jpeg",
+    "identifiers": {
+      "name": "Preservation Protocols",
+      "legionhqId": "qf",
+      "tni": "command|2|Preservation Protocols"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Super Tactical Droid"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Do Not Underestimate Our Means",
+    "pips": 3,
+    "keywords": [
+      "Divulge",
+      "AI",
+      "Reinforcements"
+    ],
+    "imageRef": "Do Not Underestimate Our Means.jpeg",
+    "identifiers": {
+      "name": "Do Not Underestimate Our Means",
+      "legionhqId": "qg",
+      "tni": "command|3|Do Not Underestimate Our Means"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Super Tactical Droid"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Witch Magick",
+    "pips": 1,
+    "imageRef": "Witch Magick.jpeg",
+    "identifiers": {
+      "name": "Witch Magick",
+      "legionhqId": "rr",
+      "tni": "command|1|Witch Magick"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Maul"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "His Eminence",
+    "pips": 2,
+    "imageRef": "His Emminence.jpeg",
+    "identifiers": {
+      "name": "His Eminence",
+      "legionhqId": "rs",
+      "tni": "command|2|His Eminence"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Maul"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Seize What Power We Can",
+    "pips": 3,
+    "imageRef": "Seize What Power We Can.jpeg",
+    "identifiers": {
+      "name": "Seize What Power We Can",
+      "legionhqId": "rt",
+      "tni": "command|3|Seize What Power We Can"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Maul"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Ploy",
+    "pips": 1,
+    "imageRef": "Ploy.jpeg",
+    "identifiers": {
+      "name": "Ploy",
+      "legionhqId": "rw",
+      "tni": "command|1|Ploy"
+    }
+  },
+  {
+    "__typename": "command",
+    "name": "Aggression",
+    "pips": 2,
+    "imageRef": "Aggression.jpeg",
+    "identifiers": {
+      "name": "Aggression",
+      "legionhqId": "rx",
+      "tni": "command|2|Aggression"
+    }
+  },
+  {
+    "__typename": "command",
+    "name": "Discretion",
+    "pips": 3,
+    "imageRef": "Discretion.jpeg",
+    "identifiers": {
+      "name": "Discretion",
+      "legionhqId": "ry",
+      "tni": "command|3|Discretion"
+    }
+  },
+  {
+    "__typename": "command",
+    "name": "Marked For Elimination",
+    "pips": 1,
+    "imageRef": "Marked For Elimination.jpeg",
+    "identifiers": {
+      "name": "Marked For Elimination",
+      "legionhqId": "sj",
+      "tni": "command|1|Marked For Elimination"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Gar Saxon"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Fight Another Day",
+    "pips": 2,
+    "keywords": [
+      "Outmaneuver"
+    ],
+    "imageRef": "Fight Another Day.jpeg",
+    "identifiers": {
+      "name": "Fight Another Day",
+      "legionhqId": "sk",
+      "tni": "command|2|Fight Another Day"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Gar Saxon"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Victory or Death!",
+    "pips": 3,
+    "keywords": [
+      "Outmaneuver"
+    ],
+    "imageRef": "Victory or Death!.jpeg",
+    "identifiers": {
+      "name": "Victory or Death!",
+      "legionhqId": "sl",
+      "tni": "command|3|Victory or Death!"
+    },
+    "restrictions": [
+      {
+        "affiliation": "Maul Loyalists"
+      },
+      {
+        "commander": "Gar Saxon"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Delaying Tactics",
+    "pips": 1,
+    "imageRef": "Delaying Tactics.jpeg",
+    "identifiers": {
+      "name": "Delaying Tactics",
+      "legionhqId": "ss",
+      "tni": "command|1|Delaying Tactics"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "battleForce": "Echo Base Defenders"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Courage of the Rebellion",
+    "pips": 2,
+    "imageRef": "Courage of the Rebellion.jpeg",
+    "identifiers": {
+      "name": "Courage of the Rebellion",
+      "legionhqId": "st",
+      "tni": "command|2|Courage of the Rebellion"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "battleForce": "Echo Base Defenders"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Hold at Any Cost",
+    "pips": 3,
+    "imageRef": "Hold at Any Cost.jpeg",
+    "identifiers": {
+      "name": "Hold at Any Cost",
+      "legionhqId": "su",
+      "tni": "command|3|Hold at Any Cost"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "battleForce": "Echo Base Defenders"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Unrelenting Fire",
+    "pips": 1,
+    "imageRef": "Unrelenting Fire.jpeg",
+    "identifiers": {
+      "name": "Unrelenting Fire",
+      "legionhqId": "sv",
+      "tni": "command|1|Unrelenting Fire"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "battleForce": "Blizzard Force"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Overwhelming Barrage",
+    "pips": 2,
+    "imageRef": "Overwhelming Barrage.jpeg",
+    "identifiers": {
+      "name": "Overwhelming Barrage",
+      "legionhqId": "sw",
+      "tni": "command|2|Overwhelming Barrage"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "battleForce": "Blizzard Force"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Debark for Ground Assault",
+    "pips": 3,
+    "keywords": [
+      "Spur",
+      "Suppressive"
+    ],
+    "imageRef": "Debark for Ground Assault.jpeg",
+    "identifiers": {
+      "name": "Debark for Ground Assault",
+      "legionhqId": "sx",
+      "tni": "command|3|Debark for Ground Assault"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "battleForce": "Blizzard Force"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Lead From the Front",
+    "pips": 2,
+    "imageRef": "Lead From the Front.jpeg",
+    "identifiers": {
+      "name": "Lead From the Front",
+      "legionhqId": "sy",
+      "tni": "command|2|Lead From the Front"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "battleForce": "501st Legion"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Tactical Planning",
+    "pips": 2,
+    "imageRef": "Tactical Planning.jpeg",
+    "identifiers": {
+      "name": "Tactical Planning",
+      "legionhqId": "sz",
+      "tni": "command|2|Tactical Planning"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "battleForce": "501st Legion"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Leaders of the 501st",
+    "pips": 3,
+    "keywords": [
+      "Permanent",
+      "Indomitable"
+    ],
+    "imageRef": "Leader of the 501st.jpeg",
+    "identifiers": {
+      "name": "Leaders of the 501st",
+      "legionhqId": "ta",
+      "tni": "command|3|Leaders of the 501st"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "battleForce": "501st Legion"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "AI Coordination",
+    "pips": 1,
+    "imageRef": "AI Coordination.jpeg",
+    "identifiers": {
+      "name": "AI Coordination",
+      "legionhqId": "tb",
+      "tni": "command|1|AI Coordination"
+    },
+    "restrictions": [
+      {
+        "faction": "separatist"
+      },
+      {
+        "battleForce": "Separatist Invasion"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Unrelenting Assault",
+    "pips": 2,
+    "imageRef": "Unrelenting Assault.jpeg",
+    "identifiers": {
+      "name": "Unrelenting Assault",
+      "legionhqId": "tc",
+      "tni": "command|2|Unrelenting Assault"
+    },
+    "restrictions": [
+      {
+        "faction": "separatist"
+      },
+      {
+        "battleForce": "Separatist Invasion"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Unstoppable Advance",
+    "pips": 3,
+    "imageRef": "Unstoppable Advance.jpeg",
+    "identifiers": {
+      "name": "Unstoppable Advance",
+      "legionhqId": "td",
+      "tni": "command|3|Unstoppable Advance"
+    },
+    "restrictions": [
+      {
+        "faction": "separatist"
+      },
+      {
+        "battleForce": "Separatist Invasion"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "A Simple Man",
+    "pips": 1,
+    "keywords": [
+      "Marksman"
+    ],
+    "imageRef": "A Simple Man.jpeg",
+    "identifiers": {
+      "name": "A Simple Man",
+      "legionhqId": "te",
+      "tni": "command|1|A Simple Man"
+    },
+    "restrictions": [
+      {
+        "commander": "Boba Fett"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Making His Way in the Galaxy",
+    "pips": 2,
+    "keywords": [
+      "Blast",
+      "Impact",
+      "Versatile"
+    ],
+    "imageRef": "Making His Way in the Galaxy.jpeg",
+    "identifiers": {
+      "name": "Making His Way in the Galaxy",
+      "legionhqId": "tf",
+      "tni": "command|2|Making His Way in the Galaxy"
+    },
+    "restrictions": [
+      {
+        "commander": "Boba Fett"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Rule With Respect",
+    "pips": 3,
+    "imageRef": "Rule With Respect.jpeg",
+    "identifiers": {
+      "name": "Rule With Respect",
+      "legionhqId": "tg",
+      "tni": "command|3|Rule With Respect"
+    },
+    "restrictions": [
+      {
+        "commander": "Boba Fett"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Whistling Birds",
+    "pips": 3,
+    "imageRef": "Whistling Birds.jpeg",
+    "identifiers": {
+      "name": "Whistling Birds",
+      "legionhqId": "th",
+      "tni": "command|3|Whistling Birds"
+    },
+    "restrictions": [
+      {
+        "commander": "Din Djarin"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "I Like Those Odds",
+    "pips": 2,
+    "imageRef": "I Like Those Odds.jpeg",
+    "identifiers": {
+      "name": "I Like Those Odds",
+      "legionhqId": "tt",
+      "tni": "command|2|I Like Those Odds"
+    },
+    "restrictions": [
+      {
+        "commander": "Din Djarin"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "This is the Way",
+    "pips": 1,
+    "keywords": [
+      "Relentless"
+    ],
+    "imageRef": "This is the Way.jpeg",
+    "identifiers": {
+      "name": "This is the Way",
+      "legionhqId": "tu",
+      "tni": "command|1|This is the Way"
+    },
+    "restrictions": [
+      {
+        "commander": "Din Djarin"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "The Hand Thing",
+    "pips": 2,
+    "keywords": [
+      "Deflect"
+    ],
+    "imageRef": "The Hand Thing.jpeg",
+    "identifiers": {
+      "name": "The Hand Thing",
+      "legionhqId": "tv",
+      "tni": "command|2|The Hand Thing"
+    },
+    "restrictions": [
+      {
+        "commander": "Din Djarin"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "A Machine Made For Killing",
+    "pips": 2,
+    "keywords": [
+      "Demoralize",
+      "Steady"
+    ],
+    "imageRef": "A Machine Made For Killing.jpeg",
+    "identifiers": {
+      "name": "A Machine Made For Killing",
+      "legionhqId": "tw",
+      "tni": "command|2|A Machine Made For Killing"
+    },
+    "restrictions": [
+      {
+        "commander": "IG-11"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Anti-Capture Protocols",
+    "pips": 3,
+    "keywords": [
+      "Blast",
+      "Impact",
+      "Suppressive"
+    ],
+    "imageRef": "Anti-Capture Protocols.jpeg",
+    "identifiers": {
+      "name": "Anti-Capture Protocols",
+      "legionhqId": "tx",
+      "tni": "command|3|Anti-Capture Protocols"
+    },
+    "restrictions": [
+      {
+        "commander": "IG-11"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Focused on the Kill",
+    "pips": 1,
+    "keywords": [
+      "Permanent",
+      "Bounty"
+    ],
+    "imageRef": "Focused on the Kill.jpeg",
+    "identifiers": {
+      "name": "Focused on the Kill",
+      "legionhqId": "ty",
+      "tni": "command|1|Focused on the Kill"
+    },
+    "restrictions": [
+      {
+        "commander": "IG-88"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Independent Programming",
+    "pips": 2,
+    "keywords": [
+      "Permanent",
+      "Independent"
+    ],
+    "imageRef": "Independent Programming.jpeg",
+    "identifiers": {
+      "name": "Independent Programming",
+      "legionhqId": "tz",
+      "tni": "command|2|Independent Programming"
+    },
+    "restrictions": [
+      {
+        "commander": "IG-88"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Mechanical Carnage",
+    "pips": 1,
+    "keywords": [
+      "Gunslinger"
+    ],
+    "imageRef": "Mechanical Carnage.jpeg",
+    "identifiers": {
+      "name": "Mechanical Carnage",
+      "legionhqId": "ua",
+      "tni": "command|1|Mechanical Carnage"
+    },
+    "restrictions": [
+      {
+        "commander": "IG-11"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "A Machine Made For Killing",
+    "pips": 2,
+    "keywords": [
+      "Demoralize",
+      "Steady"
+    ],
+    "imageRef": "A Machine Made For Killing.jpeg",
+    "identifiers": {
+      "name": "A Machine Made For Killing",
+      "legionhqId": "uc",
+      "tni": "command|2|A Machine Made For Killing"
+    },
+    "restrictions": [
+      {
+        "commander": "IG-88"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "The Hand Thing",
+    "pips": 2,
+    "keywords": [
+      "Deflect"
+    ],
+    "imageRef": "The Hand Thing.jpeg",
+    "identifiers": {
+      "name": "The Hand Thing",
+      "legionhqId": "ud",
+      "tni": "command|2|The Hand Thing"
+    },
+    "restrictions": [
+      {
+        "commander": "IG-11"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Die at My Hand",
+    "pips": 1,
+    "keywords": [
+      "Relentless"
+    ],
+    "imageRef": "Die at My Hand.jpeg",
+    "identifiers": {
+      "name": "Die at My Hand",
+      "legionhqId": "uk",
+      "tni": "command|1|Die at My Hand"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Moff Gideon"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "You Have Something I Want",
+    "pips": 2,
+    "imageRef": "You Have Something I Want.jpeg",
+    "identifiers": {
+      "name": "You Have Something I Want",
+      "legionhqId": "ul",
+      "tni": "command|2|You Have Something I Want"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Moff Gideon"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Moment of Consideration",
+    "pips": 3,
+    "keywords": [
+      "Fire Support"
+    ],
+    "imageRef": "Moment of Consideration.jpeg",
+    "identifiers": {
+      "name": "Moment of Consideration",
+      "legionhqId": "um",
+      "tni": "command|3|Moment of Consideration"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Moff Gideon"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "The Sith Will Rule",
+    "pips": 2,
+    "imageRef": "The Sith Will Rule.jpeg",
+    "identifiers": {
+      "name": "The Sith Will Rule",
+      "legionhqId": "uu",
+      "tni": "command|2|The Sith Will Rule"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Count Dooku"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "The Jedi Shall Fall",
+    "pips": 1,
+    "keywords": [
+      "Jedi Hunter"
+    ],
+    "imageRef": "The Jedi Shall Fall.jpeg",
+    "identifiers": {
+      "name": "The Jedi Shall Fall",
+      "legionhqId": "uv",
+      "tni": "command|1|The Jedi Shall Fall"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Asajj Ventress"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "I Am Fear",
+    "pips": 2,
+    "keywords": [
+      "Suppressive",
+      "Spray"
+    ],
+    "imageRef": "I Am Fear.jpeg",
+    "identifiers": {
+      "name": "I Am Fear",
+      "legionhqId": "ux",
+      "tni": "command|2|I Am Fear"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Asajj Ventress"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Yes, My Master",
+    "pips": 3,
+    "keywords": [
+      "Divulge",
+      "Permanent",
+      "Demoralize",
+      "Makashi Mastery",
+      "Outmaneuver"
+    ],
+    "imageRef": "Yes, My Master.jpeg",
+    "identifiers": {
+      "name": "Yes, My Master",
+      "legionhqId": "uw",
+      "tni": "command|3|Yes, My Master"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Asajj Ventress"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Bring It Down!",
+    "pips": 1,
+    "imageRef": "Bring It Down!.jpeg",
+    "identifiers": {
+      "name": "Bring It Down!",
+      "legionhqId": "va",
+      "tni": "command|1|Bring It Down!"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Clone Commander Cody"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Have I Ever Let You Down?",
+    "pips": 2,
+    "imageRef": "Have I Ever Let You Down.jpeg",
+    "identifiers": {
+      "name": "Have I Ever Let You Down?",
+      "legionhqId": "vb",
+      "tni": "command|2|Have I Ever Let You Down?"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Clone Commander Cody"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Combined Arms",
+    "pips": 3,
+    "imageRef": "Combined Arms.jpeg",
+    "identifiers": {
+      "name": "Combined Arms",
+      "legionhqId": "vc",
+      "tni": "command|3|Combined Arms"
+    },
+    "restrictions": [
+      {
+        "faction": "republic"
+      },
+      {
+        "commander": "Clone Commander Cody"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "I Am No Jedi",
+    "pips": 1,
+    "keywords": [
+      "Agile"
+    ],
+    "imageRef": "I Am No Jedi.jpeg",
+    "identifiers": {
+      "name": "I Am No Jedi",
+      "legionhqId": "vf",
+      "tni": "command|1|I Am No Jedi"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Ahsoka Tano"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Family Reunion",
+    "pips": 2,
+    "keywords": [
+      "Teamwork"
+    ],
+    "imageRef": "Family Reunion.jpeg",
+    "identifiers": {
+      "name": "Family Reunion",
+      "legionhqId": "vg",
+      "tni": "command|2|Family Reunion"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Ahsoka Tano"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Swift Protector",
+    "pips": 2,
+    "keywords": [
+      "Guardian"
+    ],
+    "imageRef": "Swift Protector.jpeg",
+    "identifiers": {
+      "name": "Swift Protector",
+      "legionhqId": "vh",
+      "tni": "command|2|Swift Protector"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Ahsoka Tano"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "A New Beginning",
+    "pips": 3,
+    "keywords": [
+      "Inspire"
+    ],
+    "imageRef": "A New Beginning.jpeg",
+    "identifiers": {
+      "name": "A New Beginning",
+      "legionhqId": "vi",
+      "tni": "command|3|A New Beginning"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Ahsoka Tano"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Close Call",
+    "pips": 1,
+    "keywords": [
+      "Outmaneuver"
+    ],
+    "imageRef": "Close Call.jpeg",
+    "identifiers": {
+      "name": "Close Call",
+      "legionhqId": "vl",
+      "tni": "command|1|Close Call"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Wicket"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Sneaky Scouting",
+    "pips": 2,
+    "imageRef": "Sneaky Scouting.jpeg",
+    "identifiers": {
+      "name": "Sneaky Scouting",
+      "legionhqId": "vm",
+      "tni": "command|2|Sneaky Scouting"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Wicket"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Courageous Counterattack",
+    "pips": 3,
+    "imageRef": "Courageous Counterattack.jpeg",
+    "identifiers": {
+      "name": "Courageous Counterattack",
+      "legionhqId": "vn",
+      "tni": "command|3|Courageous Counterattack"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Wicket"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "A Beautiful Friendship",
+    "pips": 2,
+    "keywords": [
+      "Permanent",
+      "Teamwork"
+    ],
+    "imageRef": "A Beautiful Friendship.jpeg",
+    "identifiers": {
+      "name": "A Beautiful Friendship",
+      "legionhqId": "vo",
+      "tni": "command|2|A Beautiful Friendship"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "commander": "Leia Organa"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Arboreal Assault",
+    "pips": 1,
+    "keywords": [
+      "Suppressive",
+      "Immobilize"
+    ],
+    "imageRef": "Arboreal Assault.jpeg",
+    "identifiers": {
+      "name": "Arboreal Assault",
+      "legionhqId": "vw",
+      "tni": "command|1|Arboreal Assault"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "battleForce": "Bright Tree Village"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Log Traps",
+    "pips": 1,
+    "keywords": [
+      "Impact",
+      "Pierce"
+    ],
+    "imageRef": "Log Traps.jpeg",
+    "identifiers": {
+      "name": "Log Traps",
+      "legionhqId": "vx",
+      "tni": "command|1|Log Traps"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "battleForce": "Bright Tree Village"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Hiding in Plain Sight",
+    "pips": 2,
+    "keywords": [
+      "Inconspicuous"
+    ],
+    "imageRef": "Hiding in Plain Sight.jpeg",
+    "identifiers": {
+      "name": "Hiding in Plain Sight",
+      "legionhqId": "vy",
+      "tni": "command|2|Hiding in Plain Sight"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "battleForce": "Bright Tree Village"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "For the Tribe",
+    "pips": 3,
+    "keywords": [
+      "Dauntless",
+      "Relentless"
+    ],
+    "imageRef": "For the Tribe.jpeg",
+    "identifiers": {
+      "name": "For the Tribe",
+      "legionhqId": "vz",
+      "tni": "command|3|For the Tribe"
+    },
+    "restrictions": [
+      {
+        "faction": "rebels"
+      },
+      {
+        "battleForce": "Bright Tree Village"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Drive Them Out",
+    "pips": 1,
+    "keywords": [
+      "Demoralize"
+    ],
+    "imageRef": "Drive Them Out.jpeg",
+    "identifiers": {
+      "name": "Drive Them Out",
+      "legionhqId": "wf",
+      "tni": "command|1|Drive Them Out"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "battleForce": "Tempest Force"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "We Need Reinforcements",
+    "pips": 2,
+    "keywords": [
+      "Disengage"
+    ],
+    "imageRef": "We Need Reinforcements.jpeg",
+    "identifiers": {
+      "name": "We Need Reinforcements",
+      "legionhqId": "wg",
+      "tni": "command|2|We Need Reinforcements"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "battleForce": "Tempest Force"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Constantly Alert",
+    "pips": 3,
+    "imageRef": "Constantly Alert.jpeg",
+    "identifiers": {
+      "name": "Constantly Alert",
+      "legionhqId": "wh",
+      "tni": "command|3|Constantly Alert"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "battleForce": "Tempest Force"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Gunner, Infantry!",
+    "pips": 1,
+    "keywords": [
+      "Tactical",
+      "Suppressive"
+    ],
+    "imageRef": "Gunner, Infantry!.jpeg",
+    "identifiers": {
+      "name": "Gunner, Infantry!",
+      "legionhqId": "wi",
+      "tni": "command|1|Gunner, Infantry!"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Major Marquand"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Squadron, On Me",
+    "pips": 2,
+    "imageRef": "Squadron, On Me.jpeg",
+    "identifiers": {
+      "name": "Squadron, On Me",
+      "legionhqId": "wj",
+      "tni": "command|2|Squadron, On Me"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Major Marquand"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Armored Cavalry",
+    "pips": 3,
+    "imageRef": "Armored Cavalry.jpeg",
+    "identifiers": {
+      "name": "Armored Cavalry",
+      "legionhqId": "wk",
+      "tni": "command|3|Armored Cavalry"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Major Marquand"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "You Would Question Me?",
+    "pips": 2,
+    "keywords": [
+      "Permanent"
+    ],
+    "imageRef": "You Would Question Me%3F.jpeg",
+    "identifiers": {
+      "name": "You Would Question Me?",
+      "legionhqId": "wu",
+      "tni": "command|2|You Would Question Me?"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Fifth Brother"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "I Care Not For Your Struggles",
+    "pips": 3,
+    "keywords": [
+      "Dauntless"
+    ],
+    "imageRef": "I Care Not For Your Struggles.jpeg",
+    "identifiers": {
+      "name": "I Care Not For Your Struggles",
+      "legionhqId": "wv",
+      "tni": "command|3|I Care Not For Your Struggles"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Fifth Brother"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Come and Prove It",
+    "pips": 1,
+    "keywords": [
+      "Indomitable"
+    ],
+    "imageRef": "Come and Prove It.jpeg",
+    "identifiers": {
+      "name": "Come and Prove It",
+      "legionhqId": "ww",
+      "tni": "command|1|Come and Prove It"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Seventh Sister"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Unexpected, But Not Unwelcome",
+    "pips": 2,
+    "imageRef": "Unexpected, But Not Unwelcome.jpeg",
+    "identifiers": {
+      "name": "Unexpected, But Not Unwelcome",
+      "legionhqId": "wx",
+      "tni": "command|2|Unexpected, But Not Unwelcome"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Seventh Sister"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "You Hide Your Fear Well",
+    "pips": 3,
+    "imageRef": "You Hide Your Fear Well.jpeg",
+    "identifiers": {
+      "name": "You Hide Your Fear Well",
+      "legionhqId": "wy",
+      "tni": "command|3|You Hide Your Fear Well"
+    },
+    "restrictions": [
+      {
+        "faction": "empire"
+      },
+      {
+        "commander": "Seventh Sister"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Brutal Enforcer",
+    "pips": 1,
+    "keywords": [
+      "Jump",
+      "Demoralize"
+    ],
+    "imageRef": "Brutal Enforcer.jpeg",
+    "identifiers": {
+      "name": "Brutal Enforcer",
+      "legionhqId": "wz",
+      "tni": "command|1|Brutal Enforcer"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Sun Fac"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "Let the Executions Begin!",
+    "pips": 1,
+    "keywords": [
+      "Fire Support"
+    ],
+    "imageRef": "Let the Executions Begin!.jpeg",
+    "identifiers": {
+      "name": "Let the Executions Begin!",
+      "legionhqId": "xa",
+      "tni": "command|1|Let the Executions Begin!"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Poggle the Lesser"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "We Serve the Queen",
+    "pips": 2,
+    "keywords": [
+      "Direct",
+      "Coordinate"
+    ],
+    "imageRef": "We Serve the Queen.jpeg",
+    "identifiers": {
+      "name": "We Serve the Queen",
+      "legionhqId": "xb",
+      "tni": "command|2|We Serve the Queen"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Poggle the Lesser"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "We Make Weapons",
+    "pips": 3,
+    "imageRef": "We Make Weapons.jpeg",
+    "identifiers": {
+      "name": "We Make Weapons",
+      "legionhqId": "xc",
+      "tni": "command|3|We Make Weapons"
+    },
+    "restrictions": [
+      {
+        "faction": "separatists"
+      },
+      {
+        "commander": "Poggle the Lesser"
+      }
+    ]
+  },
+  {
+    "__typename": "command",
+    "name": "We Do What We Do",
+    "pips": 3,
+    "keywords": [
+      "Tactical",
+      "Reliable",
+      "Precise",
+      "Inspire",
+      "Suppressive"
+    ],
+    "imageRef": "We Do What We Do.jpeg",
+    "identifiers": {
+      "name": "We Do What We Do",
+      "legionhqId": "xx",
+      "tni": "command|3|We Do What We Do"
+    },
+    "restrictions": [
+      {
+        "commander": "The Bad Batch"
+      }
+    ]
+  }
+]

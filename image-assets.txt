@@ -1,0 +1,1312 @@
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Clear Conditions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Hostile Environment.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Limited Visibility.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Minefield.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Rapid Reinforcements.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Fortified Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Supply Drop.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/War Weary.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Clear Conditions2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Dawn.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Improvised Defenses.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/War Weary2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Advanced Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Battle Lines.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Disarray.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/The Long March.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Major Offensive.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Forces Converge (Act 1).jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Faceoff.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Meeting Engagement.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Flanking Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Battle Lines2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Roll Out.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Hemmed In.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Danger Close.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Breakthrough.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Intercept the Transmissions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Key Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Recover the Supplies.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Secure the Intel (Act 1).jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Sabotage the Moisture Vaporators.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Hostage Exchange.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Elimination.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Pivotal Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Breach.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Control.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Bombing Run.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleIcons/Payload.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Standing Orders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Leia Organa.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Han Solo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Luke Skywalker.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Jyn Erso.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Chewbacca.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Sabine Wren.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Rebel Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Fleet Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Wookiee Warriors.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Rebel Commandos.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Rebel Commandos Strike Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Rebel Pathfinders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/1.4 FD Laser Cannon Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/AT-RT.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/T-47 Airspeeder.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/X-34 Landspeeder.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Imperial Officer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Emperor Palpatine.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Darth Vader.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/General Veers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Director Orson Krennic.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Boba Fett.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Bossk.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Stormtroopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Snowtroopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Scout Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Scout Troopers Strike Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Imperial Royal Guards.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Imperial Death Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/E-Web Heavy Blaster Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/74-Z Speeder Bikes.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/AT-ST.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Occupier Combat Assault Tank.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Rebel Officer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Assault.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Push.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Ambush.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Master of Evil.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Imperial Discipline.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/An Entire Legion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Z-6 Jetpack Rocket.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Lying In Wait.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/New Ways to Motivate Them.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Evasive Maneuvers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Give In To Your Anger.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/ZX Flame Projector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Maximum Firepower.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Implacable.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/And Now You Will Die.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Voracious Ambition.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Whipcord Launcher.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Covert Observation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Pinned Down.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Coordinated Fire.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Return of the Jedi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Somebody Has to Save Our Skins.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Change of Plans.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Notorious Scoundrels.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Covering Fire.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Complete the Mission.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Legacy of Mandalore.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/My Ally is the Force.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/No Time for Sorrows.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Reckless Diversion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Brains and Brawn.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Trust Goes Both Ways.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Turning the Tide.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Son of Skywalker.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Coordinated Bombardment.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Sorry About the Mess.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Rebellious.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Common Cause.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Sabotaged Communications.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Improvised Orders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Commanding Presence.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Esteemed Leader.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Strict Orders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Recon Intel.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Emergency Stims.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Targeting Scopes.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Grappling Hooks.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Environmental Gear.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Tenacity.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Hunter.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Duck and Cover.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Endurance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Fragmentation Grenades.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Impact Grenades.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Concussion Grenades.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/HQ Uplink.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Comms Jammer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Long-Range Comlink.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Comms Relay.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Overcharged Generator.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Barrage Generator.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Battle Meditation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Force Push.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Force Reflexes.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Saber Throw.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Jedi Mind Trick.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Anger.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Force Choke.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/A-180 Configuration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/A-300 Configuration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/The Darksaber.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/MPL-57 Ion Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Z-6 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Bowcaster Wookiee.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Proton Charge Saboteur.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DH-447 Sniper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Scatter Gun Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/MPL-57 Barrage Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DLT-19 Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/HH-12 Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Electrostaff Guard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DLT-19x Sniper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Sonic Charge Saboteur.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/T-7 Ion Snowtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Flametrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Rebel Comms Technician.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Rebel Officer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Rebel Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/R5 Astromech Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/2-1B Medical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Fleet Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Imperial Officer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Imperial Comms Technician.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/FX-9 Medical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/R4 Astromech Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Snowtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/AT-RT Rotary Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/AT-RT Flamethrower.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/AT-RT Laser Cannon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Ax-108 Ground Buzzer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/MoDk Power Harpoon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/88 Twin Light Blaster Cannon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/AT-ST Mortar Launcher.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DW-3 Concussion Grenade Launcher.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Wedge Antilles.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/General Weiss.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Luke Skywalker2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Darth Vader2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Fear.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/I am a Jedi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Darkness Descends.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/BARC Ion Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/BARC RPS-6 Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/DF-90 Mortar Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/T-21B Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/RT-97C Blaster Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/CR-24 Flame Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Count Dooku.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Clone Captain Rex.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Phase II Clone Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/B2 Super Battle Droids.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/TX-130 Saber-Class Fighter Tank.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/AAT Trade Federation Battle Tank.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Annihilation Looms.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Deploy the Garrison.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Merciless Munitions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Reptilian Rampage.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Explosions!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Symbol of Rebellion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Overwatch.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Personal Combat Shield.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DT-F16.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DLT-19D Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/E-11D Configuration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Imperial Hammers Elite Armor Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Outer Rim Speeder Jockey.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/RPS-6 Rocket Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/A-300 Rifle Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Bistan.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Pao.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Rebel Veteran.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Rebel Veterans.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Obi-Wan Kenobi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/B1 Battle Droids.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Phase I Clone Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/First Sergeant Arbmab.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Mark II Medium Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/M-45 Ion Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DLT-19 Rifle Pintle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/RT-97C Rifle Pintle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Tauntaun Riders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Dewback Rider.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Shoretroopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Shoretrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/General Kenobi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Hello There!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Supreme Commander.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Crush Them!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Phase I Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/B1 Battle Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/E-5C B1 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Z-6 Phase I Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DC-15 Phase I Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/E-60R B1 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/T-21 Blaster Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Phase II Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Force Guidance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Electrobinoculars.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Linked Targeting Array.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/General Grievous.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Smoke Grenades.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/BARC Speeder.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/BARC Twin Laser Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Droidekas.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Mark II Medium Blaster Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/CM-O 93 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Electro Grappling Line.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Ryder Azadi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Hope.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Aggressive Tactics.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DT-57 %22Annihilator%22.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Trained In Your Jedi Arts.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Knowledge and Defense.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/B2 Super Battle Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Aayla Secura.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/T-Series Tactical Droid Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/We're Not Programmed.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/You Disappoint Me.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/B1 Security Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DLT-20A Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DP-23 Phase I Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/E-5s B1 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/RPS-6 Phase I Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/RT-97C Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/SX-21 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/T-21 Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Offensive Push.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Vader's Might.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/You Serve Your Master Well.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Fear and Dead Men.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Full of Surprises.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/R2-D2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/R2-D22.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartIcons/C-3PO.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartIcons/C-3PO2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Integrated Comms Antenna.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Blast Off!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Blast Off!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Stormtrooper Captain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Rebel Trooper Captain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Rebel Trooper Specialist.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Stormtrooper Specialist.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Fear, Surprise, Intimidation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Double the Fall.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/You Can Call Me Captain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Eat This, Clankers!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/OOM-Series Battle Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Radiation Cannon B1 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Phase I Clone Captain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Phase I Clone Specialist.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Smoke Screen.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Impromptu Immolation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Smoke Screen.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Impromptu Immolation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Z-6 Phase II Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/B2-ACM Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Cassian Andor.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Iden Versio.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/A280-CFE Configuration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Iden's DLT-20A Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Crack Shot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Pulse Scan.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Veteran Clone Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/TX-130 Beam Cannon Turret.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Armor-Piercing Shells.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Phase II Mortar Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/B2-HA Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Lok Durd.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/TX-130 Twin Laser Turret.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Plo Koon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Bunker Buster Shells.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/High-Energy Shells.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/OOM-Series Droid Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Padme Amidala.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Cad Bane.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/ARC Troopers Strike Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/ARC Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/BX-Series Droid Commandos.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/BX-Series Droid Commandos Strike Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Deflector Shields.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/BX-Series Droid Sniper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/EMP Droid Poppers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DC-15x ARC Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Fives.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Echo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Situational Awareness.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Vibroswords.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/JT-12 Jetpacks.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Electro Gauntlets.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Looted E-5 Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Diplomatic Cover.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/I'm in Control.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/I Make the Rules Now.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Our Fate is in Your Hands.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Volunteer Mission.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Last Stand.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Sacrifice.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Jyn's SE-14 Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/K-2SO.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartIcons/Iden's ID10 Seeker Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Iden's TL-50 Repeater.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Incapacitate.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Concussive Blast.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Tactical Strike.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/AT-RT2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/STAP Riders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Command Control Array.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Gideon Hask.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Del Meeko.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/I'm Your Worst Nightmare.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Ascension Cables.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Aggressive Negotiations.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Dioxis Mine Saboteur.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Mandalorian Resistance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Mandalorian Resistance Clan Wren.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Jetpack Rockets.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Beskad Duelist.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Ursa Wren.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Tristan Wren.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/T-Series Tactical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Portable Scanner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Defensive Stance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Synchronized Offensive.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Mechanized Incursion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Hero of the Clone Wars.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Duel of the Fates.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Imperial Special Forces.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Imperial Special Forces Inferno Squad.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/T-21 Special Forces Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Anakin Skywalker.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Maul.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Defensive Stance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Force Barrier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Seize the Initiative.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/This is Where the Fun Begins.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/You Underestimate My Power.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/flawIcons/Not a Story the Jedi Would Tell.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/The Phantom Menace.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/At Last.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/DRK-1 Sith Probe Droids.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Lando Calrissian.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Agent Kallus.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Ace Up His Sleeve.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Face Me!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/J-19 Bo-Rifle Staff.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Inspiring Presence.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/T-Series Tactical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Clone Commander.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/All In.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Orbital Strike.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Roger, Roger!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Idiot's Array.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Air Support.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Attack of the Clones.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Vigilance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Clone Comms Technician.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Clone Engineer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Clone Medic.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Clone Commander.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Viper Recon Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/PK-Series Worker Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/EV-Series Medical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/flawIcons/I've Altered the Deal.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/flawIcons/Developing Sympathies.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/ISB Investigation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Ruthless Tactics.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Yoda.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/A-A5 Speeder Truck.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/LAAT Patrol Transport E.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/LAAT Patrol Transport R.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Heavy Laser Retrofit.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Shriv Suurgav.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Governor Pryce.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Clone Commander Fox.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Onboard Comms Channel.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/AG-2G Quad Laser.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Hotshot Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Reckless Driver.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Backworld Medic.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Refurbished %22Gonk%22 Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Unstable R5 Astromech.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Unorthodox Tactician.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Baron Rudor.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Hound & Grizzer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Imperial TIE Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Clone Shock Trooper Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Battle Shield Wookiee.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Wookiee Warriors2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Wookiee Chieftain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Size Matters Not.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/There Is No Try.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Luminous Beings Are We.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Wookiee Warriors3.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Wookiee Warriors4.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Long Gun Wookiee.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Chewbacca2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Size Matters Sometimes.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Burst of Speed.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Force Lift.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Into the Fray.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Protector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Grroooogrrraaaawrrrrrrrrmph.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/MROWGH GHRRMROWRIG!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/YHWARGGHHHHHHHHHH!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/IG-100 MagnaGuard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Super Tactical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Super Tactical Droid (Kraken).jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Super Tactical Droid (Kalani).jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Electro-whip MagnaGuard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/IG-100 MagnaGuard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/RPS-6 MagnaGuard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/They Too Will Suffer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Preservation Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Do Not Underestimate Our Means.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Raddaugh Gnasp Fluttercraft.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Gnasp Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Hacked Comms Unit.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/DSD1 Dwarf Spider Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Engagement Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Defense Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Attack Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Nose-Mounted Flamethrower.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Gnasp Bombardier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Nose-Mounted Ion Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Nose-Mounted Laser Cannon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Infantry Support Platform.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/NR-N99 Persuader-class Tank Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/327th Star Corps Elite Armor Pilots.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Twin Blaster Cannons.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Twin Beam Cannons.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Twin Missile Pods.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Pyke Syndicate Capo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Pyke Syndicate Foot Soldiers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Black Sun Vigo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Black Sun Enforcers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Maul2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Gar Saxon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Mandalorian Super Commandos.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Underworld Connections.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/P13-M Disruptor Soldier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Electro-Whip Soldier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Pyke Syndicate Foot Soldier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Pyke Syndicate Capo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Black Sun Enforcer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Black Sun Vigo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Mag-Det Enforcer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Scatter Gun Enforcer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Prepared Supplies.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Sonic Imploders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/The Darksaber2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Witch Magick.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/His Emminence.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Seize What Power We Can.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Up Close and Personal.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Lead By Example.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Ploy.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Aggression.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Discretion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Super Commando Combat Shields.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Super Commando Jetpack Rockets.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Mandalorian Super Commando.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Super Commando Gunslinger.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Super Commando Marksman.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Rook Kast.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Emergency Transponder.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Saxon's Galar-90 Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Saxon's Z-3X Jetpack Rockets.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Saxon's ZX Flame Projector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Marked For Elimination.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Fight Another Day.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Victory or Death!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/A-A5 Speeder Truck2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Frenzied Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Raiding Party Leader.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Saxon's Combat Shield.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Swoop Bike Riders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Stormtroopers2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Delaying Tactics.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Courage of the Rebellion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Hold at Any Cost.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Unrelenting Fire.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Overwhelming Barrage.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Debark for Ground Assault.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Lead From the Front.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Tactical Planning.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Leader of the 501st.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/AI Coordination.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Unrelenting Assault.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Unstoppable Advance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/A Simple Man.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Making His Way in the Galaxy.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Rule With Respect.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Whistling Birds.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/IG-88.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/IG-11.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Din Djarin.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Boba Fett2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Imperial Dark Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartIcons/Grogu.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Din's Amban Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/%22Nanny%22 Programming.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Din's Flame Projector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/The Mando's Jetpack.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Beskar Spear.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/I Like Those Odds.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/This is the Way.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/The Hand Thing.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/A Machine Made For Killing.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Anti-Capture Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Focused on the Kill.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Independent Programming.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Mechanical Carnage.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/%22Bounty%22 Programming.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/A Machine Made For Killing.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/The Hand Thing.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Clone Commander Cody.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Boil.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Waxer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Boba's Flame Projector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Moff Gideon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/The Darksaber3.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Die at My Hand.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/You Have Something I Want.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Moment of Consideration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/XS-IV Assault Cannon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/SM-9 Frag Launcher.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Mertalizer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Imperial Dark Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Programmed Loyalty.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Asajj Ventress.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/The Sith Will Rule.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/The Jedi Shall Fall.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/I Am Fear.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Yes, My Master.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Imperial Death Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Scout Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Bring It Down!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Have I Ever Let You Down.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Combined Arms.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Ahsoka Tano.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Wicket.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/I Am No Jedi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Family Reunion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Swift Protector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/A New Beginning.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Chewbacca3.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Ewok Skirmishers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Close Call.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Sneaky Scouting.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Courageous Counterattack.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/A Beautiful Friendship.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Forest Dwellers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Call To Arms.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Axe Ewok.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Insatiable Curiosity.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Ewok Trapper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Ewok Slingers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/C-3PO3.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Arboreal Assault.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Log Traps.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Hiding in Plain Sight.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/For the Tribe.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Secret Ingredients.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Herbal Medicine.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Onward to Victory.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Logray.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Major Marquand.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Drive Them Out.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/We Need Reinforcements.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Constantly Alert.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Gunner, Infantry!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Squadron, On Me.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Armored Cavalry.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Fifth Brother.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Seventh Sister.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Poggle the Lesser.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Sun Fac.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Geonosian Warriors.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Inquisitorius Training.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Force Pike Warrior.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Sonic Cannon Warrior.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Geonosian Warrior.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/You Would Question Me%3F.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/I Care Not For Your Struggles.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Come and Prove It.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Unexpected, But Not Unwelcome.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/You Hide Your Fear Well.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Brutal Enforcer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/Let the Executions Begin!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/We Serve the Queen.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/We Make Weapons.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/IG-100 MagnaGuard2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/NR-N99 Persuader-class Tank Droid2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Raddaugh Gnasp Fluttercraft2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Wookiee Warriors4.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Range Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/The Bad Batch.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Clone Commandos.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DC-17m ICWS Config.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Katarn Pattern Armor.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Range Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/DLT-20A Range Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/T-21A Range Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/Delta Squad.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Echo2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Hunter2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Wrecker.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Tech.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeIcons/Crosshair.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitIcons/The Bad Batch2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartIcons/Omega.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandIcons/We Do What We Do.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Clear Conditions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Hostile Environment.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Limited Visibility.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Minefield.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Rapid Reinforcements.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Fortified Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Supply Drop.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/War Weary.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Clear Conditions2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Dawn.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Improvised Defenses.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/War Weary2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Advanced Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Battle Lines.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Disarray.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/The Long March.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Major Offensive.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Forces Converge (Act 1).jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Faceoff.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Meeting Engagement.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Flanking Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Battle Lines2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Roll Out.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Hemmed In.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Danger Close.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Breakthrough.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Intercept the Transmissions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Key Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Recover the Supplies.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Secure the Intel (Act 1).jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Sabotage the Moisture Vaporators.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Hostage Exchange.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Elimination.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Pivotal Positions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Breach.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Control.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Bombing Run.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/battleCards/Payload.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Standing Orders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Leia Organa.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Han Solo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Luke Skywalker.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Jyn Erso.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Chewbacca.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Sabine Wren.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Rebel Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Fleet Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Wookiee Warriors.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Rebel Commandos.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Rebel Commandos Strike Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Rebel Pathfinders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/1.4 FD Laser Cannon Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/AT-RT.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/T-47 Airspeeder.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/X-34 Landspeeder.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Imperial Officer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Emperor Palpatine.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Darth Vader.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/General Veers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Director Orson Krennic.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Boba Fett.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Bossk.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Stormtroopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Snowtroopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Scout Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Scout Troopers Strike Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Imperial Royal Guards.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Imperial Death Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/E-Web Heavy Blaster Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/74-Z Speeder Bikes.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/AT-ST.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Occupier Combat Assault Tank.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Rebel Officer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Assault.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Push.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Ambush.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Master of Evil.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Imperial Discipline.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/An Entire Legion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Z-6 Jetpack Rocket.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Lying In Wait.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/New Ways to Motivate Them.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Evasive Maneuvers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Give In To Your Anger.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/ZX Flame Projector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Maximum Firepower.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Implacable.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/And Now You Will Die.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Voracious Ambition.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Whipcord Launcher.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Covert Observation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Pinned Down.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Coordinated Fire.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Return of the Jedi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Somebody Has to Save Our Skins.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Change of Plans.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Notorious Scoundrels.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Covering Fire.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Complete the Mission.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Legacy of Mandalore.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/My Ally is the Force.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/No Time for Sorrows.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Reckless Diversion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Brains and Brawn.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Trust Goes Both Ways.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Turning the Tide.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Son of Skywalker.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Coordinated Bombardment.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Sorry About the Mess.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Rebellious.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Common Cause.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Sabotaged Communications.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Improvised Orders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Commanding Presence.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Esteemed Leader.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Strict Orders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Recon Intel.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Emergency Stims.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Targeting Scopes.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Grappling Hooks.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Environmental Gear.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Tenacity.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Hunter.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Duck and Cover.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Endurance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Fragmentation Grenades.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Impact Grenades.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Concussion Grenades.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/HQ Uplink.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Comms Jammer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Long-Range Comlink.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Comms Relay.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Overcharged Generator.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Barrage Generator.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Battle Meditation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Force Push.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Force Reflexes.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Saber Throw.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Jedi Mind Trick.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Anger.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Force Choke.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/A-180 Configuration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/A-300 Configuration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/The Darksaber.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/MPL-57 Ion Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Z-6 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Bowcaster Wookiee.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Proton Charge Saboteur.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DH-447 Sniper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Scatter Gun Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/MPL-57 Barrage Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DLT-19 Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/HH-12 Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Electrostaff Guard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DLT-19x Sniper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Sonic Charge Saboteur.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/T-7 Ion Snowtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Flametrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Rebel Comms Technician.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Rebel Officer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Rebel Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/R5 Astromech Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/2-1B Medical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Fleet Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Imperial Officer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Imperial Comms Technician.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/FX-9 Medical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/R4 Astromech Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Snowtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/AT-RT Rotary Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/AT-RT Flamethrower.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/AT-RT Laser Cannon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Ax-108 Ground Buzzer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/MoDk Power Harpoon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/88 Twin Light Blaster Cannon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/AT-ST Mortar Launcher.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DW-3 Concussion Grenade Launcher.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Wedge Antilles.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/General Weiss.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Luke Skywalker2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Darth Vader2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Fear.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/I am a Jedi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Darkness Descends.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/BARC Ion Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/BARC RPS-6 Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/DF-90 Mortar Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/T-21B Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/RT-97C Blaster Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/CR-24 Flame Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Count Dooku.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Clone Captain Rex.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Phase II Clone Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/B2 Super Battle Droids.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/TX-130 Saber-Class Fighter Tank.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/AAT Trade Federation Battle Tank.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Annihilation Looms.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Deploy the Garrison.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Merciless Munitions.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Reptilian Rampage.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Explosions!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Symbol of Rebellion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Overwatch.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Personal Combat Shield.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DT-F16.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DLT-19D Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/E-11D Configuration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Imperial Hammers Elite Armor Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Outer Rim Speeder Jockey.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/RPS-6 Rocket Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/A-300 Rifle Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Bistan.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Pao.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Rebel Veteran.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Rebel Veterans.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Obi-Wan Kenobi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/B1 Battle Droids.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Phase I Clone Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/First Sergeant Arbmab.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Mark II Medium Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/M-45 Ion Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DLT-19 Rifle Pintle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/RT-97C Rifle Pintle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Tauntaun Riders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Dewback Rider.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Shoretroopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Shoretrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/General Kenobi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Hello There!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Supreme Commander.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Crush Them!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Phase I Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/B1 Battle Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/E-5C B1 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Z-6 Phase I Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DC-15 Phase I Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/E-60R B1 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/T-21 Blaster Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Phase II Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Force Guidance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Electrobinoculars.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Linked Targeting Array.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/General Grievous.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Smoke Grenades.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/BARC Speeder.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/BARC Twin Laser Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Droidekas.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Mark II Medium Blaster Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/CM-O 93 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Electro Grappling Line.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Ryder Azadi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Hope.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Aggressive Tactics.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DT-57 %22Annihilator%22.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Trained In Your Jedi Arts.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Knowledge and Defense.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/B2 Super Battle Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Aayla Secura.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/T-Series Tactical Droid Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/We're Not Programmed.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/You Disappoint Me.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/B1 Security Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DLT-20A Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DP-23 Phase I Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/E-5s B1 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/RPS-6 Phase I Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/RT-97C Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/SX-21 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/T-21 Stormtrooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Offensive Push.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Vader's Might.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/You Serve Your Master Well.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Fear and Dead Men.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Full of Surprises.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/R2-D2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/R2-D22.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartCards/C-3PO.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartCards/C-3PO2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Integrated Comms Antenna.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Blast Off!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Blast Off!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Stormtrooper Captain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Rebel Trooper Captain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Rebel Trooper Specialist.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Stormtrooper Specialist.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Fear, Surprise, Intimidation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Double the Fall.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/You Can Call Me Captain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Eat This, Clankers!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/OOM-Series Battle Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Radiation Cannon B1 Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Phase I Clone Captain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Phase I Clone Specialist.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Smoke Screen.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Impromptu Immolation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Smoke Screen.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Impromptu Immolation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Z-6 Phase II Clone Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/B2-ACM Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Cassian Andor.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Iden Versio.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/A280-CFE Configuration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Iden's DLT-20A Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Crack Shot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Pulse Scan.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Veteran Clone Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/TX-130 Beam Cannon Turret.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Armor-Piercing Shells.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Phase II Mortar Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/B2-HA Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Lok Durd.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/TX-130 Twin Laser Turret.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Plo Koon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Bunker Buster Shells.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/High-Energy Shells.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/OOM-Series Droid Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Padme Amidala.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Cad Bane.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/ARC Troopers Strike Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/ARC Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/BX-Series Droid Commandos.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/BX-Series Droid Commandos Strike Team.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Deflector Shields.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/BX-Series Droid Sniper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/EMP Droid Poppers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DC-15x ARC Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Fives.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Echo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Situational Awareness.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Vibroswords.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/JT-12 Jetpacks.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Electro Gauntlets.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Looted E-5 Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Diplomatic Cover.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/I'm in Control.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/I Make the Rules Now.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Our Fate is in Your Hands.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Volunteer Mission.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Last Stand.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Sacrifice.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Jyn's SE-14 Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/K-2SO.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartCards/Iden's ID10 Seeker Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Iden's TL-50 Repeater.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Incapacitate.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Concussive Blast.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Tactical Strike.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/AT-RT2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/STAP Riders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Command Control Array.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Gideon Hask.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Del Meeko.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/I'm Your Worst Nightmare.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Ascension Cables.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Aggressive Negotiations.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Dioxis Mine Saboteur.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Mandalorian Resistance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Mandalorian Resistance Clan Wren.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Jetpack Rockets.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Beskad Duelist.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Ursa Wren.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Tristan Wren.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/T-Series Tactical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Portable Scanner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Defensive Stance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Synchronized Offensive.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Mechanized Incursion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Hero of the Clone Wars.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Duel of the Fates.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Imperial Special Forces.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Imperial Special Forces Inferno Squad.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/T-21 Special Forces Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Anakin Skywalker.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Maul.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Defensive Stance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Force Barrier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Seize the Initiative.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/This is Where the Fun Begins.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/You Underestimate My Power.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/flawCards/Not a Story the Jedi Would Tell.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/The Phantom Menace.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/At Last.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/DRK-1 Sith Probe Droids.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Lando Calrissian.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Agent Kallus.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Ace Up His Sleeve.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Face Me!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/J-19 Bo-Rifle Staff.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Inspiring Presence.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/T-Series Tactical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Clone Commander.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/All In.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Orbital Strike.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Roger, Roger!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Idiot's Array.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Air Support.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Attack of the Clones.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Vigilance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Clone Comms Technician.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Clone Engineer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Clone Medic.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Clone Commander.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Viper Recon Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/PK-Series Worker Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/EV-Series Medical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/flawCards/I've Altered the Deal.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/flawCards/Developing Sympathies.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/ISB Investigation.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Ruthless Tactics.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Yoda.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/A-A5 Speeder Truck.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/LAAT Patrol Transport E.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/LAAT Patrol Transport R.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Heavy Laser Retrofit.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Shriv Suurgav.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Governor Pryce.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Clone Commander Fox.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Onboard Comms Channel.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/AG-2G Quad Laser.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Hotshot Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Reckless Driver.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Backworld Medic.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Refurbished %22Gonk%22 Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Unstable R5 Astromech.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Unorthodox Tactician.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Baron Rudor.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Hound & Grizzer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Imperial TIE Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Clone Shock Trooper Pilot.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Battle Shield Wookiee.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Wookiee Warriors2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Wookiee Chieftain.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Size Matters Not.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/There Is No Try.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Luminous Beings Are We.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Wookiee Warriors3.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Wookiee Warriors4.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Long Gun Wookiee.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Chewbacca2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Size Matters Sometimes.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Burst of Speed.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Force Lift.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Into the Fray.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Protector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Grroooogrrraaaawrrrrrrrrmph.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/MROWGH GHRRMROWRIG!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/YHWARGGHHHHHHHHHH!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/IG-100 MagnaGuard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Super Tactical Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Super Tactical Droid (Kraken).jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Super Tactical Droid (Kalani).jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Electro-whip MagnaGuard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/IG-100 MagnaGuard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/RPS-6 MagnaGuard.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/They Too Will Suffer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Preservation Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Do Not Underestimate Our Means.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Raddaugh Gnasp Fluttercraft.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Gnasp Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Hacked Comms Unit.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/DSD1 Dwarf Spider Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Engagement Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Defense Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Attack Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Nose-Mounted Flamethrower.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Gnasp Bombardier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Nose-Mounted Ion Blaster.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Nose-Mounted Laser Cannon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Infantry Support Platform.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/NR-N99 Persuader-class Tank Droid.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/327th Star Corps Elite Armor Pilots.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Twin Blaster Cannons.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Twin Beam Cannons.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Twin Missile Pods.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Pyke Syndicate Capo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Pyke Syndicate Foot Soldiers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Black Sun Vigo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Black Sun Enforcers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Maul2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Gar Saxon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Mandalorian Super Commandos.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Underworld Connections.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/P13-M Disruptor Soldier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Electro-Whip Soldier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Pyke Syndicate Foot Soldier.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Pyke Syndicate Capo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Black Sun Enforcer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Black Sun Vigo.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Mag-Det Enforcer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Scatter Gun Enforcer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Prepared Supplies.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Sonic Imploders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/The Darksaber2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Witch Magick.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/His Emminence.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Seize What Power We Can.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Up Close and Personal.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Lead By Example.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Ploy.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Aggression.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Discretion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Super Commando Combat Shields.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Super Commando Jetpack Rockets.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Mandalorian Super Commando.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Super Commando Gunslinger.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Super Commando Marksman.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Rook Kast.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Emergency Transponder.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Saxon's Galar-90 Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Saxon's Z-3X Jetpack Rockets.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Saxon's ZX Flame Projector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Marked For Elimination.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Fight Another Day.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Victory or Death!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/A-A5 Speeder Truck2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Frenzied Gunner.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Raiding Party Leader.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Saxon's Combat Shield.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Swoop Bike Riders.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Stormtroopers2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Delaying Tactics.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Courage of the Rebellion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Hold at Any Cost.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Unrelenting Fire.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Overwhelming Barrage.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Debark for Ground Assault.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Lead From the Front.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Tactical Planning.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Leader of the 501st.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/AI Coordination.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Unrelenting Assault.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Unstoppable Advance.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/A Simple Man.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Making His Way in the Galaxy.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Rule With Respect.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Whistling Birds.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/IG-88.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/IG-11.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Din Djarin.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Boba Fett2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Imperial Dark Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartCards/Grogu.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Din's Amban Rifle.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/%22Nanny%22 Programming.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Din's Flame Projector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/The Mando's Jetpack.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Beskar Spear.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/I Like Those Odds.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/This is the Way.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/The Hand Thing.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/A Machine Made For Killing.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Anti-Capture Protocols.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Focused on the Kill.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Independent Programming.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Mechanical Carnage.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/%22Bounty%22 Programming.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/A Machine Made For Killing.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/The Hand Thing.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Clone Commander Cody.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Boil.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Waxer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Boba's Flame Projector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Moff Gideon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/The Darksaber3.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Die at My Hand.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/You Have Something I Want.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Moment of Consideration.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/XS-IV Assault Cannon.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/SM-9 Frag Launcher.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Mertalizer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Imperial Dark Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Programmed Loyalty.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Asajj Ventress.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/The Sith Will Rule.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/The Jedi Shall Fall.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/I Am Fear.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Yes, My Master.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Imperial Death Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Scout Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Bring It Down!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Have I Ever Let You Down.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Combined Arms.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Ahsoka Tano.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Wicket.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/I Am No Jedi.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Family Reunion.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Swift Protector.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/A New Beginning.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Chewbacca3.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Ewok Skirmishers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Close Call.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Sneaky Scouting.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Courageous Counterattack.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/A Beautiful Friendship.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Forest Dwellers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Call To Arms.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Axe Ewok.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Insatiable Curiosity.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Ewok Trapper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Ewok Slingers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/C-3PO3.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Arboreal Assault.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Log Traps.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Hiding in Plain Sight.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/For the Tribe.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Secret Ingredients.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Herbal Medicine.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Onward to Victory.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Logray.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Major Marquand.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Drive Them Out.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/We Need Reinforcements.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Constantly Alert.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Gunner, Infantry!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Squadron, On Me.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Armored Cavalry.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Fifth Brother.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Seventh Sister.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Poggle the Lesser.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Sun Fac.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Geonosian Warriors.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Inquisitorius Training.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Force Pike Warrior.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Sonic Cannon Warrior.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Geonosian Warrior.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/You Would Question Me%3F.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/I Care Not For Your Struggles.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Come and Prove It.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Unexpected, But Not Unwelcome.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/You Hide Your Fear Well.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Brutal Enforcer.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/Let the Executions Begin!.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/We Serve the Queen.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/We Make Weapons.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/IG-100 MagnaGuard2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/NR-N99 Persuader-class Tank Droid2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Raddaugh Gnasp Fluttercraft2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Wookiee Warriors4.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Range Troopers.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/The Bad Batch.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Clone Commandos.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DC-17m ICWS Config.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Katarn Pattern Armor.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Range Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/DLT-20A Range Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/T-21A Range Trooper.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/Delta Squad.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Echo2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Hunter2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Wrecker.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Tech.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/upgradeCards/Crosshair.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/unitCards/The Bad Batch2.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/counterpartCards/Omega.jpeg
+https://d2j4aq9mja0i3a.cloudfront.net/commandCards/We Do What We Do.jpeg
