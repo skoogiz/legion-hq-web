@@ -70,8 +70,6 @@
     "prevCost",
     "displayName",
     "additionalUpgradeSlots",
-    "prevCosts",
-    "iconLocation",
     "faction"
   ],
   "counterpart": [

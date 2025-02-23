@@ -41,7 +41,7 @@ const json = Object.keys(map).reduce(
 );
 
 fs.writeFile(
-  "card-fields.json",
+  "cards-fields.json",
   JSON.stringify(json),
   {
     encoding: "utf8",

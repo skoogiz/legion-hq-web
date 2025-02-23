@@ -7026,7 +7026,7 @@
     "isUnique": false,
     "cardType": "upgrade",
     "cost": 10,
-    "prevCosts": 18,
+    "prevCost": 18,
     "imageName": "Deflector Shields.jpeg",
     "keywords": [
       "Shields",
@@ -7448,7 +7448,6 @@
     "displayName": "TL-50 Repeater",
     "cardSubtype": "armament",
     "cardName": "Iden's TL-50 Repeater",
-    "iconLocation": "Iden's TL-50 Repeater.jpeg",
     "isUnique": true,
     "cardType": "upgrade",
     "cost": 15,
@@ -10993,8 +10992,12 @@
       "Pierce"
     ],
     "requirements": [
+      "AND",
       {
-        "imageName": "Maul2.jpeg"
+        "cardName": "Maul"
+      },
+      {
+        "subfaction": "shadow collective"
       }
     ]
   },
@@ -12676,7 +12679,11 @@
     "isUnique": true,
     "rank": "commander",
     "cost": 70,
-    "faction": "rebels",
+    "faction": "fringe",
+    "subfaction": "ewoks",
+    "affiliations": [
+      "rebels"
+    ],
     "imageName": "Wicket.jpeg",
     "keywords": [
       "Independent",
@@ -12762,6 +12769,7 @@
     "rank": "heavy",
     "cost": 190,
     "faction": "fringe",
+    "subfaction": "ewoks",
     "affiliations": [],
     "imageName": "Chewbacca3.jpeg",
     "keywords": [
@@ -12791,6 +12799,7 @@
     "rank": "corps",
     "cost": 40,
     "faction": "fringe",
+    "subfaction": "ewoks",
     "affiliations": [
       "rebels"
     ],
@@ -12999,6 +13008,7 @@
     "rank": "special",
     "cost": 35,
     "faction": "fringe",
+    "subfaction": "ewoks",
     "affiliations": [
       "rebels"
     ],
@@ -13022,6 +13032,7 @@
     "cardName": "C-3P0",
     "title": "Golden God",
     "faction": "fringe",
+    "subfaction": "ewoks",
     "isUnique": true,
     "upgradeBar": [],
     "cardType": "unit",
@@ -13160,6 +13171,7 @@
     "rank": "commander",
     "cost": 45,
     "faction": "fringe",
+    "subfaction": "ewoks",
     "imageName": "Logray.jpeg",
     "keywords": [
       "Aid",
@@ -13870,12 +13882,8 @@
       "Reconfigure"
     ],
     "requirements": [
-      "OR",
       {
         "cardName": "Clone Commandos"
-      },
-      {
-        "cardName": "Clone Commandos Delta Squad"
       }
     ],
     "id": "xk"
@@ -13889,12 +13897,8 @@
     "imageName": "Katarn Pattern Armor.jpeg",
     "keywords": [],
     "requirements": [
-      "OR",
       {
         "cardName": "Clone Commandos"
-      },
-      {
-        "cardName": "Clone Commandos Delta Squad"
       }
     ],
     "id": "xl"
@@ -13954,7 +13958,7 @@
     "defense": "red",
     "surges": [],
     "cardSubtype": "clone trooper",
-    "cardName": "Clone Commandos Delta Squad",
+    "cardName": "Clone Commandos",
     "displayName": "Delta Squad",
     "title": "Delta Squad",
     "isUnique": true,
@@ -14088,6 +14092,7 @@
     "cardType": "unit",
     "cost": 140,
     "faction": "fringe",
+    "subfaction": "bounty hunters",
     "affiliations": [
       "rebels"
     ],
@@ -14115,6 +14120,7 @@
     "cardName": "Omega",
     "title": "Mascot of the 99th",
     "faction": "fringe",
+    "subfaction": "bounty hunters",
     "affiliations": [
       "rebels"
     ],
