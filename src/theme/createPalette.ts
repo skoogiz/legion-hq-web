@@ -75,7 +75,7 @@ export const createPalette = (theme: Theme) => ({
       color: {
         main: "#124076",
       },
-      name: "rebels",
+      name: "separatists",
     }),
     mercenaries: theme.palette.augmentColor({
       color: {
